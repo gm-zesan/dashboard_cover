@@ -75,3 +75,4 @@
 - **Filters & Grouping:** Group by Month, Customer, Division, Cost Center.
 - **Output Preferences:** Chart Type (Bar / Line / Table), Export Format.
 - **Buttons:** `Save & Run Query`, `Schedule Monthly Email`, `Cancel`.
+

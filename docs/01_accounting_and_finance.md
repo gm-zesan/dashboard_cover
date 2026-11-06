@@ -84,3 +84,4 @@ Navigation tabs to toggle between core accounting submodules:
   - Amount, Reference No., Narration / Description.
   - Attachment upload (Cheque scan / Bill invoice).
 - **Buttons:** `Save as Draft`, `Post & Print Voucher`, `Cancel`.
+

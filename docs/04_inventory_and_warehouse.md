@@ -74,3 +74,4 @@
 - **Driver & Vehicle Details:** Transport vehicle no., Driver contact, Dispatch date.
 - **Transfer Items List:** SKU search, Current Available Qty, Transfer Qty, Unit.
 - **Buttons:** `Generate Delivery Challan`, `Dispatch Transfer`, `Cancel`.
+

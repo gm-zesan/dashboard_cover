@@ -74,3 +74,4 @@
 - **Bank Advice Letter:** Select Corporate Disbursal Bank (`Dutch-Bangla Bank` / `BRAC Bank`).
 - **Summary Preview:** Total Gross, Total Tax Deducted, Net Disbursal Amount.
 - **Buttons:** `Generate Bank Advice File`, `Lock & Disburse Salary`, `Cancel`.
+

@@ -82,3 +82,4 @@
 - **Payment Terms:** Net 15, Net 30, Net 60, Advance.
 - **Summary:** Subtotal, VAT Total, Grand Total (BDT).
 - **Buttons:** `Save as Draft`, `Issue Invoice & Send Email`, `Print Challan`.
+

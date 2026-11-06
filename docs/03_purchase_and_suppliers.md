@@ -74,3 +74,4 @@
 - **Items Grid:** Item name, SKU, Order Qty, Unit Cost, Tax Rate, Line Total.
 - **Approver Routing:** Automatic multi-tier routing (Procurement Manager → Head of SCM → CFO/MD if > ৳ 10L).
 - **Buttons:** `Send for Approval`, `Save Draft`, `Cancel`.
+

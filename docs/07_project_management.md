@@ -73,3 +73,4 @@
 - **Financials:** Approved budget (BDT), Billing model (Milestone / Fixed / T&M).
 - **Timeline:** Planned start date, Target go-live date, Key milestones.
 - **Buttons:** `Initiate Project`, `Save Draft`, `Cancel`.
+

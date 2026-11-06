@@ -1505,7 +1505,7 @@
               class="relative z-10 pt-2.5 mt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
               <span>Receivables (AR): <strong class="text-blue-600 font-bold">৳ 84.5 লাখ</strong></span>
               <span>Payables (AP): <strong class="text-rose-600 font-bold">৳ 42.1 লাখ</strong></span>
-              <button onclick="showToast('Opening Financial Treasury & Cash Flow Module...')"
+              <button onclick="window.location.href='finance_module.html'"
                 class="text-blue-600 hover:text-blue-700 font-semibold">Treasury Details →</button>
             </div>
             <!-- Contextual Watermark Art (Anchored Bottom-Right at 4.5% Opacity) -->
@@ -2621,10 +2621,24 @@
 
     // 8. ACTIONS & SUBMODULES SHORTCUTS
     function openSubmodule(title, mod) {
+      if (mod && (mod.includes('Accounting') || mod.includes('Finance'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'finance_module.html';
+        }, 400);
+        return;
+      }
       showToast(`Navigating to ${title} (${mod})...`);
     }
 
     function quickAction(action, mod) {
+      if (mod && (mod.includes('Accounting') || mod.includes('Finance'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'finance_module.html';
+        }, 400);
+        return;
+      }
       showToast(`Initiating ${action} in ${mod}...`);
     }
 

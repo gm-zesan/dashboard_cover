@@ -53,3 +53,4 @@
    - Every module page features a top breadcrumb and a dedicated `← Back to Executive Portal` link pointing directly back to `erp_cover_page.html`.
 3. **Design Synchronization:**
    - All 8 module pages share the **exact same Design DNA** (`docs/00_master_design_system.md`), ensuring that moving between pages feels like using a cohesive, billion-dollar enterprise platform.
+

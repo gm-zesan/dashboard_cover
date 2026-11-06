@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM & Customers — Executive Portal | Inceptia ERP</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Fixed ambient atmospheric wallpaper matching erp_cover_page.html */
+    .erp-bg-fixed {
+      position: fixed;
+      inset: 0;
+      background-image: url('assets/erp_bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Translucent frosted glass card */
+    .executive-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+    }
+
+    .executive-card:hover {
+      box-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+    }
+
+    /* Glass table header & rows */
+    .glass-thead {
+      background: rgba(248, 250, 252, 0.88);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Custom thin scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.6);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Active selected row highlight in data tables */
+    tr.deal-row-selected {
+      background-color: rgba(238, 242, 255, 0.9) !important;
+      border-left: 3px solid #4f46e5 !important;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative flex flex-col antialiased selection:bg-indigo-600 selection:text-white">
+
+  <!-- Atmospheric Background Layer -->
+  <div class="erp-bg-fixed"></div>
+
+  <!-- Ambient Aurora Glow Orbs -->
+  <div
+    class="fixed top-0 left-1/4 w-[600px] h-[360px] bg-gradient-to-br from-indigo-200/25 to-blue-200/20 blur-3xl pointer-events-none z-0">
+  </div>
+  <div
+    class="fixed bottom-10 right-1/4 w-[500px] h-[400px] bg-gradient-to-tr from-purple-200/20 to-pink-200/15 blur-3xl pointer-events-none z-0">
+  </div>
+
+  <!-- =========================================================================
+       1. EXECUTIVE STICKY HEADER & BREADCRUMBS
+       ========================================================================= -->
+  <header class="sticky top-0 z-30 bg-white/75 backdrop-blur-md border-b border-white/60 shadow-2xs">
+    <div class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center justify-between gap-4">
+
+        <!-- Left: Back to Portal & Title -->
+        <div class="flex items-center gap-3">
+          <a href="erp_cover_page.html"
+            class="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-600 hover:text-slate-900 border border-slate-200/70 shadow-2xs hover:shadow-xs transition-all duration-150">
+            <svg class="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+              </path>
+            </svg>
+            <span>Executive Portal</span>
+          </a>
+
+          <div class="h-5 w-px bg-slate-300/60 hidden sm:block"></div>
+
+          <div class="flex items-center gap-2.5">
+            <div
+              class="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-600/30">
+              <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-base font-extrabold text-slate-900 tracking-tight">CRM & Customers</h1>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium">Inceptia ERP / Enterprise Accounts, Deals & Client
+                Retention Hub</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Search, Fiscal Selector & Actions -->
+        <div class="flex items-center gap-2.5">
+          <!-- Quick Search -->
+          <div class="relative hidden md:block">
+            <input type="text" id="dealSearchInput" oninput="filterDealTable()"
+              placeholder="Search accounts, deals, rep (⌘K)..."
+              class="w-64 pl-8 pr-3 py-1.5 rounded-xl text-xs bg-white/80 border border-slate-200/80 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-700 placeholder-slate-400 transition">
+            <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+
+          <!-- Date Range Selector Dropdown -->
+          <div class="relative">
+            <button id="dateRangeBtn" onclick="toggleDateMenu()"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-700 border border-slate-200/80 shadow-2xs transition">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span id="dateRangeLabel">Nov 1 – Nov 30, 2026</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div id="dateMenu"
+              class="hidden absolute right-0 mt-1.5 w-48 rounded-xl bg-white border border-slate-200 shadow-lg py-1 z-40 text-xs">
+              <button onclick="setDateRange('Today (Nov 6, 2026)')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">Today</button>
+              <button onclick="setDateRange('This Week (Nov 1 – 7)')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">This Week</button>
+              <button onclick="setDateRange('Nov 1 – Nov 30, 2026')"
+                class="w-full text-left px-3 py-1.5 bg-indigo-50/70 text-indigo-700 font-bold">This Month (Nov
+                2026)</button>
+              <button onclick="setDateRange('Q2 FY2026-27')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">Q2 FY2026-27</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER (max-w-[1680px] Edge-to-Edge Desktop Architecture)
+       ========================================================================= -->
+  <main class="flex-1 max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 relative z-10">
+
+    <!-- =========================================================================
+         TOP 4 COLORFUL EXECUTIVE KPI CARDS (Matching erp_cover_page.html DNA)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+
+      <!-- KPI 1: Active Pipeline Value (Solid Royal Blue) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#2563eb]/90 hover:bg-[#2563eb] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Active Pipeline Value</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">৳ 9.20 Cr</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Target: ৳ 12.0 Cr (76.7% Coverage)</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="77, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">77%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18">
+              </path>
+            </svg>
+            +18.4% MoM
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">42 Enterprise Deals</span>
+        </div>
+      </div>
+
+      <!-- KPI 2: Sales Win Rate (Solid Royal Purple) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#7c3aed]/90 hover:bg-[#7c3aed] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Sales Win Rate</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">34.8%</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Benchmark: 30.0% Target (+4.8% Alpha)</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="35, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">35%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Top Decile
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Avg Cycle: 24 Days</span>
+        </div>
+      </div>
+
+      <!-- KPI 3: Qualified Opportunities (Solid Emerald Green) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#059669]/90 hover:bg-[#059669] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Qualified Opportunities</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">184 Leads</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">MQL to SQL: 74.2% Qualified</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="74, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">74%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            +12.6% Inflow
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">৳ 14.8 Cr Potential</span>
+        </div>
+      </div>
+
+      <!-- KPI 4: Average Client LTV (Solid Sunset Orange) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#ea580c]/90 hover:bg-[#ea580c] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Average Client LTV</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">৳ 42.50 L</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Net Retention Rate: 114.2% NRR</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="100, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">114%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Healthy Cohort
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Churn: 1.2% Low</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 1: DEAL PIPELINE STAGE HORIZON (7 COLS) + CUSTOMER 360 HEALTH RADAR (5 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- CARD 1: Enterprise Deal Pipeline Stage Velocity (7 Columns) -->
+      <div
+        class="lg:col-span-7 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Enterprise Deal Pipeline Horizon</h3>
+                <p class="text-[10px] text-slate-500 font-medium">5-Stage Velocity, Value Progression & Win Probability
+                </p>
+              </div>
+            </div>
+            <!-- Stage Status Pill -->
+            <div class="flex items-center gap-2">
+              <span
+                class="text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200/60 px-2 py-0.5 rounded-full">
+                Weighted: ৳ 4.62 Cr
+              </span>
+            </div>
+          </div>
+
+          <!-- Custom Interactive Stage Flow SVG Diagram -->
+          <div class="w-full mt-2">
+            <svg class="w-full h-44" viewBox="0 0 720 170" fill="none">
+              <!-- Flow Connectors & Background Track -->
+              <path d="M 80 50 L 220 50 L 360 50 L 500 50 L 640 50" stroke="#e2e8f0" stroke-width="6"
+                stroke-linecap="round" />
+              <!-- Active Glow Track through stage 4 -->
+              <path d="M 80 50 L 500 50" stroke="#4f46e5" stroke-width="6" stroke-linecap="round" opacity="0.85" />
+
+              <!-- Stage 1: Lead Qualification -->
+              <g transform="translate(40, 20)">
+                <circle cx="40" cy="30" r="22" fill="#ffffff" stroke="#4f46e5" stroke-width="3" />
+                <circle cx="40" cy="30" r="16" fill="#4f46e5" />
+                <text x="40" y="34" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+                <text x="40" y="70" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">Qualification</text>
+                <text x="40" y="85" font-size="9.5" font-weight="700" fill="#4f46e5" text-anchor="middle">৳ 3.40 Cr</text>
+                <text x="40" y="98" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">24 Deals • 15%</text>
+              </g>
+
+              <!-- Stage 2: Technical Pitch -->
+              <g transform="translate(180, 20)">
+                <circle cx="40" cy="30" r="22" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
+                <circle cx="40" cy="30" r="16" fill="#6366f1" />
+                <text x="40" y="34" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">2</text>
+                <text x="40" y="70" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">Tech Pitch</text>
+                <text x="40" y="85" font-size="9.5" font-weight="700" fill="#6366f1" text-anchor="middle">৳ 2.80 Cr</text>
+                <text x="40" y="98" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">18 Deals • 35%</text>
+              </g>
+
+              <!-- Stage 3: Commercial Proposal -->
+              <g transform="translate(320, 20)">
+                <circle cx="40" cy="30" r="22" fill="#ffffff" stroke="#2563eb" stroke-width="3" />
+                <circle cx="40" cy="30" r="16" fill="#2563eb" />
+                <text x="40" y="34" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">3</text>
+                <text x="40" y="70" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">Proposal</text>
+                <text x="40" y="85" font-size="9.5" font-weight="700" fill="#2563eb" text-anchor="middle">৳ 1.90 Cr</text>
+                <text x="40" y="98" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">12 Deals • 60%</text>
+              </g>
+
+              <!-- Stage 4: Contract Negotiation -->
+              <g transform="translate(460, 20)">
+                <circle cx="40" cy="30" r="22" fill="#ffffff" stroke="#059669" stroke-width="3" />
+                <circle cx="40" cy="30" r="16" fill="#059669" />
+                <text x="40" y="34" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">4</text>
+                <text x="40" y="70" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">Negotiation</text>
+                <text x="40" y="85" font-size="9.5" font-weight="700" fill="#059669" text-anchor="middle">৳ 1.10 Cr</text>
+                <text x="40" y="98" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">6 Deals • 85%</text>
+              </g>
+
+              <!-- Stage 5: Closed Won Q2 -->
+              <g transform="translate(600, 20)">
+                <circle cx="40" cy="30" r="22" fill="#ffffff" stroke="#10b981" stroke-width="3" stroke-dasharray="3,3" />
+                <circle cx="40" cy="30" r="16" fill="#10b981" />
+                <text x="40" y="34" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">✓</text>
+                <text x="40" y="70" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">Closed Won</text>
+                <text x="40" y="85" font-size="9.5" font-weight="700" fill="#10b981" text-anchor="middle">৳ 3.98 Cr</text>
+                <text x="40" y="98" font-size="8.5" font-weight="600" fill="#64748b" text-anchor="middle">28 Closed • 100%</text>
+              </g>
+
+              <!-- Flow Step Indicators (Conversion Arrows) -->
+              <polygon points="146,47 154,50 146,53" fill="#4f46e5" />
+              <polygon points="286,47 294,50 286,53" fill="#6366f1" />
+              <polygon points="426,47 434,50 426,53" fill="#2563eb" />
+              <polygon points="566,47 574,50 566,53" fill="#059669" />
+
+              <!-- Micro Conversion Percent Pill Annotations -->
+              <rect x="130" y="16" width="36" height="14" rx="3" fill="#e0e7ff" />
+              <text x="148" y="26.5" font-size="8" font-weight="800" fill="#4338ca" text-anchor="middle">75%</text>
+
+              <rect x="270" y="16" width="36" height="14" rx="3" fill="#e0e7ff" />
+              <text x="288" y="26.5" font-size="8" font-weight="800" fill="#4338ca" text-anchor="middle">66%</text>
+
+              <rect x="410" y="16" width="36" height="14" rx="3" fill="#dbeafe" />
+              <text x="428" y="26.5" font-size="8" font-weight="800" fill="#1e40af" text-anchor="middle">50%</text>
+
+              <rect x="550" y="16" width="36" height="14" rx="3" fill="#d1fae5" />
+              <text x="568" y="26.5" font-size="8" font-weight="800" fill="#065f46" text-anchor="middle">85%</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Pipeline Horizon Footer -->
+        <div class="relative z-10 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <div class="flex items-center gap-3">
+            <span class="text-slate-500">Pipeline Velocity: <strong class="text-slate-800">৳ 38.3 L / Day</strong></span>
+            <span class="text-slate-300">|</span>
+            <span class="text-slate-500">Avg Sales Cycle: <strong class="text-slate-800">24.2 Days</strong></span>
+          </div>
+          <span class="text-indigo-700 font-bold font-mono">Quota Coverage: 2.4x</span>
+        </div>
+      </div>
+
+      <!-- CARD 2: Customer 360 Health & Sentiment Radar (5 Columns) -->
+      <div
+        class="lg:col-span-5 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Customer 360 Health Radar</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Enterprise Sentiment, Adoption & Expansion Signals
+                </p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full">
+              Index: 86.2 / 100
+            </span>
+          </div>
+
+          <!-- Radar Chart Visualizer (5-Axes Polygon) -->
+          <div class="w-full flex items-center justify-center mt-1">
+            <svg class="w-68 h-42" viewBox="0 0 280 170" fill="none">
+              <!-- Center is at (140, 85), Radius max = 65 -->
+              <!-- Concentric Pentagons (Web) -->
+              <!-- Outer Ring (100) -->
+              <polygon points="140,20 202,65 178,137 102,137 78,65" stroke="#e2e8f0" stroke-width="1"
+                fill="none" />
+              <!-- Mid Ring (60) -->
+              <polygon points="140,46 177,73 163,116 117,116 103,73" stroke="#e2e8f0" stroke-width="1"
+                fill="none" />
+              <!-- Inner Ring (30) -->
+              <polygon points="140,65 159,79 151,101 129,101 121,79" stroke="#e2e8f0" stroke-width="1"
+                fill="none" />
+
+              <!-- Axes Lines from Center (140, 85) -->
+              <line x1="140" y1="85" x2="140" y2="20" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2" />
+              <line x1="140" y1="85" x2="202" y2="65" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2" />
+              <line x1="140" y1="85" x2="178" y2="137" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2" />
+              <line x1="140" y1="85" x2="102" y2="137" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2" />
+              <line x1="140" y1="85" x2="78" y2="65" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2" />
+
+              <!-- Data Polygon:
+                   Axis 1 (Top: NPS/Sentiment = 92% -> y = 85 - (65 * 0.92) = 25.2) -> (140, 25)
+                   Axis 2 (Right-Top: Adoption = 85% -> 85% of (202, 65) from (140, 85) -> (193, 68)
+                   Axis 3 (Right-Bottom: Payment = 88% -> 88% of (178, 137) from (140, 85) -> (173, 131)
+                   Axis 4 (Left-Bottom: Engagement = 76% -> 76% of (102, 137) from (140, 85) -> (111, 125)
+                   Axis 5 (Left-Top: Expansion = 90% -> 90% of (78, 65) from (140, 85) -> (84, 67)
+              -->
+              <polygon points="140,25 193,68 173,131 111,125 84,67" fill="#4f46e5" fill-opacity="0.22"
+                stroke="#4f46e5" stroke-width="2.5" />
+
+              <!-- Data Vertices Dots -->
+              <circle cx="140" cy="25" r="3.5" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+              <circle cx="193" cy="68" r="3.5" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+              <circle cx="173" cy="131" r="3.5" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+              <circle cx="111" cy="125" r="3.5" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+              <circle cx="84" cy="67" r="3.5" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+
+              <!-- Axis Labels -->
+              <text x="140" y="13" font-size="8.5" font-weight="700" fill="#334155" text-anchor="middle">NPS (92)</text>
+              <text x="210" y="65" font-size="8.5" font-weight="700" fill="#334155" text-anchor="start">Adoption (85)</text>
+              <text x="184" y="148" font-size="8.5" font-weight="700" fill="#334155" text-anchor="middle">Payment (88)</text>
+              <text x="96" y="148" font-size="8.5" font-weight="700" fill="#334155" text-anchor="middle">Engagement (76)</text>
+              <text x="70" y="65" font-size="8.5" font-weight="700" fill="#334155" text-anchor="end">Expansion (90)</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Radar Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Status: <strong class="text-emerald-700">Enterprise High-Retention Band</strong></span>
+          <span class="font-mono text-slate-800 font-bold">Churn Risk: Minimal (&lt;1.5%)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 2: ACQUISITION CHANNELS (5 COLS) + CLIENT TIERING MATRIX (7 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- CARD 3: Lead Acquisition Channels & Velocity (5 Columns) -->
+      <div
+        class="lg:col-span-5 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Lead Acquisition Channels</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Inflow Split, Win Rates & Deal Sizes</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200/60 px-2 py-0.5 rounded-full">
+              4 Channels
+            </span>
+          </div>
+
+          <!-- Horizontal Multi-Color Segmented Bar -->
+          <div class="w-full mt-2 mb-3">
+            <div class="h-3 w-full rounded-full bg-slate-100 overflow-hidden flex shadow-inner">
+              <div class="h-full bg-indigo-600 transition-all" style="width: 42%;" title="Executive Referral: 42%">
+              </div>
+              <div class="h-full bg-blue-500 transition-all" style="width: 28%;" title="Inbound Enterprise: 28%"></div>
+              <div class="h-full bg-emerald-500 transition-all" style="width: 18%;" title="Trade Expos: 18%"></div>
+              <div class="h-full bg-amber-500 transition-all" style="width: 12%;" title="Outbound SDR: 12%"></div>
+            </div>
+          </div>
+
+          <!-- Channel Breakdown List -->
+          <div class="space-y-2">
+            <!-- Channel 1 -->
+            <div
+              class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-200/70 text-xs">
+              <div class="flex items-center gap-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-indigo-600 shrink-0"></div>
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Executive & Board Referral</p>
+                  <p class="text-[10px] text-slate-500">42% Volume (৳ 3.86 Cr)</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] font-bold text-indigo-700">48.2% Win Rate</span>
+                <p class="text-[10px] text-slate-400">Avg: ৳ 45.0 L</p>
+              </div>
+            </div>
+
+            <!-- Channel 2 -->
+            <div
+              class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-200/70 text-xs">
+              <div class="flex items-center gap-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></div>
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Enterprise Inbound / Web Portal</p>
+                  <p class="text-[10px] text-slate-500">28% Volume (৳ 2.58 Cr)</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] font-bold text-blue-700">32.5% Win Rate</span>
+                <p class="text-[10px] text-slate-400">Avg: ৳ 22.0 L</p>
+              </div>
+            </div>
+
+            <!-- Channel 3 -->
+            <div
+              class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-200/70 text-xs">
+              <div class="flex items-center gap-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></div>
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Industry Trade Summits & B2B Expos</p>
+                  <p class="text-[10px] text-slate-500">18% Volume (৳ 1.66 Cr)</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] font-bold text-emerald-700">26.0% Win Rate</span>
+                <p class="text-[10px] text-slate-400">Avg: ৳ 35.0 L</p>
+              </div>
+            </div>
+
+            <!-- Channel 4 -->
+            <div
+              class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-200/70 text-xs">
+              <div class="flex items-center gap-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></div>
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Partner SDR Outbound Campaigns</p>
+                  <p class="text-[10px] text-slate-500">12% Volume (৳ 1.10 Cr)</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] font-bold text-amber-700">19.4% Win Rate</span>
+                <p class="text-[10px] text-slate-400">Avg: ৳ 18.0 L</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Highest ROI: <strong class="text-indigo-700">Executive Referrals (48.2%
+              Win)</strong></span>
+          <span class="font-mono text-slate-800 font-bold">Total Inflow: 184 Deals</span>
+        </div>
+      </div>
+
+      <!-- CARD 4: Client Account Tiering & Expansion 2x2 Matrix (7 Columns) -->
+      <div
+        class="lg:col-span-7 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Client Account Tiering & Expansion Matrix
+                </h3>
+                <p class="text-[10px] text-slate-500 font-medium">Portfolio Cohorts, Revenue Density & Retention Status
+                </p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-purple-700 bg-purple-50 border border-purple-200/60 px-2 py-0.5 rounded-full">
+              238 Managed Accounts
+            </span>
+          </div>
+
+          <!-- 2x2 Clean Frosted Grid (Zero Colored Left Border Strips) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
+
+            <!-- Micro-Card 1: Strategic Enterprise Tier 1 -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Strategic Tier 1 Accounts</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200/60 px-2 py-0.2 rounded-full">
+                  99.2% Retention
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 4.80 Cr ARR</h4>
+                  <p class="text-[10px] text-slate-500">24 Key Accounts • Avg ACV: ৳ 20.0 L</p>
+                </div>
+                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">Top SLA</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Dedicated AE & Solutions Architect</span>
+                <span class="font-bold text-slate-700">52% Total ARR</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 2: Growth Mid-Market Tier 2 -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Growth Mid-Market Tier 2</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.2 rounded-full">
+                  +24% Upsell
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 2.65 Cr ARR</h4>
+                  <p class="text-[10px] text-slate-500">68 Accounts • Avg ACV: ৳ 3.90 L</p>
+                </div>
+                <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Expanding</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Multi-module ERP cross-sell pipeline</span>
+                <span class="font-bold text-slate-700">29% Total ARR</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 3: Emerging Commercial Tier 3 -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Emerging Commercial Tier 3</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.2 rounded-full">
+                  88.5% Adoption
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 1.45 Cr ARR</h4>
+                  <p class="text-[10px] text-slate-500">142 Accounts • Avg ACV: ৳ 1.02 L</p>
+                </div>
+                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">Stable Base</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Automated onboarding & self-service</span>
+                <span class="font-bold text-slate-700">16% Total ARR</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 4: High Churn Risk Watchlist -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span class="text-xs font-bold text-slate-900">At-Risk Accounts Watchlist</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200/60 px-2 py-0.2 rounded-full">
+                  Action Req.
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-rose-700">৳ 32.50 L at Risk</h4>
+                  <p class="text-[10px] text-slate-500">4 Accounts • Engagement dip &gt; 30d</p>
+                </div>
+                <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">Intervention</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Executive customer-success sponsor assigned</span>
+                <span class="font-bold text-rose-600">3% Portfolio</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Portfolio Health: <strong class="text-emerald-700">Net Retention Rate 114.2%</strong></span>
+          <span class="font-mono text-slate-800 font-bold">Total Portfolio ARR: ৳ 9.22 Cr</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 3: ENTERPRISE ACCOUNTS & DEALS REGISTER (8 COLS) + LIVE CLIENT 360 DOCKET (4 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+
+      <!-- CARD 5: Enterprise Deals & Accounts Register Table (8 Columns) -->
+      <div class="lg:col-span-8 executive-card rounded-2xl p-4 flex flex-col relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-900 tracking-tight">Enterprise Deals & Accounts Register</h3>
+              <p class="text-[10px] text-slate-500 font-medium">Click any row to view instant Client 360 & Opportunity
+                Docket</p>
+            </div>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl text-[11px] font-semibold text-slate-600">
+            <button onclick="filterTableByTab('all')" id="tab-all"
+              class="px-2.5 py-1 rounded-lg bg-white text-indigo-700 shadow-2xs font-bold transition">All
+              Deals (42)</button>
+            <button onclick="filterTableByTab('Negotiation')" id="tab-Negotiation"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">Negotiation (6)</button>
+            <button onclick="filterTableByTab('Proposal')" id="tab-Proposal"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">Proposal (12)</button>
+            <button onclick="filterTableByTab('Closed Won')" id="tab-Closed-Won"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">Closed Won (28)</button>
+          </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200/80 bg-white/60">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="glass-thead border-b border-slate-200/80 text-[10.5px] font-bold text-slate-600 uppercase tracking-wider">
+                <th class="py-2.5 px-3">Enterprise Account</th>
+                <th class="py-2.5 px-3">Key Stakeholder</th>
+                <th class="py-2.5 px-3">Deal Stage</th>
+                <th class="py-2.5 px-3 text-right">Deal Value (৳)</th>
+                <th class="py-2.5 px-3 text-center">Win Prob</th>
+                <th class="py-2.5 px-3">Assigned AE</th>
+                <th class="py-2.5 px-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="dealsTableBody" class="divide-y divide-slate-100">
+              <!-- Row 1: Apex Footwear -->
+              <tr onclick="selectDeal('DEAL-APX-01', this)"
+                class="deal-row deal-row-selected hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-stage="Negotiation" data-search="apex footwear manufacturing rafiqul islam tanvir ahmed">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-extrabold flex items-center justify-center text-xs">
+                      AF
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Apex Footwear Ltd</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Mfg & Export • Tier 1</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Rafiqul Islam</div>
+                  <div class="text-[10px] text-slate-500">Chief Operating Officer</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+                    Negotiation
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">৳ 85,00,000</td>
+                <td class="py-2.5 px-3 text-center">
+                  <div class="inline-flex items-center gap-1.5">
+                    <div class="w-12 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                      <div class="h-full bg-emerald-500" style="width: 85%;"></div>
+                    </div>
+                    <span class="font-mono text-[10px] font-bold text-slate-700">85%</span>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Tanvir Ahmed</div>
+                  <div class="text-[10px] text-slate-500">Enterprise Lead</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Hot
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 2: Square Pharmaceuticals -->
+              <tr onclick="selectDeal('DEAL-SQR-02', this)"
+                class="deal-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-stage="Proposal" data-search="square pharmaceuticals healthcare rahman farhana yasmin">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 font-extrabold flex items-center justify-center text-xs">
+                      SP
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Square Pharma PLC</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Healthcare • Tier 1</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Dr. K. M. Rahman</div>
+                  <div class="text-[10px] text-slate-500">Head of Supply Chain</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60">
+                    Proposal
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">৳ 1,20,00,000</td>
+                <td class="py-2.5 px-3 text-center">
+                  <div class="inline-flex items-center gap-1.5">
+                    <div class="w-12 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                      <div class="h-full bg-blue-500" style="width: 60%;"></div>
+                    </div>
+                    <span class="font-mono text-[10px] font-bold text-slate-700">60%</span>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Farhana Yasmin</div>
+                  <div class="text-[10px] text-slate-500">Sr. Solutions AE</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60">
+                    Active
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 3: Beximco Textiles -->
+              <tr onclick="selectDeal('DEAL-BEX-03', this)"
+                class="deal-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-stage="Negotiation" data-search="beximco textiles rmg export salman khan mahfuz chowdhury">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 font-extrabold flex items-center justify-center text-xs">
+                      BT
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Beximco Textiles Div</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Textiles & RMG • Tier 1</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Salman F. Khan</div>
+                  <div class="text-[10px] text-slate-500">Managing Director</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+                    Negotiation
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">৳ 95,00,000</td>
+                <td class="py-2.5 px-3 text-center">
+                  <div class="inline-flex items-center gap-1.5">
+                    <div class="w-12 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                      <div class="h-full bg-emerald-500" style="width: 80%;"></div>
+                    </div>
+                    <span class="font-mono text-[10px] font-bold text-slate-700">80%</span>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Mahfuz Chowdhury</div>
+                  <div class="text-[10px] text-slate-500">Strategic Director</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Hot
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 4: Akij Food & Beverage -->
+              <tr onclick="selectDeal('DEAL-AKJ-04', this)"
+                class="deal-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-stage="Proposal" data-search="akij food beverage fmcg nasir uddin nusrat jahan">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 font-extrabold flex items-center justify-center text-xs">
+                      AF
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Akij Food & Beverage</div>
+                      <div class="text-[10px] text-slate-500 font-mono">FMCG Dist • Tier 2</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Nasir Uddin</div>
+                  <div class="text-[10px] text-slate-500">VP Operations</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60">
+                    Proposal
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">৳ 48,00,000</td>
+                <td class="py-2.5 px-3 text-center">
+                  <div class="inline-flex items-center gap-1.5">
+                    <div class="w-12 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                      <div class="h-full bg-blue-500" style="width: 65%;"></div>
+                    </div>
+                    <span class="font-mono text-[10px] font-bold text-slate-700">65%</span>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Nusrat Jahan</div>
+                  <div class="text-[10px] text-slate-500">Commercial AE</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60">
+                    Active
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 5: Walton Hi-Tech -->
+              <tr onclick="selectDeal('DEAL-WAL-05', this)"
+                class="deal-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-stage="Negotiation" data-search="walton hitech electronics morshed tanvir ahmed">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-teal-100 text-teal-700 font-extrabold flex items-center justify-center text-xs">
+                      WH
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Walton Hi-Tech Ind</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Electronics • Tier 1</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Engr. Golam Morshed</div>
+                  <div class="text-[10px] text-slate-500">Managing Director</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+                    Negotiation
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">৳ 1,60,00,000</td>
+                <td class="py-2.5 px-3 text-center">
+                  <div class="inline-flex items-center gap-1.5">
+                    <div class="w-12 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                      <div class="h-full bg-emerald-500" style="width: 85%;"></div>
+                    </div>
+                    <span class="font-mono text-[10px] font-bold text-slate-700">85%</span>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Tanvir Ahmed</div>
+                  <div class="text-[10px] text-slate-500">Enterprise Lead</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Hot
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 6: PRAN-RFL Group -->
+              <tr onclick="selectDeal('DEAL-PRN-06', this)"
+                class="deal-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-stage="Closed Won" data-search="pran rfl group agro processing uzma chowdhury farhana yasmin">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 font-extrabold flex items-center justify-center text-xs">
+                      PR
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">PRAN-RFL Group</div>
+                      <div class="text-[10px] text-slate-500 font-mono">Agro Processing • Tier 1</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Uzma Chowdhury</div>
+                  <div class="text-[10px] text-slate-500">Director Corporate Finance</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    Closed Won
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-emerald-700">৳ 72,00,000</td>
+                <td class="py-2.5 px-3 text-center">
+                  <div class="inline-flex items-center gap-1.5">
+                    <div class="w-12 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                      <div class="h-full bg-emerald-500" style="width: 100%;"></div>
+                    </div>
+                    <span class="font-mono text-[10px] font-bold text-emerald-700">100%</span>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Farhana Yasmin</div>
+                  <div class="text-[10px] text-slate-500">Sr. Solutions AE</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                    Won
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer -->
+        <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
+          <div class="flex items-center gap-2 text-slate-500 text-[11px]">
+            <span>Showing <strong class="text-slate-800" id="showingCount">6</strong> of 42 Enterprise Accounts</span>
+            <span class="text-slate-300">•</span>
+            <span>Total Value: <strong class="text-slate-900 font-mono">৳ 5,80,00,000</strong></span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-400 text-[11px] cursor-not-allowed">Previous</button>
+            <button class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-bold text-[11px]">1</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-600 text-[11px] hover:bg-slate-50">2</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-600 text-[11px] hover:bg-slate-50">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6: Live Client 360 & Opportunity Docket (4 Columns) -->
+      <div class="lg:col-span-4 executive-card rounded-2xl p-4 flex flex-col relative overflow-hidden">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-900 tracking-tight">Live Client 360 Docket</h3>
+              <p class="text-[10px] text-slate-500 font-medium">Reactive Opportunity & Stakeholder Telemetry</p>
+            </div>
+          </div>
+          <span id="docketLiveBadge"
+            class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Sync Active
+          </span>
+        </div>
+
+        <!-- Docket Main Body -->
+        <div class="space-y-3.5 text-xs">
+
+          <!-- Account Header Profile -->
+          <div class="p-3 rounded-xl bg-slate-50/80 border border-slate-200/70 flex items-start justify-between">
+            <div class="flex items-center gap-2.5">
+              <div id="docketAvatar"
+                class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
+                AF
+              </div>
+              <div>
+                <h4 id="docketAccountName" class="text-sm font-extrabold text-slate-900 leading-tight">Apex Footwear Ltd
+                </h4>
+                <p id="docketIndustry" class="text-[10px] text-slate-500 mt-0.5 font-medium">Footwear & Leather Goods •
+                  Dhaka</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span id="docketTierBadge"
+                    class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700">Tier 1
+                    Strategic</span>
+                  <span id="docketContractBadge"
+                    class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-mono">ACV: ৳ 85
+                    L</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Health Score</span>
+              <span id="docketHealthScore" class="text-lg font-black text-emerald-600">94 / 100</span>
+            </div>
+          </div>
+
+          <!-- Key Financial & Operational Metric Grid -->
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70">
+              <p class="text-[10px] text-slate-500 font-medium">Deal In Negotiation</p>
+              <p id="docketDealValue" class="text-sm font-bold text-slate-900 font-mono mt-0.5">৳ 85,00,000</p>
+              <p id="docketStageText" class="text-[9.5px] text-indigo-600 font-semibold mt-0.5">Contract Finalization
+              </p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70">
+              <p class="text-[10px] text-slate-500 font-medium">Cumulative LTV</p>
+              <p id="docketLTV" class="text-sm font-bold text-slate-900 font-mono mt-0.5">৳ 3.40 Cr</p>
+              <p class="text-[9.5px] text-emerald-600 font-semibold mt-0.5">3.8 Years Client</p>
+            </div>
+          </div>
+
+          <!-- Deal Lifecycle Progress Indicator -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/70">
+            <div class="flex items-center justify-between text-[11px] mb-1.5">
+              <span class="font-bold text-slate-800">Opportunity Win Probability</span>
+              <span id="docketProbBadge" class="font-mono font-bold text-emerald-700">85% Highly Probable</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+              <div id="docketProbBar" class="h-full bg-emerald-500 transition-all duration-300" style="width: 85%;">
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-[9px] text-slate-400 mt-1">
+              <span>Target Close: Dec 15, 2026</span>
+              <span>Approval: Executive Board</span>
+            </div>
+          </div>
+
+          <!-- Decision Maker Contact Details -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/70">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10.5px] font-bold text-slate-800">Primary Key Stakeholder</span>
+              <span class="text-[9.5px] font-semibold text-indigo-600">Decision Maker</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <div
+                class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">
+                RI
+              </div>
+              <div class="flex-1">
+                <p id="docketContactName" class="font-bold text-slate-900 text-xs leading-none">Rafiqul Islam</p>
+                <p id="docketContactTitle" class="text-[10px] text-slate-500 mt-0.5">Chief Operating Officer</p>
+              </div>
+            </div>
+            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-600 font-mono">
+              <span id="docketContactPhone">+880 1711-294810</span>
+              <span id="docketContactEmail" class="text-indigo-600">rafiqul@apexfootwearltd.com</span>
+            </div>
+          </div>
+
+          <!-- Next Scheduled Activity & Action Notes -->
+          <div class="p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
+            <div class="flex items-center gap-1.5 text-indigo-900 font-bold text-[11px] mb-1">
+              <svg class="w-3.5 h-3.5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span>Next Strategic Step:</span>
+            </div>
+            <p id="docketNextStep" class="text-[10.5px] text-slate-700 leading-relaxed">
+              Board sign-off meeting scheduled with CFO on Thursday 11:30 AM at Apex Corporate HQ. Final SLA addendum
+              submitted.
+            </p>
+          </div>
+
+          <!-- Quick Action Controls (Clean, Zero Heavy Print Buttons) -->
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="logDealActivity()"
+              class="w-full py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200/80 shadow-2xs transition">
+              Log Activity Note
+            </button>
+            <button onclick="scheduleClientSync()"
+              class="w-full py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-xs transition">
+              Schedule Sync
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATION COMPONENT
+       ========================================================================= -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- =========================================================================
+       CLIENT-SIDE REACTIVE INTERACTION JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    // 1. DATA REPOSITORY FOR CLIENT 360 DOCKET
+    const dealsDatabase = {
+      'DEAL-APX-01': {
+        avatar: 'AF',
+        name: 'Apex Footwear Ltd',
+        industry: 'Footwear & Leather Goods • Dhaka',
+        tier: 'Tier 1 Strategic',
+        acv: '৳ 85 L',
+        healthScore: '94 / 100',
+        dealValue: '৳ 85,00,000',
+        stage: 'Contract Finalization',
+        ltv: '৳ 3.40 Cr',
+        prob: 85,
+        probText: '85% Highly Probable',
+        contactName: 'Rafiqul Islam',
+        contactTitle: 'Chief Operating Officer',
+        phone: '+880 1711-294810',
+        email: 'rafiqul@apexfootwearltd.com',
+        nextStep: 'Board sign-off meeting scheduled with CFO on Thursday 11:30 AM at Apex Corporate HQ. Final SLA addendum submitted.'
+      },
+      'DEAL-SQR-02': {
+        avatar: 'SP',
+        name: 'Square Pharmaceuticals PLC',
+        industry: 'Healthcare & Pharma • Pabna/Dhaka',
+        tier: 'Tier 1 Strategic',
+        acv: '৳ 1.20 Cr',
+        healthScore: '96 / 100',
+        dealValue: '৳ 1,20,00,000',
+        stage: 'Technical Proposal Review',
+        ltv: '৳ 6.80 Cr',
+        prob: 60,
+        probText: '60% Evaluating Vendor Scope',
+        contactName: 'Dr. K. M. Rahman',
+        contactTitle: 'Head of Supply Chain & Logistics',
+        phone: '+880 1819-330412',
+        email: 'kmrahman@squaregroup.com',
+        nextStep: 'Delivering security compliance audit document to Square IT steering committee on Nov 12.'
+      },
+      'DEAL-BEX-03': {
+        avatar: 'BT',
+        name: 'Beximco Textiles Division',
+        industry: 'Textiles & RMG Manufacturing • Gazipur',
+        tier: 'Tier 1 Strategic',
+        acv: '৳ 95 L',
+        healthScore: '91 / 100',
+        dealValue: '৳ 95,00,000',
+        stage: 'Commercial Contract Negotiation',
+        ltv: '৳ 4.10 Cr',
+        prob: 80,
+        probText: '80% Commercial Terms Agreed',
+        contactName: 'Salman F. Khan',
+        contactTitle: 'Managing Director & Group VP',
+        phone: '+880 1713-094182',
+        email: 'salman.khan@beximco.net',
+        nextStep: 'Finalizing payment installment schedule (3 equal tranches against delivery milestones).'
+      },
+      'DEAL-AKJ-04': {
+        avatar: 'AF',
+        name: 'Akij Food & Beverage',
+        industry: 'FMCG & Soft Drinks • Narayanganj',
+        tier: 'Tier 2 Mid-Market',
+        acv: '৳ 48 L',
+        healthScore: '88 / 100',
+        dealValue: '৳ 48,00,000',
+        stage: 'Solution Demo & Proposal',
+        ltv: '৳ 1.95 Cr',
+        prob: 65,
+        probText: '65% Post-Demo Approval',
+        contactName: 'Nasir Uddin',
+        contactTitle: 'VP Operations & Fleet Dispatch',
+        phone: '+880 1914-772910',
+        email: 'nasir.ops@akij.net',
+        nextStep: 'Onsite warehouse pilot demo scheduled at Akij Dhamrai facility on Tuesday 10:00 AM.'
+      },
+      'DEAL-WAL-05': {
+        avatar: 'WH',
+        name: 'Walton Hi-Tech Industries',
+        industry: 'Consumer Electronics & Appliances • Gazipur',
+        tier: 'Tier 1 Strategic',
+        acv: '৳ 1.60 Cr',
+        healthScore: '97 / 100',
+        dealValue: '৳ 1,60,00,000',
+        stage: 'Contract Finalization',
+        ltv: '৳ 8.20 Cr',
+        prob: 85,
+        probText: '85% Legal Approval Stage',
+        contactName: 'Engr. Golam Morshed',
+        contactTitle: 'Managing Director',
+        phone: '+880 1711-550992',
+        email: 'morshed.md@waltonbd.com',
+        nextStep: 'Corporate legal review of software escrow clause underway; signing expected before Nov 20.'
+      },
+      'DEAL-PRN-06': {
+        avatar: 'PR',
+        name: 'PRAN-RFL Group',
+        industry: 'Agro Processing & Plastics • Badda, Dhaka',
+        tier: 'Tier 1 Strategic',
+        acv: '৳ 72 L',
+        healthScore: '99 / 100',
+        dealValue: '৳ 72,00,000',
+        stage: 'Closed Won Q2',
+        ltv: '৳ 5.40 Cr',
+        prob: 100,
+        probText: '100% Contract Executed',
+        contactName: 'Uzma Chowdhury',
+        contactTitle: 'Director Corporate Finance',
+        phone: '+880 1713-448102',
+        email: 'uzma.c@prangroup.com',
+        nextStep: 'Kickoff meeting completed; Phase 1 implementation underway with Enterprise Solutions team.'
+      }
+    };
+
+    // 2. REACTIVE DEAL SELECTION
+    function selectDeal(dealId, rowElem) {
+      const deal = dealsDatabase[dealId];
+      if (!deal) return;
+
+      // Update table row styling
+      document.querySelectorAll('tr.deal-row').forEach(r => r.classList.remove('deal-row-selected'));
+      if (rowElem) {
+        rowElem.classList.add('deal-row-selected');
+      }
+
+      // Update Live Docket elements
+      document.getElementById('docketAvatar').innerText = deal.avatar;
+      document.getElementById('docketAccountName').innerText = deal.name;
+      document.getElementById('docketIndustry').innerText = deal.industry;
+      document.getElementById('docketTierBadge').innerText = deal.tier;
+      document.getElementById('docketContractBadge').innerText = 'ACV: ' + deal.acv;
+      document.getElementById('docketHealthScore').innerText = deal.healthScore;
+      document.getElementById('docketDealValue').innerText = deal.dealValue;
+      document.getElementById('docketStageText').innerText = deal.stage;
+      document.getElementById('docketLTV').innerText = deal.ltv;
+      document.getElementById('docketProbBadge').innerText = deal.probText;
+      document.getElementById('docketProbBar').style.width = deal.prob + '%';
+      document.getElementById('docketContactName').innerText = deal.contactName;
+      document.getElementById('docketContactTitle').innerText = deal.contactTitle;
+      document.getElementById('docketContactPhone').innerText = deal.phone;
+      document.getElementById('docketContactEmail').innerText = deal.email;
+      document.getElementById('docketNextStep').innerText = deal.nextStep;
+
+      showToast(`Selected ${deal.name} — Docket updated.`);
+    }
+
+    // 3. TABLE FILTERING BY TABS
+    function filterTableByTab(tab) {
+      // Update Tab Button Styles
+      const tabs = ['all', 'Negotiation', 'Proposal', 'Closed-Won'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        if (!btn) return;
+        if (t === tab || (tab === 'Closed Won' && t === 'Closed-Won')) {
+          btn.className = 'px-2.5 py-1 rounded-lg bg-white text-indigo-700 shadow-2xs font-bold transition';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-lg hover:text-slate-900 transition text-slate-600';
+        }
+      });
+
+      const rows = document.querySelectorAll('#dealsTableBody tr.deal-row');
+      let visibleCount = 0;
+      rows.forEach(r => {
+        const stage = r.getAttribute('data-stage');
+        if (tab === 'all' || stage === tab || (tab === 'Closed-Won' && stage === 'Closed Won')) {
+          r.style.display = '';
+          visibleCount++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      document.getElementById('showingCount').innerText = visibleCount;
+    }
+
+    // 4. CLIENT-SIDE SEARCH
+    function filterDealTable() {
+      const q = document.getElementById('dealSearchInput').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#dealsTableBody tr.deal-row');
+      let visibleCount = 0;
+      rows.forEach(r => {
+        const searchData = r.getAttribute('data-search') || '';
+        if (searchData.includes(q)) {
+          r.style.display = '';
+          visibleCount++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      document.getElementById('showingCount').innerText = visibleCount;
+    }
+
+    // Keyboard shortcut for search (⌘K / Ctrl+K)
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('dealSearchInput');
+        if (searchInput) searchInput.focus();
+      }
+    });
+
+    // 5. DATE RANGE PICKER DROPDOWN
+    function toggleDateMenu() {
+      const menu = document.getElementById('dateMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function setDateRange(label) {
+      document.getElementById('dateRangeLabel').innerText = label;
+      document.getElementById('dateMenu').classList.add('hidden');
+      showToast(`Date range switched to: ${label}`);
+    }
+
+    window.addEventListener('click', (e) => {
+      const btn = document.getElementById('dateRangeBtn');
+      const menu = document.getElementById('dateMenu');
+      if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // 6. ACTION HANDLERS
+    function exportCRMReport() {
+      showToast('Generating Enterprise Pipeline & Accounts Valuation Export (Excel / CSV)...');
+    }
+
+    function logDealActivity() {
+      showToast('Opening Activity Logger for current account...');
+    }
+
+    function scheduleClientSync() {
+      showToast('Opening Executive Calendar to schedule client sync...');
+    }
+
+    // 7. TOAST NOTIFICATION SYSTEM
+    function showToast(msg) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-2.5 rounded-xl bg-slate-900/90 text-white text-xs font-semibold shadow-lg backdrop-blur-md flex items-center gap-2 transform transition-all duration-300 translate-y-3 opacity-0 pointer-events-auto border border-white/10';
+      toast.innerHTML = `
+        <svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>${msg}</span>
+      `;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-3', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-3', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+  </script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inceptia ERP - Purchase, Procurement & Supplier Relations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #f4f6fa;
+      color: #0f172a;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Executive Frosted Glass Card */
+    .executive-card {
+      background: rgba(255, 255, 255, 0.60) !important;
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.70) !important;
+      box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05),
+                  0 1px 4px -1px rgba(15, 23, 42, 0.03),
+                  inset 0 1px 0 0 rgba(255, 255, 255, 0.90);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.2s ease;
+    }
+
+    .executive-card:hover {
+      box-shadow: 0 8px 24px -4px rgba(217, 119, 6, 0.08),
+                  0 2px 6px -1px rgba(15, 23, 42, 0.04),
+                  inset 0 1px 0 0 rgba(255, 255, 255, 0.98);
+      border-color: rgba(255, 255, 255, 0.90) !important;
+    }
+
+    /* Micro-card inner container */
+    .glass-micro-card {
+      background: rgba(255, 255, 255, 0.70);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      transition: all 0.2s ease;
+    }
+    .glass-micro-card:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(217, 119, 6, 0.35);
+      transform: translateY(-1px);
+    }
+
+    /* Active Selected PO Table Row */
+    .po-row-active {
+      background-color: rgba(217, 119, 6, 0.08) !important;
+      border-left: 3px solid #d97706 !important;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative antialiased selection:bg-amber-500 selection:text-white pb-12">
+
+  <!-- =========================================================================
+       1. FIXED ATMOSPHERE & MULTI-LAYERED ENTERPRISE BACKGROUND
+       ========================================================================= -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <!-- Enterprise Digital Ecosystem Wallpaper -->
+    <img src="assets/erp_bg.jpg" alt="Inceptia ERP Wallpaper"
+      class="w-full h-full object-cover object-center opacity-30 filter contrast-105" />
+    <div class="absolute inset-0 bg-slate-900/[0.02]"></div>
+
+    <!-- Ambient Aurora Mesh Light Pools (Tailored for Procurement with Amber, Bronze & Blue) -->
+    <div class="absolute -top-36 -left-24 w-[680px] h-[540px] bg-amber-500/10 rounded-full blur-[140px]"></div>
+    <div class="absolute -top-32 right-[-5%] w-[620px] h-[480px] bg-orange-500/[0.08] rounded-full blur-[140px]"></div>
+    <div class="absolute top-[38%] left-[8%] w-[560px] h-[460px] bg-blue-500/[0.06] rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-16 right-[10%] w-[600px] h-[480px] bg-emerald-500/[0.05] rounded-full blur-[150px]"></div>
+  </div>
+
+  <!-- =========================================================================
+       2. TOP STICKY FROSTED HEADER & CONTROLS (FULL WIDTH 1680px)
+       ========================================================================= -->
+  <header class="sticky top-0 w-full border-b border-white/50 bg-white/65 backdrop-blur-md z-30 shadow-2xs">
+    <div class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+
+        <!-- Left Branding & Breadcrumb Navigation -->
+        <div class="flex items-center gap-3">
+          <a href="erp_cover_page.html"
+            class="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/5 hover:bg-amber-600 border border-slate-300/40 hover:border-amber-600 text-slate-700 hover:text-white font-semibold text-xs transition duration-200 shadow-2xs"
+            title="Return to Main ERP Cover Portal">
+            <svg class="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            <span>Executive Portal</span>
+          </a>
+
+          <div class="h-5 w-px bg-slate-300/60"></div>
+
+          <div>
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold shadow-xs">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                </svg>
+              </div>
+              <h1 class="text-base font-bold text-slate-900 tracking-tight">Purchase & Suppliers</h1>
+            </div>
+            <p class="text-[11px] text-slate-500 font-medium mt-0.5">
+              <span>Inceptia ERP</span> <span class="mx-1 text-slate-300">/</span>
+              <span>Procurement & SCM</span> <span class="mx-1 text-slate-300">/</span>
+              <span class="text-slate-800 font-semibold">Purchase Orders, Vendor Relations & Inward Goods</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Controls: Quick Search + Date Range + Export -->
+        <div class="flex items-center gap-2.5">
+          <!-- Quick Search -->
+          <div class="relative w-48 sm:w-64">
+            <input type="text" id="po-search" oninput="filterPOTable()" placeholder="Search vendor, PO #, item..."
+              class="w-full bg-white/80 hover:bg-white focus:bg-white border border-slate-200/90 rounded-full pl-8 pr-10 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition shadow-2xs" />
+            <div class="absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+            <span class="absolute right-2 top-1/2 -translate-y-1/2 text-[9px] bg-slate-100 border border-slate-200 text-slate-400 px-1 py-0.5 rounded font-mono">⌘K</span>
+          </div>
+
+          <!-- Date Range Selector -->
+          <div class="relative">
+            <button onclick="toggleDropdown('date-dropdown')"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/80 hover:bg-white border border-slate-200/90 rounded-full text-xs font-semibold text-slate-700 transition shadow-2xs cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span id="selected-period-label">Nov 1 – Nov 30, 2026</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="date-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-200 p-2 z-50 text-xs">
+              <button onclick="changePeriod('Today (Nov 6)', event)" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">Today (Nov 6)</button>
+              <button onclick="changePeriod('This Week (Nov 1–6)', event)" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">This Week</button>
+              <button onclick="changePeriod('Nov 1 – Nov 30, 2026', event)" class="w-full text-left px-2.5 py-1.5 rounded-lg bg-amber-50 text-amber-700 font-bold">This Month (November)</button>
+              <button onclick="changePeriod('Q2 FY2026 (Oct–Dec)', event)" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">Q2 FY2026</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. MAIN VIEWPORT WRAPPER (MAX-W 1680px FULL WIDTH CANVAS)
+       ========================================================================= -->
+  <main class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 relative z-10">
+
+    <!-- =========================================================================
+         TOP 4 VIBRANT EXECUTIVE PROCUREMENT KPI CARDS
+         ========================================================================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+
+      <!-- KPI 1: Total Spend This Month (Solid Matte Royal Blue) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#2563eb]/90 hover:bg-[#2563eb] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Total Spend This Month</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">৳ 2.14 Cr</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Budget: ৳ 2.50 Cr (85.6% Utilized)</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Controlled (85.6%)
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Savings: ৳ 36.0 L</span>
+        </div>
+      </div>
+
+      <!-- KPI 2: Pending PO Approvals (Solid Matte Royal Purple) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#7c3aed]/90 hover:bg-[#7c3aed] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Pending PO Approvals</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">৳ 32.50 L</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">4 High-Value POs Awaiting MD Sign-off</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Action Required
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Avg Sign-off: 2.1 Days</span>
+        </div>
+      </div>
+
+      <!-- KPI 3: Goods Inward - GRN In-Transit (Solid Matte Emerald Green) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#059669]/90 hover:bg-[#059669] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Goods Inward (GRN In-Transit)</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">6 Shipments</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Chittagong Port & Tejgaon Hub Depots</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            In Transit (৳ 32.5 L)
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">QC Pass: 98.6%</span>
+        </div>
+      </div>
+
+      <!-- KPI 4: Active Verified Suppliers (Solid Matte Sunset Orange) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#ea580c]/90 hover:bg-[#ea580c] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Active Verified Suppliers</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">142 Vendors</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">98.2% On-Time Delivery Rating</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Top Tier: 18 MSA
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Compliance: 100%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 1: PROCUREMENT SPEND HORIZON (7 COLS) + LIFECYCLE CHEVRON STAGE (5 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- GRAPH 1: Procurement Spend Horizon & Budget Ceiling Chart (7 Columns) -->
+      <div class="lg:col-span-7 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Procurement Spend Horizon & Budget Ceiling</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Monthly Procurement Execution vs Approved Budget Limit</p>
+              </div>
+            </div>
+            <!-- Range Selector -->
+            <div class="flex items-center bg-slate-100/80 p-0.5 rounded-lg text-[10px] font-bold text-slate-600">
+              <button class="px-2 py-0.5 rounded bg-white text-amber-700 shadow-2xs font-bold">6M</button>
+              <button class="px-2 py-0.5 rounded hover:text-slate-900 transition">YTD</button>
+            </div>
+          </div>
+
+          <!-- Multi-Category Stacked Column SVG with Budget Ceiling Line -->
+          <div class="w-full mt-2">
+            <svg class="w-full h-40" viewBox="0 0 680 185" fill="none" preserveAspectRatio="none">
+              <!-- Grid Baseline & Guides -->
+              <line x1="45" y1="30" x2="660" y2="30" stroke="#f1f5f9" stroke-dasharray="3 3" />
+              <line x1="45" y1="75" x2="660" y2="75" stroke="#f1f5f9" stroke-dasharray="3 3" />
+              <line x1="45" y1="120" x2="660" y2="120" stroke="#f1f5f9" stroke-dasharray="3 3" />
+              <line x1="45" y1="150" x2="660" y2="150" stroke="#cbd5e1" stroke-width="1.2" />
+
+              <!-- Y-Axis Labels -->
+              <text x="36" y="34" font-size="9" fill="#94a3b8" text-anchor="end" font-family="'JetBrains Mono', monospace">3 Cr</text>
+              <text x="36" y="79" font-size="9" fill="#94a3b8" text-anchor="end" font-family="'JetBrains Mono', monospace">2 Cr</text>
+              <text x="36" y="124" font-size="9" fill="#94a3b8" text-anchor="end" font-family="'JetBrains Mono', monospace">1 Cr</text>
+
+              <!-- Budget Ceiling Line at ৳ 2.50 Cr (Red Dashed) -->
+              <line x1="45" y1="52" x2="660" y2="52" stroke="#e11d48" stroke-width="1.8" stroke-dasharray="5 5" />
+              <text x="655" y="47" font-size="8.5" font-weight="700" fill="#e11d48" text-anchor="end">Budget Ceiling: ৳ 2.50 Cr</text>
+
+              <!-- Month 1: Jun -->
+              <g class="transition-all hover:opacity-85">
+                <rect x="75" y="112" width="28" height="38" rx="2" fill="#0d9488" />
+                <rect x="75" y="90" width="28" height="20" rx="2" fill="#2563eb" />
+                <rect x="75" y="65" width="28" height="23" rx="2" fill="#d97706" />
+                <text x="89" y="165" font-size="9.5" fill="#64748b" text-anchor="middle" font-weight="600">Jun</text>
+              </g>
+
+              <!-- Month 2: Jul -->
+              <g class="transition-all hover:opacity-85">
+                <rect x="175" y="108" width="28" height="42" rx="2" fill="#0d9488" />
+                <rect x="175" y="86" width="28" height="20" rx="2" fill="#2563eb" />
+                <rect x="175" y="62" width="28" height="22" rx="2" fill="#d97706" />
+                <text x="189" y="165" font-size="9.5" fill="#64748b" text-anchor="middle" font-weight="600">Jul</text>
+              </g>
+
+              <!-- Month 3: Aug -->
+              <g class="transition-all hover:opacity-85">
+                <rect x="275" y="105" width="28" height="45" rx="2" fill="#0d9488" />
+                <rect x="275" y="82" width="28" height="21" rx="2" fill="#2563eb" />
+                <rect x="275" y="58" width="28" height="22" rx="2" fill="#d97706" />
+                <text x="289" y="165" font-size="9.5" fill="#64748b" text-anchor="middle" font-weight="600">Aug</text>
+              </g>
+
+              <!-- Month 4: Sep -->
+              <g class="transition-all hover:opacity-85">
+                <rect x="375" y="102" width="28" height="48" rx="2" fill="#0d9488" />
+                <rect x="375" y="79" width="28" height="21" rx="2" fill="#2563eb" />
+                <rect x="375" y="56" width="28" height="21" rx="2" fill="#d97706" />
+                <text x="389" y="165" font-size="9.5" fill="#64748b" text-anchor="middle" font-weight="600">Sep</text>
+              </g>
+
+              <!-- Month 5: Oct -->
+              <g class="transition-all hover:opacity-85">
+                <rect x="475" y="98" width="28" height="52" rx="2" fill="#0d9488" />
+                <rect x="475" y="76" width="28" height="20" rx="2" fill="#2563eb" />
+                <rect x="475" y="55" width="28" height="19" rx="2" fill="#d97706" />
+                <text x="489" y="165" font-size="9.5" fill="#64748b" text-anchor="middle" font-weight="600">Oct</text>
+              </g>
+
+              <!-- Month 6: Nov (Current Active Month) -->
+              <g class="transition-all hover:opacity-90">
+                <rect x="575" y="96" width="30" height="54" rx="2" fill="#0d9488" />
+                <rect x="575" y="74" width="30" height="20" rx="2" fill="#2563eb" />
+                <rect x="575" y="54" width="30" height="18" rx="2" fill="#d97706" />
+                <rect x="572" y="51" width="36" height="101" rx="3" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3 3" />
+                <text x="590" y="165" font-size="10" fill="#0f172a" text-anchor="middle" font-weight="800">Nov (Now)</text>
+              </g>
+
+              <!-- Callout Pill on Current Month -->
+              <g transform="translate(540, 16)">
+                <rect width="98" height="20" rx="5" fill="#0f172a" />
+                <text x="49" y="13.5" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono', monospace">৳ 2.14 Cr (-14.4%)</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Spend Horizon Footer -->
+        <div class="relative z-10 pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded bg-amber-600"></span>
+              <span class="text-slate-600 font-medium">Raw Materials: <strong class="text-slate-800">৳ 1.12 Cr</strong></span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded bg-blue-600"></span>
+              <span class="text-slate-600 font-medium">CapEx Machinery: <strong class="text-slate-800">৳ 47.3 L</strong></span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded bg-teal-600"></span>
+              <span class="text-slate-600 font-medium">Energy & Freight: <strong class="text-slate-800">৳ 54.7 L</strong></span>
+            </div>
+          </div>
+          <span class="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60">Under Budget: ৳ 36.0 L Saved</span>
+        </div>
+      </div>
+
+      <!-- GRAPH 2: Procurement Lifecycle & Lead-Time Chevron Pipeline (5 Columns) -->
+      <div class="lg:col-span-5 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Procurement Lifecycle Pipeline</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Stage Value & Average Execution Turnaround</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold text-teal-700 bg-teal-50 border border-teal-200/60 px-2 py-0.5 rounded-full">
+              Avg Lead: 14 Days
+            </span>
+          </div>
+
+          <!-- 5-Stage Stepped Pipeline -->
+          <div class="space-y-1.5 mt-2">
+
+            <!-- Stage 1: Indents / PR -->
+            <div class="p-2 rounded-xl bg-white/70 border border-slate-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-slate-200 text-slate-700 text-[10px] font-bold flex items-center justify-center">1</span>
+                <div>
+                  <h5 class="text-xs font-bold text-slate-900">Purchase Requisitions (PR / Indent)</h5>
+                  <span class="text-[9.5px] text-slate-400">48 Indents Raised across Units</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="font-mono text-xs font-bold text-slate-800">৳ 3.40 Cr</span>
+                <p class="text-[9px] text-slate-500 font-medium">Turnaround: 1.8 Days</p>
+              </div>
+            </div>
+
+            <!-- Stage 2: Supplier RFQs & Bids -->
+            <div class="p-2 rounded-xl bg-white/70 border border-slate-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-blue-100 text-blue-700 text-[10px] font-bold flex items-center justify-center">2</span>
+                <div>
+                  <h5 class="text-xs font-bold text-slate-900">Supplier RFQ Comparison & Bidding</h5>
+                  <span class="text-[9.5px] text-slate-400">32 Comparative Quotations</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="font-mono text-xs font-bold text-slate-800">৳ 2.80 Cr</span>
+                <p class="text-[9px] text-blue-700 font-semibold">Turnaround: 3.4 Days</p>
+              </div>
+            </div>
+
+            <!-- Stage 3: Approved POs -->
+            <div class="p-2 rounded-xl bg-amber-50/70 border border-amber-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-amber-600 text-white text-[10px] font-bold flex items-center justify-center">3</span>
+                <div>
+                  <h5 class="text-xs font-bold text-amber-950">Approved Purchase Orders (PO)</h5>
+                  <span class="text-[9.5px] text-amber-700 font-medium">34 Committed Purchase Orders</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="font-mono text-xs font-bold text-amber-900">৳ 2.14 Cr</span>
+                <p class="text-[9px] text-amber-700 font-semibold">Turnaround: 2.1 Days</p>
+              </div>
+            </div>
+
+            <!-- Stage 4: Goods Inward (GRN) -->
+            <div class="p-2 rounded-xl bg-white/70 border border-slate-200/80 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-emerald-100 text-emerald-700 text-[10px] font-bold flex items-center justify-center">4</span>
+                <div>
+                  <h5 class="text-xs font-bold text-slate-900">Goods Inward & QC Inspection (GRN)</h5>
+                  <span class="text-[9.5px] text-slate-400">Received at Tejgaon & Chittagong</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="font-mono text-xs font-bold text-emerald-700">৳ 1.82 Cr</span>
+                <p class="text-[9px] text-emerald-600 font-semibold">QC Pass: 98.6%</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pipeline Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 mt-2 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">PO Conversion Rate: <strong class="text-slate-800">76.4%</strong></span>
+          <span class="text-emerald-700 font-bold">Avg Price Savings: 8.2%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 2: SUPPLIER SLA SCORECARD (4 COLS) + STRATEGIC SPEND CATEGORIES (8 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- LEFT (4 Columns): Supplier SLA & Quality Compliance Scorecard -->
+      <div class="lg:col-span-4 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Supplier SLA & Quality Compliance</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Audit Ratings across 142 Active Vendors</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+              Grade A
+            </span>
+          </div>
+
+          <!-- 4 Non-Overlapping Metric Progress Bars -->
+          <div class="space-y-2.5 mt-2.5">
+            <!-- Metric 1: On-Time Delivery -->
+            <div>
+              <div class="flex items-center justify-between text-[11px] mb-1">
+                <span class="font-medium text-slate-600">On-Time Delivery SLA</span>
+                <span class="font-mono font-bold text-emerald-700">98.2% <span class="text-slate-400 font-normal text-[10px]">(Target >95%)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-600 h-full rounded-full" style="width: 98.2%"></div>
+              </div>
+            </div>
+
+            <!-- Metric 2: QC Pass Rate -->
+            <div>
+              <div class="flex items-center justify-between text-[11px] mb-1">
+                <span class="font-medium text-slate-600">QC Inspection Pass Rate</span>
+                <span class="font-mono font-bold text-emerald-700">98.6% <span class="text-slate-400 font-normal text-[10px]">(Reject: 1.4%)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-600 h-full rounded-full" style="width: 98.6%"></div>
+              </div>
+            </div>
+
+            <!-- Metric 3: Price Competitiveness -->
+            <div>
+              <div class="flex items-center justify-between text-[11px] mb-1">
+                <span class="font-medium text-slate-600">Price Competitiveness Index</span>
+                <span class="font-mono font-bold text-blue-700">94.1% <span class="text-slate-400 font-normal text-[10px]">(vs Market Benchmark)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-blue-600 h-full rounded-full" style="width: 94.1%"></div>
+              </div>
+            </div>
+
+            <!-- Metric 4: Statutory Tax Compliance -->
+            <div>
+              <div class="flex items-center justify-between text-[11px] mb-1">
+                <span class="font-medium text-slate-600">Statutory Tax & BIN Validation</span>
+                <span class="font-mono font-bold text-purple-700">100.0% <span class="text-slate-400 font-normal text-[10px]">(NBR Verified)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-purple-600 h-full rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative z-10 pt-2 border-t border-slate-100 mt-2 flex items-center justify-between text-[10.5px]">
+          <span class="text-slate-500">Master Service Agreements: <strong class="text-slate-900">18 Partners</strong></span>
+          <span class="text-emerald-700 font-bold">Risk Level: Low</span>
+        </div>
+      </div>
+
+      <!-- RIGHT (8 Columns): Strategic Spend Categories & Major Sourcing Grid (4 Cards) -->
+      <div class="lg:col-span-8 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Strategic Spend Categories & Major Sourcing Grid</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Category Budget Utilization, Sourcing Partners & Spend Velocity</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full">
+              4 Core Verticals
+            </span>
+          </div>
+
+          <!-- 2x2 Clean Frosted Grid (No left-borders) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-2">
+
+            <!-- Category 1: Raw Polymers -->
+            <div class="glass-micro-card rounded-xl p-3 flex flex-col justify-between">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-[9.5px] font-bold uppercase tracking-wider text-amber-700">Category 01</span>
+                  <h4 class="font-bold text-xs text-slate-900 mt-0.5">Raw Polymers & Chemicals</h4>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">93.3% Used</span>
+              </div>
+              <div class="my-2">
+                <div class="text-base font-extrabold text-slate-900 font-mono">৳ 1.12 Cr</div>
+                <div class="text-[10px] text-slate-500 mt-0.5">Budget: ৳ 1.20 Cr • Top: Bengal Polychem</div>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-amber-600 h-full rounded-full" style="width: 93.3%"></div>
+              </div>
+            </div>
+
+            <!-- Category 2: Heavy Plant Machinery -->
+            <div class="glass-micro-card rounded-xl p-3 flex flex-col justify-between">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-[9.5px] font-bold uppercase tracking-wider text-blue-700">Category 02</span>
+                  <h4 class="font-bold text-xs text-slate-900 mt-0.5">Plant Machinery & CapEx</h4>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-800">94.6% Used</span>
+              </div>
+              <div class="my-2">
+                <div class="text-base font-extrabold text-slate-900 font-mono">৳ 47.30 L</div>
+                <div class="text-[10px] text-slate-500 mt-0.5">Budget: ৳ 50.00 L • Top: Siemens Power</div>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-blue-600 h-full rounded-full" style="width: 94.6%"></div>
+              </div>
+            </div>
+
+            <!-- Category 3: Fuel & Utilities -->
+            <div class="glass-micro-card rounded-xl p-3 flex flex-col justify-between">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-[9.5px] font-bold uppercase tracking-wider text-teal-700">Category 03</span>
+                  <h4 class="font-bold text-xs text-slate-900 mt-0.5">Fuel, Utilities & Energy</h4>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-teal-100 text-teal-800">86.8% Used</span>
+              </div>
+              <div class="my-2">
+                <div class="text-base font-extrabold text-slate-900 font-mono">৳ 30.40 L</div>
+                <div class="text-[10px] text-slate-500 mt-0.5">Budget: ৳ 35.00 L • Top: Padma Oil Co.</div>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-teal-600 h-full rounded-full" style="width: 86.8%"></div>
+              </div>
+            </div>
+
+            <!-- Category 4: Packaging & Logistics -->
+            <div class="glass-micro-card rounded-xl p-3 flex flex-col justify-between">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-[9.5px] font-bold uppercase tracking-wider text-purple-700">Category 04</span>
+                  <h4 class="font-bold text-xs text-slate-900 mt-0.5">Packaging, Freight & Supplies</h4>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800">86.8% Used</span>
+              </div>
+              <div class="my-2">
+                <div class="text-base font-extrabold text-slate-900 font-mono">৳ 24.30 L</div>
+                <div class="text-[10px] text-slate-500 mt-0.5">Budget: ৳ 28.00 L • Top: Bismillah Packaging</div>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-purple-600 h-full rounded-full" style="width: 86.8%"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="relative z-10 pt-2 border-t border-slate-100 mt-2 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Total Verticals Spend: <strong class="text-slate-900 font-mono">৳ 2,14,00,000</strong></span>
+          <span class="text-emerald-700 font-bold">Overall Budget Efficiency: 85.6%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 3: MASTER-DETAIL INTERACTION
+         - Left 8 Cols: Audited Purchase Orders (PO) Hub (With row selection trigger)
+         - Right 4 Cols: Live Purchase Order & Inward Shipment Docket (Real-time update)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+
+      <!-- LEFT (8 Columns): Audited Purchase Orders (PO) Hub -->
+      <div class="lg:col-span-8 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <!-- Hub Header + Filter Tabs -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2.5 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Audited Purchase Orders (PO) Hub</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Click any row to inspect live PO specifications & inward shipment route</p>
+              </div>
+            </div>
+
+            <!-- Tab Filters -->
+            <div class="flex items-center bg-slate-100/80 p-0.5 rounded-lg text-[10px] font-bold text-slate-600">
+              <button onclick="setPOFilter('all', this)" class="po-tab px-2.5 py-1 rounded-md bg-white text-amber-700 shadow-2xs font-bold">All (142)</button>
+              <button onclick="setPOFilter('approved', this)" class="po-tab px-2.5 py-1 rounded-md hover:text-slate-900 transition">Approved (98)</button>
+              <button onclick="setPOFilter('pending', this)" class="po-tab px-2.5 py-1 rounded-md hover:text-slate-900 transition">Pending (12)</button>
+              <button onclick="setPOFilter('transit', this)" class="po-tab px-2.5 py-1 rounded-md hover:text-slate-900 transition">In Transit (32)</button>
+            </div>
+          </div>
+
+          <!-- 9-Column Table -->
+          <div class="overflow-x-auto mt-2">
+            <table class="w-full text-left border-collapse" id="po-table">
+              <thead>
+                <tr class="border-b border-slate-200/80 text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                  <th class="py-2 px-2.5">Date</th>
+                  <th class="py-2 px-2.5">PO #</th>
+                  <th class="py-2 px-2.5">Supplier / Vendor</th>
+                  <th class="py-2 px-2.5">Category</th>
+                  <th class="py-2 px-2.5">Items Summary</th>
+                  <th class="py-2 px-2.5 text-right">Subtotal (৳)</th>
+                  <th class="py-2 px-2.5 text-right">VAT 7.5% (৳)</th>
+                  <th class="py-2 px-2.5 text-right">Total BDT (৳)</th>
+                  <th class="py-2 px-2.5 text-center">Status</th>
+                  <th class="py-2 px-2.5 text-right">Inspect</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-xs text-slate-700 font-medium" id="po-tbody">
+
+                <!-- Row 1: Bengal Polychem (Active initially) -->
+                <tr onclick="selectPORow(this, 'PO-2026-0814', 'Bengal Polychem Industries PLC', 'Raw Materials', '18,00,000', '1,35,000', '19,35,000', 'Approved', '06 Nov 2026', 'HDPE Granules (Grade A - 20 Tons)', 'Tejgaon Central Hub (Bay 04)', 'Truck #DHK-METRO-1490', 'In-Transit (ETA 3.5 hrs)', '85%')"
+                  class="po-row po-row-active hover:bg-slate-50/80 transition cursor-pointer" data-status="approved" data-search="bengal polychem industries po-2026-0814 hdpe granules raw materials">
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-500 whitespace-nowrap">06 Nov 2026</td>
+                  <td class="py-2.5 px-2.5 font-mono text-[11px] font-bold text-amber-700 whitespace-nowrap">PO-2026-0814</td>
+                  <td class="py-2.5 px-2.5">
+                    <div class="font-bold text-slate-900 text-[11px]">Bengal Polychem Industries PLC</div>
+                    <div class="text-[9.5px] text-slate-400">Narayanganj • Vendor #V-102</div>
+                  </td>
+                  <td class="py-2.5 px-2.5">
+                    <span class="inline-block px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 font-medium text-[10px]">Raw Materials</span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-600">HDPE Granules (20 Tons)</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-600">18,00,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-500">1,35,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] font-bold text-slate-900">19,35,000</td>
+                  <td class="py-2.5 px-2.5 text-center">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                      Approved
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-right">
+                    <span class="text-[10px] text-amber-700 font-bold bg-amber-100/70 px-2 py-0.5 rounded">Viewing</span>
+                  </td>
+                </tr>
+
+                <!-- Row 2: Siemens Industrial -->
+                <tr onclick="selectPORow(this, 'PO-2026-0813', 'Siemens Industrial Power PLC', 'Plant Machinery', '44,00,000', '3,30,000', '47,30,000', 'Approved', '05 Nov 2026', 'Variable Frequency Drives & Inverters', 'Savar Plant Depot', 'Customs Cleared • Cargo Train', 'In-Transit (ETA 8 hrs)', '65%')"
+                  class="po-row hover:bg-slate-50/80 transition cursor-pointer" data-status="approved" data-search="siemens industrial power po-2026-0813 plant machinery inverters">
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-500 whitespace-nowrap">05 Nov 2026</td>
+                  <td class="py-2.5 px-2.5 font-mono text-[11px] font-bold text-slate-800 whitespace-nowrap">PO-2026-0813</td>
+                  <td class="py-2.5 px-2.5">
+                    <div class="font-bold text-slate-900 text-[11px]">Siemens Industrial Power PLC</div>
+                    <div class="text-[9.5px] text-slate-400">Dhaka North • Vendor #V-018</div>
+                  </td>
+                  <td class="py-2.5 px-2.5">
+                    <span class="inline-block px-1.5 py-0.2 rounded bg-blue-50 text-blue-700 font-medium text-[10px]">Plant CapEx</span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-600">VFD Motor Drives (4 Units)</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-600">44,00,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-500">3,30,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] font-bold text-slate-900">47,30,000</td>
+                  <td class="py-2.5 px-2.5 text-center">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                      Approved
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-right">
+                    <span class="text-[10px] text-slate-500 hover:text-amber-700 font-semibold">Inspect →</span>
+                  </td>
+                </tr>
+
+                <!-- Row 3: Padma Oil Company -->
+                <tr onclick="selectPORow(this, 'PO-2026-0812', 'Padma Oil Company Ltd', 'Fuel & Utilities', '28,27,900', '2,12,100', '30,40,000', 'transit', '04 Nov 2026', 'Industrial Diesel (30,000 Liters Tanker)', 'Factory Generator Silos', 'Tanker #CTG-LORRY-8812', 'En Route Chittagong Hub', '92%')"
+                  class="po-row hover:bg-slate-50/80 transition cursor-pointer" data-status="transit" data-search="padma oil company po-2026-0812 industrial diesel fuel">
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-500 whitespace-nowrap">04 Nov 2026</td>
+                  <td class="py-2.5 px-2.5 font-mono text-[11px] font-bold text-blue-700 whitespace-nowrap">PO-2026-0812</td>
+                  <td class="py-2.5 px-2.5">
+                    <div class="font-bold text-slate-900 text-[11px]">Padma Oil Company Ltd</div>
+                    <div class="text-[9.5px] text-slate-400">Chittagong Depot • Vendor #V-004</div>
+                  </td>
+                  <td class="py-2.5 px-2.5">
+                    <span class="inline-block px-1.5 py-0.2 rounded bg-teal-50 text-teal-700 font-medium text-[10px]">Fuel & Energy</span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-600">Industrial Diesel (30k L)</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-600">28,27,900</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-500">2,12,100</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] font-bold text-slate-900">30,40,000</td>
+                  <td class="py-2.5 px-2.5 text-center">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60">
+                      In Transit
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-right">
+                    <span class="text-[10px] text-slate-500 hover:text-amber-700 font-semibold">Inspect →</span>
+                  </td>
+                </tr>
+
+                <!-- Row 4: Linde Bangladesh -->
+                <tr onclick="selectPORow(this, 'PO-2026-0811', 'Linde Bangladesh Limited', 'Utilities', '11,16,000', '84,000', '12,00,000', 'pending', '03 Nov 2026', 'Liquid Nitrogen & Medical Grade Oxygen Tanks', 'Tejgaon QC Laboratory', 'Scheduled Courier Dispatch', 'Awaiting MD Approval', '15%')"
+                  class="po-row hover:bg-slate-50/80 transition cursor-pointer" data-status="pending" data-search="linde bangladesh po-2026-0811 liquid nitrogen oxygen">
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-500 whitespace-nowrap">03 Nov 2026</td>
+                  <td class="py-2.5 px-2.5 font-mono text-[11px] font-bold text-amber-700 whitespace-nowrap">PO-2026-0811</td>
+                  <td class="py-2.5 px-2.5">
+                    <div class="font-bold text-slate-900 text-[11px]">Linde Bangladesh Limited</div>
+                    <div class="text-[9.5px] text-amber-600 font-medium">Awaiting MD Sign-off</div>
+                  </td>
+                  <td class="py-2.5 px-2.5">
+                    <span class="inline-block px-1.5 py-0.2 rounded bg-purple-50 text-purple-700 font-medium text-[10px]">Industrial Gases</span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-600">Liquid Nitrogen Tanks (12)</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-600">11,16,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-500">84,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] font-bold text-slate-900">12,00,000</td>
+                  <td class="py-2.5 px-2.5 text-center">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200/60">
+                      Pending Sign-off
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-right">
+                    <span class="text-[10px] text-slate-500 hover:text-amber-700 font-semibold">Inspect →</span>
+                  </td>
+                </tr>
+
+                <!-- Row 5: Bismillah Packaging -->
+                <tr onclick="selectPORow(this, 'PO-2026-0810', 'Bismillah Packaging Corp', 'Packaging', '16,74,400', '1,25,600', '18,00,000', 'approved', '02 Nov 2026', '5-Ply Corrugated Export Cartons (50,000 Units)', 'Tejgaon Packaging Bay', 'Truck #DHK-METRO-9941', 'GRN Received & Stacked', '100%')"
+                  class="po-row hover:bg-slate-50/80 transition cursor-pointer" data-status="approved" data-search="bismillah packaging po-2026-0810 corrugated cartons">
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-500 whitespace-nowrap">02 Nov 2026</td>
+                  <td class="py-2.5 px-2.5 font-mono text-[11px] font-bold text-slate-800 whitespace-nowrap">PO-2026-0810</td>
+                  <td class="py-2.5 px-2.5">
+                    <div class="font-bold text-slate-900 text-[11px]">Bismillah Packaging Corp</div>
+                    <div class="text-[9.5px] text-slate-400">Gazipur • Vendor #V-092</div>
+                  </td>
+                  <td class="py-2.5 px-2.5">
+                    <span class="inline-block px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 font-medium text-[10px]">Packaging</span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-600">Export Cartons (50k Pcs)</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-600">16,74,400</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-500">1,25,600</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] font-bold text-slate-900">18,00,000</td>
+                  <td class="py-2.5 px-2.5 text-center">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                      Approved
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-right">
+                    <span class="text-[10px] text-slate-500 hover:text-amber-700 font-semibold">Inspect →</span>
+                  </td>
+                </tr>
+
+                <!-- Row 6: Meghna Industrial Gases -->
+                <tr onclick="selectPORow(this, 'PO-2026-0809', 'Meghna Industrial Gases Ltd', 'Raw Materials', '11,16,000', '84,000', '12,00,000', 'transit', '01 Nov 2026', 'High-Purity Argon Gas Tank Refills', 'Chittagong Factory Silos', 'Port Freight Barge #CTG-02', 'In Transit (ETA 5 hrs)', '75%')"
+                  class="po-row hover:bg-slate-50/80 transition cursor-pointer" data-status="transit" data-search="meghna industrial gases po-2026-0809 argon gas refills">
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-500 whitespace-nowrap">01 Nov 2026</td>
+                  <td class="py-2.5 px-2.5 font-mono text-[11px] font-bold text-blue-700 whitespace-nowrap">PO-2026-0809</td>
+                  <td class="py-2.5 px-2.5">
+                    <div class="font-bold text-slate-900 text-[11px]">Meghna Industrial Gases Ltd</div>
+                    <div class="text-[9.5px] text-slate-400">Chittagong • Vendor #V-031</div>
+                  </td>
+                  <td class="py-2.5 px-2.5">
+                    <span class="inline-block px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 font-medium text-[10px]">Raw Materials</span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-[11px] text-slate-600">Argon Gas Tank Refills</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-600">11,16,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] text-slate-500">84,000</td>
+                  <td class="py-2.5 px-2.5 text-right font-mono text-[11px] font-bold text-slate-900">12,00,000</td>
+                  <td class="py-2.5 px-2.5 text-center">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60">
+                      In Transit
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-2.5 text-right">
+                    <span class="text-[10px] text-slate-500 hover:text-amber-700 font-semibold">Inspect →</span>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table Footer -->
+        <div class="relative z-10 pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="text-[11px] text-slate-500">Total Committed: <strong class="text-amber-700 font-mono">৳ 2,14,00,000</strong> (142 Total POs)</span>
+          <span class="text-[11px] text-slate-400">Showing 6 Recent POs</span>
+        </div>
+      </div>
+
+      <!-- RIGHT (4 Columns): LIVE PURCHASE ORDER & INWARD SHIPMENT DOCKET -->
+      <div class="lg:col-span-4 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group border-2 border-amber-500/20 shadow-lg">
+        <div class="relative z-10" id="live-po-docket">
+          <!-- Docket Header -->
+          <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+              <h4 class="text-xs font-bold text-slate-900 tracking-tight">Purchase Order & GRN Docket</h4>
+            </div>
+            <span id="docket-po-status" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+              Approved
+            </span>
+          </div>
+
+          <!-- Document Meta & Destination Box -->
+          <div class="my-3 p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <span class="text-[9.5px] uppercase tracking-wider text-slate-400 font-bold">Purchase Order Ref</span>
+                <div id="docket-po-no" class="font-mono text-base font-extrabold text-amber-700">PO-2026-0814</div>
+                <p id="docket-po-date" class="text-[10px] text-slate-500 font-medium">Issued: 06 Nov 2026 • Net 30 Terms</p>
+                <p id="docket-po-cat" class="text-[10px] text-amber-700 font-semibold mt-0.5">Raw Materials & Polymers</p>
+              </div>
+
+              <!-- QC Inspection Stamp Art -->
+              <div class="w-14 h-14 rounded-full border-2 border-dashed border-emerald-600/60 p-1 flex flex-col items-center justify-center text-center text-emerald-700 shrink-0 select-none">
+                <span class="text-[8px] font-extrabold uppercase">ISO 9001</span>
+                <span class="text-[9px] font-black">PASSED</span>
+              </div>
+            </div>
+
+            <!-- Supplier Info -->
+            <div class="mt-2.5 pt-2 border-t border-slate-100">
+              <span class="text-[9.5px] uppercase tracking-wider text-slate-400 font-bold">Vendor / Sourcing Partner</span>
+              <h5 id="docket-vendor-name" class="font-bold text-xs text-slate-900 mt-0.5">Bengal Polychem Industries PLC</h5>
+              <p id="docket-item-name" class="text-[10.5px] text-slate-600 mt-0.5">HDPE Granules (Grade A - 20 Tons)</p>
+            </div>
+          </div>
+
+          <!-- Financial Breakdown Sheet -->
+          <div class="space-y-1.5 text-xs">
+            <div class="flex items-center justify-between text-slate-600 text-[11px]">
+              <span>Order Subtotal:</span>
+              <span id="docket-po-subtotal" class="font-mono font-medium text-slate-800">৳ 18,00,000</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-600 text-[11px]">
+              <span>Tax / VAT (7.5%):</span>
+              <span id="docket-po-vat" class="font-mono font-medium text-slate-800">৳ 1,35,000</span>
+            </div>
+            <div class="flex items-center justify-between pt-1.5 border-t border-slate-200 text-slate-900 font-bold text-xs">
+              <span>Total Committed BDT:</span>
+              <span id="docket-po-total" class="font-mono text-sm font-extrabold text-amber-700">৳ 19,35,000</span>
+            </div>
+          </div>
+
+          <!-- Inward Shipment Tracker Block -->
+          <div class="mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center justify-between text-[10.5px] mb-1">
+              <span class="font-bold text-slate-700">Inward Logistics Tracker</span>
+              <span id="docket-eta-text" class="font-mono text-emerald-700 font-bold text-[10px]">In-Transit (ETA 3.5 hrs)</span>
+            </div>
+            <p id="docket-destination" class="text-[10px] text-slate-500 font-medium">Destination: Tejgaon Central Hub (Bay 04)</p>
+            <p id="docket-carrier" class="text-[10px] font-mono text-slate-600 mt-0.5">Carrier: Truck #DHK-METRO-1490</p>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden mt-2">
+              <div id="docket-progress-bar" class="bg-amber-600 h-full rounded-full transition-all duration-300" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Docket Footer Note -->
+        <div class="relative z-10 pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400 font-medium">
+          <span>Security Gate: Electronic RFID Pass</span>
+          <span class="font-mono text-slate-600 font-bold">BIN: 001928441-02</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- =========================================================================
+       4. CLIENT-SIDE INTERACTION SCRIPTS
+       ========================================================================= -->
+  <script>
+    // 1. LIVE REACTIVE PO DOCKET SELECTOR
+    function selectPORow(row, poNo, vendor, category, subtotal, vat, total, status, date, item, destination, carrier, etaText, progress) {
+      // Highlight selected row in table
+      document.querySelectorAll('.po-row').forEach(r => {
+        r.classList.remove('po-row-active');
+        const inspectCell = r.querySelector('td:last-child span');
+        if (inspectCell) {
+          inspectCell.innerText = 'Inspect →';
+          inspectCell.className = 'text-[10px] text-slate-500 hover:text-amber-700 font-semibold';
+        }
+      });
+      row.classList.add('po-row-active');
+      const curCell = row.querySelector('td:last-child span');
+      if (curCell) {
+        curCell.innerText = 'Viewing';
+        curCell.className = 'text-[10px] text-amber-700 font-bold bg-amber-100/70 px-2 py-0.5 rounded';
+      }
+
+      // Update Live Docket DOM
+      document.getElementById('docket-po-no').innerText = poNo;
+      document.getElementById('docket-vendor-name').innerText = vendor;
+      document.getElementById('docket-po-date').innerText = 'Issued: ' + date + ' • Net 30 Terms';
+      document.getElementById('docket-po-cat').innerText = category;
+      document.getElementById('docket-item-name').innerText = item;
+      document.getElementById('docket-po-subtotal').innerText = '৳ ' + subtotal;
+      document.getElementById('docket-po-vat').innerText = '৳ ' + vat;
+      document.getElementById('docket-po-total').innerText = '৳ ' + total;
+      document.getElementById('docket-destination').innerText = 'Destination: ' + destination;
+      document.getElementById('docket-carrier').innerText = 'Carrier: ' + carrier;
+      document.getElementById('docket-eta-text').innerText = etaText;
+      document.getElementById('docket-progress-bar').style.width = progress;
+
+      const badge = document.getElementById('docket-po-status');
+      badge.innerText = status.toUpperCase();
+      if (status.toLowerCase().includes('approved')) {
+        badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800';
+      } else if (status.toLowerCase().includes('pending')) {
+        badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800';
+      } else {
+        badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800';
+      }
+
+      // Subtle animation
+      const docket = document.getElementById('live-po-docket');
+      docket.classList.add('opacity-80');
+      setTimeout(() => docket.classList.remove('opacity-80'), 150);
+    }
+
+    // 2. SEARCH & TABLE FILTERING
+    function filterPOTable() {
+      const query = document.getElementById('po-search').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#po-tbody tr');
+
+      rows.forEach(row => {
+        const searchData = row.getAttribute('data-search') || '';
+        const isMatch = searchData.toLowerCase().includes(query);
+        row.style.display = isMatch ? '' : 'none';
+      });
+    }
+
+    // 3. TAB STATUS FILTERING
+    function setPOFilter(status, btn) {
+      document.querySelectorAll('.po-tab').forEach(t => {
+        t.classList.remove('bg-white', 'text-amber-700', 'shadow-2xs', 'font-bold');
+        t.classList.add('hover:text-slate-900');
+      });
+      btn.classList.add('bg-white', 'text-amber-700', 'shadow-2xs', 'font-bold');
+      btn.classList.remove('hover:text-slate-900');
+
+      const rows = document.querySelectorAll('#po-tbody tr');
+      rows.forEach(row => {
+        if (status === 'all') {
+          row.style.display = '';
+        } else {
+          const rowStatus = row.getAttribute('data-status');
+          row.style.display = (rowStatus === status) ? '' : 'none';
+        }
+      });
+    }
+
+    // 4. DATE RANGE PICKER
+    function toggleDropdown(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    function changePeriod(label, ev) {
+      ev.stopPropagation();
+      document.getElementById('selected-period-label').innerText = label;
+      document.getElementById('date-dropdown').classList.add('hidden');
+      showToast(`Period changed to ${label}. Procurement telemetry recalculated.`);
+    }
+
+    // 5. EXPORT PURCHASE REPORT
+    function exportPurchaseReport() {
+      showToast('Exporting SCM Procurement & Vendor Settlement Ledger (Excel / PDF Batch)...');
+    }
+
+    // 6. TOAST MESSAGES
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-2.5 rounded-xl bg-slate-900/95 backdrop-blur-md text-white text-xs font-semibold shadow-lg border border-slate-700 flex items-center gap-2 transform transition-all duration-300 translate-y-2 opacity-0 pointer-events-auto';
+      toast.innerHTML = `
+        <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span>${message}</span>
+      `;
+
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Global click listener to close dropdowns
+    window.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('date-dropdown');
+      if (dropdown && !dropdown.contains(e.target) && !e.target.closest('button[onclick*="date-dropdown"]')) {
+        dropdown.classList.add('hidden');
+      }
+    });
+
+    // Keyboard shortcut ⌘K
+    window.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('po-search');
+        if (searchInput) searchInput.focus();
+      }
+    });
+  </script>
+
+</body>
+
+</html>
+

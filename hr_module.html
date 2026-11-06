@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR & Payroll — Executive Portal | Inceptia ERP</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Fixed ambient atmospheric wallpaper matching erp_cover_page.html */
+    .erp-bg-fixed {
+      position: fixed;
+      inset: 0;
+      background-image: url('assets/erp_bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Translucent frosted glass card */
+    .executive-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+    }
+
+    .executive-card:hover {
+      box-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+    }
+
+    /* Glass table header & rows */
+    .glass-thead {
+      background: rgba(248, 250, 252, 0.88);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Custom thin scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.6);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Active selected row highlight in data tables */
+    tr.payroll-row-selected {
+      background-color: rgba(244, 63, 94, 0.08) !important;
+      border-left: 3px solid #e11d48 !important;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative flex flex-col antialiased selection:bg-rose-600 selection:text-white">
+
+  <!-- Atmospheric Background Layer -->
+  <div class="erp-bg-fixed"></div>
+
+  <!-- Ambient Aurora Glow Orbs -->
+  <div
+    class="fixed top-0 right-1/4 w-[600px] h-[360px] bg-gradient-to-br from-rose-200/25 to-pink-200/20 blur-3xl pointer-events-none z-0">
+  </div>
+  <div
+    class="fixed bottom-10 left-1/4 w-[500px] h-[400px] bg-gradient-to-tr from-purple-200/20 to-indigo-200/15 blur-3xl pointer-events-none z-0">
+  </div>
+
+  <!-- =========================================================================
+       1. EXECUTIVE STICKY HEADER & BREADCRUMBS
+       ========================================================================= -->
+  <header class="sticky top-0 z-30 bg-white/75 backdrop-blur-md border-b border-white/60 shadow-2xs">
+    <div class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center justify-between gap-4">
+
+        <!-- Left: Back to Portal & Title -->
+        <div class="flex items-center gap-3">
+          <a href="erp_cover_page.html"
+            class="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-600 hover:text-slate-900 border border-slate-200/70 shadow-2xs hover:shadow-xs transition-all duration-150">
+            <svg class="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+              </path>
+            </svg>
+            <span>Executive Portal</span>
+          </a>
+
+          <div class="h-5 w-px bg-slate-300/60 hidden sm:block"></div>
+
+          <div class="flex items-center gap-2.5">
+            <div
+              class="w-8 h-8 rounded-xl bg-rose-600 flex items-center justify-center text-white shadow-sm shadow-rose-600/30">
+              <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-base font-extrabold text-slate-900 tracking-tight">HR & Payroll</h1>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium">Inceptia ERP / Workforce Telemetry, Salary Register & NBR
+                Tax Compliance Hub</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Search, Fiscal Selector & Actions -->
+        <div class="flex items-center gap-2.5">
+          <!-- Quick Search -->
+          <div class="relative hidden md:block">
+            <input type="text" id="payrollSearchInput" oninput="filterPayrollTable()"
+              placeholder="Search staff, ID, department (⌘K)..."
+              class="w-64 pl-8 pr-3 py-1.5 rounded-xl text-xs bg-white/80 border border-slate-200/80 focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-slate-700 placeholder-slate-400 transition">
+            <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+
+          <!-- Date Range Selector Dropdown -->
+          <div class="relative">
+            <button id="dateRangeBtn" onclick="toggleDateMenu()"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-700 border border-slate-200/80 shadow-2xs transition">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span id="dateRangeLabel">Nov 1 – Nov 30, 2026</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div id="dateMenu"
+              class="hidden absolute right-0 mt-1.5 w-48 rounded-xl bg-white border border-slate-200 shadow-lg py-1 z-40 text-xs">
+              <button onclick="setDateRange('Today (Nov 6, 2026)')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">Today</button>
+              <button onclick="setDateRange('This Week (Nov 1 – 7)')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">This Week</button>
+              <button onclick="setDateRange('Nov 1 – Nov 30, 2026')"
+                class="w-full text-left px-3 py-1.5 bg-rose-50/70 text-rose-700 font-bold">This Month (Nov 2026)</button>
+              <button onclick="setDateRange('Q2 FY2026-27')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">Q2 FY2026-27</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER (max-w-[1680px] Edge-to-Edge Desktop Architecture)
+       ========================================================================= -->
+  <main class="flex-1 max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 relative z-10">
+
+    <!-- =========================================================================
+         TOP 4 COLORFUL EXECUTIVE KPI CARDS (Matching erp_cover_page.html DNA)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+
+      <!-- KPI 1: Total Monthly Payroll (Solid Royal Blue) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#2563eb]/90 hover:bg-[#2563eb] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Total Monthly Payroll</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">৳ 1.12 Cr</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Budget: ৳ 1.18 Cr (94.9% Disbursed)</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="95, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">95%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            On Budget
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">428 Active Staff</span>
+        </div>
+      </div>
+
+      <!-- KPI 2: Total Active Headcount (Solid Royal Purple) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#7c3aed]/90 hover:bg-[#7c3aed] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Total Active Headcount</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">428 Staff</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Baseline: 414 Prior Qtr (+14 Net Hires)</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="98, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">98%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            +3.4% QoQ
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Attrition: 1.8% Low</span>
+        </div>
+      </div>
+
+      <!-- KPI 3: Daily Attendance Rate (Solid Emerald Green) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#059669]/90 hover:bg-[#059669] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Daily Attendance Rate</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">96.4%</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Present: 412 Staff across 3 sites</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="96, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">96%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Optimal Rate
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">10 Leaves Approved</span>
+        </div>
+      </div>
+
+      <!-- KPI 4: NBR Statutory Tax & PF (Solid Sunset Orange) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#ea580c]/90 hover:bg-[#ea580c] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">NBR Statutory Tax & PF</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">৳ 24.17 L</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">100% Withheld & Challan Deposited</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="100, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">100%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Audit Clean
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">PF Match: ৳ 9.32 L</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 1: DEPARTMENTAL PAYROLL FLOW (7 COLS) + BIOMETRIC ATTENDANCE PULSE (5 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- CARD 1: Departmental Headcount & Payroll Disbursal Flow (7 Columns) -->
+      <div
+        class="lg:col-span-7 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Departmental Payroll Weight & Headcount Flow
+                </h3>
+                <p class="text-[10px] text-slate-500 font-medium">Headcount Distribution vs Net Monthly Salary
+                  Allocation</p>
+              </div>
+            </div>
+            <!-- Total Weight Tag -->
+            <span
+              class="text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200/60 px-2 py-0.5 rounded-full">
+              5 Divisions
+            </span>
+          </div>
+
+          <!-- Dual Comparative Horizontal Bar SVG Graphic -->
+          <div class="w-full mt-2">
+            <svg class="w-full h-44" viewBox="0 0 720 170" fill="none">
+              <!-- Grid lines -->
+              <line x1="160" y1="10" x2="160" y2="150" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="300" y1="10" x2="300" y2="150" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="440" y1="10" x2="440" y2="150" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="580" y1="10" x2="580" y2="150" stroke="#f1f5f9" stroke-width="1" />
+
+              <!-- Row 1: Engineering & Technology (114 Staff | ৳ 38.50 L) -->
+              <g transform="translate(0, 10)">
+                <text x="145" y="16" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="end">Engineering & Tech</text>
+                <!-- Headcount Bar (Lavender / Purple) -->
+                <rect x="160" y="4" width="130" height="7" rx="3.5" fill="#c084fc" />
+                <!-- Salary Cost Bar (Rose / Pink) -->
+                <rect x="160" y="14" width="310" height="9" rx="4.5" fill="#e11d48" />
+                <text x="480" y="21" font-size="10" font-weight="800" fill="#e11d48">৳ 38.50 L (34.4%)</text>
+                <text x="300" y="11" font-size="9" font-weight="700" fill="#7e22ce">114 Staff</text>
+              </g>
+
+              <!-- Row 2: Factory Ops & Depot (162 Staff | ৳ 32.80 L) -->
+              <g transform="translate(0, 42)">
+                <text x="145" y="16" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="end">Factory Ops & Depot</text>
+                <rect x="160" y="4" width="180" height="7" rx="3.5" fill="#c084fc" />
+                <rect x="160" y="14" width="265" height="9" rx="4.5" fill="#e11d48" />
+                <text x="435" y="21" font-size="10" font-weight="800" fill="#e11d48">৳ 32.80 L (29.3%)</text>
+                <text x="350" y="11" font-size="9" font-weight="700" fill="#7e22ce">162 Staff</text>
+              </g>
+
+              <!-- Row 3: Commercial Sales & CRM (64 Staff | ৳ 21.40 L) -->
+              <g transform="translate(0, 74)">
+                <text x="145" y="16" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="end">Commercial Sales</text>
+                <rect x="160" y="4" width="75" height="7" rx="3.5" fill="#c084fc" />
+                <rect x="160" y="14" width="175" height="9" rx="4.5" fill="#e11d48" />
+                <text x="345" y="21" font-size="10" font-weight="800" fill="#e11d48">৳ 21.40 L (19.1%)</text>
+                <text x="245" y="11" font-size="9" font-weight="700" fill="#7e22ce">64 Staff</text>
+              </g>
+
+              <!-- Row 4: Finance & Audit (48 Staff | ৳ 11.20 L) -->
+              <g transform="translate(0, 106)">
+                <text x="145" y="16" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="end">Finance & Accounts</text>
+                <rect x="160" y="4" width="55" height="7" rx="3.5" fill="#c084fc" />
+                <rect x="160" y="14" width="95" height="9" rx="4.5" fill="#e11d48" />
+                <text x="265" y="21" font-size="10" font-weight="800" fill="#e11d48">৳ 11.20 L (10.0%)</text>
+                <text x="225" y="11" font-size="9" font-weight="700" fill="#7e22ce">48 Staff</text>
+              </g>
+
+              <!-- Row 5: Corporate HR & Admin (40 Staff | ৳ 8.10 L) -->
+              <g transform="translate(0, 138)">
+                <text x="145" y="16" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="end">HR & Governance</text>
+                <rect x="160" y="4" width="45" height="7" rx="3.5" fill="#c084fc" />
+                <rect x="160" y="14" width="70" height="9" rx="4.5" fill="#e11d48" />
+                <text x="240" y="21" font-size="10" font-weight="800" fill="#e11d48">৳ 8.10 L (7.2%)</text>
+                <text x="215" y="11" font-size="9" font-weight="700" fill="#7e22ce">40 Staff</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <div class="flex items-center gap-3">
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-rose-600"></span>
+              Salary Cost</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-purple-400"></span>
+              Headcount Share</span>
+          </div>
+          <span class="text-rose-700 font-bold font-mono">Disbursal Rate: 100% on 1st of Month</span>
+        </div>
+      </div>
+
+      <!-- CARD 2: Daily Biometric Attendance & Shift Pulse (5 Columns) -->
+      <div
+        class="lg:col-span-5 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Biometric Attendance Pulse</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Live Terminal Feeds (Tejgaon, Savar, Ctg)</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full">
+              412 / 428 Present
+            </span>
+          </div>
+
+          <!-- Circular Multi-Segment Donut Chart -->
+          <div class="w-full flex items-center justify-center mt-2">
+            <div class="flex items-center gap-6">
+              <!-- SVG Donut -->
+              <div class="relative w-34 h-34 flex items-center justify-center">
+                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                  <!-- Background Track -->
+                  <path class="text-slate-100" stroke-width="4.2" stroke="currentColor" fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <!-- Segment 1: Present (96.4%) -->
+                  <path class="text-emerald-500" stroke-dasharray="96.4, 100" stroke-width="4.2" stroke-linecap="round"
+                    stroke="currentColor" fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <!-- Segment 2: Leave (2.3%) placed on top -->
+                  <path class="text-blue-500" stroke-dasharray="2.3, 100" stroke-dashoffset="-96.4" stroke-width="4.2"
+                    stroke="currentColor" fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <!-- Centered Metric Inside Hollow -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                  <span class="text-xl font-extrabold text-slate-900 leading-none">96.4%</span>
+                  <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">ON DUTY</span>
+                </div>
+              </div>
+
+              <!-- Legend Telemetry -->
+              <div class="space-y-1.5 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+                  <span class="text-slate-700 font-medium">On-Duty / Present:</span>
+                  <strong class="text-slate-900 ml-auto font-mono">412</strong>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></span>
+                  <span class="text-slate-700 font-medium">Approved Leave:</span>
+                  <strong class="text-slate-900 ml-auto font-mono">10</strong>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+                  <span class="text-slate-700 font-medium">Field / Tour:</span>
+                  <strong class="text-slate-900 ml-auto font-mono">4</strong>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+                  <span class="text-slate-700 font-medium">Unexcused:</span>
+                  <strong class="text-rose-600 ml-auto font-mono">2</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biometric Terminal Breakdown Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Terminal Pulse: <strong class="text-slate-800">Tejgaon 98.2% • Savar 95.8% • Ctg
+              94.6%</strong></span>
+          <span class="font-mono text-emerald-700 font-bold">Zero BLA Violations</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 2: STATUTORY COMPLIANCE (5 COLS) + COST CENTERS MATRIX (7 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- CARD 3: Statutory NBR Tax, PF & Gratuity Status (5 Columns) -->
+      <div
+        class="lg:col-span-5 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Statutory Tax & Gratuity Status</h3>
+                <p class="text-[10px] text-slate-500 font-medium">NBR Withholding Tax, PF Trust & BLA Compliance</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full">
+              BLA: 99.8%
+            </span>
+          </div>
+
+          <!-- Compliance Progress Rows -->
+          <div class="space-y-2 mt-2">
+            <!-- Row 1: NBR Withholding Tax AIT -->
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70 text-xs">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-800">NBR Salary Tax Withholding (Section 50 AIT)</span>
+                <span class="font-mono font-bold text-slate-900">৳ 14.85 L</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full bg-emerald-500" style="width: 100%;"></div>
+              </div>
+              <div class="flex items-center justify-between text-[10px] text-slate-400 mt-1">
+                <span>Challan Ref: TR-6/2026-Nov</span>
+                <span class="text-emerald-600 font-semibold">Deposited at Sonali Bank</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Provident Fund -->
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70 text-xs">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-800">Recognized Provident Fund (8.33% Match)</span>
+                <span class="font-mono font-bold text-slate-900">৳ 9.32 L</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full bg-blue-500" style="width: 100%;"></div>
+              </div>
+              <div class="flex items-center justify-between text-[10px] text-slate-400 mt-1">
+                <span>Trust Account: BRAC Bank Trust</span>
+                <span class="text-blue-600 font-semibold">100% Employer Matched</span>
+              </div>
+            </div>
+
+            <!-- Row 3: Gratuity Reserve -->
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70 text-xs">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-800">Audited Gratuity Fund Reserve</span>
+                <span class="font-mono font-bold text-slate-900">৳ 18.40 L</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full bg-purple-500" style="width: 98%;"></div>
+              </div>
+              <div class="flex items-center justify-between text-[10px] text-slate-400 mt-1">
+                <span>Actuarial Valuation: 100% Funded</span>
+                <span class="text-purple-600 font-semibold">Protected Liquidity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Statutory Health: <strong class="text-emerald-700">Audit-Ready NBR
+              Returns</strong></span>
+          <span class="font-mono text-slate-800 font-bold">Total Statutory: ৳ 42.57 L</span>
+        </div>
+      </div>
+
+      <!-- CARD 4: Cost Centers & Workforce Productivity 2x2 Grid (7 Columns) -->
+      <div
+        class="lg:col-span-7 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-pink-100 text-pink-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Workforce Cost Centers & Productivity</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Operating Units, Overtime Telemetry & Unit Labor
+                  Efficiency</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200/60 px-2 py-0.5 rounded-full">
+              4 Cost Centers
+            </span>
+          </div>
+
+          <!-- 2x2 Clean Frosted Grid (Zero Colored Left Border Strips) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
+
+            <!-- Micro-Card 1: Savar Plant Operations -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-rose-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Savar Plant & Manufacturing</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.2 rounded-full">
+                  95.8% Attn
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 34.20 L Monthly</h4>
+                  <p class="text-[10px] text-slate-500">162 Factory Staff • OT: 420 Hours</p>
+                </div>
+                <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded">High Volume</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Unit Labor Cost: ৳ 4.8 / unit</span>
+                <span class="font-bold text-slate-700">30.5% Payroll</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 2: Tech & Engineering -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Software & Product Eng.</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-purple-700 bg-purple-50 border border-purple-200/60 px-2 py-0.2 rounded-full">
+                  98.2% Ret.
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 38.50 L Monthly</h4>
+                  <p class="text-[10px] text-slate-500">114 Engineers • Agile Velocity: 94 pts</p>
+                </div>
+                <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">Core R&D</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Avg Tech Tenure: 2.8 Years</span>
+                <span class="font-bold text-slate-700">34.4% Payroll</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 3: Commercial Sales -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Commercial Sales & BizDev</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200/60 px-2 py-0.2 rounded-full">
+                  ৳ 8.4L Bonus
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 21.40 L Monthly</h4>
+                  <p class="text-[10px] text-slate-500">64 Account Executives • Quota: 114%</p>
+                </div>
+                <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">High ROI</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Revenue Per Rep: ৳ 7.8 L / mo</span>
+                <span class="font-bold text-slate-700">19.1% Payroll</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 4: Shared Services & Corporate -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Shared Services & Finance</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.2 rounded-full">
+                  Audit 100%
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 19.30 L Monthly</h4>
+                  <p class="text-[10px] text-slate-500">88 Officers • Legal, Accounts & Admin</p>
+                </div>
+                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">Overhead</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>G&A Ratio: 17.2% Total OpEx</span>
+                <span class="font-bold text-slate-700">16.0% Payroll</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Workforce Productivity: <strong class="text-emerald-700">৳ 1.12 Cr Payroll yields
+              ৳ 6.80 Cr Monthly Output</strong></span>
+          <span class="font-mono text-slate-800 font-bold">Labor ROI: 6.07x</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 3: SALARY REGISTER TABLE (8 COLS) + LIVE DIGITAL PAYSLIP DOCKET (4 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+
+      <!-- CARD 5: Executive Salary Register Ledger Table (8 Columns) -->
+      <div class="lg:col-span-8 executive-card rounded-2xl p-4 flex flex-col relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-900 tracking-tight">Executive Salary Register & Disbursal Ledger
+              </h3>
+              <p class="text-[10px] text-slate-500 font-medium">Click any row to inspect instant Digital Payslip & Tax
+                Challan docket</p>
+            </div>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl text-[11px] font-semibold text-slate-600">
+            <button onclick="filterPayrollByTab('all')" id="tab-all"
+              class="px-2.5 py-1 rounded-lg bg-white text-rose-700 shadow-2xs font-bold transition">All Staff
+              (428)</button>
+            <button onclick="filterPayrollByTab('Engineering')" id="tab-Engineering"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">Tech (114)</button>
+            <button onclick="filterPayrollByTab('Operations')" id="tab-Operations"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">Operations (162)</button>
+            <button onclick="filterPayrollByTab('Commercial')" id="tab-Commercial"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">Commercial (64)</button>
+          </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200/80 bg-white/60">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="glass-thead border-b border-slate-200/80 text-[10.5px] font-bold text-slate-600 uppercase tracking-wider">
+                <th class="py-2.5 px-3">Employee Details</th>
+                <th class="py-2.5 px-3">Role & Grade</th>
+                <th class="py-2.5 px-3 text-right">Basic (৳)</th>
+                <th class="py-2.5 px-3 text-right">Gross Pay (৳)</th>
+                <th class="py-2.5 px-3 text-right">PF & Tax (৳)</th>
+                <th class="py-2.5 px-3 text-right">Net Disbursed (৳)</th>
+                <th class="py-2.5 px-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="payrollTableBody" class="divide-y divide-slate-100">
+              <!-- Row 1: Kazi Tanvir Ahmed -->
+              <tr onclick="selectEmployee('EMP-2024-001', this)"
+                class="payroll-row payroll-row-selected hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-dept="Engineering" data-search="kazi tanvir ahmed engineering tech vp e1 emp-2024-001">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 font-extrabold flex items-center justify-center text-xs">
+                      KT
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Kazi Tanvir Ahmed</div>
+                      <div class="text-[10px] text-slate-500 font-mono">EMP-2024-001 • Tech</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">VP Engineering</div>
+                  <div class="text-[10px] text-slate-500">Grade E1 • Permanent</div>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 1,80,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 3,20,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-rose-600">-৳ 44,600</td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-emerald-700">৳ 2,75,400</td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    BEFTN Paid
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 2: Farzana Sultana, FCA -->
+              <tr onclick="selectEmployee('EMP-2024-012', this)"
+                class="payroll-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-dept="Commercial" data-search="farzana sultana fca finance accounts head e2 emp-2024-012">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 font-extrabold flex items-center justify-center text-xs">
+                      FS
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Farzana Sultana, FCA</div>
+                      <div class="text-[10px] text-slate-500 font-mono">EMP-2024-012 • Finance</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Head of Finance & Tax</div>
+                  <div class="text-[10px] text-slate-500">Grade E2 • Permanent</div>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 1,50,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 2,65,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-rose-600">-৳ 36,900</td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-emerald-700">৳ 2,28,100</td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    BEFTN Paid
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 3: Md. Rafiqul Hasan -->
+              <tr onclick="selectEmployee('EMP-2024-045', this)"
+                class="payroll-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-dept="Operations" data-search="rafiqul hasan operations plant manager e2 emp-2024-045 savar">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 font-extrabold flex items-center justify-center text-xs">
+                      RH
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Md. Rafiqul Hasan</div>
+                      <div class="text-[10px] text-slate-500 font-mono">EMP-2024-045 • Savar Ops</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Savar Plant General Mgr</div>
+                  <div class="text-[10px] text-slate-500">Grade E2 • Permanent</div>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 1,40,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 2,50,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-rose-600">-৳ 34,500</td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-emerald-700">৳ 2,15,500</td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    BEFTN Paid
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 4: Nusrat Jahan -->
+              <tr onclick="selectEmployee('EMP-2024-089', this)"
+                class="payroll-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-dept="Commercial" data-search="nusrat jahan sales enterprise ae m1 emp-2024-089">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-teal-100 text-teal-700 font-extrabold flex items-center justify-center text-xs">
+                      NJ
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Nusrat Jahan</div>
+                      <div class="text-[10px] text-slate-500 font-mono">EMP-2024-089 • Sales</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Sr. Enterprise Sales Lead</div>
+                  <div class="text-[10px] text-slate-500">Grade M1 • Permanent</div>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 95,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 1,75,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-rose-600">-৳ 22,800</td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-emerald-700">৳ 1,52,200</td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    BEFTN Paid
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 5: Enamul Haque -->
+              <tr onclick="selectEmployee('EMP-2024-118', this)"
+                class="payroll-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-dept="Engineering" data-search="enamul haque tech cloud architect m1 emp-2024-118">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-extrabold flex items-center justify-center text-xs">
+                      EH
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Enamul Haque</div>
+                      <div class="text-[10px] text-slate-500 font-mono">EMP-2024-118 • Cloud</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Principal Cloud Architect</div>
+                  <div class="text-[10px] text-slate-500">Grade M1 • Permanent</div>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 1,10,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 1,95,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-rose-600">-৳ 25,200</td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-emerald-700">৳ 1,69,800</td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    BEFTN Paid
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 6: Shamim Reza -->
+              <tr onclick="selectEmployee('EMP-2024-174', this)"
+                class="payroll-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-dept="Operations" data-search="shamim reza warehouse depot lead m2 emp-2024-174 tejgaon">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 font-extrabold flex items-center justify-center text-xs">
+                      SR
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Shamim Reza</div>
+                      <div class="text-[10px] text-slate-500 font-mono">EMP-2024-174 • Tejgaon Hub</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Central Depot Lead</div>
+                  <div class="text-[10px] text-slate-500">Grade M2 • Permanent</div>
+                </td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 75,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-slate-700">৳ 1,35,000</td>
+                <td class="py-2.5 px-3 text-right font-mono text-rose-600">-৳ 16,400</td>
+                <td class="py-2.5 px-3 text-right font-mono font-bold text-emerald-700">৳ 1,18,600</td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    BEFTN Paid
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer -->
+        <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
+          <div class="flex items-center gap-2 text-slate-500 text-[11px]">
+            <span>Showing <strong class="text-slate-800" id="showingCount">6</strong> of 428 Staff</span>
+            <span class="text-slate-300">•</span>
+            <span>Batch Total Disbursed: <strong class="text-slate-900 font-mono">৳ 11,59,600</strong></span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-400 text-[11px] cursor-not-allowed">Previous</button>
+            <button class="px-2.5 py-1 rounded-lg bg-rose-600 text-white font-bold text-[11px]">1</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-600 text-[11px] hover:bg-slate-50">2</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-600 text-[11px] hover:bg-slate-50">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6: Live Employee Digital Payslip & NBR Tax Docket (4 Columns) -->
+      <div class="lg:col-span-4 executive-card rounded-2xl p-4 flex flex-col relative overflow-hidden">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-900 tracking-tight">Live Digital Payslip Docket</h3>
+              <p class="text-[10px] text-slate-500 font-medium">Reactive Salary Advice & Statutory Deductions</p>
+            </div>
+          </div>
+          <span id="docketLiveBadge"
+            class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            BEFTN Settled
+          </span>
+        </div>
+
+        <!-- Docket Main Body -->
+        <div class="space-y-3 text-xs">
+
+          <!-- Employee Header Profile -->
+          <div class="p-3 rounded-xl bg-slate-50/80 border border-slate-200/70 flex items-start justify-between">
+            <div class="flex items-center gap-2.5">
+              <div id="docketAvatar"
+                class="w-10 h-10 rounded-xl bg-rose-600 text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
+                KT
+              </div>
+              <div>
+                <h4 id="docketEmployeeName" class="text-sm font-extrabold text-slate-900 leading-tight">Kazi Tanvir Ahmed
+                </h4>
+                <p id="docketRole" class="text-[10px] text-slate-500 mt-0.5 font-medium">VP Engineering • Grade E1</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span id="docketCode"
+                    class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-rose-100 text-rose-700 font-mono">EMP-2024-001</span>
+                  <span id="docketBank"
+                    class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-mono">BRAC Bank
+                    • A/C: ***1849</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Net Disbursed</span>
+              <span id="docketNetPay" class="text-base font-black text-emerald-600 font-mono">৳ 2,75,400</span>
+            </div>
+          </div>
+
+          <!-- Earnings vs Deductions Breakdown -->
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <!-- Earnings Column -->
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70 space-y-1.5">
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-1">Earnings
+                (Gross)</span>
+              <div class="flex justify-between text-[11px]">
+                <span class="text-slate-600">Basic Pay:</span>
+                <span id="docketBasic" class="font-mono font-bold text-slate-900">৳ 1,80,000</span>
+              </div>
+              <div class="flex justify-between text-[11px]">
+                <span class="text-slate-600">House Rent (50%):</span>
+                <span id="docketHouseRent" class="font-mono text-slate-700">৳ 90,000</span>
+              </div>
+              <div class="flex justify-between text-[11px]">
+                <span class="text-slate-600">Medical (10%):</span>
+                <span id="docketMedical" class="font-mono text-slate-700">৳ 18,000</span>
+              </div>
+              <div class="flex justify-between text-[11px]">
+                <span class="text-slate-600">Conveyance & Misc:</span>
+                <span id="docketConveyance" class="font-mono text-slate-700">৳ 32,000</span>
+              </div>
+              <div class="pt-1.5 border-t border-slate-100 flex justify-between text-[11px] font-bold">
+                <span class="text-slate-800">Gross Total:</span>
+                <span id="docketGross" class="font-mono text-slate-900">৳ 3,20,000</span>
+              </div>
+            </div>
+
+            <!-- Deductions Column -->
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70 space-y-1.5">
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block border-b border-slate-100 pb-1">Deductions</span>
+              <div class="flex justify-between text-[11px]">
+                <span class="text-slate-600">PF Contribution (8.33%):</span>
+                <span id="docketPF" class="font-mono text-rose-600">-৳ 15,000</span>
+              </div>
+              <div class="flex justify-between text-[11px]">
+                <span class="text-slate-600">NBR Income Tax (AIT):</span>
+                <span id="docketTax" class="font-mono text-rose-600">-৳ 28,600</span>
+              </div>
+              <div class="flex justify-between text-[11px]">
+                <span class="text-slate-600">Welfare / Insurance:</span>
+                <span id="docketWelfare" class="font-mono text-rose-600">-৳ 1,000</span>
+              </div>
+              <div class="pt-4 border-t border-slate-100 flex justify-between text-[11px] font-bold">
+                <span class="text-slate-800">Total Deductions:</span>
+                <span id="docketTotalDeduct" class="font-mono text-rose-600">-৳ 44,600</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tax Identification & Bank Advice Reference -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/70 text-xs space-y-1.5">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-500">TIN Number (12 Digit):</span>
+              <span id="docketTIN" class="font-mono font-bold text-slate-800">5819-2041-8930</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-500">NBR Tax Circle:</span>
+              <span id="docketCircle" class="text-slate-700">Circle 42 (Companies), Dhaka</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-500">BEFTN Trace No:</span>
+              <span id="docketTrace" class="font-mono text-indigo-700 font-semibold">FT263109841289</span>
+            </div>
+          </div>
+
+          <!-- Leave Balance Telemetry -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/70 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-[10px] font-bold text-slate-500 block">Annual Leave Balance</span>
+              <span id="docketLeaveDays" class="font-bold text-slate-900 text-[11px]">14 Days Available (4 Taken)</span>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+              Attendance: 100%
+            </span>
+          </div>
+
+          <!-- Quick Action Controls (Clean, Zero Heavy Print Buttons) -->
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="emailSalaryAdvice()"
+              class="w-full py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200/80 shadow-2xs transition">
+              Email Advice Slip
+            </button>
+            <button onclick="viewEmployeeProfile()"
+              class="w-full py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-xs transition">
+              Full HR 360 File
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATION COMPONENT
+       ========================================================================= -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- =========================================================================
+       CLIENT-SIDE REACTIVE INTERACTION JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    // 1. DATA REPOSITORY FOR SALARY REGISTER & DIGITAL PAYSLIP DOCKET
+    const payrollDatabase = {
+      'EMP-2024-001': {
+        avatar: 'KT',
+        name: 'Kazi Tanvir Ahmed',
+        role: 'VP Engineering • Grade E1',
+        code: 'EMP-2024-001',
+        bank: 'BRAC Bank • A/C: ***1849',
+        netPay: '৳ 2,75,400',
+        basic: '৳ 1,80,000',
+        houseRent: '৳ 90,000',
+        medical: '৳ 18,000',
+        conveyance: '৳ 32,000',
+        gross: '৳ 3,20,000',
+        pf: '-৳ 15,000',
+        tax: '-৳ 28,600',
+        welfare: '-৳ 1,000',
+        totalDeduct: '-৳ 44,600',
+        tin: '5819-2041-8930',
+        circle: 'Circle 42 (Companies), Dhaka',
+        trace: 'FT263109841289',
+        leave: '14 Days Available (4 Taken)'
+      },
+      'EMP-2024-012': {
+        avatar: 'FS',
+        name: 'Farzana Sultana, FCA',
+        role: 'Head of Finance & Tax • Grade E2',
+        code: 'EMP-2024-012',
+        bank: 'City Bank • A/C: ***9921',
+        netPay: '৳ 2,28,100',
+        basic: '৳ 1,50,000',
+        houseRent: '৳ 75,000',
+        medical: '৳ 15,000',
+        conveyance: '৳ 25,000',
+        gross: '৳ 2,65,000',
+        pf: '-৳ 12,500',
+        tax: '-৳ 23,400',
+        welfare: '-৳ 1,000',
+        totalDeduct: '-৳ 36,900',
+        tin: '4190-8832-1054',
+        circle: 'Circle 18 (Large Taxpayers Unit), Dhaka',
+        trace: 'FT263109841312',
+        leave: '18 Days Available (2 Taken)'
+      },
+      'EMP-2024-045': {
+        avatar: 'RH',
+        name: 'Md. Rafiqul Hasan',
+        role: 'Savar Plant General Mgr • Grade E2',
+        code: 'EMP-2024-045',
+        bank: 'Eastern Bank • A/C: ***4410',
+        netPay: '৳ 2,15,500',
+        basic: '৳ 1,40,000',
+        houseRent: '৳ 70,000',
+        medical: '৳ 14,000',
+        conveyance: '৳ 26,000',
+        gross: '৳ 2,50,000',
+        pf: '-৳ 11,660',
+        tax: '-৳ 21,840',
+        welfare: '-৳ 1,000',
+        totalDeduct: '-৳ 34,500',
+        tin: '7721-9034-1182',
+        circle: 'Circle 25 (Industrial), Savar',
+        trace: 'FT263109841445',
+        leave: '12 Days Available (6 Taken)'
+      },
+      'EMP-2024-089': {
+        avatar: 'NJ',
+        name: 'Nusrat Jahan',
+        role: 'Sr. Enterprise Sales Lead • Grade M1',
+        code: 'EMP-2024-089',
+        bank: 'Dutch-Bangla Bank • A/C: ***7302',
+        netPay: '৳ 1,52,200',
+        basic: '৳ 95,000',
+        houseRent: '৳ 47,500',
+        medical: '৳ 9,500',
+        conveyance: '৳ 23,000',
+        gross: '৳ 1,75,000',
+        pf: '-৳ 7,910',
+        tax: '-৳ 13,890',
+        welfare: '-৳ 1,000',
+        totalDeduct: '-৳ 22,800',
+        tin: '6302-1194-5542',
+        circle: 'Circle 14 (Salary), Dhaka',
+        trace: 'FT263109841589',
+        leave: '16 Days Available (3 Taken)'
+      },
+      'EMP-2024-118': {
+        avatar: 'EH',
+        name: 'Enamul Haque',
+        role: 'Principal Cloud Architect • Grade M1',
+        code: 'EMP-2024-118',
+        bank: 'BRAC Bank • A/C: ***5590',
+        netPay: '৳ 1,69,800',
+        basic: '৳ 1,10,000',
+        houseRent: '৳ 55,000',
+        medical: '৳ 11,000',
+        conveyance: '৳ 19,000',
+        gross: '৳ 1,95,000',
+        pf: '-৳ 9,160',
+        tax: '-৳ 15,040',
+        welfare: '-৳ 1,000',
+        totalDeduct: '-৳ 25,200',
+        tin: '8910-3341-2098',
+        circle: 'Circle 33 (IT Sector), Dhaka',
+        trace: 'FT263109841618',
+        leave: '15 Days Available (5 Taken)'
+      },
+      'EMP-2024-174': {
+        avatar: 'SR',
+        name: 'Shamim Reza',
+        role: 'Central Depot Lead • Grade M2',
+        code: 'EMP-2024-174',
+        bank: 'Islami Bank • A/C: ***8144',
+        netPay: '৳ 1,18,600',
+        basic: '৳ 75,000',
+        houseRent: '৳ 37,500',
+        medical: '৳ 7,500',
+        conveyance: '৳ 15,000',
+        gross: '৳ 1,35,000',
+        pf: '-৳ 6,250',
+        tax: '-৳ 9,150',
+        welfare: '-৳ 1,000',
+        totalDeduct: '-৳ 16,400',
+        tin: '3210-9845-6671',
+        circle: 'Circle 10 (Transport & Logistics), Dhaka',
+        trace: 'FT263109841774',
+        leave: '11 Days Available (7 Taken)'
+      }
+    };
+
+    // 2. REACTIVE EMPLOYEE SELECTION
+    function selectEmployee(empId, rowElem) {
+      const emp = payrollDatabase[empId];
+      if (!emp) return;
+
+      // Update table row styling
+      document.querySelectorAll('tr.payroll-row').forEach(r => r.classList.remove('payroll-row-selected'));
+      if (rowElem) {
+        rowElem.classList.add('payroll-row-selected');
+      }
+
+      // Update Live Docket elements
+      document.getElementById('docketAvatar').innerText = emp.avatar;
+      document.getElementById('docketEmployeeName').innerText = emp.name;
+      document.getElementById('docketRole').innerText = emp.role;
+      document.getElementById('docketCode').innerText = emp.code;
+      document.getElementById('docketBank').innerText = emp.bank;
+      document.getElementById('docketNetPay').innerText = emp.netPay;
+      document.getElementById('docketBasic').innerText = emp.basic;
+      document.getElementById('docketHouseRent').innerText = emp.houseRent;
+      document.getElementById('docketMedical').innerText = emp.medical;
+      document.getElementById('docketConveyance').innerText = emp.conveyance;
+      document.getElementById('docketGross').innerText = emp.gross;
+      document.getElementById('docketPF').innerText = emp.pf;
+      document.getElementById('docketTax').innerText = emp.tax;
+      document.getElementById('docketWelfare').innerText = emp.welfare;
+      document.getElementById('docketTotalDeduct').innerText = emp.totalDeduct;
+      document.getElementById('docketTIN').innerText = emp.tin;
+      document.getElementById('docketCircle').innerText = emp.circle;
+      document.getElementById('docketTrace').innerText = emp.trace;
+      document.getElementById('docketLeaveDays').innerText = emp.leave;
+
+      showToast(`Selected ${emp.name} (${emp.code}) — Payslip updated.`);
+    }
+
+    // 3. TABLE FILTERING BY TABS
+    function filterPayrollByTab(tab) {
+      const tabs = ['all', 'Engineering', 'Operations', 'Commercial'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        if (!btn) return;
+        if (t === tab) {
+          btn.className = 'px-2.5 py-1 rounded-lg bg-white text-rose-700 shadow-2xs font-bold transition';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-lg hover:text-slate-900 transition text-slate-600';
+        }
+      });
+
+      const rows = document.querySelectorAll('#payrollTableBody tr.payroll-row');
+      let visibleCount = 0;
+      rows.forEach(r => {
+        const dept = r.getAttribute('data-dept');
+        if (tab === 'all' || dept === tab) {
+          r.style.display = '';
+          visibleCount++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      document.getElementById('showingCount').innerText = visibleCount;
+    }
+
+    // 4. CLIENT-SIDE SEARCH
+    function filterPayrollTable() {
+      const q = document.getElementById('payrollSearchInput').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#payrollTableBody tr.payroll-row');
+      let visibleCount = 0;
+      rows.forEach(r => {
+        const searchData = r.getAttribute('data-search') || '';
+        if (searchData.includes(q)) {
+          r.style.display = '';
+          visibleCount++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      document.getElementById('showingCount').innerText = visibleCount;
+    }
+
+    // Keyboard shortcut for search (⌘K / Ctrl+K)
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('payrollSearchInput');
+        if (searchInput) searchInput.focus();
+      }
+    });
+
+    // 5. DATE RANGE PICKER DROPDOWN
+    function toggleDateMenu() {
+      const menu = document.getElementById('dateMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function setDateRange(label) {
+      document.getElementById('dateRangeLabel').innerText = label;
+      document.getElementById('dateMenu').classList.add('hidden');
+      showToast(`Date range switched to: ${label}`);
+    }
+
+    window.addEventListener('click', (e) => {
+      const btn = document.getElementById('dateRangeBtn');
+      const menu = document.getElementById('dateMenu');
+      if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // 6. ACTION HANDLERS
+    function exportPayrollReport() {
+      showToast('Generating Audited Monthly Salary Sheet & NBR Tax Withholding Export (Excel / CSV)...');
+    }
+
+    function emailSalaryAdvice() {
+      showToast('Dispatching encrypted salary advice slip to employee corporate email...');
+    }
+
+    function viewEmployeeProfile() {
+      showToast('Opening Employee 360 Profile and Service Record...');
+    }
+
+    // 7. TOAST NOTIFICATION SYSTEM
+    function showToast(msg) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-2.5 rounded-xl bg-slate-900/90 text-white text-xs font-semibold shadow-lg backdrop-blur-md flex items-center gap-2 transform transition-all duration-300 translate-y-3 opacity-0 pointer-events-auto border border-white/10';
+      toast.innerHTML = `
+        <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>${msg}</span>
+      `;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-3', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-3', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+  </script>
+
+</body>
+
+</html>
+

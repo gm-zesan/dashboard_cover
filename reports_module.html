@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Analytics — Executive Portal | Inceptia ERP</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Fixed ambient atmospheric wallpaper matching erp_cover_page.html */
+    .erp-bg-fixed {
+      position: fixed;
+      inset: 0;
+      background-image: url('assets/erp_bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Translucent frosted glass card */
+    .executive-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+    }
+
+    .executive-card:hover {
+      box-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+    }
+
+    /* Glass table header & rows */
+    .glass-thead {
+      background: rgba(248, 250, 252, 0.88);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Custom thin scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.6);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Active selected row highlight in data tables */
+    tr.report-row-selected {
+      background-color: rgba(8, 145, 178, 0.08) !important;
+      border-left: 3px solid #0891b2 !important;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative flex flex-col antialiased selection:bg-cyan-600 selection:text-white">
+
+  <!-- Atmospheric Background Layer -->
+  <div class="erp-bg-fixed"></div>
+
+  <!-- Ambient Aurora Glow Orbs -->
+  <div
+    class="fixed top-0 right-1/3 w-[600px] h-[360px] bg-gradient-to-br from-cyan-200/25 to-blue-200/20 blur-3xl pointer-events-none z-0">
+  </div>
+  <div
+    class="fixed bottom-10 left-1/3 w-[500px] h-[400px] bg-gradient-to-tr from-indigo-200/20 to-cyan-200/15 blur-3xl pointer-events-none z-0">
+  </div>
+
+  <!-- =========================================================================
+       1. EXECUTIVE STICKY HEADER & BREADCRUMBS
+       ========================================================================= -->
+  <header class="sticky top-0 z-30 bg-white/75 backdrop-blur-md border-b border-white/60 shadow-2xs">
+    <div class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center justify-between gap-4">
+
+        <!-- Left: Back to Portal & Title -->
+        <div class="flex items-center gap-3">
+          <a href="erp_cover_page.html"
+            class="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-600 hover:text-slate-900 border border-slate-200/70 shadow-2xs hover:shadow-xs transition-all duration-150">
+            <svg class="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+              </path>
+            </svg>
+            <span>Executive Portal</span>
+          </a>
+
+          <div class="h-5 w-px bg-slate-300/60 hidden sm:block"></div>
+
+          <div class="flex items-center gap-2.5">
+            <div
+              class="w-8 h-8 rounded-xl bg-cyan-600 flex items-center justify-center text-white shadow-sm shadow-cyan-600/30">
+              <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-base font-extrabold text-slate-900 tracking-tight">Reports & Analytics</h1>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium">Inceptia ERP / Executive BI Intelligence, Consolidated
+                Financial Ratios & Regulatory Audit Trail</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Search, Fiscal Selector & Actions -->
+        <div class="flex items-center gap-2.5">
+          <!-- Quick Search -->
+          <div class="relative hidden md:block">
+            <input type="text" id="reportSearchInput" oninput="filterReportTable()"
+              placeholder="Search audit filings, NBR, RJSC, BSEC (⌘K)..."
+              class="w-68 pl-8 pr-3 py-1.5 rounded-xl text-xs bg-white/80 border border-slate-200/80 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 text-slate-700 placeholder-slate-400 transition">
+            <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+
+          <!-- Date Range Selector Dropdown -->
+          <div class="relative">
+            <button id="dateRangeBtn" onclick="toggleDateMenu()"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-700 border border-slate-200/80 shadow-2xs transition">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span id="dateRangeLabel">Nov 1 – Nov 30, 2026</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div id="dateMenu"
+              class="hidden absolute right-0 mt-1.5 w-48 rounded-xl bg-white border border-slate-200 shadow-lg py-1 z-40 text-xs">
+              <button onclick="setDateRange('Today (Nov 6, 2026)')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">Today</button>
+              <button onclick="setDateRange('This Week (Nov 1 – 7)')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">This Week</button>
+              <button onclick="setDateRange('Nov 1 – Nov 30, 2026')"
+                class="w-full text-left px-3 py-1.5 bg-cyan-50/70 text-cyan-700 font-bold">This Month (Nov 2026)</button>
+              <button onclick="setDateRange('Q2 FY2026-27')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">Q2 FY2026-27</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER (max-w-[1680px] Edge-to-Edge Desktop Architecture)
+       ========================================================================= -->
+  <main class="flex-1 max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 relative z-10">
+
+    <!-- =========================================================================
+         TOP 4 COLORFUL EXECUTIVE KPI CARDS (Matching erp_cover_page.html DNA)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+
+      <!-- KPI 1: Consolidated Gross Margin (Solid Royal Blue) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#2563eb]/90 hover:bg-[#2563eb] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Consolidated Gross Margin</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">38.6%</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Target: 35.0% (+3.6% Alpha Margin)</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="92, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">92%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            +4.4% Margin
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Gross: ৳ 1.86 Cr</span>
+        </div>
+      </div>
+
+      <!-- KPI 2: Group EBITDA Yield (Solid Royal Purple) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#7c3aed]/90 hover:bg-[#7c3aed] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Group EBITDA Yield</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">৳ 2.84 Cr</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">MTD Operating Profit (24.2% Margin)</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="88, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">88%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            +18.2% YoY
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Run-Rate: ৳ 34 Cr</span>
+        </div>
+      </div>
+
+      <!-- KPI 3: Net Profit Margin PAT (Solid Emerald Green) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#059669]/90 hover:bg-[#059669] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Net Profit Margin (PAT)</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">26.6%</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Net Profit: ৳ 1.28 Cr Disbursable</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="94, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">94%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Optimal Return
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">EPS: ৳ 14.20</span>
+        </div>
+      </div>
+
+      <!-- KPI 4: External Audit Readiness (Solid Sunset Orange) -->
+      <div
+        class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#ea580c]/90 hover:bg-[#ea580c] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">External Audit Readiness</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">100% Score</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">Big-4 Clean Assurance Opinion</p>
+          </div>
+          <!-- Mini Circular Ring Progress -->
+          <div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+              <path class="text-white/20" stroke-width="3.5" stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="text-white" stroke-dasharray="100, 100" stroke-width="3.5" stroke-linecap="round"
+                stroke="currentColor" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="absolute text-[10px] font-bold text-white">100%</span>
+          </div>
+        </div>
+        <div class="relative z-10 mt-3 pt-2.5 border-t border-white/15 flex items-center justify-between text-xs">
+          <span
+            class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/25">
+            Certified Clean
+          </span>
+          <span class="text-[11px] opacity-85 font-mono">Zero Qualifications</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 1: MULTI-ENTITY REVENUE HORIZON (8 COLS) + WORKING CAPITAL CCC DIAL (4 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- CARD 1: Consolidated 6-Month Multi-Entity Revenue & Margin Horizon (8 Columns) -->
+      <div
+        class="lg:col-span-8 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Consolidated Multi-Entity Revenue & Margin
+                  Horizon</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Group Revenue Inflow vs Gross Margin Trajectory (Jun –
+                  Nov 2026)</p>
+              </div>
+            </div>
+            <!-- Range Selector & Badge -->
+            <div class="flex items-center gap-2">
+              <span
+                class="text-[10px] font-bold text-cyan-700 bg-cyan-50 border border-cyan-200/60 px-2.5 py-0.5 rounded-full">
+                Group Total: ৳ 10.17 Cr
+              </span>
+            </div>
+          </div>
+
+          <!-- Custom SVG Multi-Layer Combo Chart -->
+          <div class="w-full mt-1.5">
+            <svg class="w-full h-44" viewBox="0 0 800 170" fill="none">
+              <defs>
+                <linearGradient id="groupRevGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0891b2" stop-opacity="0.30" />
+                  <stop offset="85%" stop-color="#0891b2" stop-opacity="0.02" />
+                  <stop offset="100%" stop-color="#0891b2" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+
+              <!-- Grid Horizontal Lines -->
+              <line x1="50" y1="20" x2="760" y2="20" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="50" y1="55" x2="760" y2="55" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="50" y1="90" x2="760" y2="90" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="50" y1="125" x2="760" y2="125" stroke="#f1f5f9" stroke-width="1" />
+
+              <!-- Y-Axis Labels -->
+              <text x="42" y="24" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="end">৳ 12 Cr</text>
+              <text x="42" y="59" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="end">৳ 8 Cr</text>
+              <text x="42" y="94" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="end">৳ 4 Cr</text>
+              <text x="42" y="129" font-size="8.5" font-weight="700" fill="#94a3b8" text-anchor="end">৳ 0</text>
+
+              <!-- Month Stacked Bars (Jun to Nov) -->
+              <!-- Month 1: Jun -->
+              <g transform="translate(100, 0)">
+                <rect x="0" y="45" width="28" height="80" rx="3" fill="#cbd5e1" opacity="0.6" />
+                <rect x="0" y="70" width="28" height="55" rx="3" fill="#0891b2" opacity="0.8" />
+                <text x="14" y="142" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle">JUN</text>
+              </g>
+              <!-- Month 2: Jul -->
+              <g transform="translate(210, 0)">
+                <rect x="0" y="40" width="28" height="85" rx="3" fill="#cbd5e1" opacity="0.6" />
+                <rect x="0" y="65" width="28" height="60" rx="3" fill="#0891b2" opacity="0.8" />
+                <text x="14" y="142" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle">JUL</text>
+              </g>
+              <!-- Month 3: Aug -->
+              <g transform="translate(320, 0)">
+                <rect x="0" y="35" width="28" height="90" rx="3" fill="#cbd5e1" opacity="0.6" />
+                <rect x="0" y="58" width="28" height="67" rx="3" fill="#0891b2" opacity="0.8" />
+                <text x="14" y="142" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle">AUG</text>
+              </g>
+              <!-- Month 4: Sep -->
+              <g transform="translate(430, 0)">
+                <rect x="0" y="32" width="28" height="93" rx="3" fill="#cbd5e1" opacity="0.6" />
+                <rect x="0" y="52" width="28" height="73" rx="3" fill="#0891b2" opacity="0.8" />
+                <text x="14" y="142" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle">SEP</text>
+              </g>
+              <!-- Month 5: Oct -->
+              <g transform="translate(540, 0)">
+                <rect x="0" y="26" width="28" height="99" rx="3" fill="#cbd5e1" opacity="0.6" />
+                <rect x="0" y="45" width="28" height="80" rx="3" fill="#0891b2" opacity="0.8" />
+                <text x="14" y="142" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle">OCT</text>
+              </g>
+              <!-- Month 6: Nov (Current Peak) -->
+              <g transform="translate(650, 0)">
+                <rect x="0" y="20" width="28" height="105" rx="3" fill="#cbd5e1" opacity="0.6" />
+                <rect x="0" y="38" width="28" height="87" rx="3" fill="#0891b2" />
+                <text x="14" y="142" font-size="9" font-weight="800" fill="#0891b2" text-anchor="middle">NOV '26</text>
+              </g>
+
+              <!-- Smooth Gross Margin Curve Overlay across tops (in vibrant Emerald) -->
+              <path d="M 114 62 C 170 58, 224 55, 334 50 C 444 44, 554 36, 664 30" fill="none" stroke="#059669"
+                stroke-width="3" stroke-linecap="round" />
+              <!-- Highlight node at Nov -->
+              <circle cx="664" cy="30" r="5" fill="#ffffff" stroke="#059669" stroke-width="2.5" />
+              <text x="664" y="20" font-size="9.5" font-weight="800" fill="#059669" text-anchor="middle">38.6% Margin</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chart Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <div class="flex items-center gap-4">
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-cyan-600"></span> Operating
+              Revenue</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-slate-300"></span> Total
+              Invoiced Gross</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-emerald-600"></span> Gross Margin
+              Trajectory</span>
+          </div>
+          <span class="text-cyan-700 font-bold font-mono">YoY Revenue Growth: +24.8%</span>
+        </div>
+      </div>
+
+      <!-- CARD 2: Working Capital Cash Conversion Cycle (CCC) Dial (4 Columns) -->
+      <div
+        class="lg:col-span-4 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Cash Conversion Cycle (CCC)</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Liquidity Velocity & Working Capital</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-teal-700 bg-teal-50 border border-teal-200/60 px-2 py-0.5 rounded-full">
+              42 Days Optimal
+            </span>
+          </div>
+
+          <!-- Clean Radial Arc Gauge (Zero Needle Overlap) -->
+          <div class="w-full flex flex-col items-center justify-center mt-1">
+            <svg class="w-48 h-28" viewBox="0 0 220 130" fill="none">
+              <!-- Background Arc (180 deg) -->
+              <path d="M 30 110 A 80 80 0 0 1 190 110" stroke="#f1f5f9" stroke-width="14" stroke-linecap="round"
+                fill="none" />
+              <!-- Progress Arc for 42 days (optimized out of 90 days scale = 46.6%) -->
+              <path d="M 30 110 A 80 80 0 0 1 125 31" stroke="#0891b2" stroke-width="14" stroke-linecap="round"
+                fill="none" />
+              <!-- Illuminated Indicator Bead -->
+              <circle cx="125" cy="31" r="6.5" fill="#ffffff" stroke="#0891b2" stroke-width="3" />
+
+              <!-- Centered Metric in Hollow -->
+              <text x="110" y="80" text-anchor="middle" font-size="24" font-weight="800" fill="#0f172a"
+                font-family="'Plus Jakarta Sans', sans-serif">42 Days</text>
+              <text x="110" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#64748b"
+                letter-spacing="1">CASH CONVERSION</text>
+            </svg>
+          </div>
+
+          <!-- Telemetry Breakdown Formula -->
+          <div class="space-y-1 text-xs mt-1">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-600">DSO (Days Sales Outstanding):</span>
+              <span class="font-mono font-bold text-slate-900">28 Days</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-600">+ DIO (Days Inventory Outstanding):</span>
+              <span class="font-mono font-bold text-slate-900">34 Days</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-600">- DPO (Days Payable Outstanding):</span>
+              <span class="font-mono font-bold text-rose-600">-20 Days</span>
+            </div>
+            <div class="pt-1 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold">
+              <span class="text-slate-800">Net Working Capital Cycle:</span>
+              <span class="font-mono text-cyan-700">42 Days (-16d Alpha)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Benchmark: <strong class="text-emerald-700">58 Days Industry Average</strong></span>
+          <span class="font-mono text-slate-800 font-bold">Free Cash: ৳ 4.12 Cr</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 2: DU-PONT ROE RATIOS (5 COLS) + SUBSIDIARY OPEX MATRIX (7 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4 items-stretch">
+
+      <!-- CARD 3: Executive Financial Ratios & Du-Pont Analysis (5 Columns) -->
+      <div
+        class="lg:col-span-5 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 6l3 18h12l3-18H3zm16 6H5"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Du-Pont ROE & Financial Health</h3>
+                <p class="text-[10px] text-slate-500 font-medium">Deconstructed Return on Equity & Solvency Metrics</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200/60 px-2 py-0.5 rounded-full">
+              ROE: 28.4%
+            </span>
+          </div>
+
+          <!-- Du-Pont 3-Tier Multiplier Cards -->
+          <div class="grid grid-cols-3 gap-2 mt-2 mb-2">
+            <div class="p-2 rounded-xl bg-white/70 border border-slate-200/70 text-center">
+              <p class="text-[9.5px] text-slate-500 uppercase font-bold tracking-wider">Net Margin</p>
+              <h4 class="text-sm font-extrabold text-slate-900 mt-0.5 font-mono">26.6%</h4>
+              <p class="text-[8.5px] text-emerald-600 font-semibold mt-0.5">PAT / Sales</p>
+            </div>
+            <div class="p-2 rounded-xl bg-white/70 border border-slate-200/70 text-center">
+              <p class="text-[9.5px] text-slate-500 uppercase font-bold tracking-wider">Asset Turn</p>
+              <h4 class="text-sm font-extrabold text-slate-900 mt-0.5 font-mono">0.92x</h4>
+              <p class="text-[8.5px] text-blue-600 font-semibold mt-0.5">Sales / Assets</p>
+            </div>
+            <div class="p-2 rounded-xl bg-white/70 border border-slate-200/70 text-center">
+              <p class="text-[9.5px] text-slate-500 uppercase font-bold tracking-wider">Leverage</p>
+              <h4 class="text-sm font-extrabold text-slate-900 mt-0.5 font-mono">1.16x</h4>
+              <p class="text-[8.5px] text-purple-600 font-semibold mt-0.5">Assets / Equity</p>
+            </div>
+          </div>
+
+          <!-- Key Solvency & Liquidity List -->
+          <div class="space-y-1.5 text-xs">
+            <div class="flex items-center justify-between p-2 rounded-xl bg-white/60 border border-slate-200/60">
+              <span class="text-slate-700 font-medium">Current Ratio (Liquidity Buffer):</span>
+              <div class="flex items-center gap-1.5">
+                <span class="font-mono font-bold text-slate-900">2.4x</span>
+                <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded">Optimal</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-xl bg-white/60 border border-slate-200/60">
+              <span class="text-slate-700 font-medium">Quick Acid-Test Ratio:</span>
+              <div class="flex items-center gap-1.5">
+                <span class="font-mono font-bold text-slate-900">1.8x</span>
+                <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded">Safe</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-xl bg-white/60 border border-slate-200/60">
+              <span class="text-slate-700 font-medium">Debt-to-Equity Ratio:</span>
+              <div class="flex items-center gap-1.5">
+                <span class="font-mono font-bold text-slate-900">0.18</span>
+                <span class="text-[9px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded">Low Leverage</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Capital Efficiency: <strong class="text-indigo-700">ROCE: 31.2%</strong></span>
+          <span class="font-mono text-slate-800 font-bold">Net Worth: ৳ 14.80 Cr</span>
+        </div>
+      </div>
+
+      <!-- CARD 4: Subsidiary OPEX Efficiency 2x2 Matrix (7 Columns) -->
+      <div
+        class="lg:col-span-7 executive-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 tracking-tight">Subsidiary OPEX Efficiency Matrix</h3>
+                <p class="text-[10px] text-slate-500 font-medium">4 Core Legal Entities, Cost Allocation & Profit
+                  Contribution</p>
+              </div>
+            </div>
+            <span
+              class="text-[10px] font-bold text-cyan-700 bg-cyan-50 border border-cyan-200/60 px-2 py-0.5 rounded-full">
+              4 Subsidiaries
+            </span>
+          </div>
+
+          <!-- 2x2 Clean Frosted Grid (Zero Colored Left Border Strips) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
+
+            <!-- Micro-Card 1: Inceptia Technologies Ltd -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-cyan-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Inceptia Technologies Ltd</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-cyan-700 bg-cyan-50 border border-cyan-200/60 px-2 py-0.2 rounded-full">
+                  88.4% Efficiency
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 4.82 Cr Revenue</h4>
+                  <p class="text-[10px] text-slate-500">Monthly OpEx: ৳ 42.50 L • PAT: ৳ 74.2 L</p>
+                </div>
+                <span class="text-[10px] font-bold text-cyan-600 bg-cyan-50 px-1.5 py-0.5 rounded">Core Tech</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Group Contribution Share</span>
+                <span class="font-bold text-slate-700">47.4% Group Rev</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 2: Inceptia Logistics & Warehousing -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Inceptia Logistics Hubs</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.2 rounded-full">
+                  92.1% Efficiency
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 2.45 Cr Revenue</h4>
+                  <p class="text-[10px] text-slate-500">Monthly OpEx: ৳ 28.20 L • PAT: ৳ 32.8 L</p>
+                </div>
+                <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">High Margin</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Multi-Warehouse & Fleet</span>
+                <span class="font-bold text-slate-700">24.1% Group Rev</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 3: Inceptia Agro Processing -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Inceptia Agro Processing</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.2 rounded-full">
+                  86.5% Efficiency
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 1.95 Cr Revenue</h4>
+                  <p class="text-[10px] text-slate-500">Monthly OpEx: ৳ 22.80 L • PAT: ৳ 18.5 L</p>
+                </div>
+                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">FMCG Supply</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Contract Farming & Cold Stores</span>
+                <span class="font-bold text-slate-700">19.2% Group Rev</span>
+              </div>
+            </div>
+
+            <!-- Micro-Card 4: Inceptia Fintech Gateway -->
+            <div
+              class="p-3.5 rounded-xl bg-white/75 border border-slate-200/80 shadow-2xs hover:shadow-xs transition-all">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                  <span class="text-xs font-bold text-slate-900">Inceptia Fintech Gateway</span>
+                </div>
+                <span
+                  class="text-[10px] font-bold text-purple-700 bg-purple-50 border border-purple-200/60 px-2 py-0.2 rounded-full">
+                  94.8% Efficiency
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between mt-1">
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">৳ 95.00 L Revenue</h4>
+                  <p class="text-[10px] text-slate-500">Monthly OpEx: ৳ 11.40 L • PAT: ৳ 14.8 L</p>
+                </div>
+                <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">Fintech Rails</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <span>Bangladesh Bank Interbank Gateway</span>
+                <span class="font-bold text-slate-700">9.3% Group Rev</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500">Consolidated OpEx: <strong class="text-slate-800">৳ 1.04 Cr (10.2% Total
+              Revenue)</strong></span>
+          <span class="font-mono text-emerald-700 font-bold">Group Net PAT: ৳ 1.40 Cr</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 3: AUDIT FILINGS TABLE (8 COLS) + LIVE REGULATORY DOCKET (4 COLS)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+
+      <!-- CARD 5: Statutory Audit Filings & Regulatory Compliance Register Table (8 Columns) -->
+      <div class="lg:col-span-8 executive-card rounded-2xl p-4 flex flex-col relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-900 tracking-tight">Statutory Audit Filings & Regulatory
+                Compliance Register</h3>
+              <p class="text-[10px] text-slate-500 font-medium">Click any row to inspect instant Regulatory Filing &
+                Audit Verification docket</p>
+            </div>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="flex items-center gap-1 bg-slate-100/90 p-1 rounded-xl text-[11px] font-semibold text-slate-600">
+            <button onclick="filterReportByTab('all')" id="tab-all"
+              class="px-2.5 py-1 rounded-lg bg-white text-cyan-700 shadow-2xs font-bold transition">All Filings
+              (6)</button>
+            <button onclick="filterReportByTab('Tax')" id="tab-Tax"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">NBR Tax (2)</button>
+            <button onclick="filterReportByTab('Corporate')" id="tab-Corporate"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">RJSC / BSEC (2)</button>
+            <button onclick="filterReportByTab('Banking')" id="tab-Banking"
+              class="px-2.5 py-1 rounded-lg hover:text-slate-900 transition">BB / DIFE (2)</button>
+          </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200/80 bg-white/60">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="glass-thead border-b border-slate-200/80 text-[10.5px] font-bold text-slate-600 uppercase tracking-wider">
+                <th class="py-2.5 px-3">Filing & Document</th>
+                <th class="py-2.5 px-3">Regulator Authority</th>
+                <th class="py-2.5 px-3">Fiscal Period</th>
+                <th class="py-2.5 px-3">Responsible Officer</th>
+                <th class="py-2.5 px-3">Auditor Assurance</th>
+                <th class="py-2.5 px-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="reportsTableBody" class="divide-y divide-slate-100">
+              <!-- Row 1: NBR Corporate Tax -->
+              <tr onclick="selectReport('DOC-NBR-01', this)"
+                class="report-row report-row-selected hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-type="Tax" data-search="nbr corporate tax income return it-11ga national board of revenue farzana">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-cyan-100 text-cyan-700 font-extrabold flex items-center justify-center text-xs">
+                      TX
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Corporate Income Tax Return (IT-11GA)</div>
+                      <div class="text-[10px] text-slate-500 font-mono">DOC-NBR-01 • NBR LTU</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">National Board of Revenue</div>
+                  <div class="text-[10px] text-slate-500">LTU Large Taxpayers Unit</div>
+                </td>
+                <td class="py-2.5 px-3 font-mono text-slate-700">FY 2025-26</td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Farzana Sultana, FCA</div>
+                  <div class="text-[10px] text-slate-500">Head of Finance & Tax</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Hoda Vasi Chowdhury</div>
+                  <div class="text-[10px] text-emerald-600 font-semibold">Unqualified Opinion</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Verified Clean
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 2: Mushak-9.1 Monthly VAT -->
+              <tr onclick="selectReport('DOC-VAT-02', this)"
+                class="report-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-type="Tax" data-search="mushak 9.1 vat consolidation vds customs excise vat tanvir ahmed">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 font-extrabold flex items-center justify-center text-xs">
+                      VT
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">Mushak-9.1 Monthly VAT & VDS</div>
+                      <div class="text-[10px] text-slate-500 font-mono">DOC-VAT-02 • Dhaka West</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Customs, Excise & VAT</div>
+                  <div class="text-[10px] text-slate-500">Dhaka West Commissionerate</div>
+                </td>
+                <td class="py-2.5 px-3 font-mono text-slate-700">Oct 2026</td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Kazi Tanvir Ahmed</div>
+                  <div class="text-[10px] text-slate-500">VP Operations</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">External VAT Audit</div>
+                  <div class="text-[10px] text-emerald-600 font-semibold">100% Reconciled</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Filed
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 3: RJSC Annual Form XII -->
+              <tr onclick="selectReport('DOC-RJS-03', this)"
+                class="report-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-type="Corporate" data-search="rjsc form xii annual financial statements registrar joint stock rafiqul">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 font-extrabold flex items-center justify-center text-xs">
+                      RJ
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">RJSC Annual Form XII Filing</div>
+                      <div class="text-[10px] text-slate-500 font-mono">DOC-RJS-03 • RJSC Dhaka</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Registrar of Joint Stock (RJSC)</div>
+                  <div class="text-[10px] text-slate-500">Ministry of Commerce</div>
+                </td>
+                <td class="py-2.5 px-3 font-mono text-slate-700">FY 2025-26</td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Rafiqul Islam</div>
+                  <div class="text-[10px] text-slate-500">Company Secretary</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Rahman Rahman Huq (KPMG)</div>
+                  <div class="text-[10px] text-purple-600 font-semibold">Statutory Cleared</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Approved
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 4: BSEC Governance Report -->
+              <tr onclick="selectReport('DOC-BSC-04', this)"
+                class="report-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-type="Corporate" data-search="bsec quarterly corporate governance securities exchange commission salman">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 font-extrabold flex items-center justify-center text-xs">
+                      BS
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">BSEC Corporate Governance Code</div>
+                      <div class="text-[10px] text-slate-500 font-mono">DOC-BSC-04 • BSEC Capital</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Securities & Exchange Commission</div>
+                  <div class="text-[10px] text-slate-500">BSEC Corporate Finance</div>
+                </td>
+                <td class="py-2.5 px-3 font-mono text-slate-700">Q1 FY2026</td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Salman F. Khan</div>
+                  <div class="text-[10px] text-slate-500">Independent Director</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Internal Audit Council</div>
+                  <div class="text-[10px] text-blue-600 font-semibold">100% Compliance Score</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Compliant
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 5: Bangladesh Bank Remittance Audit -->
+              <tr onclick="selectReport('DOC-BBK-05', this)"
+                class="report-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-type="Banking" data-search="bangladesh bank foreign exchange remittance fepd farhana yasmin">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-extrabold flex items-center justify-center text-xs">
+                      BB
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">BB Foreign Exchange Remittance</div>
+                      <div class="text-[10px] text-slate-500 font-mono">DOC-BBK-05 • Motijheel HQ</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Bangladesh Bank (Central Bank)</div>
+                  <div class="text-[10px] text-slate-500">Foreign Exchange Policy Dept</div>
+                </td>
+                <td class="py-2.5 px-3 font-mono text-slate-700">FY 2025-26</td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Farhana Yasmin</div>
+                  <div class="text-[10px] text-slate-500">Treasury Lead</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">S. F. Ahmed & Co</div>
+                  <div class="text-[10px] text-emerald-600 font-semibold">Clean Inward Certified</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Approved
+                  </span>
+                </td>
+              </tr>
+
+              <!-- Row 6: BLA Welfare & PF Trust -->
+              <tr onclick="selectReport('DOC-BLA-06', this)"
+                class="report-row hover:bg-slate-50/80 cursor-pointer transition-colors duration-150"
+                data-type="Banking" data-search="bangladesh labor act bla dife welfare provident fund rafiqul hasan">
+                <td class="py-2.5 px-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-orange-100 text-orange-700 font-extrabold flex items-center justify-center text-xs">
+                      BL
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">BLA Annual Welfare & PF Filing</div>
+                      <div class="text-[10px] text-slate-500 font-mono">DOC-BLA-06 • DIFE Dhaka</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">DIFE (Factory Inspection)</div>
+                  <div class="text-[10px] text-slate-500">Ministry of Labour & Employment</div>
+                </td>
+                <td class="py-2.5 px-3 font-mono text-slate-700">FY 2025-26</td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Md. Rafiqul Hasan</div>
+                  <div class="text-[10px] text-slate-500">Savar Plant Lead</div>
+                </td>
+                <td class="py-2.5 px-3">
+                  <div class="font-medium text-slate-800">Audited Board of Trustees</div>
+                  <div class="text-[10px] text-emerald-600 font-semibold">100% Funded Trust</div>
+                </td>
+                <td class="py-2.5 px-3 text-center">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Clean Certified
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer -->
+        <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
+          <div class="flex items-center gap-2 text-slate-500 text-[11px]">
+            <span>Showing <strong class="text-slate-800" id="showingCount">6</strong> of 6 Core Statutory Filings</span>
+            <span class="text-slate-300">•</span>
+            <span>External Auditor Consensus: <strong class="text-emerald-700">100% Unqualified Opinions</strong></span>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-400 text-[11px] cursor-not-allowed">Previous</button>
+            <button class="px-2.5 py-1 rounded-lg bg-cyan-600 text-white font-bold text-[11px]">1</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-400 text-[11px] cursor-not-allowed">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6: Live Reactive Audit Filing & Regulatory Docket (4 Columns) -->
+      <div class="lg:col-span-4 executive-card rounded-2xl p-4 flex flex-col relative overflow-hidden">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-900 tracking-tight">Live Regulatory Docket</h3>
+              <p class="text-[10px] text-slate-500 font-medium">Reactive Compliance Hash & Auditor Stamp</p>
+            </div>
+          </div>
+          <span id="docketLiveBadge"
+            class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Legally Certified
+          </span>
+        </div>
+
+        <!-- Docket Main Body -->
+        <div class="space-y-3.5 text-xs">
+
+          <!-- Filing Header Profile -->
+          <div class="p-3 rounded-xl bg-slate-50/80 border border-slate-200/70 flex items-start justify-between">
+            <div class="flex items-center gap-2.5">
+              <div id="docketAvatar"
+                class="w-10 h-10 rounded-xl bg-cyan-600 text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
+                TX
+              </div>
+              <div>
+                <h4 id="docketDocName" class="text-sm font-extrabold text-slate-900 leading-tight">Corporate Income Tax
+                  Return (IT-11GA)</h4>
+                <p id="docketAuthority" class="text-[10px] text-slate-500 mt-0.5 font-medium">National Board of Revenue
+                  • LTU Circle 42</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span id="docketFiscalBadge"
+                    class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-cyan-100 text-cyan-700 font-mono">FY
+                    2025-26</span>
+                  <span id="docketRefBadge"
+                    class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-mono">DOC-NBR-01</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Assurance</span>
+              <span id="docketAssurance" class="text-base font-black text-emerald-600">Clean</span>
+            </div>
+          </div>
+
+          <!-- Auditor Stamp & Legal Identity -->
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70">
+              <p class="text-[10px] text-slate-500 font-medium">Statutory Chartered Auditor</p>
+              <p id="docketAuditor" class="text-xs font-bold text-slate-900 mt-0.5">Hoda Vasi Chowdhury & Co</p>
+              <p class="text-[9.5px] text-emerald-600 font-semibold mt-0.5">Deloitte Network Affiliate</p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/70 border border-slate-200/70">
+              <p class="text-[10px] text-slate-500 font-medium">Submission Timestamp</p>
+              <p id="docketSubmitDate" class="text-xs font-bold text-slate-900 font-mono mt-0.5">Nov 02, 2026 14:22</p>
+              <p class="text-[9.5px] text-cyan-700 font-semibold mt-0.5">e-Return System Acknowledged</p>
+            </div>
+          </div>
+
+          <!-- Digital Cryptographic Hash & Verification -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/70 space-y-1.5">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="font-bold text-slate-800">Digital Document Fingerprint</span>
+              <span class="text-[9.5px] font-mono text-emerald-700 font-bold">SHA-256 Validated</span>
+            </div>
+            <p id="docketHash"
+              class="font-mono text-[9px] text-slate-500 break-all p-2 rounded-lg bg-slate-100/90 border border-slate-200/60 leading-tight">
+              a7f9c8b4e2d1908475c2e1f40982bb76401928374a5e6d012398471bcefa0192
+            </p>
+            <div class="flex items-center justify-between text-[10px] text-slate-500 pt-1">
+              <span>NBR Token: <strong class="text-slate-800 font-mono">NBR-LTU-2026-99214</strong></span>
+              <span class="text-emerald-700 font-bold">Challan Reconciled</span>
+            </div>
+          </div>
+
+          <!-- Submitting Corporate Officer -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/70">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-[10.5px] font-bold text-slate-800">Authorized Submitting Officer</span>
+              <span class="text-[9.5px] font-semibold text-cyan-600 font-mono">FCA Member No: 1482</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <div
+                class="w-7 h-7 rounded-full bg-cyan-100 text-cyan-700 font-bold flex items-center justify-center text-xs">
+                FS
+              </div>
+              <div class="flex-1">
+                <p id="docketOfficerName" class="font-bold text-slate-900 text-xs leading-none">Farzana Sultana, FCA
+                </p>
+                <p id="docketOfficerRole" class="text-[10px] text-slate-500 mt-0.5">Head of Finance & Tax • Principal
+                  Officer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Regulatory Compliance Notes -->
+          <div class="p-3 rounded-xl bg-cyan-50/60 border border-cyan-100">
+            <div class="flex items-center gap-1.5 text-cyan-900 font-bold text-[11px] mb-1">
+              <svg class="w-3.5 h-3.5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>Regulatory Compliance Findings:</span>
+            </div>
+            <p id="docketComplianceNote" class="text-[10.5px] text-slate-700 leading-relaxed">
+              Assessment completed without audit discrepancy. Advance tax credits (AIT) matched against Treasury
+              deposits. Next annual assessment scheduled for Nov 2027.
+            </p>
+          </div>
+
+          <!-- Quick Action Controls (Clean, Zero Heavy Print Buttons) -->
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="downloadOfficialAcknowledgment()"
+              class="w-full py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200/80 shadow-2xs transition">
+              Acknowledgment Slip
+            </button>
+            <button onclick="viewFullAuditWorkpapers()"
+              class="w-full py-2 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs shadow-xs transition">
+              Audit Workpapers
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATION COMPONENT
+       ========================================================================= -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- =========================================================================
+       CLIENT-SIDE REACTIVE INTERACTION JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    // 1. DATA REPOSITORY FOR STATUTORY FILINGS & REGULATORY DOCKET
+    const reportsDatabase = {
+      'DOC-NBR-01': {
+        avatar: 'TX',
+        name: 'Corporate Income Tax Return (IT-11GA)',
+        authority: 'National Board of Revenue • LTU Circle 42',
+        fiscal: 'FY 2025-26',
+        ref: 'DOC-NBR-01',
+        assurance: 'Clean',
+        auditor: 'Hoda Vasi Chowdhury & Co',
+        submitDate: 'Nov 02, 2026 14:22',
+        hash: 'a7f9c8b4e2d1908475c2e1f40982bb76401928374a5e6d012398471bcefa0192',
+        officerName: 'Farzana Sultana, FCA',
+        officerRole: 'Head of Finance & Tax • Principal Officer',
+        complianceNote: 'Assessment completed without audit discrepancy. Advance tax credits (AIT) matched against Treasury deposits. Next annual assessment scheduled for Nov 2027.'
+      },
+      'DOC-VAT-02': {
+        avatar: 'VT',
+        name: 'Mushak-9.1 Monthly VAT & VDS Consolidation',
+        authority: 'Customs, Excise & VAT • Dhaka West Commissionerate',
+        fiscal: 'Oct 2026',
+        ref: 'DOC-VAT-02',
+        assurance: 'Reconciled',
+        auditor: 'External VAT Audit Council',
+        submitDate: 'Nov 05, 2026 11:04',
+        hash: '3f8201bc894e771029481928374a5c6e7f80918237461928475619284756abc9',
+        officerName: 'Kazi Tanvir Ahmed',
+        officerRole: 'VP Operations & Commercial Compliance',
+        complianceNote: '100% Mushak-6.3 commercial invoice matches reconciled against automated monthly return. Zero penalties or overdue interest.'
+      },
+      'DOC-RJS-03': {
+        avatar: 'RJ',
+        name: 'RJSC Annual Form XII Statutory Filing',
+        authority: 'Registrar of Joint Stock Companies (RJSC) • Dhaka',
+        fiscal: 'FY 2025-26',
+        ref: 'DOC-RJS-03',
+        assurance: 'Approved',
+        auditor: 'Rahman Rahman Huq (KPMG Network)',
+        submitDate: 'Oct 28, 2026 16:45',
+        hash: '9182746501928475c2e1f40982bb76401928374a5e6d012398471bcefa019283',
+        officerName: 'Rafiqul Islam',
+        officerRole: 'Company Secretary & Corporate Counsel',
+        complianceNote: 'Annual general meeting minutes, Director roster update, and audited financial statements officially accepted and indexed into national corporate registry.'
+      },
+      'DOC-BSC-04': {
+        avatar: 'BS',
+        name: 'BSEC Corporate Governance Code Compliance',
+        authority: 'Securities & Exchange Commission • Corporate Finance',
+        fiscal: 'Q1 FY2026',
+        ref: 'DOC-BSC-04',
+        assurance: 'Compliant',
+        auditor: 'Internal Audit Oversight Council',
+        submitDate: 'Oct 31, 2026 10:18',
+        hash: 'e89201bc894e771029481928374a5c6e7f80918237461928475619284756ff41',
+        officerName: 'Salman F. Khan',
+        officerRole: 'Independent Director & Audit Committee Chair',
+        complianceNote: 'Audit committee independence requirements fully met. Board charter disclosures published according to BSEC notification.'
+      },
+      'DOC-BBK-05': {
+        avatar: 'BB',
+        name: 'BB Foreign Exchange Remittance & Trade Audit',
+        authority: 'Bangladesh Bank • Foreign Exchange Policy Dept',
+        fiscal: 'FY 2025-26',
+        ref: 'DOC-BBK-05',
+        assurance: 'Approved',
+        auditor: 'S. F. Ahmed & Co (Chartered Accountants)',
+        submitDate: 'Nov 04, 2026 15:30',
+        hash: '475619284756abc9a7f9c8b4e2d1908475c2e1f40982bb76401928374a5e6d01',
+        officerName: 'Farhana Yasmin',
+        officerRole: 'Treasury Lead & International Trade Officer',
+        complianceNote: 'Export proceeds realization certified within statutory 120-day window under Bangladesh Bank guidelines. Zero discrepancy.'
+      },
+      'DOC-BLA-06': {
+        avatar: 'BL',
+        name: 'BLA Annual Welfare & PF Trust Filing',
+        authority: 'DIFE (Department of Inspection for Factories & Estab.)',
+        fiscal: 'FY 2025-26',
+        ref: 'DOC-BLA-06',
+        assurance: 'Certified Clean',
+        auditor: 'Audited Board of Trustees',
+        submitDate: 'Oct 25, 2026 12:15',
+        hash: '1928374a5e6d012398471bcefa0192a7f9c8b4e2d1908475c2e1f40982bb7640',
+        officerName: 'Md. Rafiqul Hasan',
+        officerRole: 'Savar Plant Lead & Factory Welfare Officer',
+        complianceNote: 'Recognized Provident Fund trust audit confirmed 100% statutory match and annual dividend distribution under Bangladesh Labor Act 2006.'
+      }
+    };
+
+    // 2. REACTIVE REPORT SELECTION
+    function selectReport(reportId, rowElem) {
+      const rep = reportsDatabase[reportId];
+      if (!rep) return;
+
+      // Update table row styling
+      document.querySelectorAll('tr.report-row').forEach(r => r.classList.remove('report-row-selected'));
+      if (rowElem) {
+        rowElem.classList.add('report-row-selected');
+      }
+
+      // Update Live Docket elements
+      document.getElementById('docketAvatar').innerText = rep.avatar;
+      document.getElementById('docketDocName').innerText = rep.name;
+      document.getElementById('docketAuthority').innerText = rep.authority;
+      document.getElementById('docketFiscalBadge').innerText = rep.fiscal;
+      document.getElementById('docketRefBadge').innerText = rep.ref;
+      document.getElementById('docketAssurance').innerText = rep.assurance;
+      document.getElementById('docketAuditor').innerText = rep.auditor;
+      document.getElementById('docketSubmitDate').innerText = rep.submitDate;
+      document.getElementById('docketHash').innerText = rep.hash;
+      document.getElementById('docketOfficerName').innerText = rep.officerName;
+      document.getElementById('docketOfficerRole').innerText = rep.officerRole;
+      document.getElementById('docketComplianceNote').innerText = rep.complianceNote;
+
+      showToast(`Selected ${rep.name} — Regulatory Docket updated.`);
+    }
+
+    // 3. TABLE FILTERING BY TABS
+    function filterReportByTab(tab) {
+      const tabs = ['all', 'Tax', 'Corporate', 'Banking'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        if (!btn) return;
+        if (t === tab) {
+          btn.className = 'px-2.5 py-1 rounded-lg bg-white text-cyan-700 shadow-2xs font-bold transition';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-lg hover:text-slate-900 transition text-slate-600';
+        }
+      });
+
+      const rows = document.querySelectorAll('#reportsTableBody tr.report-row');
+      let visibleCount = 0;
+      rows.forEach(r => {
+        const type = r.getAttribute('data-type');
+        if (tab === 'all' || type === tab) {
+          r.style.display = '';
+          visibleCount++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      document.getElementById('showingCount').innerText = visibleCount;
+    }
+
+    // 4. CLIENT-SIDE SEARCH
+    function filterReportTable() {
+      const q = document.getElementById('reportSearchInput').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#reportsTableBody tr.report-row');
+      let visibleCount = 0;
+      rows.forEach(r => {
+        const searchData = r.getAttribute('data-search') || '';
+        if (searchData.includes(q)) {
+          r.style.display = '';
+          visibleCount++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      document.getElementById('showingCount').innerText = visibleCount;
+    }
+
+    // Keyboard shortcut for search (⌘K / Ctrl+K)
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('reportSearchInput');
+        if (searchInput) searchInput.focus();
+      }
+    });
+
+    // 5. DATE RANGE PICKER DROPDOWN
+    function toggleDateMenu() {
+      const menu = document.getElementById('dateMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function setDateRange(label) {
+      document.getElementById('dateRangeLabel').innerText = label;
+      document.getElementById('dateMenu').classList.add('hidden');
+      showToast(`Date range switched to: ${label}`);
+    }
+
+    window.addEventListener('click', (e) => {
+      const btn = document.getElementById('dateRangeBtn');
+      const menu = document.getElementById('dateMenu');
+      if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // 6. ACTION HANDLERS
+    function exportConsolidatedReport() {
+      showToast('Generating Consolidated Financial Ratio & Audit Compliance Packet (Excel / PDF)...');
+    }
+
+    function downloadOfficialAcknowledgment() {
+      showToast('Downloading verified regulatory acknowledgment receipt with SHA-256 stamp...');
+    }
+
+    function viewFullAuditWorkpapers() {
+      showToast('Opening External Chartered Auditor Working Papers & Reconciliation Schedules...');
+    }
+
+    // 7. TOAST NOTIFICATION SYSTEM
+    function showToast(msg) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-2.5 rounded-xl bg-slate-900/90 text-white text-xs font-semibold shadow-lg backdrop-blur-md flex items-center gap-2 transform transition-all duration-300 translate-y-3 opacity-0 pointer-events-auto border border-white/10';
+      toast.innerHTML = `
+        <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>${msg}</span>
+      `;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-3', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-3', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+  </script>
+
+</body>
+
+</html>
+

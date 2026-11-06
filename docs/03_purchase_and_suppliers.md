@@ -4,27 +4,25 @@
 > **Accent Theme:** Amber / Bronze (`#d97706`), Royal Blue (`#2563eb`), Royal Purple (`#7c3aed`), Emerald (`#059669`)  
 > **Parent Navigation:** `erp_cover_page.html` (Executive Portal)  
 > **Container Width:** Full Width (`max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8` matching `erp_cover_page.html`)  
-> **Grid Architecture:** Unified 1/3 vs 2/3 Grid Split — **Left Columns: 4 cols (`lg:col-span-4`)** | **Right Columns: 8 cols (`lg:col-span-8`)**  
-> **Contextual Watermark Art:** Procurement Delivery Truck / Purchase Order Clipboard / Vendor Verification Stamp  
-> **Status:** Locked & Approved (Consistent with `finance_module.html` 4-Col/8-Col Architecture)
+> **Design Persona:** Strategic SCM Sourcing, Budget Variance Control & Inward Cargo Tracking  
+> **Status:** Locked & Approved (Distinct Layout & Specialized Procurement Graphs: Spend Horizon Stacked Bar, Lifecycle Lead-Time Pipeline, Quality SLA Scorecard & Live Inward GRN Docket)
 
 ---
 
-## 1. Architectural Philosophy & Full-Width Rules
+## 1. Architectural Philosophy & Distinct Procurement DNA
 
-1. **Full-Width Canvas Consistency:**
-   - Matches the exact master viewport width of `erp_cover_page.html`: `max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8`.
-   - Translucent frosted glass cards against `assets/erp_bg.jpg` with ambient aurora light pools.
-2. **Unified 4-Col (Left) / 8-Col (Right) Architectural Grid:**
-   - All 3 body rows feature a continuous, aligned vertical division line:
-     - **Left Column (`lg:col-span-4` / 33.3% width):** Spend velocity dual-bar chart, AP outflow stream, spend category donut, and supplier quality scorecard.
-     - **Right Column (`lg:col-span-8` / 66.7% width):** Expansive procurement lifecycle stage, 6-category cost center grid, and 9-column Audited Purchase Orders Hub.
-3. **Colorful Executive KPI Cards (Cover Page DNA):**
-   - Top 4 KPI cards feature high-saturation matte colors identical to `erp_cover_page.html`: Royal Blue (`#2563eb`), Royal Purple (`#7c3aed`), Emerald Green (`#059669`), and Sunset Orange (`#ea580c`).
-4. **Row 3 Perfect Height Balance:**
-   - In the left 4-column space, **Spend by Category** (Card 5A) and **Supplier Quality & SLA Compliance** (Card 5B) stack vertically (`flex flex-col gap-3.5`), matching the exact height of the PO Master Table (Card 6) on the right.
-5. **No Cluttered In-Page Tabs:**
-   - Submodule navigation (PR, RFQ, GRN, Vendor Master) is deferred to the future Global Application Sidebar. The page remains focused on executive procurement monitoring and audited PO execution.
+Unlike Finance or Sales, **Purchase & Suppliers** is designed specifically around procurement budget control, vendor lead times, and inward goods logistics:
+
+1. **Distinctive 3-Row Layout Structure:**
+   - **Row 1 (7 cols + 5 cols):** Procurement Spend Horizon & Lifecycle Pipeline
+     - **Left (7 cols):** Procurement Spend Horizon & Multi-Category Stacked Bar Chart with upper Budget Ceiling line (`৳ 2.50 Cr`) and monthly variance.
+     - **Right (5 cols):** Procurement Lifecycle & Lead-Time Pipeline (5-stage execution flow with cycle turnaround metrics).
+   - **Row 2 (4 cols + 8 cols):** Vendor Governance & Major Sourcing Verticals
+     - **Left (4 cols):** Supplier SLA & Quality Compliance Scorecard (Non-overlapping progress telemetry: On-time SLA 98.2%, QC Pass 98.6%, Price Index 94.1%, NBR Tax 100%).
+     - **Right (8 cols):** Strategic Spend Categories & Major Sourcing 2x2 Frosted Grid (Raw Polymers, Plant Machinery, Utilities & Energy, Packaging & Freight).
+   - **Row 3 (8 cols + 4 cols):** Master-Detail Purchase Orders & Inward Shipment Hub
+     - **Left (8 cols):** Audited Purchase Orders (PO) Hub Table (Filter tabs: All, Approved, Pending Sign-off, In Transit; live multi-term search `⌘K`).
+     - **Right (4 cols):** Live Purchase Order & Inward Shipment Docket (Master-detail inspector: clicking any PO in the table immediately updates the docket with PO details, ISO 9001 test seal, and live cargo GPS/truck tracker with progress bar).
 
 ---
 
@@ -33,164 +31,69 @@
 - **Sticky Frosted Container:** `bg-white/65 backdrop-blur-md border-b border-white/50 sticky top-0 z-30 shadow-2xs`.
 - **Width:** `max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 relative z-10`.
 - **Left Navigation & Branding:**
-  - Back Button: `← Executive Portal` (`a href="erp_cover_page.html"` with hover pill effect).
+  - Back Button: `← Executive Portal` (`a href="erp_cover_page.html"`).
   - Vertical Separator: `h-5 w-px bg-slate-300/60`.
-  - Icon & Title: Amber rounded icon badge + `Purchase & Suppliers` (h1, bold, tracking-tight).
-  - Breadcrumbs: `Inceptia ERP / Procurement & SCM / Purchase Orders, Vendors & AP Stream`.
+  - Icon & Title: Amber Procurement Icon badge + `Purchase & Suppliers` (h1, bold, tracking-tight).
+  - Breadcrumbs: `Inceptia ERP / Procurement & SCM / Purchase Orders, Vendor Relations & Inward Goods`.
 - **Right Quick Controls:**
   - **Quick Search Input:** Rounded pill with search icon and `⌘K` keyboard badge (`oninput="filterPOTable()"`).
-  - **Date Range Selector Dropdown:** Rounded pill showing `Nov 1 – Nov 30, 2026` with popup options (`Today`, `This Week`, `This Month`, `Q2 FY2026`).
-  - **Export Button:** Clean outline button with download icon and `Export` label (`exportPurchaseReport()`).
+  - **Date Range Selector Dropdown:** Rounded pill showing `Nov 1 – Nov 30, 2026`.
+  - **Export Button:** Clean outline button with download icon (`exportPurchaseReport()`).
 
 ---
 
-## 3. Top 4 Procurement KPI Pillar Cards (Colorful Matte Glass)
+## 3. Top 4 Procurement KPI Pillar Cards
 
-Styled identically to the master executive group dashboard `erp_cover_page.html`:
-
-| KPI Metric | Value | Baseline / Comparison | Badge Indicator | Background Styling |
+| KPI Metric | Value | Baseline / Comparison | Badge Indicator | Visual Detail |
 | :--- | :--- | :--- | :--- | :--- |
-| **Total Spend This Month** | `৳ 2.14 Cr` | Budget: ৳ 2.50 Cr (85.6% Utilized) | `Controlled` | Solid Matte Royal Blue (`#2563eb/90`) |
-| **Pending PO Approvals** | `৳ 32.50 L` | 4 High-Value POs awaiting MD sign-off | `Action Req.` | Solid Matte Royal Purple (`#7c3aed/90`) |
-| **Goods Inward (GRN In-Transit)**| `6 Shipments`| Chittagong Port & Tejgaon Hub Depot | `In Transit` | Solid Matte Emerald Green (`#059669/90`) |
-| **Active Verified Suppliers** | `142 Vendors`| 98.2% On-time delivery rating | `Top Tier: 18` | Solid Matte Sunset Orange (`#ea580c/90`) |
+| **Total Spend This Month** | `৳ 2.14 Cr` | Budget: ৳ 2.50 Cr (85.6% Utilized) | `Controlled` | Savings: ৳ 36.0 L |
+| **Pending PO Approvals** | `৳ 32.50 L` | 4 High-Value POs awaiting MD sign-off | `Action Req.` | Avg Sign-off: 2.1 Days |
+| **Goods Inward (GRN In-Transit)**| `6 Shipments`| Chittagong Port & Tejgaon Hub Depots | `In Transit` | QC Pass: 98.6% |
+| **Active Verified Suppliers** | `142 Vendors`| 98.2% On-time delivery rating | `Top Tier: 18` | Compliance: 100% |
 
 ---
 
-## 4. 3-Row 4-Col (Left) / 8-Col (Right) Cards Layout
+## 4. Distinct Row-by-Row Layout Specifications
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────────┐
-│ ROW 1: SPEND VELOCITY & PROCUREMENT LIFECYCLE STAGE                                          │
-├───────────────────────────────────────────────┬──────────────────────────────────────────────┤
-│ CARD 1: Spend Velocity (4 cols)               │ CARD 2: Procurement Lifecycle & Lead Time (8)│
-│ • 6-Month Budget vs Actual Spend Dual-Bar     │ • [GRAPH] Multi-Stage Procurement Flow       │
-│ • Budget Variance Spline Overlay              │ • Indents/PR (3.40 Cr) → RFQ Quotes (2.80 Cr)│
-│ • Compact Telemetry Widget (500x180)          │   → Approved PO (2.14 Cr) → GRN (1.82 Cr)    │
-│ • Range Toggles (6M / YTD / FY26)             │   → Disbursed AP Payments (1.64 Cr)          │
-│                                               │ • Expansive Stage Width (740x175)            │
-├───────────────────────────────────────────────┴──────────────────────────────────────────────┤
-│ ROW 2: AP PAYABLES STREAM & COST CENTER ALLOCATION                                           │
-├───────────────────────────────────────────────┬──────────────────────────────────────────────┤
-│ CARD 3: AP Outflow & Cash Runway (4 cols)     │ CARD 4: Cost Center & Vendor Allocation (8)  │
-│ • Outflow Realized (+৳ 1.64 Cr) vs Due        │ • 6 Procurement Micro-Cards (3 cols x 2 rows)│
-│ • Days Payable Outstanding (DPO): 42 Days     │ • Raw Materials, Plant Machinery, Fuel,      │
-│ • Top 4 Vendor Payment Channels (L/C, RTGS)   │   IT Systems, Logistics, Packaging Materials │
-│ • Tight, Snug Column Fit                      │ • Budget vs Utilized Progress Bars & Badges  │
-├───────────────────────────────────────────────┴──────────────────────────────────────────────┤
-│ ROW 3: SPEND DISTRIBUTION, SUPPLIER QUALITY & AUDITED PO HUB                                 │
-├───────────────────────────────────────────────┬──────────────────────────────────────────────┤
-│ LEFT STACK (4 cols): 2 Paired Cards           │ RIGHT COLUMN (8 cols): PO MASTER HUB         │
-│                                               │                                              │
-│ • CARD 5A: Spend Distribution by Category     │ CARD 6: Audited Purchase Orders (PO) Hub     │
-│   Segmented SVG Donut Graph & Legend          │ • Expansive 9-Column Data Table with 6 Rows  │
-│   Raw Materials 52.4%, Machinery 22.1%,       │ • Filter Tabs: All (142), Approved, Pending  │
-│   Fuel 14.2%, Admin/IT 11.3%                  │ • Live Search, Vendor Filter & Pagination    │
-│                                               │ • Live Procurement Summary Bar:              │
-│ • CARD 5B: Supplier Quality & SLA Compliance  │   Committed POs = Realized GRN + In-Transit  │
-│   On-time (98.2%), QC Reject (1.4%),          │ • Action Controls: View PO Details Modal,    │
-│   Top Tier: 18, Audit Certified: 100%         │   Approve Sign-off, Download PO Slip         │
-└───────────────────────────────────────────────┴──────────────────────────────────────────────┘
+│ ROW 1: PROCUREMENT SPEND HORIZON & LIFECYCLE PIPELINE (7 cols + 5 cols)                      │
+├───────────────────────────────────────────────────────────────┬──────────────────────────────┤
+│ CARD 1: Procurement Spend Horizon & Budget Ceiling (7 cols)   │ CARD 2: Lifecycle Pipeline(5)│
+│ • Multi-Category Stacked Bar Chart (Jun to Nov)               │ • 5-Stage Execution Flow     │
+│ • Raw Materials (Amber) + CapEx (Blue) + Utilities (Teal)     │ • 1. Indents / PR (৳ 3.40 Cr)│
+│ • Upper Red Dashed Budget Ceiling Line (৳ 2.50 Cr)            │ • 2. Supplier Bids (৳ 2.80 Cr│
+│ • Nov Active Month Marker (-14.4% Savings Callout)            │ • 3. Approved PO (৳ 2.14 Cr) │
+│                                                               │ • 4. Goods Inward (৳ 1.82 Cr)│
+├───────────────────────────────────────────────────────────────┴──────────────────────────────┤
+│ ROW 2: VENDOR GOVERNANCE & STRATEGIC SPEND VERTICALS (4 cols + 8 cols)                       │
+├───────────────────────────────┬──────────────────────────────────────────────────────────────┤
+│ CARD 3: Supplier SLA (4 cols) │ CARD 4: Strategic Spend Categories 2x2 Grid (8 cols)         │
+│ • Non-overlapping Progress:   │ • Raw Polymers & Chemicals: ৳ 1.12 Cr (93.3% utilized)       │
+│   - On-time Delivery (98.2%)  │ • Plant Machinery & CapEx: ৳ 47.30 L (94.6% utilized)        │
+│   - QC Pass Rate (98.6%)      │ • Fuel, Energy & Generator: ৳ 30.40 L (86.8% utilized)       │
+│   - Price Benchmark (94.1%)   │ • Packaging & Logistics: ৳ 24.30 L (86.8% utilized)          │
+│   - NBR Tax Validated (100%)  │ • Clean Frosted Cards with Progress Meters & Top Suppliers   │
+├───────────────────────────────┴──────────────────────────────────────────────────────────────┤
+│ ROW 3: MASTER-DETAIL PURCHASE ORDERS & INWARD SHIPMENT HUB (8 cols + 4 cols)                 │
+├───────────────────────────────────────────────────────────────┬──────────────────────────────┤
+│ CARD 5: Audited Purchase Orders (PO) Hub (8 cols)             │ CARD 6: Live PO Docket (4)   │
+│ • Interactive 9-Column Master Table                           │ • Real-time reactive docket  │
+│ • Tabs: All (142), Approved (98), Pending (12), In-Transit(32)│ • Auto-updates on row click  │
+│ • Click any row to dynamically inspect details & cargo tracker│ • ISO 9001 Tested Seal       │
+│ • PO Date, Supplier, Cost Center, Items, VAT 7.5%, Total BDT  │ • Live Inward Cargo Tracker  │
+│                                                               │ • GPS Route & ETA Progress   │
+└───────────────────────────────────────────────────────────────┴──────────────────────────────┘
 ```
 
 ---
 
-## 5. Row-by-Row Detailed Card Specifications
+## 5. Live Reactive Master-Detail Workflow
 
-### 5.1 Row 1: Spend Velocity & Procurement Lifecycle Stage (4 cols + 8 cols)
-
-#### Card 1: Procurement Spend vs Budget Dual-Bar Graph
-- **Column Span:** `lg:col-span-4` (Left 1/3)
-- **Component Anatomy:**
-  - Header: Amber icon + "Procurement Spend Velocity" + Range pill (`6M`, `YTD`).
-  - Graph Area: Custom responsive SVG Dual-Bar Chart (`viewBox="0 0 500 180"`):
-    - Budget Ceiling Bar (Slate/Amber light `#fde68a`).
-    - Actual PO Spend Bar (Vibrant Amber `#d97706`).
-    - Budget Utilization Spline in Royal Blue (`#2563eb`).
-  - Footer Telemetry:
-    - Budget: `৳ 2.50 Cr` | PO Issued: `৳ 2.14 Cr` | Variance: `-14.4% (Favorable)`
-- **Contextual Watermark:** Procurement Scales / Spend Ledger Art.
-
-#### Card 2: Procurement Lifecycle & Lead Time Stage
-- **Column Span:** `lg:col-span-8` (Right 2/3)
-- **Component Anatomy:**
-  - Header: Flow icon + "Procurement Lifecycle & Lead Time Stage" + Lead Time Pill (`Avg Lead Time: 14 Days`).
-  - Graph Area: Expansive SVG Pipeline Waterfall / Stage Flow (`viewBox="0 0 740 175"`):
-    1. **Stage 1 (Purchase Requisitions / Indents):** `৳ 3.40 Cr` (48 Indents) — `slate-400`.
-    2. **Stage 2 (Supplier RFQs & Bids):** `৳ 2.80 Cr` (32 Quotations) — `blue-400`.
-    3. **Stage 3 (Approved Purchase Orders):** `৳ 2.14 Cr` (34 POs) — `amber-500`.
-    4. **Stage 4 (Goods Received Notes - GRN):** `৳ 1.82 Cr` (Inspected & Inward) — `emerald-500`.
-    5. **Stage 5 (Settled AP Payments):** `৳ 1.64 Cr` (Disbursed to Vendors) — `teal-600`.
-  - Micro-Summary: PO Conversion `76.4%` • Avg Price Savings `8.2%` • Pending QC `৳ 32.0 L`.
-- **Contextual Watermark:** Global Supply Chain Cargo Nodes.
-
----
-
-### 5.2 Row 2: AP Payables Stream & Cost Center Allocation (4 cols + 8 cols)
-
-#### Card 3: AP Outflow & Cash Runway Stream
-- **Column Span:** `lg:col-span-4` (Left 1/3)
-- **Component Anatomy:**
-  - Metric Header: `৳ 1.64 Cr` disbursed out of `৳ 2.14 Cr` committed.
-  - DPO Health Meter: **42 Days** (Target: 45 Days — `Optimal` green badge).
-  - Outflow Mechanism Breakdown:
-    - Import Letters of Credit (L/C): `৳ 94.5 L` (57.6%)
-    - Bank RTGS Vendor Settlement: `৳ 52.1 L` (31.8%)
-    - Pay Order / Account Cheques: `৳ 14.2 L` (8.7%)
-    - Petty Cash / Local Purchases: `৳ 3.2 L` (1.9%)
-- **Contextual Watermark:** Treasury Cash Register / Delivery Truck.
-
-#### Card 4: Cost Center & Vendor Category Allocation
-- **Column Span:** `lg:col-span-8` (Right 2/3)
-- **Component Anatomy:**
-  - 3-Column x 2-Row Micro-Card Grid of the 6 core procurement centers:
-    1. **Raw Materials & Polymers:** Budget ৳ 1.20 Cr | Spend: ৳ 1.12 Cr (93.3%) • Badge: `Optimal`
-    2. **Industrial Plant Machinery:** Budget ৳ 50.0 L | Spend: ৳ 47.3 L (94.6%) • Badge: `CapEx Cap`
-    3. **Fuel, Energy & Utilities:** Budget ৳ 35.0 L | Spend: ৳ 30.4 L (86.8%) • Badge: `Controlled`
-    4. **Packaging Materials:** Budget ৳ 22.0 L | Spend: ৳ 18.2 L (82.7%) • Badge: `Favorable`
-    5. **IT Infrastructure & Cloud Licenses:** Budget ৳ 15.0 L | Spend: ৳ 12.1 L (80.6%) • Badge: `On Budget`
-    6. **Logistics & Freight Forwarding:** Budget ৳ 8.0 L | Spend: ৳ 6.8 L (85.0%) • Badge: `On Track`
-- **Contextual Watermark:** Factory Cost Center Matrix.
-
----
-
-### 5.3 Row 3: Spend Distribution, Supplier Quality & Audited PO Hub (4 cols + 8 cols)
-
-#### Card 5A: Spend Distribution by Category (Left Stack - Top)
-- **Column Span:** Part of `lg:col-span-4` (Stacked above Card 5B)
-- **Component Anatomy:**
-  - SVG Segmented Donut Chart (`viewBox="0 0 160 160"`):
-    - Raw Materials & Polymers: `52.4%` (Amber `#d97706`)
-    - Capital Machinery & Parts: `22.1%` (Blue `#2563eb`)
-    - Fuel, Energy & Generator: `14.2%` (Purple `#7c3aed`)
-    - Admin, IT & Packaging: `11.3%` (Emerald `#059669`)
-  - Center Donut Label: `৳ 2.14 Cr Total`
-  - 2-Column Legend with BDT values and percentage badges.
-
-#### Card 5B: Supplier Quality & SLA Compliance Scorecard (Left Stack - Bottom)
-- **Column Span:** Part of `lg:col-span-4` (Stacked below Card 5A to match Card 6 height)
-- **Component Anatomy:**
-  - 4 Vendor Quality Telemetry Bars:
-    - **On-Time Delivery SLA:** `98.2%` (Target >95%) — `emerald-500`
-    - **QC Inspection Pass Rate:** `98.6%` (Rejection: 1.4%) — `emerald-500`
-    - **Price Competitiveness Index:** `94.1%` — `blue-500`
-    - **High-Risk Vendor Watchlist:** `2 Vendors` — `rose-500`
-  - Supplier Compliance Badge: `100% Tax & Trade License Validated`.
-
-#### Card 6: Audited Purchase Orders (PO) Hub (Right Column)
-- **Column Span:** `lg:col-span-8` (Right 2/3)
-- **Component Anatomy:**
-  - Header: Tab filters (`All POs (142)`, `Approved (98)`, `Pending Sign-off (12)`, `Inward GRN (32)`) + Search.
-  - Expansive 9-Column Interactive Table:
-    1. **PO Date:** `06 Nov 2026`
-    2. **PO #:** `PO-2026-0814` (monospace bold link)
-    3. **Vendor / Supplier Name:** Bengal Polychem Industries PLC
-    4. **Cost Center / Department:** Production / Raw Materials
-    5. **Item Summary:** HDPE Granules (Grade A - 20 Tons)
-    6. **Tax / VAT 7.5% (৳):** `1,35,000`
-    7. **Total BDT (৳):** `19,35,000`
-    8. **Status:** `Approved` (Emerald) / `Pending Sign-off` (Amber) / `In-Transit` (Blue)
-    9. **Action:** View PO Slip, Approve, Track GRN
-  - Balanced Reconciliation Summary Footer:
-    - Total Committed POs: `৳ 2,14,00,000` = Realized GRN `৳ 1,81,50,000` + In-Transit `৳ 32,50,000`.
-- **Contextual Watermark:** Audited Purchase Order Stamp.
+- **Click Any PO to Inspect:** Clicking any row in the table (`.po-row-active`) immediately transitions the right-hand docket to display:
+  - Purchase order number & issued date
+  - Supplier corporate name, trade license, and banking details
+  - Specific item specifications and quantities
+  - Quality certification seal (`ISO 9001 Passed`)
+  - Live Inward Logistics Tracker (Destination depot, transport carrier truck ID, and animated ETA progress bar).
+- **Clean Layout:** No clutter, zero overlapping text or needle lines, and no redundant buttons.

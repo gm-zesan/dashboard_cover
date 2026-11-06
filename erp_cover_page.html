@@ -237,6 +237,15 @@
             </svg>
           </div>
 
+          <!-- Sign Out Link -->
+          <a href="login.html" title="Sign Out of Session"
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 border border-slate-200/90 hover:border-rose-200 shadow-2xs transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            </svg>
+          </a>
+
 
 
         </div>
@@ -2635,6 +2644,48 @@
         }, 400);
         return;
       }
+      if (mod && (mod.includes('Purchase') || mod.includes('Supplier') || mod.includes('Procurement'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'purchase_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('Inventory') || mod.includes('Warehouse') || mod.includes('Stock'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'inventory_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('CRM') || mod.includes('Customer') || mod.includes('Lead') || mod.includes('Pipeline'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'crm_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('HR') || mod.includes('Human Resources') || mod.includes('Payroll') || mod.includes('Employee') || mod.includes('Attendance'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'hr_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('Project') || mod.includes('Milestone') || mod.includes('Gantt') || mod.includes('Task'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'projects_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('Report') || mod.includes('Analytics') || mod.includes('BI') || mod.includes('Executive'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'reports_module.html';
+        }, 400);
+        return;
+      }
       showToast(`Navigating to ${title} (${mod})...`);
     }
 
@@ -2653,7 +2704,49 @@
         }, 400);
         return;
       }
-      showToast(`Initiating ${action} in ${mod}...`);
+      if (mod && (mod.includes('Purchase') || mod.includes('Supplier') || mod.includes('Procurement'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'purchase_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('Inventory') || mod.includes('Warehouse') || mod.includes('Stock'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'inventory_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('CRM') || mod.includes('Customer') || mod.includes('Lead') || mod.includes('Pipeline'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'crm_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('HR') || mod.includes('Human Resources') || mod.includes('Payroll') || mod.includes('Employee') || mod.includes('Attendance'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'hr_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('Project') || mod.includes('Milestone') || mod.includes('Gantt') || mod.includes('Task'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'projects_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('Report') || mod.includes('Analytics') || mod.includes('BI') || mod.includes('Executive'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'reports_module.html';
+        }, 400);
+        return;
+      }
+      showToast(`Opening ${action} in ${mod}...`);
     }
 
     // 9. TOAST SYSTEM

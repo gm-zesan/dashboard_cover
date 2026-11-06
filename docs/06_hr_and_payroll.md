@@ -4,9 +4,9 @@
 > **Accent Theme:** Rose (`#e11d48`), Royal Blue (`#2563eb`), Royal Purple (`#7c3aed`), Sunset Orange (`#ea580c`)  
 > **Parent Navigation:** `erp_cover_page.html` (Executive Portal)  
 > **Container Width:** Full Width (`max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8` matching `erp_cover_page.html`)  
-> **Grid Architecture:** Unified 1/3 vs 2/3 Grid Split — **Left Columns: 4 cols (`lg:col-span-4`)** | **Right Columns: 8 cols (`lg:col-span-8`)**  
+> **Grid Architecture:** Departmental Payroll Flow (7 cols) + Biometric Attendance Pulse (5 cols) | Statutory Compliance (5 cols) + Cost Centers 2x2 Matrix (7 cols) | Audited Salary Register (8 cols) + Reactive Digital Payslip Docket (4 cols)  
 > **Contextual Watermark Art:** Employee ID Silhouette / Payroll Currency Seal / Team Organizational Chart  
-> **Status:** Locked & Approved (Consistent with `finance_module.html` 4-Col/8-Col Architecture)
+> **Status:** Locked & Live (`hr_module.html` verified & synchronized)
 
 ---
 
@@ -15,181 +15,96 @@
 1. **Full-Width Canvas Consistency:**
    - Matches the exact master viewport width of `erp_cover_page.html`: `max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8`.
    - Translucent frosted glass cards against `assets/erp_bg.jpg` with ambient aurora light pools.
-2. **Unified 4-Col (Left) / 8-Col (Right) Architectural Grid:**
-   - All 3 body rows feature a continuous, aligned vertical division line:
-     - **Left Column (`lg:col-span-4` / 33.3% width):** Payroll expense dual-bar chart, statutory benefits liquidity stream, department headcount donut, and NBR tax compliance scorecard.
-     - **Right Column (`lg:col-span-8` / 66.7% width):** Expansive departmental attendance stage, 6-department cost center grid, and 9-column Salary Register Hub.
+2. **Domain-Specific Visual Instruments (Zero Formulaic Cloning):**
+   - **Row 1 (7 cols + 5 cols):** Departmental Payroll Weight & Headcount Flow (custom dual comparative horizontal bars in Rose & Lavender) + Biometric Attendance Pulse Donut (concentric multi-segment SVG donut with hollow centered metric and live terminal telemetry).
+   - **Row 2 (5 cols + 7 cols):** Statutory NBR Tax, PF Trust & Gratuity Status (Challan TR-6 progress, PF match, actuarial reserve) + Cost Centers & Workforce Productivity 2x2 Matrix (Savar Plant, Software R&D, Commercial Sales, Shared Services).
+   - **Row 3 (8 cols + 4 cols):** Executive Salary Register & Disbursal Table + Live Reactive Employee Digital Payslip Docket (updates instantaneously on row click with full earnings/deductions breakdown, NBR TIN, and BEFTN trace).
 3. **Colorful Executive KPI Cards (Cover Page DNA):**
-   - Top 4 KPI cards feature high-saturation matte colors identical to `erp_cover_page.html`: Royal Blue (`#2563eb`), Royal Purple (`#7c3aed`), Emerald Green (`#059669`), and Sunset Orange (`#ea580c`).
-4. **Row 3 Perfect Height Balance:**
-   - In the left 4-column space, **Headcount by Department** (Card 5A) and **Tax & Statutory Compliance** (Card 5B) stack vertically (`flex flex-col gap-3.5`), matching the exact height of the Salary Register Table (Card 6) on the right.
+   - Top 4 KPI cards feature high-saturation matte colors: Solid Royal Blue (`#2563eb`), Solid Royal Purple (`#7c3aed`), Solid Emerald Green (`#059669`), and Solid Sunset Orange (`#ea580c`), each equipped with an integrated mini SVG circular progress ring.
+4. **Clean Borders & Zero Overlaps:**
+   - No colored `border-l-4` strips on micro-cards; all cards use clean uniform frosted borders (`border border-slate-200/80`).
+   - SVG charts use clean hollow text and zero needle or badge overlaps.
 5. **No Cluttered In-Page Tabs:**
-   - Submodule navigation (Leave management, Recruitment, Performance KPIs) is deferred to the future Global Application Sidebar.
+   - In-page submodule tabs removed; navigation handled seamlessly from the Executive Portal and future global sidebar.
 
 ---
 
 ## 2. Page Header & Navigation Bar
 
-- **Sticky Frosted Container:** `bg-white/65 backdrop-blur-md border-b border-white/50 sticky top-0 z-30 shadow-2xs`.
+- **Sticky Frosted Container:** `bg-white/75 backdrop-blur-md border-b border-white/60 sticky top-0 z-30 shadow-2xs`.
 - **Width:** `max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 relative z-10`.
 - **Left Navigation & Branding:**
   - Back Button: `← Executive Portal` (`a href="erp_cover_page.html"` with hover pill effect).
   - Vertical Separator: `h-5 w-px bg-slate-300/60`.
   - Icon & Title: Rose rounded icon badge + `HR & Payroll` (h1, bold, tracking-tight).
-  - Breadcrumbs: `Inceptia ERP / Human Resources & Talent / Payroll Register & Workforce Telemetry`.
+  - Breadcrumbs: `Inceptia ERP / Workforce Telemetry, Salary Register & NBR Tax Compliance Hub`.
 - **Right Quick Controls:**
   - **Quick Search Input:** Rounded pill with search icon and `⌘K` keyboard badge (`oninput="filterPayrollTable()"`).
-  - **Date Range Selector Dropdown:** Rounded pill showing `Nov 1 – Nov 30, 2026` with popup options (`Today`, `This Week`, `This Month`, `Q2 FY2026`).
-  - **Export Button:** Clean outline button with download icon and `Export` label (`exportPayrollReport()`).
+  - **Date Range Selector Dropdown:** Rounded pill showing `Nov 1 – Nov 30, 2026` with popup options.
+  - **Export Button:** Clean outline button with download icon and `Export Salary Sheet` (`exportPayrollReport()`).
 
 ---
 
 ## 3. Top 4 HR & Payroll KPI Pillar Cards (Colorful Matte Glass)
 
-Styled identically to the master executive group dashboard `erp_cover_page.html`:
-
 | KPI Metric | Value | Baseline / Comparison | Badge Indicator | Background Styling |
 | :--- | :--- | :--- | :--- | :--- |
 | **Total Monthly Payroll** | `৳ 1.12 Cr` | Budget: ৳ 1.18 Cr (94.9% Disbursed) | `On Budget` | Solid Matte Royal Blue (`#2563eb/90`) |
-| **Total Enterprise Headcount**| `428 Staff` | 14 New hires joined this quarter | `▲ +3.4% QoQ` | Solid Matte Royal Purple (`#7c3aed/90`) |
-| **Daily Attendance Rate** | `96.4%` | 412 on duty today across all sites | `Optimal` | Solid Matte Emerald Green (`#059669/90`) |
-| **Open Job Requisitions** | `14 Positions`| Avg time-to-hire: 21 Days | `Talent Pipeline`| Solid Matte Sunset Orange (`#ea580c/90`) |
+| **Total Active Headcount**| `428 Staff` | Baseline: 414 Prior Qtr (+14 Net Hires) | `▲ +3.4% QoQ` | Solid Matte Royal Purple (`#7c3aed/90`) |
+| **Daily Attendance Rate** | `96.4%` | Present: 412 Staff across 3 sites | `Optimal Rate` | Solid Matte Emerald Green (`#059669/90`) |
+| **NBR Statutory Tax & PF** | `৳ 24.17 L` | 100% Withheld & Challan Deposited | `Audit Clean` | Solid Matte Sunset Orange (`#ea580c/90`) |
 
 ---
 
-## 4. 3-Row 4-Col (Left) / 8-Col (Right) Cards Layout
+## 4. 3-Row Grid Architecture
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────────┐
-│ ROW 1: PAYROLL EXPENSE & WORKFORCE ATTENDANCE STAGE                                          │
-├───────────────────────────────────────────────┬──────────────────────────────────────────────┤
-│ CARD 1: Payroll Expense Velocity (4 cols)     │ CARD 2: Departmental Workforce & Attendance  │
-│ • 6-Month Gross vs Net Payroll Dual-Bar Chart │ • [GRAPH] Workforce Allocation & Flow Stage  │
-│ • Headcount Velocity Spline (402 → 428 Staff) │ • Total Headcount (428 Staff / 96.4% Present)│
-│ • Compact Telemetry Widget (500x180)          │   → Production (180) → R&D (106)             │
-│ • Range Toggles (6M / YTD / FY26)             │   → Sales (78) → Finance & Admin (64)        │
-│                                               │ • Expansive Stage Width (740x175)            │
-├───────────────────────────────────────────────┴──────────────────────────────────────────────┤
-│ ROW 2: STATUTORY BENEFITS & DEPARTMENTAL COST CENTERS                                        │
-├───────────────────────────────────────────────┬──────────────────────────────────────────────┤
-│ CARD 3: Statutory Benefits & PF Liquidity (4) │ CARD 4: Departmental Cost Center Grid (8)    │
-│ • Net Disbursed: ৳ 1.02 Cr | PF: ৳ 14.8 L     │ • 6 Department Micro-Cards (3 cols x 2 rows):│
-│ • Gratuity Reserve: ৳ 38.2 L | Health Ins.    │ • Factory Ops, Engineering R&D, Sales Team,  │
-│ • BEFTN Salary Disbursement: 100% Cleared     │   SCM Logistics, Finance & Tax, HR & Admin   │
-│ • Tight, Snug Column Fit                      │ • Headcount vs Budget Progress Bars & Badges │
-├───────────────────────────────────────────────┴──────────────────────────────────────────────┤
-│ ROW 3: WORKFORCE DISTRIBUTION, TAX COMPLIANCE & AUDITED SALARY REGISTER                      │
-├───────────────────────────────────────────────┬──────────────────────────────────────────────┤
-│ LEFT STACK (4 cols): 2 Paired Cards           │ RIGHT COLUMN (8 cols): SALARY REGISTER HUB   │
-│                                               │                                              │
-│ • CARD 5A: Headcount by Department            │ CARD 6: Employee Payroll Disbursement Hub    │
-│   Segmented SVG Donut Graph & Legend          │ • Expansive 9-Column Data Table with 6 Rows  │
-│   Operations 42.1%, Engineering 24.8%,        │ • Filter Tabs: All (428), Disbursed, Hold    │
-│   Sales 18.2%, Finance & Admin 14.9%          │ • Live Search, Department Filter & Paging    │
-│                                               │ • Live Payroll Summary Bar:                  │
-│ • CARD 5B: Tax & Labor Law Compliance Watch   │   Gross Pay = Net Disbursed + TDS + PF Trust │
-│   TDS Deducted: 100%, PF Trust Audited: Clean,│ • Action Controls: View Payslip PDF Modal,   │
-│   Overtime Audited: Within Legal Limit        │   Bank Advice Sheet, Issue Salary Certificate│
-└───────────────────────────────────────────────┴──────────────────────────────────────────────┘
+│ ROW 1: DEPARTMENTAL PAYROLL FLOW (7 cols) & BIOMETRIC ATTENDANCE DONUT (5 cols)              │
+├───────────────────────────────────────────────────────────────┬──────────────────────────────┤
+│ CARD 1: Departmental Headcount & Payroll Disbursal Flow (7)   │ CARD 2: Daily Biometric Shift│
+│ • 5 Operating Divisions:                                      │   Pulse Donut (5 cols)       │
+│   1. Engineering & Tech: 114 Staff | ৳ 38.50 L (34.4%)        │ • Multi-Segment SVG Donut:   │
+│   2. Factory Ops & Depot: 162 Staff | ৳ 32.80 L (29.3%)       │   - Present & On Duty: 412   │
+│   3. Commercial Sales: 64 Staff | ৳ 21.40 L (19.1%)           │   - Approved Leave: 10       │
+│   4. Finance & Accounts: 48 Staff | ৳ 11.20 L (10.0%)         │   - Official Tour / Field: 4 │
+│   5. HR & Governance: 40 Staff | ৳ 8.10 L (7.2%)              │   - Unexcused Absence: 2     │
+│ • Dual comparative horizontal bars (Headcount vs Salary Cost) │ • Terminal telemetry: Tejgaon│
+│                                                               │   Savar, Chittagong Port     │
+├───────────────────────────────────────────────────────────────┴──────────────────────────────┤
+│ ROW 2: STATUTORY COMPLIANCE (5 cols) & COST CENTERS 2x2 MATRIX (7 cols)                       │
+├───────────────────────────────────────────────────────────────┬──────────────────────────────┤
+│ CARD 3: Statutory NBR Tax, PF & Gratuity Status (5 cols)      │ CARD 4: Cost Centers & Labor │
+│ • NBR Salary Withholding Tax (Section 50): ৳ 14.85 L (Challan)│   Productivity Matrix (7)    │
+│ • Recognized PF Trust (8.33% match): ৳ 9.32 L (BRAC Trust)   │ • 2x2 Clean Frosted Grid:    │
+│ • Audited Gratuity Fund Reserve: ৳ 18.40 L (Actuarial)        │   1. Savar Factory Plant     │
+│ • BLA Compliance Score: 99.8% Clean                           │   2. Software R&D Lab        │
+│                                                               │   3. Commercial Sales Unit   │
+│                                                               │   4. Shared Executive G&A    │
+├───────────────────────────────────────────────────────────────┴──────────────────────────────┤
+│ ROW 3: AUDITED SALARY REGISTER (8 cols) & LIVE DIGITAL PAYSLIP DOCKET (4 cols)               │
+├───────────────────────────────────────────────────────────────┬──────────────────────────────┤
+│ CARD 5: Executive Salary Register Ledger Table (8 cols)       │ CARD 6: Live Employee Digital│
+│ • 6 Audited Bangladesh Personnel (Tanvir, Farzana, Rafiqul...)│   Payslip Docket (4 cols)    │
+│ • Department Filters: All (428), Tech, Operations, Commercial │ • Reactive on Row Selection  │
+│ • Live Search on Staff Name, Code, Designation                │ • Full Earnings & Deductions │
+│ • Basic, Allowances, PF/AIT Deductions, Net Disbursed         │ • TIN, Tax Circle, BEFTN Ref │
+│ • Disbursal Status Pills (BEFTN Paid)                         │ • Annual Leave Telemetry     │
+└───────────────────────────────────────────────────────────────┴──────────────────────────────┘
 ```
 
 ---
 
-## 5. Row-by-Row Detailed Card Specifications
+## 5. Row-by-Row Component Anatomy
 
-### 5.1 Row 1: Payroll Velocity & Workforce Attendance Stage (4 cols + 8 cols)
+### 5.1 Row 1: Payroll Flow & Biometric Pulse
+- **Departmental Payroll & Headcount Flow (Card 1, 7 cols):** Custom SVG horizontal dual-bar chart mapping headcount volume and salary expenditure across 5 core corporate divisions.
+- **Biometric Attendance Pulse Donut (Card 2, 5 cols):** Precision SVG concentric donut chart with centered rate label (`96.4% ON DUTY`), real-time breakdown of on-duty staff, approved leaves, field duties, and multi-site terminal synchronization rates.
 
-#### Card 1: Payroll Expense Velocity Dual-Bar Graph
-- **Column Span:** `lg:col-span-4` (Left 1/3)
-- **Component Anatomy:**
-  - Header: Rose icon + "Payroll Expense Velocity" + Range pill (`6M`, `YTD`).
-  - Graph Area: Custom responsive SVG Dual-Bar Chart (`viewBox="0 0 500 180"`):
-    - Gross Salary Commitment Bar (Light Rose `#fecdd3`).
-    - Net Disbursed Salary Bar (Vibrant Rose `#e11d48`).
-    - Staff Headcount Growth Spline in Royal Blue (`#2563eb`).
-  - Footer Telemetry:
-    - Gross Commitment: `৳ 1.12 Cr` | Net Disbursed: `৳ 1.02 Cr` | Tax Withheld: `৳ 10.0 L`
-- **Contextual Watermark:** Payroll Vault & Coin Stacks Art.
+### 5.2 Row 2: Statutory Compliance & Cost Centers
+- **Statutory Tax & Gratuity Status (Card 3, 5 cols):** Real-time monitoring of Section 50 AIT tax deposit status (Challan TR-6), employer matching PF trust fund, and actuarial gratuity reserve under Bangladesh Labor Act.
+- **Cost Centers & Workforce Productivity (Card 4, 7 cols):** 4 clean frosted micro-cards tracking operating expenditure, overtime hours, retention rates, and revenue output per employee without left-border colored lines.
 
-#### Card 2: Departmental Workforce & Attendance Flow Stage
-- **Column Span:** `lg:col-span-8` (Right 2/3)
-- **Component Anatomy:**
-  - Header: Team icon + "Workforce Deployment & Live Attendance Stage" + Status Pill (`Present: 96.4%`).
-  - Graph Area: Expansive SVG Pipeline Waterfall / Stage Flow (`viewBox="0 0 740 175"`):
-    1. **Total Enterprise Headcount:** `428 Personnel` — `slate-400`.
-    2. **Plant Operations & Production:** `180 Personnel` (97.2% Attendance) — `rose-500`.
-    3. **Engineering & Software R&D:** `106 Personnel` (98.1% Attendance) — `blue-500`.
-    4. **Commercial Sales & Business Dev:** `78 Personnel` (94.8% Attendance) — `emerald-500`.
-    5. **Executive Finance & Administration:** `64 Personnel` (96.8% Attendance) — `purple-500`.
-  - Micro-Summary: On Approved Leave `12 Staff` • Business Travel `4 Staff` • Unexcused `0`.
-- **Contextual Watermark:** Corporate Organizational Hierarchy Art.
-
----
-
-### 5.2 Row 2: Statutory Benefits & Departmental Cost Centers (4 cols + 8 cols)
-
-#### Card 3: Statutory Benefits & Provident Fund Liquidity
-- **Column Span:** `lg:col-span-4` (Left 1/3)
-- **Component Anatomy:**
-  - Metric Header: `৳ 1.12 Cr` Payroll with **100%** on-time bank disbursement.
-  - Statutory Fund Breakdown:
-    - Recognized Provident Fund (RPF): `৳ 14.8 L` (Transferred to Trustee account)
-    - Gratuity Fund Reserve: `৳ 38.2 L` (Actuarially funded)
-    - Employee Health & Life Insurance: `৳ 6.4 L` (428 lives covered)
-  - Bank Advice Clearing: Disbursed via Corporate City Bank BEFTN.
-- **Contextual Watermark:** Certified Employee Benefit Seal.
-
-#### Card 4: Departmental Cost Center & Overtime Allocation
-- **Column Span:** `lg:col-span-8` (Right 2/3)
-- **Component Anatomy:**
-  - 3-Column x 2-Row Micro-Card Grid of the 6 core departmental cost centers:
-    1. **Plant Operations (180 Staff):** Budget ৳ 42.0 L | Actual: ৳ 41.2 L (98.1%) • Badge: `Optimal`
-    2. **Software & Systems R&D (106 Staff):** Budget ৳ 38.0 L | Actual: ৳ 36.4 L (95.8%) • Badge: `Favorable`
-    3. **Commercial & Sales (78 Staff):** Budget ৳ 22.0 L | Actual: ৳ 20.8 L (94.5%) • Badge: `On Track`
-    4. **Supply Chain & Logistics (32 Staff):** Budget ৳ 8.5 L | Actual: ৳ 8.1 L (95.3%) • Badge: `Controlled`
-    5. **Finance & Accounts (18 Staff):** Budget ৳ 5.5 L | Actual: ৳ 5.2 L (94.5%) • Badge: `Standard`
-    6. **HR & General Admin (14 Staff):** Budget ৳ 4.0 L | Actual: ৳ 3.8 L (95.0%) • Badge: `Optimal`
-- **Contextual Watermark:** Departmental Budget Allocation Matrix.
-
----
-
-### 5.3 Row 3: Workforce Distribution, Tax Compliance & Audited Salary Hub (4 cols + 8 cols)
-
-#### Card 5A: Headcount Distribution by Department (Left Stack - Top)
-- **Column Span:** Part of `lg:col-span-4` (Stacked above Card 5B)
-- **Component Anatomy:**
-  - SVG Segmented Donut Chart (`viewBox="0 0 160 160"`):
-    - Plant Operations: `42.1%` (Rose `#e11d48`)
-    - Software & Engineering R&D: `24.8%` (Blue `#2563eb`)
-    - Commercial Sales: `18.2%` (Purple `#7c3aed`)
-    - Executive Finance & Admin: `14.9%` (Emerald `#059669`)
-  - Center Donut Label: `428 Personnel`
-  - 2-Column Legend with staff counts and percentage badges.
-
-#### Card 5B: Labor Law & NBR Tax Compliance Watch (Left Stack - Bottom)
-- **Column Span:** Part of `lg:col-span-4` (Stacked below Card 5A to match Card 6 height)
-- **Component Anatomy:**
-  - 4 Compliance Audit Tiers:
-    - **TDS Salary Withholding:** `100% Compliant` (Deposited via NBR Challan) — `emerald-500`
-    - **Provident Fund Audit:** `Certified Clean` (FY2026 External Audit) — `emerald-500`
-    - **Overtime Limits:** `Compliant` (All shifts within 60hr/week ceiling) — `blue-500`
-    - **Minimum Wage Verification:** `100% Passed` — `emerald-500`
-  - Regulatory Pill: `NBR Form 108 Tax Filing Complete`.
-
-#### Card 6: Employee Payroll Disbursement Hub (Right Column)
-- **Column Span:** `lg:col-span-8` (Right 2/3)
-- **Component Anatomy:**
-  - Header: Tab filters (`All Staff (428)`, `Disbursed (426)`, `Pending Onboarding (2)`) + Search.
-  - Expansive 9-Column Interactive Table:
-    1. **Emp ID:** `EMP-8492` (monospace bold)
-    2. **Employee Name:** S. M. Farhan Chowdhury
-    3. **Department:** Software & Systems R&D
-    4. **Designation:** Lead Architect
-    5. **Basic Salary (৳):** `1,60,000`
-    6. **Allowances (৳):** `65,000`
-    7. **TDS & PF Deductions (৳):** `32,000`
-    8. **Net Payable BDT (৳):** `1,93,000`
-    9. **Action:** View Payslip PDF, Bank Advice, Tax Sheet
-  - Balanced Payroll Summary Footer:
-    - Total Gross Payroll: `৳ 1,12,00,000` = Net Disbursed `৳ 1,02,00,000` + Tax/PF Trust `৳ 10,00,000`.
-- **Contextual Watermark:** Audited Salary Register Art.
+### 5.3 Row 3: Salary Register & Live Digital Payslip
+- **Executive Salary Register Table (Card 5, 8 cols):** Comprehensive payroll ledger displaying employee grades, basic pay, gross earnings, statutory tax/PF deductions, and net disbursed amounts.
+- **Live Digital Payslip Docket (Card 6, 4 cols):** Interactive inspection panel displaying selected employee's itemized pay advice, bank account details, NBR Tax Circle & 12-digit TIN, BEFTN electronic advice trace number, and leave balances. Updates instantaneously upon clicking any row in the register.

@@ -89,11 +89,11 @@
 <body class="min-h-screen text-slate-800 antialiased flex flex-col justify-between relative">
 
   <!-- =========================================================================
-       NATURAL SCROLLABLE INCEPTIA ERP DIGITAL ECOSYSTEM BACKGROUND (OPACITY 30%)
+       FIXED INCEPTIA ERP DIGITAL ECOSYSTEM BACKGROUND (OPACITY 30%)
        ========================================================================= -->
-  <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     <img id="erp-bg-img" src="assets/erp_bg.jpg" alt="Inceptia ERP Executive Fluent Background"
-      class="w-full h-full object-cover object-top opacity-30 filter contrast-105" />
+      class="w-full h-full object-cover object-center opacity-30 filter contrast-105" />
     <div class="absolute inset-0 bg-slate-900/[0.02]"></div>
   </div>
 
@@ -257,7 +257,7 @@
 
       <!-- KPI 1: TOTAL REVENUE (Solid Matte Royal Blue) -->
       <div
-        class="relative overflow-hidden rounded-2xl bg-[#2563eb]/75 hover:bg-[#2563eb]/85 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
+        class="relative overflow-hidden rounded-2xl bg-[#2563eb]/90 hover:bg-[#2563eb]/95 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
         <div class="relative z-10 flex items-start justify-between">
           <div>
             <div class="text-xs font-medium text-white/85">Total Revenue</div>
@@ -293,7 +293,7 @@
 
       <!-- KPI 2: GROSS PROFIT (Solid Matte Royal Purple) -->
       <div
-        class="relative overflow-hidden rounded-2xl bg-[#7c3aed]/75 hover:bg-[#7c3aed]/85 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
+        class="relative overflow-hidden rounded-2xl bg-[#7c3aed]/90 hover:bg-[#7c3aed]/95 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
         <div class="relative z-10 flex items-start justify-between">
           <div>
             <div class="text-xs font-medium text-white/85">Gross Profit</div>
@@ -329,7 +329,7 @@
 
       <!-- KPI 3: TOTAL EXPENSES (Solid Matte Emerald Green) -->
       <div
-        class="relative overflow-hidden rounded-2xl bg-[#059669]/75 hover:bg-[#059669]/85 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
+        class="relative overflow-hidden rounded-2xl bg-[#059669]/90 hover:bg-[#059669]/95 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
         <div class="relative z-10 flex items-start justify-between">
           <div>
             <div class="text-xs font-medium text-white/85">Total Expenses</div>
@@ -365,7 +365,7 @@
 
       <!-- KPI 4: NET PROFIT (Solid Matte Sunset Orange) -->
       <div
-        class="relative overflow-hidden rounded-2xl bg-[#ea580c]/75 hover:bg-[#ea580c]/85 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
+        class="relative overflow-hidden rounded-2xl bg-[#ea580c]/90 hover:bg-[#ea580c]/95 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
         <div class="relative z-10 flex items-start justify-between">
           <div>
             <div class="text-xs font-medium text-white/85">Net Profit</div>
@@ -405,7 +405,7 @@
             - Left/Center (9 cols): Revenue Trend Chart + Donut + Modules + Operations
             - Right Column (3 cols): Agenda, Pending Approvals, Key Tasks
          ========================================================================= -->
-    <div class="grid grid-cols-1 xl:grid-cols-12 gap-5 mt-5">
+    <div class="grid grid-cols-1 xl:grid-cols-12 gap-5 mt-5 items-stretch">
 
       <!-- =====================================================================
            LEFT MAIN AREA (9 COLUMNS)
@@ -636,8 +636,7 @@
           <div id="module-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 items-start">
 
             <!-- 1. Accounting & Finance -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="finance"
               data-module-name="Accounting Finance ledger chart of accounts journal entries payment receipt vouchers accounts receivable accounts payable trial balance profit loss balance sheet cash flow financial reports vat tax bank reconciliation">
               <div
@@ -731,8 +730,7 @@
             </div>
 
             <!-- 2. Sales & Invoicing -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="finance"
               data-module-name="Sales Invoicing product service catalog quotations estimates sales order proforma tax vat invoice discounts credit notes payments collection returns customer credit limits recurring invoices pdf">
               <div
@@ -825,8 +823,7 @@
             </div>
 
             <!-- 3. Purchase & Suppliers -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="operations"
               data-module-name="Purchase Suppliers procurement database profiles purchase requisitions RFQ quotation comparison purchase order PO approval goods receipt notes GRN bills debit notes payments tracking balances vendor">
               <div
@@ -919,8 +916,7 @@
             </div>
 
             <!-- 4. Inventory & Warehouse -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="operations"
               data-module-name="Inventory Warehouse product item master categories units SKU barcode opening stock stock inward outward multiple warehouse transfers stock adjustment low stock alerts batch serial tracking FIFO valuation reconciliation">
               <div
@@ -1012,8 +1008,7 @@
             </div>
 
             <!-- 5. CRM & Customers -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="finance"
               data-module-name="CRM Customers database profiles lead generation assignment sales pipeline opportunity tracking segmentation follow-up reminders communication logs meeting call logs notes attachments conversion payment history">
               <div
@@ -1106,8 +1101,7 @@
             </div>
 
             <!-- 6. HR & Payroll -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="governance"
               data-module-name="HR Payroll employee database department onboarding exit documents attendance shift duty roster leave holiday salary payroll monthly processing overtime allowances deductions bonuses loans advances payslip reports">
               <div
@@ -1200,8 +1194,7 @@
             </div>
 
             <!-- 7. Project Management -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="operations"
               data-module-name="Project Management creation budget cost estimation team assignment planning scheduling milestone task assignment progress tracking expenses documents deadline status resource allocation profitability completion reports">
               <div
@@ -1294,8 +1287,7 @@
             </div>
 
             <!-- 8. Reports & Analytics -->
-            <div
-              class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
+            <div class="module-card rounded-xl transition-all duration-200 group overflow-hidden relative"
               data-category="governance"
               data-module-name="Reports Analytics business intelligence sales purchase inventory stock customer supplier accounts receivable payable profit loss balance sheet cash flow HR payroll project performance expense custom report builder export pdf excel">
               <div
@@ -1520,8 +1512,7 @@
             <div
               class="absolute -bottom-8 -right-8 w-36 h-36 pointer-events-none opacity-[0.045] group-hover:opacity-[0.08] group-hover:scale-105 transition-all duration-300 text-emerald-700 z-0 select-none">
               <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
               </svg>
             </div>
           </div>
@@ -1636,7 +1627,7 @@
       <!-- =====================================================================
            RIGHT COLUMN (3 COLUMNS): TODAY'S AGENDA, PENDING APPROVALS, KEY TASKS
            ===================================================================== -->
-      <div class="xl:col-span-3 space-y-4">
+      <div class="xl:col-span-3 flex flex-col justify-between gap-4">
 
         <!-- CARD 1: TODAY'S AGENDA -->
         <div class="executive-card rounded-2xl p-4 relative overflow-hidden group">
@@ -1686,14 +1677,6 @@
               <div class="min-w-0 flex-1">
                 <div class="text-[11px] font-bold text-slate-500">04:00 PM</div>
                 <div class="text-xs text-slate-700 font-medium truncate mt-0.5">Tender Team Discussion</div>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 p-1.5 rounded-lg hover:bg-slate-50 transition">
-              <span class="w-2 h-2 rounded-full bg-slate-300 mt-1.5 shrink-0 ring-4 ring-slate-100"></span>
-              <div class="min-w-0 flex-1">
-                <div class="text-[11px] font-bold text-slate-500">07:00 PM</div>
-                <div class="text-xs text-slate-700 font-medium truncate mt-0.5">Rotary - Preparation</div>
               </div>
             </div>
           </div>
@@ -1898,6 +1881,78 @@
           </div>
         </div>
 
+        <!-- CARD 4: RECENT ACTIVITY & AUDIT LOG (PERFECT BOTTOM-LINE ALIGNMENT) -->
+        <div class="executive-card rounded-2xl p-4 relative overflow-hidden group">
+          <div class="relative z-10 flex items-center justify-between mb-3.5">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-sm text-slate-900 tracking-tight">Recent Activity Log</h3>
+            </div>
+            <span
+              class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live
+            </span>
+          </div>
+
+          <!-- Activity Timeline Items -->
+          <div class="relative z-10 space-y-2.5">
+            <div class="flex items-start gap-2.5 p-1.5 rounded-lg hover:bg-slate-50/70 transition">
+              <span class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="font-semibold text-slate-900 truncate">Voucher #PV-842 Approved</span>
+                  <span class="text-slate-400 text-[10px]">10m ago</span>
+                </div>
+                <div class="text-[11px] text-slate-500 truncate mt-0.5">Meghna Group • ৳ 18.5 লাখ (BRAC Bank)</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-2.5 p-1.5 rounded-lg hover:bg-slate-50/70 transition">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"></span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="font-semibold text-slate-900 truncate">PO Released: Genvict Ltd</span>
+                  <span class="text-slate-400 text-[10px]">45m ago</span>
+                </div>
+                <div class="text-[11px] text-slate-500 truncate mt-0.5">Toll equipment hardware • Procurement</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-2.5 p-1.5 rounded-lg hover:bg-slate-50/70 transition">
+              <span class="w-2 h-2 rounded-full bg-purple-500 mt-1.5 shrink-0"></span>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="font-semibold text-slate-900 truncate">VAT & Tax Return (Form 9.1)</span>
+                  <span class="text-slate-400 text-[10px]">2h ago</span>
+                </div>
+                <div class="text-[11px] text-slate-500 truncate mt-0.5">Submitted to NBR • Finance Compliance</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom link -->
+          <div class="relative z-10 mt-3.5 pt-2 border-t border-slate-100 text-center">
+            <button onclick="showToast('Opening Enterprise Audit Trail & Activity Feed...')"
+              class="text-xs font-bold text-blue-600 hover:text-blue-700 transition">
+              View Full Audit Log →
+            </button>
+          </div>
+
+          <!-- Contextual Watermark Art: Activity Radar / Clock-History Waves -->
+          <div
+            class="absolute -bottom-6 -right-6 w-32 h-32 pointer-events-none opacity-[0.045] group-hover:opacity-[0.08] group-hover:scale-105 transition-all duration-300 text-indigo-700 z-0 select-none">
+            <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+            </svg>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -1907,7 +1962,8 @@
   <!-- =========================================================================
        FOOTER
        ========================================================================= -->
-  <footer class="mt-8 border-t border-white/50 bg-white/65 backdrop-blur-md py-3 text-center text-xs text-slate-500 relative z-10">
+  <footer
+    class="mt-8 border-t border-white/50 bg-white/65 backdrop-blur-md py-3 text-center text-xs text-slate-500 relative z-10">
     <div class="max-w-[1680px] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
       <span>© 2026 Inceptia ERP Enterprise Core Engine</span>
       <div class="flex items-center gap-3 text-[11px]">

@@ -2,86 +2,175 @@
 
 > **File Name:** `finance_module.html`  
 > **Accent Theme:** Royal Blue (`#2563eb`, `text-blue-600`, `bg-blue-50/70`)  
-> **Parent Navigation:** `erp_cover_page.html` (Cover Portal)  
-> **Contextual Watermark Art:** Neoclassical Bank Treasury Building / General Ledger Scales
+> **Parent Navigation:** `erp_cover_page.html` (Executive Portal)  
+> **Contextual Watermark Art:** Neoclassical Bank Treasury Building / General Ledger Scales / Chart Curves  
+> **Status:** Updated & Approved (Standalone Executive Cards Layout)
 
 ---
 
-## 1. Page Header & Navigation Bar
-- **Top Bar:** Glassmorphic container (`bg-white/65 backdrop-blur-md border-b border-white/50`).
-- **Breadcrumbs:** `Inceptia ERP / Finance & Accounting / General Ledger & Vouchers`
-- **Back Navigation:** `← Back to Executive Portal` (links to `erp_cover_page.html`).
-- **Header Actions:**
-  - `+ New Journal Entry` (Primary Blue Button)
-  - `+ Create Payment Voucher` (Secondary Outline Button)
-  - Date Range Picker (e.g. `Nov 1, 2026 - Nov 30, 2026`)
-  - Export Dropdown (`Excel`, `PDF`, `CSV`)
+## 1. Architectural Philosophy & Layout Rules
+
+1. **Modular Workspace Independence:**
+   - Unlike the master cover portal (`erp_cover_page.html`), this is a dedicated, deep-dive financial workspace.
+   - **No Internal Module Workspaces Card:** Navigation across other modules is handled via a unified global sidebar (to be integrated globally), eliminating clutter inside the page canvas.
+2. **Executive Focus & Decluttered Header:**
+   - Creation buttons (`+ New Journal Entry`, `Payment Voucher`) and creation modals have been removed from the header. This keeps the page focused on performance analytics, financial statements, and ledger auditing.
+   - The period badge (`FY 2026-27 (Period 05)`) is removed from the header branding, leaving clean typography with breadcrumbs.
+3. **Standalone Dedicated Cards (No Tab-Hiding):**
+   - Key financial perspectives (Graph View, Cash Flow, P&L, Income Sources, Expense Accounts, General Ledger) are laid out as distinct, standalone frosted glass cards so leadership can review all metrics in a single cohesive flow.
+4. **Frosted Glass Design DNA:**
+   - Shared with `docs/00_master_design_system.md`: `.executive-card` (`rgba(255, 255, 255, 0.55)`, `backdrop-filter: blur(16px)`, `border: 1px solid rgba(255, 255, 255, 0.65)`), fixed digital wallpaper (`assets/erp_bg.jpg`), and 4 ambient aurora mesh glow pools.
 
 ---
 
-## 2. Top KPI Cards (4 Department Pillars)
-Four frosted glass cards with 75% opacity and department-specific metrics:
+## 2. Page Header & Navigation Bar
 
-1. **Operating Cash & Bank Balance:**
-   - Value: `৳ 3.84 Cr`
-   - Subtext: `Across 4 active bank accounts (Net Liquidity)`
-   - Badge: `▲ +6.4% MoM`
-   - Icon: Bank Vault Shield
-2. **Accounts Receivable (AR):**
-   - Value: `৳ 84.5 লাখ`
-   - Subtext: `৳ 12.8 লাখ overdue (> 30 days)`
-   - Badge: `18 Invoices Pending`
-   - Icon: Arrow-Down-Left (Incoming Funds)
-3. **Accounts Payable (AP):**
-   - Value: `৳ 42.1 লাখ`
-   - Subtext: `৳ 8.5 লাখ due this week`
-   - Badge: `11 Vendor Bills`
-   - Icon: Arrow-Up-Right (Outgoing Bills)
-4. **Current Month Net Margin:**
-   - Value: `26.6%`
-   - Subtext: `P&L Operating Profit: ৳ 1.28 Cr`
-   - Badge: `▲ +3.2% vs Target`
-   - Icon: Balance Scale / Chart
+- **Sticky Frosted Container:** `bg-white/65 backdrop-blur-md border-b border-white/50 sticky top-0 z-30 shadow-2xs`.
+- **Left Navigation & Branding:**
+  - Back Button: `← Executive Portal` (`a href="erp_cover_page.html"` with hover pill effect).
+  - Vertical Separator: `h-5 w-px bg-slate-300/60`.
+  - Icon & Title: Royal Blue rounded icon badge + `Finance & Accounting` (h1, bold, tracking-tight).
+  - Breadcrumbs: `Inceptia ERP / Finance / Financial Performance, Statements & General Ledger`.
+- **Right Quick Controls:**
+  - **Quick Search Input:** Rounded pill with search icon and `⌘K` keyboard badge (`oninput="filterLedgerTable()"`).
+  - **Date Range Selector Dropdown:** Rounded pill showing `Nov 1 – Nov 30, 2026` with popup options (`Today`, `This Week`, `This Month`, `Q2 FY2026`).
+  - **Export Button:** Clean outline button with download icon and `Export` label (`exportFinancialReport()`).
 
 ---
 
-## 3. Submodule Sidebar & Tabs
-Navigation tabs to toggle between core accounting submodules:
-1. **General Ledger & Journal Entries** *(Default Active View)*
-2. **Chart of Accounts (COA)**
-3. **Accounts Receivable (AR / Customer Invoices)**
-4. **Accounts Payable (AP / Supplier Bills)**
-5. **Bank Reconciliation & Cash Book**
-6. **Trial Balance & Financial Statements (P&L / Balance Sheet)**
-7. **VAT, TDS & Tax Compliance (NBR Form 9.1)**
+## 3. Top 4 Financial KPI Pillar Cards
+
+Four high-contrast frosted glass cards with 55% opacity, soft backdrop blur, and contextual SVG watermark art:
+
+| KPI Metric | Value | Baseline / Comparison | Badge Indicator | Visual Icon / Watermark |
+| :--- | :--- | :--- | :--- | :--- |
+| **Operating Income** | `৳ 4.82 Cr` | vs ৳ 4.22 Cr (Prev Month) | `▲ +14.2% MoM` (Emerald) | Currency / Treasury Shield |
+| **Gross Profit** | `৳ 1.36 Cr` | Production & Delivery Margin | `Margin: 28.2%` (Violet) | Bar Growth Analytics |
+| **Operating Expenses** | `৳ 3.41 Cr` | vs ৳ 3.10 Cr (Consolidated OPEX) | `▲ +9.8% Spend` (Amber) | Clipboard Ledger Book |
+| **Net Cash Flow & Profit**| `৳ 1.28 Cr` | Net Bottom-Line Profit | `Margin: 26.6%` (Rose) | Lightning / Cash Inflow Wave |
 
 ---
 
-## 4. Main Content Area (Default: General Ledger & Vouchers)
+## 4. Standalone Financial Cards Structure
 
-### 4.1 Filter & Search Bar
-- Search: Filter by Voucher No., Account Title, Cheque No., or Remarks.
-- Filter Pills: `All Types`, `Payment Vouchers (PV)`, `Receipt Vouchers (RV)`, `Journal Vouchers (JV)`, `Contra (CV)`.
-- Status: `Posted (Approved)`, `Draft`, `Pending Approval`.
+The page body is organized into 4 responsive grid rows featuring 6 standalone executive cards:
 
-### 4.2 Interactive Ledger Data Table
-| Date | Voucher No. | Type | Account Debit / Credit | Reference / Beneficiary | Debit (৳) | Credit (৳) | Status | Actions |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 06 Nov 2026 | `PV-2026-0842` | Payment | BRAC Corporate A/C → Meghna Cement Ltd | Raw materials supply | - | 18,50,000 | `Posted` | View, PDF |
-| 06 Nov 2026 | `RV-2026-1019` | Receipt | Cash In Hand ← BSRM Steels collection | Inv #INV-4921 | 8,20,000 | - | `Posted` | View, PDF |
-| 05 Nov 2026 | `JV-2026-0412` | Journal | Depreciation Reserve → Plant Machinery | Monthly asset depreciation | 2,45,000 | 2,45,000 | `Posted` | View, PDF |
-| 05 Nov 2026 | `CV-2026-0188` | Contra | City Bank LC → DBBL Payroll A/C | Fund transfer for salary | 68,40,000 | 68,40,000 | `Approved` | View, PDF |
-| 04 Nov 2026 | `PV-2026-0841` | Payment | Petty Cash Vault → Office Admin | Facility utilities bill | - | 45,000 | `Posted` | View, PDF |
-| 04 Nov 2026 | `JV-2026-0411` | Journal | Deferred VAT → Input Tax Receivable | October VAT reconciliation | 5,12,000 | 5,12,000 | `Pending` | Approve, Edit |
+```
+┌───────────────────────────────────────────────┬──────────────────────────────────────────────┐
+│ CARD 1: Financial Performance Graph (7 cols)  │ CARD 2: Cash Flow & Liquidity Stream (5 cols)│
+│ • 6-Month Income vs Expense Bar Chart         │ • Inflows (+৳ 3.98 Cr) vs Outflows (৳ 2.70 Cr)│
+│ • Net Profit Margin % Spline Overlay          │ • Surplus (+৳ 1.28 Cr) & 6.4 Mos Runway       │
+│ • Interactive SVG Tooltips & Period Toggles   │ • 4 Corporate Bank Balances                  │
+├───────────────────────────────────────────────┼──────────────────────────────────────────────┤
+│ CARD 3: Statement of Profit or Loss (7 cols)  │ CARD 4: Income & Revenue Sources (5 cols)    │
+│ • Turnover (৳ 4.82 Cr) - COGS (৳ 3.46 Cr)     │ • Product Invoicing (৳ 2.85 Cr, 88.5%)       │
+│ • Gross Profit (৳ 1.36 Cr / 28.2%)            │ • Toll Automation (৳ 1.18 Cr, 96.2%)         │
+│ • OPEX (-৳ 68.0 L), EBITDA (৳ 68.0 L / 14.1%) │ • AMC Contracts (৳ 54.0 L, 75.0%)            │
+│ • Net Profit before Tax (৳ 1.28 Cr / 26.6%)   │ • Bank Returns (৳ 25.0 L, 100%)              │
+├───────────────────────────────────────────────┴──────────────────────────────────────────────┤
+│ CARD 5: Expense Accounts Overview & Corporate Budget Allocation (12 cols)                    │
+│ • 6 General Ledger Heads: Raw Materials (#5100), Payroll (#5200), Utilities (#5300),         │
+│   Freight (#5400), Administrative (#5500), Cloud/IT Infrastructure (#5600)                   │
+│ • Visual Budget Progress Bars, Burn Rates, and Status Badges (Optimal, On Track, Attention)  │
+├──────────────────────────────────────────────────────────────────────────────────────────────┤
+│ CARD 6: General Ledger Transactions & Double-Entry Vouchers Hub (12 cols)                    │
+│ • Vouchers Table with Type Tabs: All (284), PV, RV, JV, CV                                  │
+│ • Status Filter: Posted / Approved, Pending Audit, Draft                                     │
+│ • Live Balanced Trial Balance Bar: Debits (৳ 1,22,42,000) = Credits (৳ 1,22,42,000)         │
+│ • Action Controls: View Voucher PDF Preview Modal, Approve Vouchers, Batch Audit             │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## 5. Modal Blueprint: `+ New Journal Entry`
-- **Fields:**
-  - Voucher Date, Currency (`BDT / USD / EUR`).
-  - Credit Account (Dropdown with search).
-  - Debit Account (Dropdown with search).
-  - Amount, Reference No., Narration / Description.
-  - Attachment upload (Cheque scan / Bill invoice).
-- **Buttons:** `Save as Draft`, `Post & Print Voucher`, `Cancel`.
+## 5. Detailed Specifications per Standalone Card
 
+### 5.1 Card 1: Financial Performance Graph View
+- **Grid Footprint:** `col-span-12 lg:col-span-7`.
+- **Visualization:** Dual-layer SVG rendering:
+  - Multi-bar columns comparing **Operating Income** (Blue `#2563eb`) and **Expenses** (Slate `#94a3b8`) for Jun–Nov 2026.
+  - Spline curve overlay indicating **Net Margin %** (Emerald `#10b981`) with circular data markers.
+- **Interactivity:** Dynamic SVG cursor tracking with animated glassmorphic tooltip card (`#finance-tooltip`) rendering Income, Expense, Net Profit, and Margin % upon hover.
+- **Period Filter:** Pill toggles for `6M`, `YTD`, and `FY26`.
+
+### 5.2 Card 2: Cash Flow & Liquidity Stream
+- **Grid Footprint:** `col-span-12 lg:col-span-5`.
+- **Cash Flow Gauges:**
+  - **Operating Cash Inflow:** `৳ 3.98 Cr` (+14.2% vs budget).
+  - **Operating Cash Outflow:** `৳ 2.70 Cr` (67.8% utilization).
+  - **Net Operating Surplus:** `+৳ 1.28 Cr` with runway indicator (`6.4 Months Operating Buffer`).
+- **Active Bank Balances Mini-Grid:**
+  1. `BRAC Bank (Corporate)` — Operating A/C: **৳ 1.82 Cr** (`Active`)
+  2. `City Bank (Trade / LC)` — Import & LC: **৳ 1.15 Cr** (`Active`)
+  3. `Dutch-Bangla Bank` — Payroll Disbursement: **৳ 68.4 লাখ** (`Funded`)
+  4. `Central Treasury` — Petty & Vault: **৳ 18.5 লাখ** (`Reserve`)
+
+### 5.3 Card 3: Audited Statement of Profit or Loss (P&L)
+- **Grid Footprint:** `col-span-12 lg:col-span-7`.
+- **Standard:** Compliant with IAS 1 / IFRS Presentation of Financial Statements.
+- **Line Items & Mathematical Chain:**
+  1. **Gross Turnover / Revenue:** `৳ 4,82,00,000` (100.0%)
+  2. **Less: Direct Cost of Goods Sold (COGS):** `-৳ 3,46,00,000` (71.8%)
+  3. **Gross Profit (GP):** `+৳ 1,36,00,000` (**28.2% Margin**)
+  4. **Less: Operating Expenses (Administrative & Selling):** `-৳ 68,00,000` (14.1%)
+  5. **Operating Profit / EBITDA:** `+৳ 68,00,000` (**14.1% Margin**)
+  6. **Add: Financial Returns & Non-Operating Income:** `+৳ 60,00,000` (12.5%)
+  7. **Net Profit before Tax (NPBT):** `+৳ 1,28,00,000` (**26.6% Margin**)
+
+### 5.4 Card 4: Income & Revenue Sources Overview
+- **Grid Footprint:** `col-span-12 lg:col-span-5`.
+- **Revenue Stream Breakdown:**
+  1. **Product & Contract Invoicing:** `৳ 2.85 Cr` (Target: ৳ 3.10 Cr | 88.5% collected | `Active Billing`)
+  2. **Toll Automation Operations:** `৳ 1.18 Cr` (Target: ৳ 1.20 Cr | 96.2% collected | `High Realization`)
+  3. **Annual Maintenance (AMC):** `৳ 54.0 লাখ` (Target: ৳ 65.0 L | 75.0% collected | `Renewal Due`)
+  4. **Treasury & Bank Returns:** `৳ 25.0 লাখ` (Target: ৳ 25.0 L | 100% realized | `Fully Realized`)
+
+### 5.5 Card 5: Expense Accounts Overview & Budget Allocation
+- **Grid Footprint:** `col-span-12`.
+- **Account Heads & Burn Tracking:**
+  - `#5100 Direct Materials & Sourcing:` Spent `৳ 1.84 Cr` of `৳ 2.20 Cr` (83.6%) — `Optimal`
+  - `#5200 Enterprise Payroll & Benefits:` Spent `৳ 68.5 L` of `৳ 72.0 L` (95.1%) — `On Track`
+  - `#5300 Utilities, Power & Site Fuels:` Spent `৳ 22.4 L` of `৳ 25.0 L` (89.6%) — `Attention`
+  - `#5400 Freight, Logistics & Customs:` Spent `৳ 34.2 L` of `৳ 38.0 L` (90.0%) — `On Track`
+  - `#5500 Administrative & Facility:` Spent `৳ 18.2 L` of `৳ 22.0 L` (82.7%) — `Under Budget`
+  - `#5600 Cloud Infra, IT & Software:` Spent `৳ 13.7 L` of `৳ 15.0 L` (91.3%) — `On Track`
+- **Top Summary Badge:** Total Spend: `৳ 3.41 Cr` (88.5% of Budget).
+
+### 5.6 Card 6: General Ledger & Double-Entry Vouchers Hub
+- **Grid Footprint:** `col-span-12`.
+- **Type Filtering:** `All (284)`, `Payment (PV)`, `Receipt (RV)`, `Journal (JV)`, `Contra (CV)`.
+- **Balanced Trial Balance Bar:**
+  - Total Debits: `৳ 1,22,42,000`
+  - Total Credits: `৳ 1,22,42,000`
+  - Difference: `৳ 0.00 (Balanced)`
+- **Audited Voucher Records:**
+  - Includes date, voucher number, type pill, debit/credit accounts, reference/narration, debit amount, credit amount, status badge, and action trigger.
+- **Action Triggers:**
+  - `View`: Triggers `previewVoucher(vId)` to open the audited PDF preview modal.
+  - `Approve`: Inline approve action changing status to `Posted` and updating trial balance dynamically.
+
+---
+
+## 6. Modals Specification
+
+- **Preserved Modal:**
+  - **Voucher Preview / Print Modal (`#preview-modal`):** Used to inspect posted transaction details, beneficiary info, amount, and trigger `window.print()` for audited PDF voucher printouts.
+- **Removed Modals & Actions:**
+  - `+ New Journal Entry` and `Payment Voucher` modal forms have been removed from this page.
+  - Future data-entry vouchers will be handled via dedicated voucher creation workflows or drawer components.
+
+---
+
+## 7. Data Synchronization Table with Cover Page
+
+All financial figures in `finance_module.html` correlate 100% with the master executive dashboard `erp_cover_page.html`:
+
+| Metric Name | `erp_cover_page.html` | `finance_module.html` | Status |
+| :--- | :--- | :--- | :--- |
+| **Total Revenue / Income** | `৳ 4.82 Cr` | `৳ 4.82 Cr` | Exact Match |
+| **Cost of Goods Sold (COGS)**| Derived (৳ 3.46 Cr) | `৳ 3.46 Cr` (71.8%) | Exact Match |
+| **Gross Profit** | `৳ 1.36 Cr (28.2%)` | `৳ 1.36 Cr (28.2%)` | Exact Match |
+| **Operating Expenses (Total)**| `৳ 3.41 Cr` | `৳ 3.41 Cr` (Card 5) | Exact Match |
+| **Net Profit / Net Margin** | `৳ 1.28 Cr (26.6%)` | `৳ 1.28 Cr (26.6%)` | Exact Match |
+| **Net Liquid Balance** | `৳ 3.84 Cr` | `৳ 3.84 Cr` (Card 2) | Exact Match |
+| **Cash Surplus** | `+৳ 18.3 লাখ` (Daily) | `+৳ 1.28 Cr` (Monthly) | Aligned |

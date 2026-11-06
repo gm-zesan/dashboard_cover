@@ -114,9 +114,7 @@
                 </svg>
               </div>
               <h1 class="text-base font-bold text-slate-900 tracking-tight">Finance & Accounting</h1>
-              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60 font-bold text-[10px]">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> FY 2026-27 (Period 05)
-              </span>
+
             </div>
             <p class="text-[11px] text-slate-500 font-medium mt-0.5">
               <span>Inceptia ERP</span> <span class="mx-1 text-slate-300">/</span>
@@ -161,23 +159,7 @@
             </div>
           </div>
 
-          <!-- Secondary Action: Create Payment Voucher -->
-          <button onclick="openVoucherModal('PV')"
-            class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-white/90 hover:bg-white text-slate-700 hover:text-blue-700 border border-slate-200/90 shadow-2xs transition flex items-center gap-1.5 cursor-pointer">
-            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 4v16m8-8H4"></path>
-            </svg>
-            <span>Payment Voucher</span>
-          </button>
 
-          <!-- Primary Action: New Journal Entry Modal Launcher -->
-          <button onclick="openVoucherModal('JV')"
-            class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition flex items-center gap-1.5 cursor-pointer">
-            <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 4v16m8-8H4"></path>
-            </svg>
-            <span>+ New Journal Entry</span>
-          </button>
 
           <!-- Export Dropdown -->
           <button onclick="exportFinancialReport()"
@@ -709,9 +691,7 @@
 
         <div class="flex items-center gap-2">
           <span class="text-xs font-bold text-slate-600">Total Spend: <strong class="text-slate-900 font-extrabold">৳ 3.41 Cr</strong></span>
-          <button onclick="openVoucherModal('PV')" class="px-3.5 py-1.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition shadow-2xs">
-            + New Expense Voucher
-          </button>
+          <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-bold text-[11px]">88.5% of Budget</span>
         </div>
       </div>
 
@@ -1013,7 +993,7 @@
               <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">6,80,000</td>
               <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">6,80,000</td>
               <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold text-[10px]">Draft</span></td>
-              <td class="py-3 px-2 text-center"><button onclick="openVoucherModal('PV', 'PV-2026-0840')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">Edit</button></td>
+              <td class="py-3 px-2 text-center"><button onclick="previewVoucher('PV-2026-0840')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button></td>
             </tr>
 
           </tbody>
@@ -1066,124 +1046,7 @@
     </div>
   </footer>
 
-  <!-- =========================================================================
-       MODAL: CREATE NEW JOURNAL ENTRY / VOUCHER
-       ========================================================================= -->
-  <div id="voucher-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <!-- Backdrop -->
-    <div class="modal-backdrop fixed inset-0" onclick="closeVoucherModal()"></div>
-
-    <!-- Modal Card Content -->
-    <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 z-10 max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-        <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
-            JV
-          </div>
-          <div>
-            <h3 class="font-bold text-base text-slate-900" id="modal-title">New Financial Voucher</h3>
-            <p class="text-xs text-slate-500">Record double-entry transaction to general ledger</p>
-          </div>
-        </div>
-        <button onclick="closeVoucherModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition cursor-pointer">
-          ✕
-        </button>
-      </div>
-
-      <!-- Form Inputs -->
-      <form onsubmit="handleVoucherSubmit(event)" class="mt-4 space-y-4">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Voucher Type</label>
-            <select id="modal-voucher-type" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-              <option value="JV">Journal Voucher (JV)</option>
-              <option value="PV">Payment Voucher (PV)</option>
-              <option value="RV">Receipt Voucher (RV)</option>
-              <option value="CV">Contra Voucher (CV)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Voucher Date</label>
-            <input type="date" value="2026-11-06" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Currency</label>
-            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-              <option value="BDT">BDT (৳ Taka)</option>
-              <option value="USD">USD ($ Dollar)</option>
-              <option value="EUR">EUR (€ Euro)</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Debit Account (Dr)</label>
-            <select id="modal-debit-acc" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-              <option value="Meghna Cement Ltd (Vendor AP)">Meghna Cement Ltd (Vendor AP)</option>
-              <option value="Bashundhara Infra (Customer AR)">Bashundhara Infra (Customer AR)</option>
-              <option value="Office Administrative Expense">Office Administrative Expense</option>
-              <option value="Heavy Machinery Assets">Heavy Machinery Assets</option>
-              <option value="BRAC Bank Corporate A/C">BRAC Bank Corporate A/C</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Credit Account (Cr)</label>
-            <select id="modal-credit-acc" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-              <option value="BRAC Bank Corporate A/C">BRAC Bank Corporate A/C</option>
-              <option value="City Bank (Trade / LC)">City Bank (Trade / LC)</option>
-              <option value="Dutch-Bangla Bank (Payroll)">Dutch-Bangla Bank (Payroll)</option>
-              <option value="Central Petty Cash Vault">Central Petty Cash Vault</option>
-              <option value="Accounts Payable Control">Accounts Payable Control</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Voucher Amount (৳)</label>
-            <input type="number" id="modal-amount" placeholder="e.g. 500000" required
-              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Cheque / Reference No.</label>
-            <input type="text" placeholder="e.g. CHQ-994102 or PO-842"
-              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Narration / Particulars</label>
-          <textarea id="modal-narration" rows="2" placeholder="Provide full business justification and details for this entry..." required
-            class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20"></textarea>
-        </div>
-
-        <!-- Attachment upload -->
-        <div class="p-3 border-2 border-dashed border-slate-200 rounded-2xl text-center bg-slate-50/50 hover:bg-slate-50 transition cursor-pointer" onclick="showToast('Opening File Explorer for Voucher Scan attachment...')">
-          <svg class="w-6 h-6 text-slate-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-          </svg>
-          <div class="text-xs font-semibold text-slate-700">Click to upload voucher scan, cheque copy or bill</div>
-          <div class="text-[10px] text-slate-400">PDF, JPG, PNG up to 10MB</div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
-          <button type="button" onclick="closeVoucherModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition cursor-pointer">
-            Cancel
-          </button>
-          <button type="button" onclick="saveVoucherDraft()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
-            Save as Draft
-          </button>
-          <button type="submit" class="px-5 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md transition cursor-pointer">
-            Post Voucher to Ledger
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- =========================================================================
+<!-- =========================================================================
        MODAL: VOUCHER PREVIEW / PRINT MODAL
        ========================================================================= -->
   <div id="preview-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
@@ -1284,24 +1147,7 @@
     }
 
     // 3. Modals
-    function openVoucherModal(defaultType, editId) {
-      const modal = document.getElementById('voucher-modal');
-      modal.classList.remove('hidden');
-      if (defaultType) {
-        document.getElementById('modal-voucher-type').value = defaultType;
-      }
-      if (editId) {
-        document.getElementById('modal-title').innerText = `Edit Voucher: ${editId}`;
-      } else {
-        document.getElementById('modal-title').innerText = 'New Financial Voucher';
-      }
-    }
-
-    function closeVoucherModal() {
-      document.getElementById('voucher-modal').classList.add('hidden');
-    }
-
-    function previewVoucher(vId) {
+function previewVoucher(vId) {
       document.getElementById('preview-voucher-id').innerText = `Voucher Details: ${vId}`;
       document.getElementById('preview-modal').classList.remove('hidden');
     }
@@ -1310,20 +1156,7 @@
       document.getElementById('preview-modal').classList.add('hidden');
     }
 
-    function handleVoucherSubmit(e) {
-      e.preventDefault();
-      const type = document.getElementById('modal-voucher-type').value;
-      const amount = parseFloat(document.getElementById('modal-amount').value || 0).toLocaleString();
-      closeVoucherModal();
-      showToast(`Voucher ${type}-2026-0413 for ৳ ${amount} successfully posted to General Ledger!`);
-    }
-
-    function saveVoucherDraft() {
-      closeVoucherModal();
-      showToast('Voucher saved as draft successfully.');
-    }
-
-    function approveSingleVoucher(vId, btn) {
+function approveSingleVoucher(vId, btn) {
       const tr = btn.closest('tr');
       if (tr) {
         tr.setAttribute('data-status', 'Posted');

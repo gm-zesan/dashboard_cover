@@ -29,26 +29,6 @@
       box-shadow: 0 10px 28px -5px rgba(15, 23, 42, 0.1), 0 2px 6px rgba(15, 23, 42, 0.06);
     }
 
-    .module-nav-item {
-      transition: all 0.2s ease;
-    }
-    .module-nav-item.active {
-      background: rgba(37, 99, 235, 0.1);
-      color: #1d4ed8;
-      border-left: 3px solid #2563eb;
-      font-weight: 700;
-    }
-
-    .workspace-tab-btn {
-      transition: all 0.2s ease;
-    }
-    .workspace-tab-btn.active {
-      background-color: #ffffff;
-      color: #2563eb;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      font-weight: 700;
-    }
-
     body {
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #f4f6fa;
@@ -141,7 +121,7 @@
             <p class="text-[11px] text-slate-500 font-medium mt-0.5">
               <span>Inceptia ERP</span> <span class="mx-1 text-slate-300">/</span>
               <span>Finance</span> <span class="mx-1 text-slate-300">/</span>
-              <span class="text-slate-800 font-semibold" id="active-breadcrumb-sub">Financial Overview & Analytics</span>
+              <span class="text-slate-800 font-semibold">Financial Performance, Statements & General Ledger</span>
             </p>
           </div>
         </div>
@@ -215,14 +195,14 @@
   </header>
 
   <!-- =========================================================================
-       MAIN BODY CONTENT
+       MAIN BODY CONTENT: ALL DEDICATED STANDALONE CARDS
        ========================================================================= -->
-  <main class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 flex-1 relative z-10">
+  <main class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 flex-1 relative z-10 space-y-5">
 
     <!-- =========================================================================
-         2. ROW 1: 4 FINANCE DEPARTMENT KPI GLASS CARDS (WITH EXACT 100% BALANCED NUMBERS)
+         ROW 1: 4 FINANCE DEPARTMENT KPI GLASS CARDS
          ========================================================================= -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
       <!-- KPI 1: Total Operating Income / Revenue -->
       <div class="relative overflow-hidden rounded-2xl bg-[#2563eb]/90 hover:bg-[#2563eb]/95 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
@@ -244,7 +224,7 @@
           </span>
           <span class="text-white/80 text-[11px]">Collections: ৳ 3.98 Cr</span>
         </div>
-        <!-- Contextual Watermark Art (Income Growth Currency Waves) -->
+        <!-- Contextual Watermark Art -->
         <div class="absolute -bottom-6 -right-6 w-32 h-32 pointer-events-none opacity-[0.08] group-hover:opacity-[0.14] group-hover:scale-105 transition-all duration-300 text-white z-0 select-none">
           <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H16.3c-.11-.87-.76-1.68-2.22-1.68-1.5 0-2.22.75-2.22 1.54 0 .76.5 1.33 2.63 1.85 2.53.62 4.22 1.62 4.22 3.73 0 1.89-1.5 3.01-3.3 3.31z" />
@@ -252,7 +232,7 @@
         </div>
       </div>
 
-      <!-- KPI 2: Gross Profit & COGS -->
+      <!-- KPI 2: Gross Profit (P&L Margin) -->
       <div class="relative overflow-hidden rounded-2xl bg-[#7c3aed]/90 hover:bg-[#7c3aed]/95 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
         <div class="relative z-10 flex items-start justify-between">
           <div>
@@ -272,7 +252,7 @@
           </span>
           <span class="text-white/80 text-[11px]">COGS: ৳ 3.46 Cr</span>
         </div>
-        <!-- Contextual Watermark Art (Analytics Bar Chart) -->
+        <!-- Contextual Watermark Art -->
         <div class="absolute -bottom-6 -right-6 w-32 h-32 pointer-events-none opacity-[0.08] group-hover:opacity-[0.14] group-hover:scale-105 transition-all duration-300 text-white z-0 select-none">
           <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
             <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
@@ -301,7 +281,7 @@
           </span>
           <span class="text-white/80 text-[11px]">Payroll & Utilities Included</span>
         </div>
-        <!-- Contextual Watermark Art (Audit Ledger Receipt) -->
+        <!-- Contextual Watermark Art -->
         <div class="absolute -bottom-6 -right-6 w-32 h-32 pointer-events-none opacity-[0.08] group-hover:opacity-[0.14] group-hover:scale-105 transition-all duration-300 text-white z-0 select-none">
           <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
             <path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2l-1.5 1.5L6 2l-1.5 1.5L3 2v20z" />
@@ -309,7 +289,7 @@
         </div>
       </div>
 
-      <!-- KPI 4: Operating Cash Flow & Net Profit -->
+      <!-- KPI 4: Net Cash Flow & Net Profit -->
       <div class="relative overflow-hidden rounded-2xl bg-[#ea580c]/90 hover:bg-[#ea580c]/95 backdrop-blur-md p-4 text-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col justify-between border border-white/30 group">
         <div class="relative z-10 flex items-start justify-between">
           <div>
@@ -328,7 +308,7 @@
           </span>
           <span class="text-white/80 text-[11px]">Liquid: ৳ 3.84 Cr</span>
         </div>
-        <!-- Contextual Watermark Art (Achievement Star Trophy) -->
+        <!-- Contextual Watermark Art -->
         <div class="absolute -bottom-6 -right-6 w-32 h-32 pointer-events-none opacity-[0.08] group-hover:opacity-[0.14] group-hover:scale-105 transition-all duration-300 text-white z-0 select-none">
           <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
             <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
@@ -339,1038 +319,733 @@
     </section>
 
     <!-- =========================================================================
-         3. 2-COLUMN MODULAR SPLIT:
-            - Left Column (Sidebar): 7 Submodules Navigation + Bank Liquidity Card (3 cols)
-            - Right Column: 5 Interactive Views / Tabs (9 cols)
+         CARD 1 & 2: GRAPH VIEW (INCOME VS EXPENSE) + CASH FLOW & LIQUIDITY STREAM
          ========================================================================= -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-
-      <!-- =====================================================================
-           LEFT SIDEBAR: 7 FINANCE SUBMODULES + BANK TREASURY WIDGET
-           ===================================================================== -->
-      <aside class="lg:col-span-3 space-y-4">
-
-        <!-- Submodules Menu Card -->
-        <div class="executive-card rounded-2xl p-4 relative overflow-hidden">
-          <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
-            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-500">Finance Workspaces</h3>
-            <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Active Sync</span>
-          </div>
-
-          <!-- Navigation Submodule Items -->
-          <nav class="space-y-1">
-            <button onclick="switchTab('analytics')" id="nav-btn-analytics"
-              class="module-nav-item active w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between cursor-pointer">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-                <span>Financial Graphs & KPIs</span>
-              </div>
-              <span class="text-[10px] text-blue-600 font-bold bg-blue-50 px-1.5 py-0.5 rounded">Analytics</span>
-            </button>
-
-            <button onclick="switchTab('pnl')" id="nav-btn-pnl"
-              class="module-nav-item w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-100/70 flex items-center justify-between cursor-pointer">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                <span>Profit & Loss (P&L)</span>
-              </div>
-              <span class="text-[10px] text-purple-600 font-bold bg-purple-50 px-1.5 py-0.5 rounded">28.2% GP</span>
-            </button>
-
-            <button onclick="switchTab('cashflow')" id="nav-btn-cashflow"
-              class="module-nav-item w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-100/70 flex items-center justify-between cursor-pointer">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                <span>Cash Flow Statement</span>
-              </div>
-              <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">+৳ 1.28 Cr</span>
-            </button>
-
-            <button onclick="switchTab('expenses')" id="nav-btn-expenses"
-              class="module-nav-item w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-100/70 flex items-center justify-between cursor-pointer">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                <span>Expense Account Overview</span>
-              </div>
-              <span class="text-[10px] text-amber-600 font-bold bg-amber-50 px-1.5 py-0.5 rounded">6 Accounts</span>
-            </button>
-
-            <button onclick="switchTab('ledger')" id="nav-btn-ledger"
-              class="module-nav-item w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-100/70 flex items-center justify-between cursor-pointer">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                <span>General Ledger & Vouchers</span>
-              </div>
-              <span class="text-[10px] text-slate-500 font-bold bg-slate-100 px-1.5 py-0.5 rounded">1,842 V</span>
-            </button>
-
-            <button onclick="showToast('Loading full Chart of Accounts (COA - 142 Accounts)...')"
-              class="module-nav-item w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-100/70 flex items-center justify-between cursor-pointer">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                <span>Chart of Accounts (COA)</span>
-              </div>
-              <span class="text-[10px] text-slate-400">142 A/C</span>
-            </button>
-
-            <button onclick="showToast('Loading VAT & NBR Form 9.1 Compliance ledger...')"
-              class="module-nav-item w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-100/70 flex items-center justify-between cursor-pointer">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                <span>VAT & NBR Form 9.1</span>
-              </div>
-              <span class="text-[10px] text-rose-600 font-bold bg-rose-50 px-1.5 py-0.5 rounded">Tax Due</span>
-            </button>
-          </nav>
-        </div>
-
-        <!-- Quick Treasury & Bank Summary Widget -->
-        <div class="executive-card rounded-2xl p-4 relative overflow-hidden group">
-          <div class="relative z-10 flex items-center justify-between mb-3">
-            <h4 class="font-bold text-xs text-slate-900 tracking-tight">Active Bank Balances</h4>
-            <span class="text-[11px] font-bold text-emerald-600">Net Liquid</span>
-          </div>
-
-          <div class="relative z-10 space-y-2.5 text-xs">
-            <div class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-100">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-                <div>
-                  <div class="font-bold text-slate-900">BRAC Bank (Corp)</div>
-                  <div class="text-[10px] text-slate-400">Operating A/C #0921</div>
-                </div>
-              </div>
-              <span class="font-bold text-slate-900">৳ 1.82 Cr</span>
-            </div>
-
-            <div class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-100">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-purple-600"></span>
-                <div>
-                  <div class="font-bold text-slate-900">City Bank (LC Trade)</div>
-                  <div class="text-[10px] text-slate-400">Import LC A/C #4410</div>
-                </div>
-              </div>
-              <span class="font-bold text-slate-900">৳ 1.15 Cr</span>
-            </div>
-
-            <div class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-100">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-sky-600"></span>
-                <div>
-                  <div class="font-bold text-slate-900">Dutch-Bangla Bank</div>
-                  <div class="text-[10px] text-slate-400">Payroll A/C #1102</div>
-                </div>
-              </div>
-              <span class="font-bold text-slate-900">৳ 68.4 লাখ</span>
-            </div>
-
-            <div class="flex items-center justify-between p-2 rounded-xl bg-white/70 border border-slate-100">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                <div>
-                  <div class="font-bold text-slate-900">Central Treasury Vault</div>
-                  <div class="text-[10px] text-slate-400">Petty & Cash Reserve</div>
-                </div>
-              </div>
-              <span class="font-bold text-slate-900">৳ 18.5 লাখ</span>
-            </div>
-          </div>
-
-          <!-- Bottom Reconciliation Status -->
-          <div class="relative z-10 mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-            <span class="flex items-center gap-1 text-emerald-600 font-semibold">
-              <span>●</span> Reconciled (Nov 06)
-            </span>
-            <button onclick="showToast('Loading full Bank Reconciliation ledger...')" class="text-blue-600 hover:text-blue-700 font-bold">Details →</button>
-          </div>
-
-          <!-- Watermark Art -->
-          <div class="absolute -bottom-6 -right-6 w-28 h-28 pointer-events-none opacity-[0.04] group-hover:opacity-[0.07] transition-all text-blue-600 z-0 select-none">
-            <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
-            </svg>
-          </div>
-        </div>
-
-      </aside>
-
-      <!-- =====================================================================
-           RIGHT MAIN WORKSPACE: INTERACTIVE TABS & STATEMENTS
-           ===================================================================== -->
-      <section class="lg:col-span-9 space-y-4">
-
-        <!-- Top Segmented Tabs Navigation Bar -->
-        <div class="executive-card rounded-2xl p-2 flex flex-wrap items-center justify-between gap-2">
-          <div class="flex flex-wrap items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200/80" id="finance-tab-buttons">
-            <button onclick="switchTab('analytics')" id="tab-btn-analytics"
-              class="workspace-tab-btn active px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 cursor-pointer">
-              📊 Graphs & Analytics
-            </button>
-            <button onclick="switchTab('pnl')" id="tab-btn-pnl"
-              class="workspace-tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 cursor-pointer">
-              📑 Profit & Loss (P&L)
-            </button>
-            <button onclick="switchTab('cashflow')" id="tab-btn-cashflow"
-              class="workspace-tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 cursor-pointer">
-              💸 Cash Flow Statement
-            </button>
-            <button onclick="switchTab('expenses')" id="tab-btn-expenses"
-              class="workspace-tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 cursor-pointer">
-              🏛️ Expense Accounts
-            </button>
-            <button onclick="switchTab('ledger')" id="tab-btn-ledger"
-              class="workspace-tab-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 cursor-pointer">
-              📜 General Ledger & Vouchers
-            </button>
-          </div>
-
-          <div class="flex items-center gap-2 px-2">
-            <span class="text-[11px] text-slate-400 font-medium">Auto-Audit:</span>
-            <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px] border border-emerald-200/60">
-              ● 100% Balanced
-            </span>
-          </div>
-        </div>
-
-        <!-- ===================================================================
-             VIEW 1: FINANCIAL GRAPHS & PERFORMANCE ANALYTICS (DEFAULT ACTIVE)
-             =================================================================== -->
-        <div id="view-analytics" class="space-y-4">
-
-          <!-- 2-Column Grid: Income vs Expense Trend Graph + Cash Flow Stream -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-
-            <!-- Graph 1: 6-Month Income vs Expense Trend (7 cols) -->
-            <div class="lg:col-span-7 executive-card rounded-2xl p-4 relative overflow-hidden group">
-              <div class="relative z-10 flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
-                    </svg>
-                  </div>
-                  <h3 class="font-bold text-sm text-slate-900 tracking-tight">Income vs. Expense Trend</h3>
-                </div>
-
-                <!-- Legend -->
-                <div class="flex items-center gap-3 text-[11px] font-semibold text-slate-600">
-                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-blue-600"></span>Income</span>
-                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-rose-500"></span>Expense</span>
-                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-1 rounded-full bg-amber-500"></span>Net Margin</span>
-                </div>
-              </div>
-
-              <!-- Responsive SVG Bar + Line Overlay Chart -->
-              <div id="finance-chart-container" class="relative w-full h-56 select-none mt-2">
-                <!-- Floating Tooltip -->
-                <div id="finance-tooltip"
-                  class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full mb-3 bg-slate-900/95 backdrop-blur-md text-white rounded-xl px-3 py-2 shadow-xl border border-slate-700/80 text-xs whitespace-nowrap">
-                  <div class="text-[10px] text-slate-400 font-semibold uppercase" id="tooltip-fin-month">Nov 2026</div>
-                  <div class="flex items-center gap-2 mt-1">
-                    <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-                    <span class="text-slate-300">Income:</span>
-                    <span class="font-bold text-white" id="tooltip-fin-inc">৳ 4.82 Cr</span>
-                  </div>
-                  <div class="flex items-center gap-2 mt-0.5">
-                    <span class="w-2 h-2 rounded-full bg-rose-400"></span>
-                    <span class="text-slate-300">Expenses:</span>
-                    <span class="font-bold text-white" id="tooltip-fin-exp">৳ 3.41 Cr</span>
-                  </div>
-                  <div class="flex items-center gap-2 mt-0.5 text-amber-300 font-bold">
-                    <span>Net Margin:</span>
-                    <span id="tooltip-fin-margin">26.6% (৳ 1.28 Cr)</span>
-                  </div>
-                </div>
-
-                <!-- Chart SVG -->
-                <svg id="finance-svg" class="w-full h-full overflow-visible" viewBox="0 0 520 200" preserveAspectRatio="none">
-                  <!-- Dynamically populated by JS renderFinanceChart() -->
-                </svg>
-              </div>
-
-              <!-- Contextual Watermark Art -->
-              <div class="absolute -bottom-8 -right-8 w-44 h-44 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-blue-600 z-0 select-none">
-                <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
-                </svg>
-              </div>
-            </div>
-
-            <!-- Graph 2: Cash Flow Inflow vs. Outflow Stream (5 cols) -->
-            <div class="lg:col-span-5 executive-card rounded-2xl p-4 relative overflow-hidden group flex flex-col justify-between">
-              <div class="relative z-10 flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                  </div>
-                  <h3 class="font-bold text-sm text-slate-900 tracking-tight">Cash Flow & Liquidity Stream</h3>
-                </div>
-                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">+৳ 1.28 Cr Surplus</span>
-              </div>
-
-              <!-- Visual Inflow vs Outflow Bars -->
-              <div class="relative z-10 space-y-3.5 my-2">
-                <!-- Total Inflows -->
-                <div>
-                  <div class="flex items-center justify-between text-xs mb-1">
-                    <span class="font-semibold text-slate-700 flex items-center gap-1.5">
-                      <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Total Monthly Inflow
-                    </span>
-                    <span class="font-bold text-emerald-600">+৳ 3.98 Cr</span>
-                  </div>
-                  <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                    <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full" style="width: 100%"></div>
-                  </div>
-                  <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
-                    <span>Collections: ৳ 3.65 Cr</span>
-                    <span>Other Income: ৳ 33.0L</span>
-                  </div>
-                </div>
-
-                <!-- Total Outflows -->
-                <div>
-                  <div class="flex items-center justify-between text-xs mb-1">
-                    <span class="font-semibold text-slate-700 flex items-center gap-1.5">
-                      <span class="w-2 h-2 rounded-full bg-rose-500"></span> Total Monthly Outflow
-                    </span>
-                    <span class="font-bold text-rose-600">-৳ 2.70 Cr</span>
-                  </div>
-                  <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                    <div class="bg-gradient-to-r from-rose-500 to-orange-400 h-full rounded-full" style="width: 67.8%"></div>
-                  </div>
-                  <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
-                    <span>Suppliers/AP: ৳ 1.84 Cr</span>
-                    <span>Payroll & Tax: ৳ 86.4L</span>
-                  </div>
-                </div>
-
-                <!-- Net Operating Cash Surplus Card -->
-                <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200/60 flex items-center justify-between">
-                  <div>
-                    <div class="text-[11px] font-semibold text-emerald-800">Net Operating Cash Surplus</div>
-                    <div class="text-[10px] text-emerald-600">Added to Group Bank Reserves</div>
-                  </div>
-                  <div class="text-right">
-                    <div class="text-sm font-extrabold text-emerald-700">+৳ 1.28 Cr</div>
-                    <div class="text-[10px] font-bold text-emerald-600">6.4 Months Buffer</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Bottom Summary Link -->
-              <div class="relative z-10 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                <span>Closing Liquid: <strong class="text-slate-900 font-bold">৳ 3.84 Cr</strong></span>
-                <button onclick="switchTab('cashflow')" class="text-blue-600 hover:text-blue-700 font-bold">View Full Cash Flow →</button>
-              </div>
-
-              <!-- Contextual Watermark Art -->
-              <div class="absolute -bottom-8 -right-8 w-40 h-40 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-emerald-600 z-0 select-none">
-                <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H16.3c-.11-.87-.76-1.68-2.22-1.68-1.5 0-2.22.75-2.22 1.54 0 .76.5 1.33 2.63 1.85 2.53.62 4.22 1.62 4.22 3.73 0 1.89-1.5 3.01-3.3 3.31z" />
-                </svg>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Bottom Section: Quick P&L Summary + Expense Breakdown Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-            <!-- Card A: Quick Profit & Loss Snapshot -->
-            <div class="executive-card rounded-2xl p-4 relative overflow-hidden group">
-              <div class="relative z-10 flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
-                <div class="flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                  <h4 class="font-bold text-xs uppercase tracking-wider text-slate-800">P&L Executive Summary</h4>
-                </div>
-                <button onclick="switchTab('pnl')" class="text-xs font-bold text-blue-600 hover:text-blue-700">Full P&L Statement →</button>
-              </div>
-
-              <div class="relative z-10 space-y-2 text-xs">
-                <div class="flex justify-between py-1 border-b border-slate-100">
-                  <span class="text-slate-600 font-medium">1. Gross Turnover / Revenue:</span>
-                  <span class="font-extrabold text-slate-900">৳ 4,82,00,000 <span class="text-[10px] text-slate-400 font-normal">(100%)</span></span>
-                </div>
-                <div class="flex justify-between py-1 border-b border-slate-100 text-rose-600">
-                  <span class="font-medium">2. Less: Cost of Goods Sold (COGS):</span>
-                  <span class="font-bold">-৳ 3,46,00,000 <span class="text-[10px] text-rose-400 font-normal">(71.8%)</span></span>
-                </div>
-                <div class="flex justify-between py-1 border-b border-slate-100 text-purple-700 font-bold bg-purple-50/50 px-2 rounded-lg">
-                  <span>= Gross Profit:</span>
-                  <span>৳ 1,36,00,000 <span class="text-[10px] font-semibold">(28.2%)</span></span>
-                </div>
-                <div class="flex justify-between py-1 border-b border-slate-100 text-rose-600">
-                  <span class="font-medium">3. Less: Operating Expenses (OPEX):</span>
-                  <span class="font-bold">-৳ 68,00,000 <span class="text-[10px] text-rose-400 font-normal">(14.1%)</span></span>
-                </div>
-                <div class="flex justify-between py-1.5 text-emerald-700 font-extrabold text-sm bg-emerald-50 px-2 rounded-xl">
-                  <span>= Net Profit After Tax:</span>
-                  <span>৳ 1,28,00,000 <span class="text-xs font-bold">(26.6%)</span></span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card B: Expense Accounts Quick Widget -->
-            <div class="executive-card rounded-2xl p-4 relative overflow-hidden group">
-              <div class="relative z-10 flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
-                <div class="flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
-                  <h4 class="font-bold text-xs uppercase tracking-wider text-slate-800">Top Expense Ledger Heads</h4>
-                </div>
-                <button onclick="switchTab('expenses')" class="text-xs font-bold text-blue-600 hover:text-blue-700">All Expenses →</button>
-              </div>
-
-              <div class="relative z-10 space-y-2 text-xs">
-                <div>
-                  <div class="flex justify-between text-[11px] mb-0.5">
-                    <span class="font-medium text-slate-700">Raw Materials Procurement (COGS)</span>
-                    <span class="font-bold text-slate-900">৳ 2.82 Cr <span class="text-slate-400">(90.9%)</span></span>
-                  </div>
-                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                    <div class="bg-blue-600 h-full rounded-full" style="width: 90.9%"></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="flex justify-between text-[11px] mb-0.5">
-                    <span class="font-medium text-slate-700">Staff Payroll & Salaries</span>
-                    <span class="font-bold text-slate-900">৳ 68.4 লাখ <span class="text-slate-400">(97.7%)</span></span>
-                  </div>
-                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                    <div class="bg-indigo-600 h-full rounded-full" style="width: 97.7%"></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="flex justify-between text-[11px] mb-0.5">
-                    <span class="font-medium text-slate-700">Factory Utilities (DESCO / Gas)</span>
-                    <span class="font-bold text-slate-900">৳ 14.5 লাখ <span class="text-slate-400">(96.7%)</span></span>
-                  </div>
-                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                    <div class="bg-amber-500 h-full rounded-full" style="width: 96.7%"></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="flex justify-between text-[11px] mb-0.5">
-                    <span class="font-medium text-slate-700">Freight, Logistics & Port Fees</span>
-                    <span class="font-bold text-rose-600">৳ 12.8 লাখ <span class="text-rose-500">(106.6% - Over)</span></span>
-                  </div>
-                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                    <div class="bg-rose-500 h-full rounded-full" style="width: 100%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- ===================================================================
-             VIEW 2: FULL PROFIT & LOSS (P&L) STATEMENT (IAS/IFRS FORMAT)
-             =================================================================== -->
-        <div id="view-pnl" class="hidden space-y-4">
-          <div class="executive-card rounded-2xl p-5 relative overflow-hidden group">
-            <div class="relative z-10 flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80">
-              <div>
-                <h3 class="font-bold text-base text-slate-900 tracking-tight">Statement of Profit or Loss (P&L)</h3>
-                <p class="text-xs text-slate-500">Inceptia Group Enterprise Ltd — For Period Ended November 30, 2026</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <button onclick="exportFinancialReport()" class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition shadow-2xs">
-                  Download P&L (PDF)
-                </button>
-              </div>
-            </div>
-
-            <div class="relative z-10 overflow-x-auto text-xs">
-              <table class="w-full text-left">
-                <thead>
-                  <tr class="border-b border-slate-200 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
-                    <th class="py-2.5">Account Particulars / Line Item</th>
-                    <th class="py-2.5 text-center">Note Ref</th>
-                    <th class="py-2.5 text-right">November 2026 (৳)</th>
-                    <th class="py-2.5 text-right">October 2026 (৳)</th>
-                    <th class="py-2.5 text-right">% of Revenue</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 font-medium text-slate-700">
-                  <tr class="font-bold text-slate-900 bg-slate-50/50">
-                    <td class="py-2.5">Operating Turnover / Sales Revenue</td>
-                    <td class="py-2.5 text-center text-slate-400">Note 01</td>
-                    <td class="py-2.5 text-right text-blue-600">4,82,00,000</td>
-                    <td class="py-2.5 text-right">4,22,00,000</td>
-                    <td class="py-2.5 text-right">100.0%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Less: Cost of Goods Sold (COGS)</td>
-                    <td class="py-2 text-center text-slate-400">Note 02</td>
-                    <td class="py-2 text-right text-rose-600">(3,46,00,000)</td>
-                    <td class="py-2 text-right text-rose-600">(3,02,00,000)</td>
-                    <td class="py-2 text-right">71.8%</td>
-                  </tr>
-                  <tr class="font-extrabold text-purple-900 bg-purple-50/60">
-                    <td class="py-2.5">Gross Profit</td>
-                    <td class="py-2.5 text-center text-slate-400">-</td>
-                    <td class="py-2.5 text-right text-purple-700 font-black">1,36,00,000</td>
-                    <td class="py-2.5 text-right">1,20,00,000</td>
-                    <td class="py-2.5 text-right font-black">28.2%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Administrative & Office Expenses</td>
-                    <td class="py-2 text-center text-slate-400">Note 03</td>
-                    <td class="py-2 text-right text-rose-600">(18,50,000)</td>
-                    <td class="py-2 text-right text-rose-600">(17,20,000)</td>
-                    <td class="py-2 text-right">3.8%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Selling, Marketing & Logistics</td>
-                    <td class="py-2 text-center text-slate-400">Note 04</td>
-                    <td class="py-2 text-right text-rose-600">(16,20,000)</td>
-                    <td class="py-2 text-right text-rose-600">(15,80,000)</td>
-                    <td class="py-2 text-right">3.4%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Salaries & Personnel Compensation</td>
-                    <td class="py-2 text-center text-slate-400">Note 05</td>
-                    <td class="py-2 text-right text-rose-600">(24,80,000)</td>
-                    <td class="py-2 text-right text-rose-600">(24,50,000)</td>
-                    <td class="py-2 text-right">5.1%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Facility Maintenance & Utilities</td>
-                    <td class="py-2 text-center text-slate-400">Note 06</td>
-                    <td class="py-2 text-right text-rose-600">(8,50,000)</td>
-                    <td class="py-2 text-right text-rose-600">(8,20,000)</td>
-                    <td class="py-2 text-right">1.8%</td>
-                  </tr>
-                  <tr class="font-bold text-slate-900 bg-slate-50/70">
-                    <td class="py-2.5">Operating Profit (EBITDA)</td>
-                    <td class="py-2.5 text-center text-slate-400">-</td>
-                    <td class="py-2.5 text-right font-extrabold">68,00,000</td>
-                    <td class="py-2.5 text-right">54,30,000</td>
-                    <td class="py-2.5 text-right">14.1%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Depreciation & Amortization</td>
-                    <td class="py-2 text-center text-slate-400">Note 07</td>
-                    <td class="py-2 text-right text-rose-600">(7,50,000)</td>
-                    <td class="py-2 text-right text-rose-600">(7,50,000)</td>
-                    <td class="py-2 text-right">1.6%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Finance & Bank Interest Cost</td>
-                    <td class="py-2 text-center text-slate-400">Note 08</td>
-                    <td class="py-2 text-right text-rose-600">(4,80,000)</td>
-                    <td class="py-2 text-right text-rose-600">(5,10,000)</td>
-                    <td class="py-2 text-right">1.0%</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 pl-4 text-slate-600">Income Tax Provision (TDS/AIT)</td>
-                    <td class="py-2 text-center text-slate-400">Note 09</td>
-                    <td class="py-2 text-right text-rose-600">(5,70,000)</td>
-                    <td class="py-2 text-right text-rose-600">(4,80,000)</td>
-                    <td class="py-2 text-right">1.2%</td>
-                  </tr>
-                  <tr class="font-black text-emerald-900 bg-emerald-50 text-sm">
-                    <td class="py-3 font-extrabold text-slate-900">Net Profit for the Period</td>
-                    <td class="py-3 text-center text-slate-400">-</td>
-                    <td class="py-3 text-right text-emerald-700 font-black text-base">৳ 1,28,00,000</td>
-                    <td class="py-3 text-right text-slate-700">৳ 1,05,40,000</td>
-                    <td class="py-3 text-right font-black text-emerald-700">26.6%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===================================================================
-             VIEW 3: CASH FLOW STATEMENT (OPERATING, INVESTING, FINANCING)
-             =================================================================== -->
-        <div id="view-cashflow" class="hidden space-y-4">
-          <div class="executive-card rounded-2xl p-5 relative overflow-hidden group">
-            <div class="relative z-10 flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80">
-              <div>
-                <h3 class="font-bold text-base text-slate-900 tracking-tight">Statement of Cash Flows</h3>
-                <p class="text-xs text-slate-500">Direct Method — Reconciled to Liquid Cash & Bank Balances</p>
-              </div>
-              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-xs border border-emerald-200">
-                Closing Bank Liquidity: ৳ 3.84 Cr
-              </span>
-            </div>
-
-            <div class="relative z-10 space-y-4 text-xs">
-              <!-- Section A: Operating Activities -->
-              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-                <div class="font-bold text-slate-900 flex justify-between border-b border-slate-200 pb-1.5">
-                  <span>A. Cash Flows from Operating Activities</span>
-                  <span class="text-emerald-600 font-black">+৳ 1,32,00,000</span>
-                </div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Cash receipts from customers (Sales Invoices)</span> <span class="text-emerald-600 font-semibold">+৳ 3,98,00,000</span></div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Cash payments to suppliers & vendors (AP)</span> <span class="text-rose-600 font-semibold">-৳ 1,84,00,000</span></div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Cash paid for personnel salaries & operational wages</span> <span class="text-rose-600 font-semibold">-৳ 68,00,000</span></div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Corporate taxes & VAT payments to NBR</span> <span class="text-rose-600 font-semibold">-৳ 14,00,000</span></div>
-              </div>
-
-              <!-- Section B: Investing Activities -->
-              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-                <div class="font-bold text-slate-900 flex justify-between border-b border-slate-200 pb-1.5">
-                  <span>B. Cash Flows from Investing Activities</span>
-                  <span class="text-rose-600 font-black">-৳ 24,50,000</span>
-                </div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Acquisition of Plant Machinery & Capex hardware</span> <span class="text-rose-600 font-semibold">-৳ 24,50,000</span></div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Proceeds from sale of obsolete asset equipment</span> <span class="text-slate-400">৳ 0.00</span></div>
-              </div>
-
-              <!-- Section C: Financing Activities -->
-              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-                <div class="font-bold text-slate-900 flex justify-between border-b border-slate-200 pb-1.5">
-                  <span>C. Cash Flows from Financing Activities</span>
-                  <span class="text-rose-600 font-black">-৳ 12,00,000</span>
-                </div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Principal repayment of term loan (City Bank)</span> <span class="text-rose-600 font-semibold">-৳ 12,00,000</span></div>
-                <div class="flex justify-between pl-3 text-slate-600"><span>Shareholder dividends disbursed</span> <span class="text-slate-400">৳ 0.00</span></div>
-              </div>
-
-              <!-- Grand Net Total -->
-              <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-between text-sm">
-                <div>
-                  <div class="font-extrabold text-emerald-900">Net Increase in Cash & Cash Equivalents</div>
-                  <div class="text-[11px] text-emerald-700">Opening Balance: ৳ 2.885 Cr → Closing Balance: ৳ 3.84 Cr</div>
-                </div>
-                <div class="text-right">
-                  <div class="text-base font-black text-emerald-700">+৳ 95,50,000</div>
-                  <div class="text-[10px] text-emerald-600 font-bold">100% Reconciled</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===================================================================
-             VIEW 4: EXPENSE ACCOUNTS DETAILED OVERVIEW & BUDGET TRACKER
-             =================================================================== -->
-        <div id="view-expenses" class="hidden space-y-4">
-          <div class="executive-card rounded-2xl p-5 relative overflow-hidden group">
-            <div class="relative z-10 flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80">
-              <div>
-                <h3 class="font-bold text-base text-slate-900 tracking-tight">Expense Ledger Accounts (Budget vs. Actual)</h3>
-                <p class="text-xs text-slate-500">Corporate OPEX & COGS Account Heads for FY 2026-27</p>
-              </div>
-              <button onclick="openVoucherModal('PV')" class="px-3.5 py-1.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition">
-                + New Expense Voucher
-              </button>
-            </div>
-
-            <div class="relative z-10 overflow-x-auto text-xs">
-              <table class="w-full text-left">
-                <thead>
-                  <tr class="border-b border-slate-200 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
-                    <th class="py-2.5">A/C Code</th>
-                    <th class="py-2.5">Expense Account Head</th>
-                    <th class="py-2.5">Category</th>
-                    <th class="py-2.5 text-right">Allocated Budget</th>
-                    <th class="py-2.5 text-right">Actual Spend (৳)</th>
-                    <th class="py-2.5 text-right">Burn Rate</th>
-                    <th class="py-2.5 text-center">Variance Status</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 font-medium text-slate-700">
-                  <tr class="hover:bg-slate-50">
-                    <td class="py-3 font-mono font-bold text-slate-900">#5100</td>
-                    <td class="py-3 font-semibold text-slate-900">Raw Materials Procurement (COGS)</td>
-                    <td class="py-3 text-slate-500">Direct Cost</td>
-                    <td class="py-3 text-right">৳ 3,10,00,000</td>
-                    <td class="py-3 text-right font-bold text-slate-900">৳ 2,82,00,000</td>
-                    <td class="py-3 text-right font-bold text-emerald-600">90.9%</td>
-                    <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">Within Budget</span></td>
-                  </tr>
-                  <tr class="hover:bg-slate-50">
-                    <td class="py-3 font-mono font-bold text-slate-900">#5200</td>
-                    <td class="py-3 font-semibold text-slate-900">Payroll, Executive Salaries & Wages</td>
-                    <td class="py-3 text-slate-500">Personnel</td>
-                    <td class="py-3 text-right">৳ 70,00,000</td>
-                    <td class="py-3 text-right font-bold text-slate-900">৳ 68,40,000</td>
-                    <td class="py-3 text-right font-bold text-blue-600">97.7%</td>
-                    <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px]">On Target</span></td>
-                  </tr>
-                  <tr class="hover:bg-slate-50">
-                    <td class="py-3 font-mono font-bold text-slate-900">#5300</td>
-                    <td class="py-3 font-semibold text-slate-900">Factory & Facility Utilities (Power/Gas)</td>
-                    <td class="py-3 text-slate-500">Operations</td>
-                    <td class="py-3 text-right">৳ 15,00,000</td>
-                    <td class="py-3 text-right font-bold text-slate-900">৳ 14,50,000</td>
-                    <td class="py-3 text-right font-bold text-emerald-600">96.7%</td>
-                    <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">Normal</span></td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 bg-rose-50/20">
-                    <td class="py-3 font-mono font-bold text-slate-900">#5400</td>
-                    <td class="py-3 font-semibold text-slate-900">Freight, Logistics & Port Terminal Charges</td>
-                    <td class="py-3 text-slate-500">SCM / Shipping</td>
-                    <td class="py-3 text-right">৳ 12,00,000</td>
-                    <td class="py-3 text-right font-bold text-rose-600">৳ 12,80,000</td>
-                    <td class="py-3 text-right font-bold text-rose-600">106.6%</td>
-                    <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-bold text-[10px]">Over Budget (+6.6%)</span></td>
-                  </tr>
-                  <tr class="hover:bg-slate-50">
-                    <td class="py-3 font-mono font-bold text-slate-900">#5500</td>
-                    <td class="py-3 font-semibold text-slate-900">Administrative, Legal & Corporate Audit</td>
-                    <td class="py-3 text-slate-500">Admin</td>
-                    <td class="py-3 text-right">৳ 10,00,000</td>
-                    <td class="py-3 text-right font-bold text-slate-900">৳ 8,50,000</td>
-                    <td class="py-3 text-right font-bold text-emerald-600">85.0%</td>
-                    <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">Under Budget</span></td>
-                  </tr>
-                  <tr class="hover:bg-slate-50">
-                    <td class="py-3 font-mono font-bold text-slate-900">#5600</td>
-                    <td class="py-3 font-semibold text-slate-900">IT Infrastructure, Cloud Servers & Licenses</td>
-                    <td class="py-3 text-slate-500">Technology</td>
-                    <td class="py-3 text-right">৳ 6,50,000</td>
-                    <td class="py-3 text-right font-bold text-slate-900">৳ 6,20,000</td>
-                    <td class="py-3 text-right font-bold text-blue-600">95.4%</td>
-                    <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px]">Optimal</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===================================================================
-             VIEW 5: GENERAL LEDGER & DOUBLE-ENTRY VOUCHERS TABLE
-             =================================================================== -->
-        <div id="view-ledger" class="hidden space-y-4">
-
-          <!-- Filter & Control Toolbar -->
-          <div class="executive-card rounded-2xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
-            <!-- Voucher Type Tabs -->
-            <div class="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200/70" id="voucher-type-pills">
-              <button onclick="filterVoucherType('all', event)"
-                class="v-pill active px-3 py-1.5 text-xs font-semibold rounded-lg transition-all bg-white text-blue-600 shadow-2xs">
-                All Vouchers (8)
-              </button>
-              <button onclick="filterVoucherType('PV', event)"
-                class="v-pill px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
-                Payment (PV)
-              </button>
-              <button onclick="filterVoucherType('RV', event)"
-                class="v-pill px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
-                Receipt (RV)
-              </button>
-              <button onclick="filterVoucherType('JV', event)"
-                class="v-pill px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
-                Journal (JV)
-              </button>
-              <button onclick="filterVoucherType('CV', event)"
-                class="v-pill px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
-                Contra (CV)
-              </button>
-            </div>
-
-            <!-- Status & Actions Filter -->
-            <div class="flex items-center gap-2">
-              <select id="status-filter" onchange="filterLedgerTable()"
-                class="appearance-none bg-white border border-slate-200/90 rounded-xl px-3 py-1.5 text-xs font-medium text-slate-700 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 shadow-2xs cursor-pointer">
-                <option value="all">All Statuses</option>
-                <option value="Posted">Posted (Approved)</option>
-                <option value="Pending">Pending Approval</option>
-                <option value="Draft">Draft</option>
-              </select>
-
-              <button onclick="bulkApproveVouchers()"
-                class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 shadow-2xs transition flex items-center gap-1.5 cursor-pointer">
-                <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span>Batch Approve</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Interactive General Ledger Data Table Card -->
-          <div class="executive-card rounded-2xl p-4 relative overflow-hidden group">
-            <div class="relative z-10 flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
-              <div>
-                <h3 class="font-bold text-sm text-slate-900 tracking-tight">General Ledger Transactions</h3>
-                <p class="text-[11px] text-slate-400 mt-0.5">Double-entry audit entries with realtime trial balance check</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-slate-600">Status:</span>
-                <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-bold text-[10px]">
-                  ● 100% Balanced
-                </span>
-              </div>
-            </div>
-
-            <!-- Table Container with Horizontal Scroll -->
-            <div class="relative z-10 overflow-x-auto">
-              <table class="w-full text-left text-xs" id="ledger-table">
-                <thead>
-                  <tr class="border-b border-slate-200/80 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
-                    <th class="py-2.5 px-2">Voucher Date</th>
-                    <th class="py-2.5 px-2">Voucher No.</th>
-                    <th class="py-2.5 px-2">Type</th>
-                    <th class="py-2.5 px-2">Account Debit / Credit</th>
-                    <th class="py-2.5 px-2">Description / Narration</th>
-                    <th class="py-2.5 px-2 text-right">Debit (৳)</th>
-                    <th class="py-2.5 px-2 text-right">Credit (৳)</th>
-                    <th class="py-2.5 px-2 text-center">Status</th>
-                    <th class="py-2.5 px-2 text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 font-medium text-slate-700" id="ledger-rows">
-
-                  <!-- Row 1: PV Meghna Cement -->
-                  <tr class="hover:bg-slate-50/80 transition" data-type="PV" data-status="Posted">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">06 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
-                      <button onclick="previewVoucher('PV-2026-0842')" class="hover:underline cursor-pointer">PV-2026-0842</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 font-bold text-[10px]">PV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: Meghna Cement Ltd (Vendor AP)</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: BRAC Bank Corporate A/C</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      Raw materials clinker procurement batch #4910
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">18,50,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">18,50,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="previewVoucher('PV-2026-0842')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button>
-                    </td>
-                  </tr>
-
-                  <!-- Row 2: RV BSRM Steels Collection -->
-                  <tr class="hover:bg-slate-50/80 transition" data-type="RV" data-status="Posted">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">06 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
-                      <button onclick="previewVoucher('RV-2026-1019')" class="hover:underline cursor-pointer">RV-2026-1019</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">RV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: Cash / Cheque Clearing Desk</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: BSRM Steels Ltd (Customer AR)</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      Invoice collection against Inv #INV-4921
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">8,20,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">8,20,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="previewVoucher('RV-2026-1019')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button>
-                    </td>
-                  </tr>
-
-                  <!-- Row 3: JV Machinery Depreciation -->
-                  <tr class="hover:bg-slate-50/80 transition" data-type="JV" data-status="Posted">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">05 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
-                      <button onclick="previewVoucher('JV-2026-0412')" class="hover:underline cursor-pointer">JV-2026-0412</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 font-bold text-[10px]">JV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: Depreciation Expense A/C</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: Accumulated Deprec - Heavy Machinery</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      Monthly straight-line depreciation allocation
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">2,45,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">2,45,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="previewVoucher('JV-2026-0412')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button>
-                    </td>
-                  </tr>
-
-                  <!-- Row 4: CV Fund Transfer for Payroll -->
-                  <tr class="hover:bg-slate-50/80 transition" data-type="CV" data-status="Posted">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">05 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
-                      <button onclick="previewVoucher('CV-2026-0188')" class="hover:underline cursor-pointer">CV-2026-0188</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-bold text-[10px]">CV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: Dutch-Bangla Payroll A/C</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: City Bank (Trade / LC Core A/C)</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      Inter-bank fund transfer for November 2026 staff salary
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">68,40,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">68,40,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold text-[10px]">Funded</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="previewVoucher('CV-2026-0188')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button>
-                    </td>
-                  </tr>
-
-                  <!-- Row 5: PV Facility Utilities DESCO -->
-                  <tr class="hover:bg-slate-50/80 transition" data-type="PV" data-status="Posted">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">04 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
-                      <button onclick="previewVoucher('PV-2026-0841')" class="hover:underline cursor-pointer">PV-2026-0841</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 font-bold text-[10px]">PV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: Electricity & Power Utilities Expense</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: Central Petty Cash Vault</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      DESCO Industrial monthly electric bill Tejgaon facility
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">45,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">45,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="previewVoucher('PV-2026-0841')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button>
-                    </td>
-                  </tr>
-
-                  <!-- Row 6: JV Input VAT Reconciliation (Pending) -->
-                  <tr class="hover:bg-slate-50/80 transition bg-amber-50/30" data-type="JV" data-status="Pending">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">04 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-amber-600 whitespace-nowrap">
-                      <button onclick="previewVoucher('JV-2026-0411')" class="hover:underline cursor-pointer">JV-2026-0411</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 font-bold text-[10px]">JV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: Input VAT Credit Receivable (Form 9.1)</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: Deferred VAT Provision A/C</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      October monthly VAT credit reconciliation across subdivisions
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">5,12,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">5,12,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold text-[10px]">Pending</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="approveSingleVoucher('JV-2026-0411', this)" class="text-emerald-600 hover:text-emerald-800 font-bold text-[11px] cursor-pointer">Approve</button>
-                    </td>
-                  </tr>
-
-                  <!-- Row 7: RV Walton Automation Milestone -->
-                  <tr class="hover:bg-slate-50/80 transition" data-type="RV" data-status="Posted">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">03 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
-                      <button onclick="previewVoucher('RV-2026-1018')" class="hover:underline cursor-pointer">RV-2026-1018</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">RV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: BRAC Bank Corporate A/C</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: Walton Hi-Tech (Project Receivable)</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      Milestone 2 payment received for factory IoT sensors
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">12,50,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">12,50,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="previewVoucher('RV-2026-1018')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button>
-                    </td>
-                  </tr>
-
-                  <!-- Row 8: PV Genvict Advance Draft -->
-                  <tr class="hover:bg-slate-50/80 transition" data-type="PV" data-status="Draft">
-                    <td class="py-3 px-2 text-slate-500 whitespace-nowrap">02 Nov 2026</td>
-                    <td class="py-3 px-2 font-mono font-bold text-slate-500 whitespace-nowrap">
-                      <button onclick="previewVoucher('PV-2026-0840')" class="hover:underline cursor-pointer">PV-2026-0840</button>
-                    </td>
-                    <td class="py-3 px-2">
-                      <span class="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 font-bold text-[10px]">PV</span>
-                    </td>
-                    <td class="py-3 px-2 font-semibold text-slate-900">
-                      <div>Dr: Genvict Technologies (Supplier Advance)</div>
-                      <div class="text-[10px] font-normal text-slate-500">Cr: City Bank LC Account</div>
-                    </td>
-                    <td class="py-3 px-2 text-slate-600 max-w-xs truncate">
-                      25% advance against Purchase Order #PO-2026-0904
-                    </td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">6,80,000</td>
-                    <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">6,80,000</td>
-                    <td class="py-3 px-2 text-center">
-                      <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold text-[10px]">Draft</span>
-                    </td>
-                    <td class="py-3 px-2 text-center">
-                      <button onclick="openVoucherModal('PV', 'PV-2026-0840')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">Edit</button>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Table Bottom Summary & Totals -->
-            <div class="relative z-10 mt-4 pt-3 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <div class="flex items-center gap-4 text-slate-600">
-                <span>Total Debits: <strong class="text-slate-900 font-extrabold" id="total-debit-val">৳ 1,22,42,000</strong></span>
-                <span>Total Credits: <strong class="text-slate-900 font-extrabold" id="total-credit-val">৳ 1,22,42,000</strong></span>
-                <span class="text-emerald-600 font-bold">Difference: ৳ 0.00 (Balanced)</span>
-              </div>
-
-              <!-- Pagination Controls -->
-              <div class="flex items-center gap-2">
-                <span class="text-slate-400 text-[11px]">Showing 1–8 of 1,842</span>
-                <div class="inline-flex rounded-lg border border-slate-200 bg-white shadow-2xs">
-                  <button onclick="showToast('Previous page')" class="px-2.5 py-1 text-slate-500 hover:text-blue-600 font-bold border-r border-slate-200 cursor-pointer">←</button>
-                  <span class="px-3 py-1 font-bold text-blue-600 text-[11px]">Page 1</span>
-                  <button onclick="showToast('Loading page 2...')" class="px-2.5 py-1 text-slate-500 hover:text-blue-600 font-bold border-l border-slate-200 cursor-pointer">→</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Contextual Watermark Art (General Ledger Double-Entry Shield) -->
-            <div class="absolute -bottom-8 -right-8 w-40 h-40 pointer-events-none opacity-[0.04] group-hover:opacity-[0.07] transition-all text-blue-700 z-0 select-none">
-              <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+
+      <!-- CARD 1: FINANCIAL PERFORMANCE GRAPH VIEW (7 cols) -->
+      <div class="lg:col-span-7 executive-card rounded-2xl p-5 relative overflow-hidden group flex flex-col justify-between">
+        <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shadow-2xs">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
               </svg>
             </div>
+            <div>
+              <h3 class="font-bold text-sm text-slate-900 tracking-tight">Financial Performance: Income vs. Expense Trend</h3>
+              <p class="text-[11px] text-slate-500 font-medium">6-Month comparative multi-bar & net margin curve</p>
+            </div>
           </div>
 
+          <!-- Legend -->
+          <div class="flex items-center gap-3 text-[11px] font-semibold text-slate-600">
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-blue-600"></span>Income</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-rose-500"></span>Expense</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-1 rounded-full bg-amber-500"></span>Margin %</span>
+          </div>
         </div>
 
-      </section>
+        <!-- Responsive SVG Bar + Line Overlay Chart -->
+        <div id="finance-chart-container" class="relative w-full h-64 select-none my-1">
+          <!-- Floating Tooltip -->
+          <div id="finance-tooltip"
+            class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full mb-3 bg-slate-900/95 backdrop-blur-md text-white rounded-xl px-3.5 py-2.5 shadow-xl border border-slate-700/80 text-xs whitespace-nowrap">
+            <div class="text-[10px] text-slate-400 font-semibold uppercase" id="tooltip-fin-month">Nov 2026</div>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span class="text-slate-300">Income:</span>
+              <span class="font-bold text-white" id="tooltip-fin-inc">৳ 4.82 Cr</span>
+            </div>
+            <div class="flex items-center gap-2 mt-0.5">
+              <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+              <span class="text-slate-300">Expenses:</span>
+              <span class="font-bold text-white" id="tooltip-fin-exp">৳ 3.41 Cr</span>
+            </div>
+            <div class="flex items-center gap-2 mt-0.5 text-amber-300 font-bold">
+              <span>Net Profit:</span>
+              <span id="tooltip-fin-margin">29.2% (৳ 1.41 Cr)</span>
+            </div>
+          </div>
 
-    </div>
+          <svg id="finance-svg" class="w-full h-full overflow-visible" viewBox="0 0 520 200" preserveAspectRatio="none">
+            <!-- Dynamically populated by JS renderFinanceChart() -->
+          </svg>
+        </div>
+
+        <!-- Bottom Summary Footnote -->
+        <div class="relative z-10 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span>Average Monthly Growth: <strong class="text-emerald-600 font-bold">▲ +4.8%</strong></span>
+          <span>Target FY26 Margin: <strong class="text-slate-900 font-bold">28.0% (On Track)</strong></span>
+        </div>
+
+        <!-- Contextual Watermark Art -->
+        <div class="absolute -bottom-8 -right-8 w-44 h-44 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-blue-600 z-0 select-none">
+          <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- CARD 2: CASH FLOW & LIQUIDITY STREAM (5 cols) -->
+      <div class="lg:col-span-5 executive-card rounded-2xl p-5 relative overflow-hidden group flex flex-col justify-between">
+        <div class="relative z-10 flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-2xs">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-sm text-slate-900 tracking-tight">Cash Flow & Liquidity Stream</h3>
+              <p class="text-[11px] text-slate-500 font-medium">Monthly cash collection vs. operational burn</p>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">+৳ 1.28 Cr Surplus</span>
+        </div>
+
+        <!-- Visual Inflow vs Outflow Gauges -->
+        <div class="relative z-10 space-y-3.5 my-2">
+          <!-- Total Inflows -->
+          <div>
+            <div class="flex items-center justify-between text-xs mb-1">
+              <span class="font-semibold text-slate-700 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Total Monthly Inflow
+              </span>
+              <span class="font-extrabold text-emerald-600">+৳ 3.98 Cr</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full" style="width: 100%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+              <span>Customer Collections: ৳ 3.65 Cr</span>
+              <span>Other Income: ৳ 33.0 লাখ</span>
+            </div>
+          </div>
+
+          <!-- Total Outflows -->
+          <div>
+            <div class="flex items-center justify-between text-xs mb-1">
+              <span class="font-semibold text-slate-700 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-rose-500"></span> Total Monthly Outflow
+              </span>
+              <span class="font-extrabold text-rose-600">-৳ 2.70 Cr</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-gradient-to-r from-rose-500 to-orange-400 h-full rounded-full" style="width: 67.8%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+              <span>Suppliers / AP: ৳ 1.84 Cr</span>
+              <span>Payroll & Tax: ৳ 86.4 লাখ</span>
+            </div>
+          </div>
+
+          <!-- Net Operating Cash Surplus Card -->
+          <div class="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200/70 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold text-emerald-900">Net Operating Cash Surplus</div>
+              <div class="text-[11px] text-emerald-700 mt-0.5">Transferred to Bank Operating Reserves</div>
+            </div>
+            <div class="text-right">
+              <div class="text-base font-black text-emerald-700">+৳ 1.28 Cr</div>
+              <div class="text-[10px] font-bold text-emerald-600">6.4 Months Buffer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Bank Accounts Liquidity Mini-Grid -->
+        <div class="relative z-10 grid grid-cols-2 gap-2 text-xs pt-2 border-t border-slate-100">
+          <div class="p-2 rounded-xl bg-white/70 border border-slate-100">
+            <div class="text-[10px] text-slate-400 font-medium">BRAC Bank Corporate</div>
+            <div class="font-bold text-slate-900 mt-0.5">৳ 1.82 Cr</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white/70 border border-slate-100">
+            <div class="text-[10px] text-slate-400 font-medium">City Bank (LC Trade)</div>
+            <div class="font-bold text-slate-900 mt-0.5">৳ 1.15 Cr</div>
+          </div>
+        </div>
+
+        <!-- Bottom Reconciliation Summary -->
+        <div class="relative z-10 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+          <span>Net Liquid: <strong class="text-slate-900 font-extrabold">৳ 3.84 Cr</strong></span>
+          <span class="text-emerald-600 font-bold">● Reconciled (Nov 06)</span>
+        </div>
+
+        <!-- Contextual Watermark Art -->
+        <div class="absolute -bottom-8 -right-8 w-40 h-40 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-emerald-600 z-0 select-none">
+          <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H16.3c-.11-.87-.76-1.68-2.22-1.68-1.5 0-2.22.75-2.22 1.54 0 .76.5 1.33 2.63 1.85 2.53.62 4.22 1.62 4.22 3.73 0 1.89-1.5 3.01-3.3 3.31z" />
+          </svg>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         CARD 3 & 4: PROFIT AND LOSS (P&L) STATEMENT + INCOME & REVENUE SOURCES
+         ========================================================================= -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+
+      <!-- CARD 3: STATEMENT OF PROFIT OR LOSS (P&L) (7 cols) -->
+      <div class="lg:col-span-7 executive-card rounded-2xl p-5 relative overflow-hidden group flex flex-col justify-between">
+        <div>
+          <div class="relative z-10 flex items-center justify-between pb-3 mb-3 border-b border-slate-200/80">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shadow-2xs">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.5l1 1H17a2 2 0 012 2v12a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 tracking-tight">Statement of Profit or Loss (P&L)</h3>
+                <p class="text-[11px] text-slate-500 font-medium">IAS/IFRS corporate statement for November 2026</p>
+              </div>
+            </div>
+            <button onclick="exportFinancialReport()" class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition shadow-2xs">
+              Export PDF
+            </button>
+          </div>
+
+          <!-- P&L Table Structure -->
+          <div class="relative z-10 overflow-x-auto text-xs">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
+                  <th class="py-2">Line Item / Particulars</th>
+                  <th class="py-2 text-center">Note</th>
+                  <th class="py-2 text-right">November 2026 (৳)</th>
+                  <th class="py-2 text-right">% Revenue</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-medium text-slate-700">
+                <tr class="font-bold text-slate-900 bg-slate-50/50">
+                  <td class="py-2">1. Operating Turnover / Sales Revenue</td>
+                  <td class="py-2 text-center text-slate-400">01</td>
+                  <td class="py-2 text-right text-blue-600 font-extrabold">4,82,00,000</td>
+                  <td class="py-2 text-right">100.0%</td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 pl-4 text-slate-600">Less: Cost of Goods Sold (Raw Materials & COGS)</td>
+                  <td class="py-1.5 text-center text-slate-400">02</td>
+                  <td class="py-1.5 text-right text-rose-600 font-semibold">(3,46,00,000)</td>
+                  <td class="py-1.5 text-right text-slate-500">71.8%</td>
+                </tr>
+                <tr class="font-black text-purple-900 bg-purple-50/70">
+                  <td class="py-2">= Gross Profit (Margin)</td>
+                  <td class="py-2 text-center text-slate-400">-</td>
+                  <td class="py-2 text-right text-purple-700 font-black">1,36,00,000</td>
+                  <td class="py-2 text-right font-black">28.2%</td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 pl-4 text-slate-600">Less: Administrative, Legal & Audit Overhead</td>
+                  <td class="py-1.5 text-center text-slate-400">03</td>
+                  <td class="py-1.5 text-right text-rose-600">(18,50,000)</td>
+                  <td class="py-1.5 text-right text-slate-500">3.8%</td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 pl-4 text-slate-600">Less: Selling, Freight & Transport Logistics</td>
+                  <td class="py-1.5 text-center text-slate-400">04</td>
+                  <td class="py-1.5 text-right text-rose-600">(16,20,000)</td>
+                  <td class="py-1.5 text-right text-slate-500">3.4%</td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 pl-4 text-slate-600">Less: Executive Staff Compensation & Payroll</td>
+                  <td class="py-1.5 text-center text-slate-400">05</td>
+                  <td class="py-1.5 text-right text-rose-600">(24,80,000)</td>
+                  <td class="py-1.5 text-right text-slate-500">5.1%</td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 pl-4 text-slate-600">Less: Plant Utilities, Maintenance & Power</td>
+                  <td class="py-1.5 text-center text-slate-400">06</td>
+                  <td class="py-1.5 text-right text-rose-600">(8,50,000)</td>
+                  <td class="py-1.5 text-right text-slate-500">1.8%</td>
+                </tr>
+                <tr class="font-bold text-slate-900 bg-slate-50/70">
+                  <td class="py-2">= Operating Profit (EBITDA)</td>
+                  <td class="py-2 text-center text-slate-400">-</td>
+                  <td class="py-2 text-right font-extrabold text-slate-900">68,00,000</td>
+                  <td class="py-2 text-right">14.1%</td>
+                </tr>
+                <tr>
+                  <td class="py-1.5 pl-4 text-slate-600">Less: Depreciation, Financing Interest & Tax Provision</td>
+                  <td class="py-1.5 text-center text-slate-400">07</td>
+                  <td class="py-1.5 text-right text-rose-600">(18,00,000)</td>
+                  <td class="py-1.5 text-right text-slate-500">3.7%</td>
+                </tr>
+                <tr class="font-black text-emerald-900 bg-emerald-50 text-sm">
+                  <td class="py-2.5 font-extrabold text-slate-900">= Net Profit After Tax</td>
+                  <td class="py-2.5 text-center text-slate-400">-</td>
+                  <td class="py-2.5 text-right text-emerald-700 font-black text-base">৳ 1,28,00,000</td>
+                  <td class="py-2.5 text-right font-black text-emerald-700">26.6%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Contextual Watermark Art -->
+        <div class="absolute -bottom-8 -right-8 w-44 h-44 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-purple-700 z-0 select-none">
+          <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- CARD 4: INCOME & REVENUE SOURCES OVERVIEW (5 cols) -->
+      <div class="lg:col-span-5 executive-card rounded-2xl p-5 relative overflow-hidden group flex flex-col justify-between">
+        <div>
+          <div class="relative z-10 flex items-center justify-between pb-3 mb-3 border-b border-slate-200/80">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shadow-2xs">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 tracking-tight">Income & Revenue Sources</h3>
+                <p class="text-[11px] text-slate-500 font-medium">Turnover distribution by operational business stream</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200/60">Total: ৳ 4.82 Cr</span>
+          </div>
+
+          <!-- Revenue Streams Breakdown List -->
+          <div class="relative z-10 space-y-3 my-2 text-xs">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-semibold text-slate-800 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span> Commercial Product Sales & Billing
+                </span>
+                <span class="font-bold text-slate-900">৳ 3.45 Cr <span class="text-slate-400 font-normal">(71.6%)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="bg-blue-600 h-full rounded-full" style="width: 71.6%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-semibold text-slate-800 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-purple-600"></span> Toll & Expressway Automation Tech
+                </span>
+                <span class="font-bold text-slate-900">৳ 85.0 লাখ <span class="text-slate-400 font-normal">(17.6%)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="bg-purple-600 h-full rounded-full" style="width: 17.6%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-semibold text-slate-800 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span> Engineering Services & AMC Maintenance
+                </span>
+                <span class="font-bold text-slate-900">৳ 42.0 লাখ <span class="text-slate-400 font-normal">(8.7%)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="bg-emerald-600 h-full rounded-full" style="width: 8.7%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-semibold text-slate-800 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span> Bank Interest & Foreign Exchange Gain
+                </span>
+                <span class="font-bold text-slate-900">৳ 10.0 লাখ <span class="text-slate-400 font-normal">(2.1%)</span></span>
+              </div>
+              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="bg-amber-500 h-full rounded-full" style="width: 2.1%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collections & Receivable Aging Status -->
+        <div class="relative z-10 pt-3 border-t border-slate-100 grid grid-cols-2 gap-3 text-xs">
+          <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="text-[10px] text-slate-500">Collection Rate</div>
+            <div class="text-sm font-extrabold text-emerald-600 mt-0.5">82.5%</div>
+            <div class="text-[10px] text-slate-400">৳ 3.98 Cr Received</div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="text-[10px] text-slate-500">Pending Receivables (AR)</div>
+            <div class="text-sm font-extrabold text-blue-600 mt-0.5">৳ 84.5 লাখ</div>
+            <div class="text-[10px] text-slate-400">18 Open Invoices</div>
+          </div>
+        </div>
+
+        <!-- Contextual Watermark Art -->
+        <div class="absolute -bottom-8 -right-8 w-44 h-44 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-blue-600 z-0 select-none">
+          <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H16.3c-.11-.87-.76-1.68-2.22-1.68-1.5 0-2.22.75-2.22 1.54 0 .76.5 1.33 2.63 1.85 2.53.62 4.22 1.62 4.22 3.73 0 1.89-1.5 3.01-3.3 3.31z" />
+          </svg>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         CARD 5: EXPENSE ACCOUNTS OVERVIEW & BUDGET BURN RATE (FULL WIDTH)
+         ========================================================================= -->
+    <section class="executive-card rounded-2xl p-5 relative overflow-hidden group">
+      <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-4 border-b border-slate-200/80">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shadow-2xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-slate-900 tracking-tight">Expense Accounts Overview & Budget Allocation</h3>
+            <p class="text-xs text-slate-500 font-medium">Corporate OPEX & COGS Account Heads with Burn Rate & Variance Status</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-slate-600">Total Spend: <strong class="text-slate-900 font-extrabold">৳ 3.41 Cr</strong></span>
+          <button onclick="openVoucherModal('PV')" class="px-3.5 py-1.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition shadow-2xs">
+            + New Expense Voucher
+          </button>
+        </div>
+      </div>
+
+      <!-- Expense Accounts Grid Table -->
+      <div class="relative z-10 overflow-x-auto text-xs">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-slate-200 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
+              <th class="py-2.5">A/C Code</th>
+              <th class="py-2.5">Expense Account Head</th>
+              <th class="py-2.5">Category</th>
+              <th class="py-2.5 text-right">Allocated Budget</th>
+              <th class="py-2.5 text-right">Actual Spend (৳)</th>
+              <th class="py-2.5 text-right">Burn Rate</th>
+              <th class="py-2.5 text-center">Variance Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 font-medium text-slate-700">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 font-mono font-bold text-slate-900">#5100</td>
+              <td class="py-3 font-semibold text-slate-900">Raw Materials Procurement (COGS Clinker & Steel)</td>
+              <td class="py-3 text-slate-500">Direct Cost</td>
+              <td class="py-3 text-right">৳ 3,10,00,000</td>
+              <td class="py-3 text-right font-bold text-slate-900">৳ 2,82,00,000</td>
+              <td class="py-3 text-right font-bold text-emerald-600">90.9%</td>
+              <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">Within Budget</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 font-mono font-bold text-slate-900">#5200</td>
+              <td class="py-3 font-semibold text-slate-900">Payroll, Executive Salaries & Operational Wages</td>
+              <td class="py-3 text-slate-500">Personnel</td>
+              <td class="py-3 text-right">৳ 70,00,000</td>
+              <td class="py-3 text-right font-bold text-slate-900">৳ 68,40,000</td>
+              <td class="py-3 text-right font-bold text-blue-600">97.7%</td>
+              <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px]">On Target</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 font-mono font-bold text-slate-900">#5300</td>
+              <td class="py-3 font-semibold text-slate-900">Factory & Facility Utilities (DESCO Power / Titas Gas)</td>
+              <td class="py-3 text-slate-500">Operations</td>
+              <td class="py-3 text-right">৳ 15,00,000</td>
+              <td class="py-3 text-right font-bold text-slate-900">৳ 14,50,000</td>
+              <td class="py-3 text-right font-bold text-emerald-600">96.7%</td>
+              <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">Normal</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50 bg-rose-50/20">
+              <td class="py-3 font-mono font-bold text-slate-900">#5400</td>
+              <td class="py-3 font-semibold text-slate-900">Freight, Logistics & Port Terminal Clearing Fees</td>
+              <td class="py-3 text-slate-500">SCM / Shipping</td>
+              <td class="py-3 text-right">৳ 12,00,000</td>
+              <td class="py-3 text-right font-bold text-rose-600">৳ 12,80,000</td>
+              <td class="py-3 text-right font-bold text-rose-600">106.6%</td>
+              <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-bold text-[10px]">Over Budget (+6.6%)</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 font-mono font-bold text-slate-900">#5500</td>
+              <td class="py-3 font-semibold text-slate-900">Administrative, Legal Retainer & Corporate Audit</td>
+              <td class="py-3 text-slate-500">Admin</td>
+              <td class="py-3 text-right">৳ 10,00,000</td>
+              <td class="py-3 text-right font-bold text-slate-900">৳ 8,50,000</td>
+              <td class="py-3 text-right font-bold text-emerald-600">85.0%</td>
+              <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">Under Budget</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 font-mono font-bold text-slate-900">#5600</td>
+              <td class="py-3 font-semibold text-slate-900">IT Infrastructure, Cloud Servers & ERP Licenses</td>
+              <td class="py-3 text-slate-500">Technology</td>
+              <td class="py-3 text-right">৳ 6,50,000</td>
+              <td class="py-3 text-right font-bold text-slate-900">৳ 6,20,000</td>
+              <td class="py-3 text-right font-bold text-blue-600">95.4%</td>
+              <td class="py-3 text-center"><span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px]">Optimal</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Contextual Watermark Art -->
+      <div class="absolute -bottom-8 -right-8 w-44 h-44 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-rose-600 z-0 select-none">
+        <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2l-1.5 1.5L6 2l-1.5 1.5L3 2v20z" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CARD 6: GENERAL LEDGER & DOUBLE-ENTRY TRANSACTIONS (FULL WIDTH)
+         ========================================================================= -->
+    <section class="executive-card rounded-2xl p-5 relative overflow-hidden group space-y-4">
+
+      <!-- Header & Filter Toolbar -->
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-slate-200/80">
+        <div>
+          <h3 class="font-bold text-base text-slate-900 tracking-tight">General Ledger Transactions & Vouchers</h3>
+          <p class="text-xs text-slate-500 font-medium">Full double-entry transaction trail with live trial balance verification</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Voucher Type Tabs -->
+          <div class="flex flex-wrap items-center gap-1 p-1 bg-slate-100 rounded-xl border border-slate-200/70" id="voucher-type-pills">
+            <button onclick="filterVoucherType('all', event)"
+              class="v-pill active px-3 py-1 text-xs font-semibold rounded-lg transition-all bg-white text-blue-600 shadow-2xs">
+              All (8)
+            </button>
+            <button onclick="filterVoucherType('PV', event)"
+              class="v-pill px-3 py-1 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
+              Payment (PV)
+            </button>
+            <button onclick="filterVoucherType('RV', event)"
+              class="v-pill px-3 py-1 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
+              Receipt (RV)
+            </button>
+            <button onclick="filterVoucherType('JV', event)"
+              class="v-pill px-3 py-1 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
+              Journal (JV)
+            </button>
+            <button onclick="filterVoucherType('CV', event)"
+              class="v-pill px-3 py-1 text-xs font-semibold rounded-lg transition-all text-slate-600 hover:text-slate-900">
+              Contra (CV)
+            </button>
+          </div>
+
+          <!-- Status Filter -->
+          <select id="status-filter" onchange="filterLedgerTable()"
+            class="appearance-none bg-white border border-slate-200/90 rounded-xl px-3 py-1.5 text-xs font-medium text-slate-700 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 shadow-2xs cursor-pointer">
+            <option value="all">All Statuses</option>
+            <option value="Posted">Posted (Approved)</option>
+            <option value="Pending">Pending Approval</option>
+            <option value="Draft">Draft</option>
+          </select>
+
+          <!-- Batch Approve Action -->
+          <button onclick="bulkApproveVouchers()"
+            class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 shadow-2xs transition flex items-center gap-1.5 cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Batch Approve</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ledger Transactions Table -->
+      <div class="relative z-10 overflow-x-auto text-xs">
+        <table class="w-full text-left" id="ledger-table">
+          <thead>
+            <tr class="border-b border-slate-200/80 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
+              <th class="py-2.5 px-2">Date</th>
+              <th class="py-2.5 px-2">Voucher No.</th>
+              <th class="py-2.5 px-2">Type</th>
+              <th class="py-2.5 px-2">Account Debit / Credit</th>
+              <th class="py-2.5 px-2">Description / Narration</th>
+              <th class="py-2.5 px-2 text-right">Debit (৳)</th>
+              <th class="py-2.5 px-2 text-right">Credit (৳)</th>
+              <th class="py-2.5 px-2 text-center">Status</th>
+              <th class="py-2.5 px-2 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 font-medium text-slate-700" id="ledger-rows">
+
+            <!-- Row 1: PV Meghna Cement -->
+            <tr class="hover:bg-slate-50/80 transition" data-type="PV" data-status="Posted">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">06 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
+                <button onclick="previewVoucher('PV-2026-0842')" class="hover:underline cursor-pointer">PV-2026-0842</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 font-bold text-[10px]">PV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: Meghna Cement Ltd (Vendor AP)</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: BRAC Bank Corporate A/C</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">Raw materials clinker procurement batch #4910</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">18,50,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">18,50,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="previewVoucher('PV-2026-0842')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button></td>
+            </tr>
+
+            <!-- Row 2: RV BSRM Steels Collection -->
+            <tr class="hover:bg-slate-50/80 transition" data-type="RV" data-status="Posted">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">06 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
+                <button onclick="previewVoucher('RV-2026-1019')" class="hover:underline cursor-pointer">RV-2026-1019</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">RV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: Cash / Cheque Clearing Desk</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: BSRM Steels Ltd (Customer AR)</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">Invoice collection against Inv #INV-4921</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">8,20,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">8,20,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="previewVoucher('RV-2026-1019')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button></td>
+            </tr>
+
+            <!-- Row 3: JV Machinery Depreciation -->
+            <tr class="hover:bg-slate-50/80 transition" data-type="JV" data-status="Posted">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">05 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
+                <button onclick="previewVoucher('JV-2026-0412')" class="hover:underline cursor-pointer">JV-2026-0412</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 font-bold text-[10px]">JV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: Depreciation Expense A/C</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: Accumulated Deprec - Heavy Machinery</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">Monthly straight-line depreciation allocation</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">2,45,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">2,45,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="previewVoucher('JV-2026-0412')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button></td>
+            </tr>
+
+            <!-- Row 4: CV Fund Transfer for Payroll -->
+            <tr class="hover:bg-slate-50/80 transition" data-type="CV" data-status="Posted">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">05 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
+                <button onclick="previewVoucher('CV-2026-0188')" class="hover:underline cursor-pointer">CV-2026-0188</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-bold text-[10px]">CV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: Dutch-Bangla Payroll A/C</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: City Bank (Trade / LC Core A/C)</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">Inter-bank fund transfer for November 2026 staff salary</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">68,40,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">68,40,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold text-[10px]">Funded</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="previewVoucher('CV-2026-0188')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button></td>
+            </tr>
+
+            <!-- Row 5: PV Facility Utilities DESCO -->
+            <tr class="hover:bg-slate-50/80 transition" data-type="PV" data-status="Posted">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">04 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
+                <button onclick="previewVoucher('PV-2026-0841')" class="hover:underline cursor-pointer">PV-2026-0841</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 font-bold text-[10px]">PV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: Electricity & Power Utilities Expense</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: Central Petty Cash Vault</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">DESCO Industrial monthly electric bill Tejgaon facility</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">45,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">45,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="previewVoucher('PV-2026-0841')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button></td>
+            </tr>
+
+            <!-- Row 6: JV Input VAT Reconciliation (Pending) -->
+            <tr class="hover:bg-slate-50/80 transition bg-amber-50/30" data-type="JV" data-status="Pending">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">04 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-amber-600 whitespace-nowrap">
+                <button onclick="previewVoucher('JV-2026-0411')" class="hover:underline cursor-pointer">JV-2026-0411</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 font-bold text-[10px]">JV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: Input VAT Credit Receivable (Form 9.1)</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: Deferred VAT Provision A/C</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">October monthly VAT credit reconciliation across subdivisions</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">5,12,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">5,12,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold text-[10px]">Pending</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="approveSingleVoucher('JV-2026-0411', this)" class="text-emerald-600 hover:text-emerald-800 font-bold text-[11px] cursor-pointer">Approve</button></td>
+            </tr>
+
+            <!-- Row 7: RV Walton Automation Milestone -->
+            <tr class="hover:bg-slate-50/80 transition" data-type="RV" data-status="Posted">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">03 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-blue-600 whitespace-nowrap">
+                <button onclick="previewVoucher('RV-2026-1018')" class="hover:underline cursor-pointer">RV-2026-1018</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">RV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: BRAC Bank Corporate A/C</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: Walton Hi-Tech (Project Receivable)</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">Milestone 2 payment received for factory IoT sensors</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">12,50,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">12,50,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Posted</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="previewVoucher('RV-2026-1018')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">View</button></td>
+            </tr>
+
+            <!-- Row 8: PV Genvict Advance Draft -->
+            <tr class="hover:bg-slate-50/80 transition" data-type="PV" data-status="Draft">
+              <td class="py-3 px-2 text-slate-500 whitespace-nowrap">02 Nov 2026</td>
+              <td class="py-3 px-2 font-mono font-bold text-slate-500 whitespace-nowrap">
+                <button onclick="previewVoucher('PV-2026-0840')" class="hover:underline cursor-pointer">PV-2026-0840</button>
+              </td>
+              <td class="py-3 px-2"><span class="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 font-bold text-[10px]">PV</span></td>
+              <td class="py-3 px-2 font-semibold text-slate-900">
+                <div>Dr: Genvict Technologies (Supplier Advance)</div>
+                <div class="text-[10px] font-normal text-slate-500">Cr: City Bank LC Account</div>
+              </td>
+              <td class="py-3 px-2 text-slate-600 max-w-xs truncate">25% advance against Purchase Order #PO-2026-0904</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">6,80,000</td>
+              <td class="py-3 px-2 text-right font-bold text-slate-900 whitespace-nowrap">6,80,000</td>
+              <td class="py-3 px-2 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold text-[10px]">Draft</span></td>
+              <td class="py-3 px-2 text-center"><button onclick="openVoucherModal('PV', 'PV-2026-0840')" class="text-blue-600 hover:text-blue-800 font-semibold text-[11px] cursor-pointer">Edit</button></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table Bottom Summary & Totals -->
+      <div class="relative z-10 pt-3 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-4 text-slate-600">
+          <span>Total Debits: <strong class="text-slate-900 font-extrabold" id="total-debit-val">৳ 1,22,42,000</strong></span>
+          <span>Total Credits: <strong class="text-slate-900 font-extrabold" id="total-credit-val">৳ 1,22,42,000</strong></span>
+          <span class="text-emerald-600 font-bold">Difference: ৳ 0.00 (Balanced)</span>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="flex items-center gap-2">
+          <span class="text-slate-400 text-[11px]">Showing 1–8 of 1,842</span>
+          <div class="inline-flex rounded-lg border border-slate-200 bg-white shadow-2xs">
+            <button onclick="showToast('Previous page')" class="px-2.5 py-1 text-slate-500 hover:text-blue-600 font-bold border-r border-slate-200 cursor-pointer">←</button>
+            <span class="px-3 py-1 font-bold text-blue-600 text-[11px]">Page 1</span>
+            <button onclick="showToast('Loading page 2...')" class="px-2.5 py-1 text-slate-500 hover:text-blue-600 font-bold border-l border-slate-200 cursor-pointer">→</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contextual Watermark Art -->
+      <div class="absolute -bottom-8 -right-8 w-44 h-44 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-all text-blue-700 z-0 select-none">
+        <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+        </svg>
+      </div>
+    </section>
 
   </main>
 
@@ -1570,51 +1245,7 @@
       showToast(`Period changed to: ${label}`);
     }
 
-    // 2. Tab Switching Engine (Analytics, P&L, Cash Flow, Expenses, Ledger)
-    function switchTab(tabId) {
-      const views = ['analytics', 'pnl', 'cashflow', 'expenses', 'ledger'];
-      views.forEach(v => {
-        const el = document.getElementById(`view-${v}`);
-        const btn = document.getElementById(`tab-btn-${v}`);
-        const navBtn = document.getElementById(`nav-btn-${v}`);
-
-        if (el) el.classList.add('hidden');
-        if (btn) btn.classList.remove('active');
-        if (navBtn) {
-          navBtn.classList.remove('active');
-          navBtn.classList.add('text-slate-700');
-          const dot = navBtn.querySelector('.w-2.h-2');
-          if (dot) dot.className = 'w-2 h-2 rounded-full bg-slate-300';
-        }
-      });
-
-      // Activate current tab view
-      const activeView = document.getElementById(`view-${tabId}`);
-      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
-      const activeNav = document.getElementById(`nav-btn-${tabId}`);
-
-      if (activeView) activeView.classList.remove('hidden');
-      if (activeBtn) activeBtn.classList.add('active');
-      if (activeNav) {
-        activeNav.classList.add('active');
-        activeNav.classList.remove('text-slate-700');
-        const dot = activeNav.querySelector('.w-2.h-2');
-        if (dot) dot.className = 'w-2 h-2 rounded-full bg-blue-600';
-      }
-
-      const titleMap = {
-        'analytics': 'Financial Graphs & Analytics',
-        'pnl': 'Statement of Profit or Loss (P&L)',
-        'cashflow': 'Cash Flow Statement & Liquidity',
-        'expenses': 'Expense Accounts & Budget Burn',
-        'ledger': 'General Ledger & Double-Entry Vouchers'
-      };
-      const title = titleMap[tabId] || tabId;
-      document.getElementById('active-breadcrumb-sub').innerText = title;
-      showToast(`Displaying ${title}`);
-    }
-
-    // 3. Voucher Filtering
+    // 2. Voucher Filtering
     let activeType = 'all';
 
     function filterVoucherType(type, event) {
@@ -1652,7 +1283,7 @@
       });
     }
 
-    // 4. Modals
+    // 3. Modals
     function openVoucherModal(defaultType, editId) {
       const modal = document.getElementById('voucher-modal');
       modal.classList.remove('hidden');
@@ -1715,7 +1346,7 @@
       showToast('Generating official Financial Statements PDF export...');
     }
 
-    // 5. Toast Notification System
+    // 4. Toast Notification System
     function showToast(msg) {
       const container = document.getElementById('toast-container');
       if (!container) return;
@@ -1737,7 +1368,7 @@
       }, 3200);
     }
 
-    // 6. Interactive Financial Performance SVG Chart Engine
+    // 5. Interactive Financial Performance SVG Chart Engine
     const financeMonthlyData = [
       { month: 'Jun 2026', label: 'Jun', income: 3.90, expense: 2.85, net: 1.05, margin: '26.9%' },
       { month: 'Jul 2026', label: 'Jul', income: 4.10, expense: 3.00, net: 1.10, margin: '26.8%' },
@@ -1835,7 +1466,6 @@
       document.getElementById('tooltip-fin-exp').innerText = `৳ ${d.expense.toFixed(2)} Cr`;
       document.getElementById('tooltip-fin-margin').innerText = `${d.margin} (৳ ${d.net.toFixed(2)} Cr)`;
 
-      const rect = container.getBoundingClientRect();
       const colStep = (520 - 42 - 36) / financeMonthlyData.length;
       const xPercent = ((42 + index * colStep + colStep / 2) / 520) * 100;
 
@@ -1856,7 +1486,6 @@
     window.addEventListener('resize', () => {
       renderFinanceChart();
     });
-    // In case DOM is already loaded
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setTimeout(renderFinanceChart, 50);
     }

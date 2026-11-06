@@ -174,23 +174,49 @@ Every card on the dashboard features a bespoke vector SVG watermark silhouette a
 
 ## 6. Grid & Layout Architecture
 
-```
-[ Top Header: Navigation, Search ⌘K, Period, Profile ] (Fixed / Sticky 65% Glass)
----------------------------------------------------------------------------------
-[ Row 1: 4 Vibrant Frosted KPI Cards (Revenue, GP, Expenses, Net Profit) ]
----------------------------------------------------------------------------------
-[ Row 2: Main Split Grid (xl:grid-cols-12 gap-5 items-stretch) ]
-  ├── Left 9 Columns (xl:col-span-9 space-y-5):
-  │     ├── Revenue & Profit Trend Chart (7 cols) + Revenue Donut Chart (5 cols)
-  │     ├── Key Modules Accordion Workspaces (8 modules in 2x4 grid with Search & Filter)
-  │     └── Operations Row: Cash & Bank Liquidity (left) + Project Milestones (right)
-  │
-  └── Right 3 Columns (xl:col-span-3 flex flex-col justify-between gap-4):
-        ├── Card 1: Today's Agenda (5 calendar items)
-        ├── Card 2: Pending Approvals (3 items with 1-click Approve/Reject)
-        ├── Card 3: Key Tasks (6 checklist items with live count & strike-through)
-        └── Card 4: Recent Activity Log (Live audit stream, 100% flush bottom-aligned)
----------------------------------------------------------------------------------
-[ Footer: Enterprise Version, Status Indicator, Copyright ] (65% Glass)
-```
+### 6.1 Executive Cover Portal Grid (`erp_cover_page.html`)
+- **Container Width:** `max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8`
+- **Top Bar:** Fixed/Sticky Frosted Header (Logo, Search `⌘K`, Date Picker, Global Status)
+- **KPI Row:** 4 Vibrant Frosted KPI Cards (Revenue, GP, Expenses, Net Profit)
+- **Main Split Grid:** `xl:grid-cols-12 gap-5 items-stretch`
+  - **Left 9 Columns (`xl:col-span-9`):** Charts, 8 Modules Navigation Grid, Operations Row.
+  - **Right 3 Columns (`xl:col-span-3`):** Agenda, Pending Approvals, Checklist, Activity Log.
+
+---
+
+### 6.2 Module Workspace Page Grid Standards (`finance_module.html`, `sales_module.html`, etc.)
+
+All deep-dive ERP departmental module pages must strictly follow the architectural standard established in `finance_module.html`:
+
+1. **Full-Width Canvas Specification:**
+   - Container class: `max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8`
+   - Edge-to-edge expansive canvas matching `erp_cover_page.html`. No narrow bounding wrappers (`max-w-7xl` is strictly prohibited).
+
+2. **Clean Sticky Glass Header:**
+   - Left: `← Executive Portal` (`a href="erp_cover_page.html"`), vertical separator, Department Icon badge + Title + Breadcrumbs.
+   - Right: Quick Search input pill with `⌘K` badge, Date Range Selector (`Nov 1 – Nov 30, 2026`), and clean `Export` button.
+   - **NO** period badges (e.g. `FY 2026-27 (Period 05)`), and **NO** bulky creation modal launch buttons in the header.
+
+3. **Top 4 Colorful Matte Glass KPI Cards:**
+   - 4 high-saturation matte glass cards styled with solid background tints matching `erp_cover_page.html` (`#2563eb`, `#7c3aed`, `#059669`, `#ea580c` or semantic departmental accents), frosted icon badges, bold typography, and subtle SVG watermarks.
+
+4. **3-Row 4-Col (Left 1/3) vs 8-Col (Right 2/3) Architectural Grid:**
+   Every module page body is arranged into exactly **3 Rows** using `grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch`:
+   
+   - **Row 1: Executive Analytics & Telemetry Graphs**
+     - **Left Column (`lg:col-span-4` / 33.3%):** Compact Trend/Conversion Dual-Bar or Spline Chart.
+     - **Right Column (`lg:col-span-8` / 66.7%):** Expansive Analytical Stage (Waterfall bridge chart, conversion pipeline flow, or multi-hub capacity flow).
+   
+   - **Row 2: Streams, Liquidity & Categorical Breakdowns**
+     - **Left Column (`lg:col-span-4` / 33.3%):** Velocity Stream & Financial/Operational Health metrics.
+     - **Right Column (`lg:col-span-8` / 66.7%):** Multi-Column Micro-Card Grid (3-column x 2-row layout of 6 key cost centers, territories, or warehouses).
+   
+   - **Row 3: Distribution, Risk Watch & Audited Master Data Hub**
+     - **Left Stack (`lg:col-span-4` / 33.3%):** Two vertically stacked cards (`flex flex-col gap-3.5`) designed to match the exact height of the data table on the right:
+       - **Top Card (Card 5A):** Segmented SVG Donut Chart with clean color-coded legend breakdown.
+       - **Bottom Card (Card 5B):** Risk Watch / Aging Buckets / Compliance Scorecard.
+     - **Right Column (`lg:col-span-8` / 66.7%):** Comprehensive 8–9 Column Audited Master Data Table (Card 6) featuring type filter tabs, live search, sortable headers, status pills, balanced totals, and 1-click actions.
+
+5. **Future Global Navigation Sidebar Rule:**
+   - **NO in-page submodule tab bars or workspace cards.** Submodule routing and cross-department jumping are deferred entirely to the upcoming Global Application Sidebar. Keep module pages clean, focused, and data-dense.
 

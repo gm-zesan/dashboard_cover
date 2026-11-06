@@ -374,88 +374,8 @@
                 </div>
               </div>
 
-              <svg class="w-full h-full overflow-visible" viewBox="0 0 520 200" preserveAspectRatio="none">
-                <!-- Grid Lines -->
-                <line x1="40" y1="20" x2="480" y2="20" stroke="#f1f5f9" stroke-width="1" />
-                <line x1="40" y1="60" x2="480" y2="60" stroke="#f1f5f9" stroke-width="1" />
-                <line x1="40" y1="100" x2="480" y2="100" stroke="#f1f5f9" stroke-width="1" />
-                <line x1="40" y1="140" x2="480" y2="140" stroke="#f1f5f9" stroke-width="1" />
-                <line x1="40" y1="175" x2="480" y2="175" stroke="#e2e8f0" stroke-width="1.2" />
-
-                <!-- Left Y-Axis Labels (Cr) -->
-                <text x="32" y="24" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">5.0 Cr</text>
-                <text x="32" y="64" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">4.0 Cr</text>
-                <text x="32" y="104" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">3.0 Cr</text>
-                <text x="32" y="144" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">2.0 Cr</text>
-                <text x="32" y="178" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">0.0 Cr</text>
-
-                <!-- Right Y-Axis Labels (Margin %) -->
-                <text x="488" y="24" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">40%</text>
-                <text x="488" y="64" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">30%</text>
-                <text x="488" y="104" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">20%</text>
-                <text x="488" y="144" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">10%</text>
-                <text x="488" y="178" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">0%</text>
-
-                <!-- Bars: Jun (x=70) -->
-                <rect onmouseenter="showTrendTooltip(event, 0)" onmouseleave="hideTrendTooltip()" x="65" y="88"
-                  width="16" height="87" rx="3" fill="#3b82f6" class="hover:opacity-80 transition cursor-pointer" />
-                <rect onmouseenter="showTrendTooltip(event, 0)" onmouseleave="hideTrendTooltip()" x="84" y="145"
-                  width="14" height="30" rx="3" fill="#10b981" class="hover:opacity-80 transition cursor-pointer" />
-                <text x="81" y="192" text-anchor="middle" class="text-[11px] fill-slate-500 font-medium">Jun</text>
-
-                <!-- Bars: Jul (x=135) -->
-                <rect onmouseenter="showTrendTooltip(event, 1)" onmouseleave="hideTrendTooltip()" x="130" y="72"
-                  width="16" height="103" rx="3" fill="#3b82f6" class="hover:opacity-80 transition cursor-pointer" />
-                <rect onmouseenter="showTrendTooltip(event, 1)" onmouseleave="hideTrendTooltip()" x="149" y="142"
-                  width="14" height="33" rx="3" fill="#10b981" class="hover:opacity-80 transition cursor-pointer" />
-                <text x="146" y="192" text-anchor="middle" class="text-[11px] fill-slate-500 font-medium">Jul</text>
-
-                <!-- Bars: Aug (x=200) -->
-                <rect onmouseenter="showTrendTooltip(event, 2)" onmouseleave="hideTrendTooltip()" x="195" y="63"
-                  width="16" height="112" rx="3" fill="#3b82f6" class="hover:opacity-80 transition cursor-pointer" />
-                <rect onmouseenter="showTrendTooltip(event, 2)" onmouseleave="hideTrendTooltip()" x="214" y="140"
-                  width="14" height="35" rx="3" fill="#10b981" class="hover:opacity-80 transition cursor-pointer" />
-                <text x="211" y="192" text-anchor="middle" class="text-[11px] fill-slate-500 font-medium">Aug</text>
-
-                <!-- Bars: Sep (x=265) -->
-                <rect onmouseenter="showTrendTooltip(event, 3)" onmouseleave="hideTrendTooltip()" x="260" y="54"
-                  width="16" height="121" rx="3" fill="#3b82f6" class="hover:opacity-80 transition cursor-pointer" />
-                <rect onmouseenter="showTrendTooltip(event, 3)" onmouseleave="hideTrendTooltip()" x="279" y="138"
-                  width="14" height="37" rx="3" fill="#10b981" class="hover:opacity-80 transition cursor-pointer" />
-                <text x="276" y="192" text-anchor="middle" class="text-[11px] fill-slate-500 font-medium">Sep</text>
-
-                <!-- Bars: Oct (x=330) -->
-                <rect onmouseenter="showTrendTooltip(event, 4)" onmouseleave="hideTrendTooltip()" x="325" y="38"
-                  width="16" height="137" rx="3" fill="#3b82f6" class="hover:opacity-80 transition cursor-pointer" />
-                <rect onmouseenter="showTrendTooltip(event, 4)" onmouseleave="hideTrendTooltip()" x="344" y="135"
-                  width="14" height="40" rx="3" fill="#10b981" class="hover:opacity-80 transition cursor-pointer" />
-                <text x="341" y="192" text-anchor="middle" class="text-[11px] fill-slate-500 font-medium">Oct</text>
-
-                <!-- Bars: Nov (Active) (x=395) -->
-                <rect onmouseenter="showTrendTooltip(event, 5)" onmouseleave="hideTrendTooltip()" x="390" y="24"
-                  width="16" height="151" rx="3" fill="#2563eb"
-                  class="hover:opacity-80 transition cursor-pointer ring-2 ring-blue-300/40" />
-                <rect onmouseenter="showTrendTooltip(event, 5)" onmouseleave="hideTrendTooltip()" x="409" y="128"
-                  width="14" height="47" rx="3" fill="#059669"
-                  class="hover:opacity-80 transition cursor-pointer ring-2 ring-emerald-300/40" />
-                <text x="406" y="192" text-anchor="middle" class="text-[11px] fill-blue-700 font-bold">Nov</text>
-
-                <!-- Line Overlay: Profit Margin -->
-                <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                  points="81,95 146,88 211,82 276,78 341,72 406,64" />
-                <!-- Circles on line points -->
-                <circle cx="81" cy="95" r="4.5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"
-                  class="cursor-pointer" />
-                <circle cx="146" cy="88" r="4.5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"
-                  class="cursor-pointer" />
-                <circle cx="211" cy="82" r="4.5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"
-                  class="cursor-pointer" />
-                <circle cx="276" cy="78" r="4.5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"
-                  class="cursor-pointer" />
-                <circle cx="341" cy="72" r="4.5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"
-                  class="cursor-pointer" />
-                <circle cx="406" cy="64" r="5" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"
-                  class="cursor-pointer ring-4 ring-amber-300/30" />
+              <svg id="trend-chart-svg" class="w-full h-full overflow-visible" viewBox="0 0 520 200" preserveAspectRatio="none">
+                <!-- SVG dynamically populated by renderTrendChart() -->
               </svg>
             </div>
           </div>
@@ -1208,7 +1128,7 @@
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-[11px] text-slate-400 font-medium">Net Liquid:</span>
-                  <span class="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">৳ 3.84 Cr</span>
+                  <span id="cb-net-liquid" class="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">৳ 3.84 Cr</span>
                 </div>
               </div>
 
@@ -1217,16 +1137,16 @@
                 <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
                   <div class="flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    <span class="text-[11px] text-slate-500 font-medium">Today's Inflow</span>
+                    <span class="text-[11px] text-slate-500 font-medium" id="cb-inflow-label">Today's Inflow</span>
                   </div>
-                  <span class="text-xs font-bold text-emerald-600">+৳ 32.5 লাখ</span>
+                  <span class="text-xs font-bold text-emerald-600" id="cb-inflow-val">+৳ 32.5 লাখ</span>
                 </div>
                 <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
                   <div class="flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-                    <span class="text-[11px] text-slate-500 font-medium">Today's Outflow</span>
+                    <span class="text-[11px] text-slate-500 font-medium" id="cb-outflow-label">Today's Outflow</span>
                   </div>
-                  <span class="text-xs font-bold text-rose-600">-৳ 14.2 লাখ</span>
+                  <span class="text-xs font-bold text-rose-600" id="cb-outflow-val">-৳ 14.2 লাখ</span>
                 </div>
               </div>
 
@@ -1462,7 +1382,7 @@
           </div>
         </div>
 
-        <!-- CARD 2: PENDING APPROVALS -->
+        <!-- CARD 2: PENDING APPROVALS (WITH 1-CLICK ACTION BUTTONS) -->
         <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-xs hover:shadow-sm transition">
           <div class="flex items-center justify-between mb-3.5">
             <div class="flex items-center gap-2">
@@ -1478,46 +1398,84 @@
               class="px-2 py-0.5 rounded-full bg-rose-500 text-white font-extrabold text-[10px]">6</span>
           </div>
 
-          <!-- Approvals list with amount/counts -->
-          <div class="space-y-2.5">
-            <div
-              class="p-2.5 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-100 transition cursor-pointer group"
-              onclick="showToast('Reviewing Purchase Order for Toll Equipment...')">
+          <!-- Approvals list with 1-click Approve/Reject buttons -->
+          <div class="space-y-2.5" id="approvals-list">
+
+            <!-- Item 1: Purchase Order -->
+            <div id="approval-item-1" class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100/70 border border-slate-100 transition duration-200">
               <div class="flex items-start justify-between gap-2">
                 <div class="min-w-0">
-                  <div class="text-xs font-semibold text-slate-800 group-hover:text-blue-700 truncate">Purchase Order -
-                    Toll Equipment</div>
+                  <div class="text-xs font-semibold text-slate-800 truncate">Purchase Order - Toll Equipment</div>
                   <div class="text-[10px] text-slate-400 mt-0.5">Procurement Dept • Awaiting MD Signoff</div>
                 </div>
                 <span class="text-xs font-extrabold text-slate-900 shrink-0">৳ 18,50,000</span>
               </div>
+              <div class="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                <span class="text-[10px] text-amber-600 font-semibold bg-amber-50 px-1.5 py-0.5 rounded">High Priority</span>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="handleApproval('approval-item-1', 'approved', 'PO - Toll Equipment', '৳ 18,50,000')"
+                    class="px-2.5 py-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Approve</span>
+                  </button>
+                  <button onclick="handleApproval('approval-item-1', 'rejected', 'PO - Toll Equipment', '৳ 18,50,000')"
+                    class="px-2 py-1 rounded-md bg-slate-200 hover:bg-rose-50 hover:text-rose-600 text-slate-600 font-semibold text-[10px] transition border border-slate-200 cursor-pointer">
+                    Reject
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div
-              class="p-2.5 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-100 transition cursor-pointer group"
-              onclick="showToast('Reviewing Operations Expense Claim...')">
+            <!-- Item 2: Expense Claim -->
+            <div id="approval-item-2" class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100/70 border border-slate-100 transition duration-200">
               <div class="flex items-start justify-between gap-2">
                 <div class="min-w-0">
-                  <div class="text-xs font-semibold text-slate-800 group-hover:text-blue-700 truncate">Expense Claim -
-                    Operations</div>
+                  <div class="text-xs font-semibold text-slate-800 truncate">Expense Claim - Operations</div>
                   <div class="text-[10px] text-slate-400 mt-0.5">Kanchan Site • Fuel & Calibration</div>
                 </div>
                 <span class="text-xs font-extrabold text-slate-900 shrink-0">৳ 2,35,000</span>
               </div>
+              <div class="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                <span class="text-[10px] text-blue-600 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Site Claim</span>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="handleApproval('approval-item-2', 'approved', 'Expense Claim - Operations', '৳ 2,35,000')"
+                    class="px-2.5 py-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Approve</span>
+                  </button>
+                  <button onclick="handleApproval('approval-item-2', 'rejected', 'Expense Claim - Operations', '৳ 2,35,000')"
+                    class="px-2 py-1 rounded-md bg-slate-200 hover:bg-rose-50 hover:text-rose-600 text-slate-600 font-semibold text-[10px] transition border border-slate-200 cursor-pointer">
+                    Reject
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div
-              class="p-2.5 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-100 transition cursor-pointer group"
-              onclick="showToast('Opening 3 HR Leave Requests...')">
+            <!-- Item 3: HR Leave -->
+            <div id="approval-item-3" class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100/70 border border-slate-100 transition duration-200">
               <div class="flex items-start justify-between gap-2">
                 <div class="min-w-0">
-                  <div class="text-xs font-semibold text-slate-800 group-hover:text-blue-700 truncate">Leave Approval -
-                    HR</div>
+                  <div class="text-xs font-semibold text-slate-800 truncate">Leave Approval - HR</div>
                   <div class="text-[10px] text-slate-400 mt-0.5">Senior Engineering Staff</div>
                 </div>
                 <span class="text-xs font-bold text-rose-600 shrink-0">3 Requests</span>
               </div>
+              <div class="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                <span class="text-[10px] text-purple-600 font-semibold bg-purple-50 px-1.5 py-0.5 rounded">HR Dept</span>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="handleApproval('approval-item-3', 'approved', 'HR Leave Requests', '3 Requests')"
+                    class="px-2.5 py-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Approve</span>
+                  </button>
+                  <button onclick="handleApproval('approval-item-3', 'rejected', 'HR Leave Requests', '')"
+                    class="px-2 py-1 rounded-md bg-slate-200 hover:bg-rose-50 hover:text-rose-600 text-slate-600 font-semibold text-[10px] transition border border-slate-200 cursor-pointer">
+                    Reject
+                  </button>
+                </div>
+              </div>
             </div>
+
           </div>
 
           <!-- Bottom link -->
@@ -1614,7 +1572,9 @@
        INTERACTIVE JAVASCRIPT LOGIC
        ========================================================================= -->
   <script>
-    // 1. DATASETS FOR DATE PRESETS
+    // =========================================================================
+    // 1. DYNAMIC TIMEFRAME DATASETS (OPTION 5: FULL LIVE SYNC ACROSS KPIS, CHARTS, CASH FLOW)
+    // =========================================================================
     const timeframeData = {
       month: {
         label: 'This Month',
@@ -1631,7 +1591,24 @@
         expSub: 'vs ৳ 3.10 Cr (Previous Month)',
         np: '৳ 1.28 Cr',
         npBadge: '▲ +21.5%',
-        npSub: 'Margin: 26.6%'
+        npSub: 'Margin: 26.6%',
+        cbInflowLabel: "Month's Inflow",
+        cbInflowVal: "+৳ 8.42 Cr",
+        cbOutflowLabel: "Month's Outflow",
+        cbOutflowVal: "-৳ 4.10 Cr",
+        cbNetLiquid: "৳ 3.84 Cr",
+        donutTotal: "৳ 4.82 Cr",
+        donutLabel: "Total Revenue",
+        chartYLeft: ["5.0 Cr", "4.0 Cr", "3.0 Cr", "2.0 Cr", "0.0 Cr"],
+        chartYRight: ["40%", "30%", "20%", "10%", "0%"],
+        trendPoints: [
+          { label: 'Jun', month: 'June 2026', rev: '৳ 2.80 Cr', prof: '৳ 0.90 Cr', margin: '21.0%', x: 81, y: 95, revH: 87, profH: 30, revY: 88, profY: 145 },
+          { label: 'Jul', month: 'July 2026', rev: '৳ 3.30 Cr', prof: '৳ 1.00 Cr', margin: '23.0%', x: 146, y: 88, revH: 103, profH: 33, revY: 72, profY: 142 },
+          { label: 'Aug', month: 'August 2026', rev: '৳ 3.60 Cr', prof: '৳ 1.10 Cr', margin: '24.0%', x: 211, y: 82, revH: 112, profH: 35, revY: 63, profY: 140 },
+          { label: 'Sep', month: 'September 2026', rev: '৳ 3.90 Cr', prof: '৳ 1.10 Cr', margin: '25.0%', x: 276, y: 78, revH: 121, profH: 37, revY: 54, profY: 138 },
+          { label: 'Oct', month: 'October 2026', rev: '৳ 4.40 Cr', prof: '৳ 1.20 Cr', margin: '26.0%', x: 341, y: 72, revH: 137, profH: 40, revY: 38, profY: 135 },
+          { label: 'Nov', month: 'November 2026 (Active)', rev: '৳ 4.82 Cr', prof: '৳ 1.36 Cr', margin: '28.2%', x: 406, y: 64, revH: 151, profH: 47, revY: 24, profY: 128 }
+        ]
       },
       today: {
         label: 'Today',
@@ -1648,7 +1625,24 @@
         expSub: 'vs ৳ 12.5 লাখ yesterday',
         np: '৳ 4.9 লাখ',
         npBadge: '▲ +8.4%',
-        npSub: 'Margin: 26.6%'
+        npSub: 'Margin: 26.6%',
+        cbInflowLabel: "Today's Inflow",
+        cbInflowVal: "+৳ 32.5 লাখ",
+        cbOutflowLabel: "Today's Outflow",
+        cbOutflowVal: "-৳ 14.2 লাখ",
+        cbNetLiquid: "৳ 3.84 Cr",
+        donutTotal: "৳ 18.4 লাখ",
+        donutLabel: "Today's Total",
+        chartYLeft: ["20 L", "15 L", "10 L", "5 L", "0 L"],
+        chartYRight: ["35%", "28%", "21%", "14%", "0%"],
+        trendPoints: [
+          { label: '08:00', month: '08:00 AM Today', rev: '৳ 2.2 লাখ', prof: '৳ 0.6 লাখ', margin: '27.2%', x: 81, y: 135, revH: 28, profH: 12, revY: 147, profY: 163 },
+          { label: '10:00', month: '10:00 AM Today', rev: '৳ 4.8 লাখ', prof: '৳ 1.3 লাখ', margin: '27.0%', x: 146, y: 115, revH: 52, profH: 18, revY: 123, profY: 157 },
+          { label: '12:00', month: '12:00 PM Today', rev: '৳ 8.6 লাখ', prof: '৳ 2.4 লাখ', margin: '27.9%', x: 211, y: 92, revH: 85, profH: 26, revY: 90, profY: 149 },
+          { label: '14:00', month: '02:00 PM Today', rev: '৳ 12.4 লাখ', prof: '৳ 3.5 লাখ', margin: '28.2%', x: 276, y: 72, revH: 115, profH: 35, revY: 60, profY: 140 },
+          { label: '16:00', month: '04:00 PM Today', rev: '৳ 15.6 লাখ', prof: '৳ 4.4 লাখ', margin: '28.2%', x: 341, y: 55, revH: 135, profH: 42, revY: 40, profY: 133 },
+          { label: '18:00', month: '06:00 PM (Active)', rev: '৳ 18.4 লাখ', prof: '৳ 5.2 লাখ', margin: '28.3%', x: 406, y: 40, revH: 150, profH: 48, revY: 25, profY: 127 }
+        ]
       },
       yesterday: {
         label: 'Yesterday',
@@ -1665,7 +1659,24 @@
         expSub: 'vs ৳ 12.2 লাখ previous day',
         np: '৳ 4.6 লাখ',
         npBadge: '▲ +5.2%',
-        npSub: 'Margin: 26.1%'
+        npSub: 'Margin: 26.1%',
+        cbInflowLabel: "Yesterday's Inflow",
+        cbInflowVal: "+৳ 28.1 লাখ",
+        cbOutflowLabel: "Yesterday's Outflow",
+        cbOutflowVal: "-৳ 12.8 লাখ",
+        cbNetLiquid: "৳ 3.66 Cr",
+        donutTotal: "৳ 17.6 লাখ",
+        donutLabel: "Day's Total",
+        chartYLeft: ["20 L", "15 L", "10 L", "5 L", "0 L"],
+        chartYRight: ["35%", "28%", "21%", "14%", "0%"],
+        trendPoints: [
+          { label: '08:00', month: '08:00 AM Nov 5', rev: '৳ 2.0 লাখ', prof: '৳ 0.5 লাখ', margin: '25.0%', x: 81, y: 138, revH: 26, profH: 10, revY: 149, profY: 165 },
+          { label: '10:00', month: '10:00 AM Nov 5', rev: '৳ 4.5 লাখ', prof: '৳ 1.2 লাখ', margin: '26.6%', x: 146, y: 118, revH: 48, profH: 16, revY: 127, profY: 159 },
+          { label: '12:00', month: '12:00 PM Nov 5', rev: '৳ 8.1 লাখ', prof: '৳ 2.2 লাখ', margin: '27.1%', x: 211, y: 95, revH: 80, profH: 24, revY: 95, profY: 151 },
+          { label: '14:00', month: '02:00 PM Nov 5', rev: '৳ 11.9 লাখ', prof: '৳ 3.3 লাখ', margin: '27.7%', x: 276, y: 76, revH: 110, profH: 33, revY: 65, profY: 142 },
+          { label: '16:00', month: '04:00 PM Nov 5', rev: '৳ 15.0 লাখ', prof: '৳ 4.2 লাখ', margin: '28.0%', x: 341, y: 58, revH: 130, profH: 40, revY: 45, profY: 135 },
+          { label: '18:00', month: '06:00 PM Nov 5', rev: '৳ 17.6 লাখ', prof: '৳ 4.9 লাখ', margin: '27.8%', x: 406, y: 44, revH: 145, profH: 46, revY: 30, profY: 129 }
+        ]
       },
       this_week: {
         label: 'This Week',
@@ -1682,7 +1693,24 @@
         expSub: 'vs ৳ 73.1 লাখ last week',
         np: '৳ 29.8 লাখ',
         npBadge: '▲ +16.7%',
-        npSub: 'Margin: 26.6%'
+        npSub: 'Margin: 26.6%',
+        cbInflowLabel: "Weekly Inflow",
+        cbInflowVal: "+৳ 1.86 Cr",
+        cbOutflowLabel: "Weekly Outflow",
+        cbOutflowVal: "-৳ 82.5 লাখ",
+        cbNetLiquid: "৳ 3.84 Cr",
+        donutTotal: "৳ 1.12 Cr",
+        donutLabel: "Weekly Total",
+        chartYLeft: ["1.2 Cr", "0.9 Cr", "0.6 Cr", "0.3 Cr", "0.0 Cr"],
+        chartYRight: ["35%", "28%", "21%", "14%", "0%"],
+        trendPoints: [
+          { label: 'Sun', month: 'Sun Nov 1', rev: '৳ 16.5 লাখ', prof: '৳ 4.6 লাখ', margin: '27.8%', x: 81, y: 88, revH: 98, profH: 30, revY: 77, profY: 145 },
+          { label: 'Mon', month: 'Mon Nov 2', rev: '৳ 18.2 লাখ', prof: '৳ 5.1 লাখ', margin: '28.0%', x: 146, y: 82, revH: 110, profH: 34, revY: 65, profY: 141 },
+          { label: 'Tue', month: 'Tue Nov 3', rev: '৳ 19.4 লাখ', prof: '৳ 5.4 লাখ', margin: '27.8%', x: 211, y: 78, revH: 120, profH: 36, revY: 55, profY: 139 },
+          { label: 'Wed', month: 'Wed Nov 4', rev: '৳ 20.1 লাখ', prof: '৳ 5.7 লাখ', margin: '28.3%', x: 276, y: 70, revH: 130, profH: 40, revY: 45, profY: 135 },
+          { label: 'Thu', month: 'Thu Nov 5', rev: '৳ 19.8 লাখ', prof: '৳ 5.6 লাখ', margin: '28.2%', x: 341, y: 72, revH: 125, profH: 38, revY: 50, profY: 137 },
+          { label: 'Fri', month: 'Fri Nov 6 (Active)', rev: '৳ 18.4 লাখ', prof: '৳ 5.1 লাখ', margin: '28.1%', x: 406, y: 74, revH: 118, profH: 35, revY: 57, profY: 140 }
+        ]
       },
       q4: {
         label: 'Q4 2026',
@@ -1699,16 +1727,107 @@
         expSub: 'vs ৳ 8.90 Cr in Q3',
         np: '৳ 3.78 Cr',
         npBadge: '▲ +24.8%',
-        npSub: 'Margin: 26.6%'
+        npSub: 'Margin: 26.6%',
+        cbInflowLabel: "Q4 Total Inflow",
+        cbInflowVal: "+৳ 24.8 Cr",
+        cbOutflowLabel: "Q4 Total Outflow",
+        cbOutflowVal: "-৳ 12.4 Cr",
+        cbNetLiquid: "৳ 3.84 Cr",
+        donutTotal: "৳ 14.2 Cr",
+        donutLabel: "Q4 Total",
+        chartYLeft: ["15 Cr", "12 Cr", "9 Cr", "6 Cr", "0 Cr"],
+        chartYRight: ["35%", "28%", "21%", "14%", "0%"],
+        trendPoints: [
+          { label: "Q1 '26", month: "Q1 2026", rev: '৳ 10.5 Cr', prof: '৳ 2.8 Cr', margin: '26.6%', x: 81, y: 92, revH: 100, profH: 32, revY: 75, profY: 143 },
+          { label: "Q2 '26", month: "Q2 2026", rev: '৳ 11.4 Cr', prof: '৳ 3.1 Cr', margin: '27.1%', x: 146, y: 86, revH: 112, profH: 36, revY: 63, profY: 139 },
+          { label: "Q3 '26", month: "Q3 2026", rev: '৳ 12.1 Cr', prof: '৳ 3.4 Cr', margin: '28.0%', x: 211, y: 80, revH: 122, profH: 40, revY: 53, profY: 135 },
+          { label: "Oct '26", month: "Oct 2026", rev: '৳ 4.40 Cr', prof: '৳ 1.20 Cr', margin: '27.2%', x: 276, y: 84, revH: 115, profH: 38, revY: 60, profY: 137 },
+          { label: "Nov '26", month: "Nov 2026 (Active)", rev: '৳ 4.82 Cr', prof: '৳ 1.36 Cr', margin: '28.2%', x: 341, y: 76, revH: 135, profH: 44, revY: 40, profY: 131 },
+          { label: "Dec '26", month: "Dec 2026 (Target)", rev: '৳ 5.00 Cr', prof: '৳ 1.45 Cr', margin: '29.0%', x: 406, y: 68, revH: 145, profH: 48, revY: 30, profY: 127 }
+        ]
       }
     };
 
+    let currentTrendPoints = timeframeData.month.trendPoints;
+
+    function renderTrendChart(data) {
+      const svg = document.getElementById('trend-chart-svg');
+      if (!svg) return;
+      currentTrendPoints = data.trendPoints;
+
+      const yLeft = data.chartYLeft;
+      const yRight = data.chartYRight;
+      const pts = data.trendPoints;
+
+      let polylinePoints = pts.map(p => `${p.x},${p.y}`).join(' ');
+
+      let barsHtml = pts.map((p, idx) => {
+        const isLast = idx === pts.length - 1;
+        const revFill = isLast ? '#2563eb' : '#3b82f6';
+        const profFill = isLast ? '#059669' : '#10b981';
+        const ringClass = isLast ? 'ring-2 ring-blue-300/40' : '';
+        const xOffset = p.x - 16;
+        const xProf = p.x + 3;
+
+        return `
+          <rect onmouseenter="showTrendTooltip(event, ${idx})" onmouseleave="hideTrendTooltip()"
+            x="${xOffset}" y="${p.revY}" width="16" height="${p.revH}" rx="3" fill="${revFill}"
+            class="hover:opacity-80 transition cursor-pointer ${ringClass}" />
+          <rect onmouseenter="showTrendTooltip(event, ${idx})" onmouseleave="hideTrendTooltip()"
+            x="${xProf}" y="${p.profY}" width="14" height="${p.profH}" rx="3" fill="${profFill}"
+            class="hover:opacity-80 transition cursor-pointer" />
+          <text x="${p.x}" y="192" text-anchor="middle" class="text-[11px] ${isLast ? 'fill-blue-700 font-bold' : 'fill-slate-500 font-medium'}">${p.label}</text>
+        `;
+      }).join('');
+
+      let circlesHtml = pts.map((p, idx) => {
+        const isLast = idx === pts.length - 1;
+        return `
+          <circle cx="${p.x}" cy="${p.y}" r="${isLast ? 5 : 4.5}" fill="#fef3c7" stroke="${isLast ? '#d97706' : '#f59e0b'}" stroke-width="${isLast ? 2.5 : 2}"
+            class="cursor-pointer ${isLast ? 'ring-4 ring-amber-300/30' : ''}" onmouseenter="showTrendTooltip(event, ${idx})" onmouseleave="hideTrendTooltip()" />
+        `;
+      }).join('');
+
+      svg.innerHTML = `
+        <!-- Grid Lines -->
+        <line x1="40" y1="20" x2="480" y2="20" stroke="#f1f5f9" stroke-width="1" />
+        <line x1="40" y1="60" x2="480" y2="60" stroke="#f1f5f9" stroke-width="1" />
+        <line x1="40" y1="100" x2="480" y2="100" stroke="#f1f5f9" stroke-width="1" />
+        <line x1="40" y1="140" x2="480" y2="140" stroke="#f1f5f9" stroke-width="1" />
+        <line x1="40" y1="175" x2="480" y2="175" stroke="#e2e8f0" stroke-width="1.2" />
+
+        <!-- Left Y-Axis Labels -->
+        <text x="32" y="24" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">${yLeft[0]}</text>
+        <text x="32" y="64" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">${yLeft[1]}</text>
+        <text x="32" y="104" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">${yLeft[2]}</text>
+        <text x="32" y="144" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">${yLeft[3]}</text>
+        <text x="32" y="178" text-anchor="end" class="text-[10px] fill-slate-400 font-medium">${yLeft[4]}</text>
+
+        <!-- Right Y-Axis Labels -->
+        <text x="488" y="24" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">${yRight[0]}</text>
+        <text x="488" y="64" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">${yRight[1]}</text>
+        <text x="488" y="104" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">${yRight[2]}</text>
+        <text x="488" y="144" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">${yRight[3]}</text>
+        <text x="488" y="178" text-anchor="start" class="text-[10px] fill-slate-400 font-medium">${yRight[4]}</text>
+
+        <!-- Dynamic Bars -->
+        ${barsHtml}
+
+        <!-- Line Overlay: Profit Margin -->
+        <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+          points="${polylinePoints}" />
+
+        <!-- Point Markers -->
+        ${circlesHtml}
+      `;
+    }
+
     function selectDatePreset(presetKey) {
       const data = timeframeData[presetKey] || timeframeData.month;
-
+      
       document.getElementById('header-period-text').innerText = data.periodText;
       document.getElementById('date-btn-label').innerText = data.dateBtn;
-
+      
       // Update KPIs
       document.getElementById('kpi-rev-val').innerText = data.rev;
       document.getElementById('kpi-rev-badge').innerHTML = `<span>▲</span> ${data.revBadge.replace('▲ ', '')}`;
@@ -1726,6 +1845,28 @@
       document.getElementById('kpi-np-badge').innerHTML = `<span>▲</span> ${data.npBadge.replace('▲ ', '')}`;
       document.getElementById('kpi-np-sub').innerText = data.npSub;
 
+      // Update Cash & Bank Liquidity
+      const inflowLbl = document.getElementById('cb-inflow-label');
+      const inflowVal = document.getElementById('cb-inflow-val');
+      const outflowLbl = document.getElementById('cb-outflow-label');
+      const outflowVal = document.getElementById('cb-outflow-val');
+      const netLiq = document.getElementById('cb-net-liquid');
+
+      if (inflowLbl) inflowLbl.innerText = data.cbInflowLabel;
+      if (inflowVal) inflowVal.innerText = data.cbInflowVal;
+      if (outflowLbl) outflowLbl.innerText = data.cbOutflowLabel;
+      if (outflowVal) outflowVal.innerText = data.cbOutflowVal;
+      if (netLiq) netLiq.innerText = data.cbNetLiquid;
+
+      // Update Donut Center
+      const donutAmt = document.getElementById('donut-center-amount');
+      const donutLbl = document.getElementById('donut-center-label');
+      if (donutAmt) donutAmt.innerText = data.donutTotal;
+      if (donutLbl) donutLbl.innerText = data.donutLabel;
+
+      // Re-render Trend Chart dynamically!
+      renderTrendChart(data);
+
       // Update select dropdown value
       const sel = document.getElementById('timeframe-select');
       if (sel) sel.value = presetKey;
@@ -1734,7 +1875,7 @@
       const pop = document.getElementById('date-picker-popover');
       if (pop) pop.classList.add('hidden');
 
-      showToast(`Updated overview metrics for ${data.label}`);
+      showToast(`Updated overview & live charts for ${data.label}`);
     }
 
     function toggleDatePopover(e) {
@@ -1743,7 +1884,7 @@
       if (pop) pop.classList.toggle('hidden');
     }
 
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', function(e) {
       const pop = document.getElementById('date-picker-popover');
       const btn = document.getElementById('date-picker-btn');
       if (pop && !pop.contains(e.target) && btn && !btn.contains(e.target)) {
@@ -1751,18 +1892,9 @@
       }
     });
 
-    // 3. REVENUE TREND TOOLTIPS
-    const trendData = [
-      { month: 'June 2026', rev: '৳ 2.80 Cr', prof: '৳ 0.90 Cr', margin: '21.0%', x: 81, y: 95 },
-      { month: 'July 2026', rev: '৳ 3.30 Cr', prof: '৳ 1.00 Cr', margin: '23.0%', x: 146, y: 88 },
-      { month: 'August 2026', rev: '৳ 3.60 Cr', prof: '৳ 1.10 Cr', margin: '24.0%', x: 211, y: 82 },
-      { month: 'September 2026', rev: '৳ 3.90 Cr', prof: '৳ 1.10 Cr', margin: '25.0%', x: 276, y: 78 },
-      { month: 'October 2026', rev: '৳ 4.40 Cr', prof: '৳ 1.20 Cr', margin: '26.0%', x: 341, y: 72 },
-      { month: 'November 2026 (Active)', rev: '৳ 4.82 Cr', prof: '৳ 1.36 Cr', margin: '28.2%', x: 406, y: 64 }
-    ];
-
+    // 2. REVENUE TREND TOOLTIPS (SYNCED WITH CURRENT TIMEFRAME)
     function showTrendTooltip(e, idx) {
-      const d = trendData[idx];
+      const d = currentTrendPoints[idx];
       if (!d) return;
       const tooltip = document.getElementById('trend-floating-tooltip');
       const container = document.getElementById('revenue-trend-container');
@@ -1773,7 +1905,6 @@
       document.getElementById('tooltip-prof').innerText = d.prof;
       document.getElementById('tooltip-margin').innerText = d.margin;
 
-      const rect = container.getBoundingClientRect();
       const xPercent = (d.x / 520) * 100;
       const yPercent = (d.y / 200) * 100;
 
@@ -1785,6 +1916,55 @@
     function hideTrendTooltip() {
       const tooltip = document.getElementById('trend-floating-tooltip');
       if (tooltip) tooltip.classList.add('hidden');
+    }
+
+    // 3. OPTION 2: INTERACTIVE 1-CLICK APPROVE/REJECT HANDLERS
+    let pendingApprovalsCount = 6;
+
+    function handleApproval(itemId, action, title, amount) {
+      const el = document.getElementById(itemId);
+      if (!el) return;
+
+      if (action === 'approved') {
+        el.style.transition = 'all 0.3s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(24px)';
+        setTimeout(() => {
+          el.remove();
+          checkEmptyApprovals();
+        }, 300);
+        pendingApprovalsCount = Math.max(0, pendingApprovalsCount - 1);
+        const badge = document.getElementById('approvals-badge');
+        if (badge) badge.innerText = pendingApprovalsCount;
+        showToast(`✓ Approved: ${title} ${amount ? '(' + amount + ')' : ''}`);
+      } else {
+        el.style.transition = 'all 0.3s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(-24px)';
+        setTimeout(() => {
+          el.remove();
+          checkEmptyApprovals();
+        }, 300);
+        pendingApprovalsCount = Math.max(0, pendingApprovalsCount - 1);
+        const badge = document.getElementById('approvals-badge');
+        if (badge) badge.innerText = pendingApprovalsCount;
+        showToast(`✕ Rejected: ${title}`);
+      }
+    }
+
+    function checkEmptyApprovals() {
+      const list = document.getElementById('approvals-list');
+      if (list && list.children.length === 0) {
+        list.innerHTML = `
+          <div class="py-5 text-center text-xs text-slate-400 bg-slate-50/50 rounded-xl">
+            <svg class="w-7 h-7 text-emerald-500 mx-auto mb-1.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div class="font-bold text-slate-700">All Approvals Cleared!</div>
+            <div class="text-[10px] text-slate-400">Zero pending signoffs in queue.</div>
+          </div>
+        `;
+      }
     }
 
     // 4. DONUT REVENUE BY BUSINESS HOVER LINKING
@@ -2027,6 +2207,14 @@
         toast.classList.add('opacity-0', 'translate-y-2');
         setTimeout(() => toast.remove(), 250);
       }, 2500);
+    }
+    // Initialize default Trend Chart
+    document.addEventListener('DOMContentLoaded', function() {
+      renderTrendChart(timeframeData.month);
+    });
+    // In case DOM is already loaded
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      renderTrendChart(timeframeData.month);
     }
   </script>
 </body>

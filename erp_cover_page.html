@@ -2628,6 +2628,13 @@
         }, 400);
         return;
       }
+      if (mod && (mod.includes('Sales') || mod.includes('Invoicing'))) {
+        showToast(`Navigating to ${title} (${mod})...`);
+        setTimeout(() => {
+          window.location.href = 'sales_module.html';
+        }, 400);
+        return;
+      }
       showToast(`Navigating to ${title} (${mod})...`);
     }
 
@@ -2636,6 +2643,13 @@
         showToast(`Opening ${action} in ${mod}...`);
         setTimeout(() => {
           window.location.href = 'finance_module.html';
+        }, 400);
+        return;
+      }
+      if (mod && (mod.includes('Sales') || mod.includes('Invoicing'))) {
+        showToast(`Opening ${action} in ${mod}...`);
+        setTimeout(() => {
+          window.location.href = 'sales_module.html';
         }, 400);
         return;
       }

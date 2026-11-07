@@ -20,6 +20,7 @@
 | **`07`** | [Project Management](07_project_management.md) | [`projects_module.html`](../projects_module.html) | 🟢 Teal | Milestone Gantt Timeline + Workload Squad Dial + Sprint Burndown + SBU Matrix + Projects Register + Risk Docket. |
 | **`08`** | [Reports & Analytics](08_reports_and_analytics.md) | [`reports_module.html`](../reports_module.html) | 🟦 Cyan | Consolidated Revenue Horizon + Working Capital CCC Dial + Du-Pont ROE + Audit Filings Register + Regulatory Docket. |
 | **`09`** | [Authentication & Login](09_login_authentication.md) | [`login.html`](../login.html) | 🔷 Royal Blue / Indigo | Executive Frosted Glass Gateway, Corporate Email & Password Credentials, Session Security. |
+| **`10`** | [Performance Management (PMS)](10_performance_management.md) | [`performance_module.html`](../performance_module.html) | 🟣 Electric Violet | 9-Box Talent Matrix (3x3 Grid) + Bell-Curve Calibration Console + 360° Radar + Universal KPIs & OKRs + Cryptographic Dossier Docket. |
 
 ---
 

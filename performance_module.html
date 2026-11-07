@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Management (PMS) & Talent Appraisals — Inceptia ERP</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f4f6fa;
+      color: #0f172a;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Fixed atmospheric wallpaper matching erp_cover_page.html */
+    .erp-bg-fixed {
+      position: fixed;
+      inset: 0;
+      background-image: url('assets/erp_bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Executive frosted glass card standard */
+    .executive-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .executive-card:hover {
+      background: rgba(255, 255, 255, 0.82);
+      border-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.6);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Active selected row in table */
+    tr.appraisal-row-selected {
+      background-color: rgba(124, 58, 237, 0.08) !important;
+      border-left: 3px solid #7c3aed !important;
+    }
+
+    /* 9-Box Matrix Grid transitions */
+    .matrix-cell {
+      transition: all 0.2s ease-in-out;
+    }
+    .matrix-cell:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -4px rgba(124, 58, 237, 0.15);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative flex flex-col antialiased selection:bg-purple-600 selection:text-white">
+
+  <!-- Atmospheric Background Layer -->
+  <div class="erp-bg-fixed"></div>
+
+  <!-- Ambient Aurora Glow Orbs -->
+  <div class="fixed top-0 left-1/3 w-[650px] h-[380px] bg-gradient-to-br from-purple-300/20 via-indigo-200/15 to-transparent blur-3xl pointer-events-none z-0"></div>
+  <div class="fixed bottom-10 right-1/3 w-[550px] h-[400px] bg-gradient-to-tr from-fuchsia-200/20 via-purple-200/15 to-transparent blur-3xl pointer-events-none z-0"></div>
+
+  <!-- =========================================================================
+       1. EXECUTIVE STICKY HEADER & BREADCRUMBS
+       ========================================================================= -->
+  <header class="sticky top-0 z-30 bg-white/75 backdrop-blur-md border-b border-white/60 shadow-2xs">
+    <div class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex items-center justify-between gap-4">
+
+        <!-- Left: Back to Portal & Title -->
+        <div class="flex items-center gap-3">
+          <a href="erp_cover_page.html"
+            class="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-600 hover:text-slate-900 border border-slate-200/70 shadow-2xs hover:shadow-xs transition-all duration-150">
+            <svg class="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            <span>Executive Portal</span>
+          </a>
+
+          <div class="h-5 w-px bg-slate-300/60 hidden sm:block"></div>
+
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-purple-600 flex items-center justify-center text-white shadow-sm shadow-purple-600/30">
+              <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-base font-extrabold text-slate-900 tracking-tight">Performance Management (PMS)</h1>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium">Inceptia ERP / Review Cycles, 9-Box Talent Matrix & Calibration Hub</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Search, Review Cycle Selector & Calibration Action -->
+        <div class="flex items-center gap-2.5">
+          <!-- Search Input -->
+          <div class="relative hidden md:block">
+            <input type="text" id="pmsSearchInput" oninput="filterAppraisalsTable()"
+              placeholder="Search employee, dept, KPI (⌘K)..."
+              class="w-64 pl-8 pr-3 py-1.5 rounded-xl text-xs bg-white/80 border border-slate-200/80 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 text-slate-700 placeholder-slate-400 transition" />
+            <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+
+          <!-- Review Cycle Dropdown -->
+          <div class="relative">
+            <button id="cycleMenuBtn" onclick="toggleCycleMenu()"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/80 hover:bg-white text-xs font-semibold text-slate-700 border border-slate-200/80 shadow-2xs transition">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span id="cycleLabel">FY2026 Annual Cycle (H1/H2)</span>
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="cycleMenu" class="hidden absolute right-0 mt-1.5 w-60 rounded-xl bg-white border border-slate-200 shadow-lg py-1.5 z-40 text-xs">
+              <button onclick="setCycle('FY2026 Annual Cycle (H1/H2)')"
+                class="w-full text-left px-3 py-1.5 bg-purple-50 text-purple-700 font-bold">FY2026 Annual Cycle (H1/H2) - Active</button>
+              <button onclick="setCycle('FY2026 Mid-Year Check-in')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">FY2026 Mid-Year Check-in (Closed)</button>
+              <button onclick="setCycle('FY2025 Annual Appraisal Archive')"
+                class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 font-medium">FY2025 Annual Appraisal Archive</button>
+            </div>
+          </div>
+
+          <!-- Calibration Committee Button -->
+          <button onclick="openCalibrationModal()"
+            class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs shadow-sm hover:shadow-md shadow-purple-600/20 transition cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+              </path>
+            </svg>
+            <span>Calibration Console</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER (max-w-[1680px] Edge-to-Edge Desktop Architecture)
+       ========================================================================= -->
+  <main class="flex-1 max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 relative z-10">
+
+    <!-- =========================================================================
+         TOP 4 COLORFUL EXECUTIVE KPI CARDS (Matching erp_cover_page.html DNA)
+         ========================================================================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+
+      <!-- KPI 1: Total Appraisals Roster (Solid Electric Violet) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#7c3aed]/90 hover:bg-[#7c3aed] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Total Appraisals Roster</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">1,280 Staff</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">94.2% Submitted (1,206 Done, 74 Pending)</p>
+          </div>
+          <!-- Progress Ring -->
+          <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center font-bold text-xs text-white">
+            94%
+          </div>
+        </div>
+        <div class="mt-3.5 pt-2.5 border-t border-white/20 flex items-center justify-between text-[11px]">
+          <span class="opacity-85 font-medium">Cycle Closes: Nov 15</span>
+          <span class="inline-flex items-center gap-1 font-bold text-white bg-white/20 px-2 py-0.5 rounded-full">
+            ● Phase 3: Calibration
+          </span>
+        </div>
+      </div>
+
+      <!-- KPI 2: Mean Performance Rating (Solid Emerald) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#059669]/90 hover:bg-[#059669] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">Mean Performance Score</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">3.88 / 5.0</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">+0.14 vs FY25 (Target: 3.75 - 3.90)</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="mt-3.5 pt-2.5 border-t border-white/20 flex items-center justify-between text-[11px]">
+          <span class="opacity-85 font-medium">Normal Bell Fit</span>
+          <span class="inline-flex items-center gap-1 font-bold text-emerald-100 bg-white/20 px-2 py-0.5 rounded-full">
+            Variance: ±0.4%
+          </span>
+        </div>
+      </div>
+
+      <!-- KPI 3: 9-Box High Potentials (Solid Amber) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#d97706]/90 hover:bg-[#d97706] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">9-Box High Potentials (HiPo)</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">184 Leaders</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">14.4% Succession Pipeline Identified</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white font-bold text-xs">
+            14%
+          </div>
+        </div>
+        <div class="mt-3.5 pt-2.5 border-t border-white/20 flex items-center justify-between text-[11px]">
+          <span class="opacity-85 font-medium">Star Talent: 86 Staff</span>
+          <span class="inline-flex items-center gap-1 font-bold text-amber-100 bg-white/20 px-2 py-0.5 rounded-full">
+            Fast-Track Ready
+          </span>
+        </div>
+      </div>
+
+      <!-- KPI 4: PIP Interventions & Watch (Solid Rose) -->
+      <div class="group relative rounded-2xl p-4 transition-all duration-200 overflow-hidden shadow-md hover:shadow-lg bg-[#e11d48]/90 hover:bg-[#e11d48] text-white border border-white/30 backdrop-blur-md">
+        <div class="relative z-10 flex items-start justify-between">
+          <div>
+            <p class="text-[11px] font-bold tracking-wider uppercase opacity-90">PIP Interventions & Watch</p>
+            <h3 class="text-2xl font-extrabold tracking-tight mt-1 text-white">18 Staff</h3>
+            <p class="text-[11px] opacity-80 mt-0.5">1.4% Underperformance Action Log</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <div class="mt-3.5 pt-2.5 border-t border-white/20 flex items-center justify-between text-[11px]">
+          <span class="opacity-85 font-medium">60-Day Review Active</span>
+          <span class="inline-flex items-center gap-1 font-bold text-rose-100 bg-white/20 px-2 py-0.5 rounded-full">
+            HRBP Supervised
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 1: DUAL DOMAIN-SPECIFIC VISUAL INSTRUMENTS
+         7 cols: 9-Box Talent Matrix (Performance vs Potential 3x3 Grid)
+         5 cols: Bell-Curve Calibration Console & 360° Multi-Rater Pulse
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+
+      <!-- LEFT: 9-Box Talent Matrix (7 Columns) -->
+      <div class="lg:col-span-7 executive-card rounded-2xl p-5 relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+              <h2 class="text-sm font-bold text-slate-900 font-heading">9-Box Talent Matrix (3x3 Grid)</h2>
+            </div>
+            <p class="text-[11px] text-slate-500 font-medium mt-0.5">Performance (X-Axis) vs. Potential (Y-Axis) • Click any cell to filter appraisals</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="activeFilterBadge" class="hidden text-[11px] font-bold text-purple-700 bg-purple-100 px-2.5 py-0.5 rounded-full">
+              Filtered: Stars
+            </span>
+            <button onclick="resetMatrixFilter()"
+              class="text-[11px] font-semibold text-slate-500 hover:text-slate-800 px-2 py-1 rounded-lg border border-slate-200/80 bg-white/70 hover:bg-white transition cursor-pointer">
+              Reset View
+            </button>
+          </div>
+        </div>
+
+        <!-- 3x3 Matrix Container with Axes -->
+        <div class="relative bg-slate-50/70 p-3 rounded-xl border border-slate-200/80">
+          
+          <!-- Y-Axis Label (Potential) -->
+          <div class="absolute -left-6 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] font-bold tracking-widest text-slate-400 uppercase hidden sm:block">
+            Potential ▲
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-left">
+
+            <!-- ROW 1: High Potential -->
+            <!-- 1. Enigmas (Low Perf, High Pot) -->
+            <div onclick="filterByBox('Enigmas')"
+              class="matrix-cell p-3 rounded-xl bg-amber-50/80 border border-amber-200/70 cursor-pointer hover:border-amber-400">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700">Enigma / Rough Diamond</span>
+                <span class="text-xs font-extrabold text-amber-900">24</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">Low Perf • High Pot</p>
+              <div class="mt-2 text-[10px] text-amber-800/80 font-medium flex items-center justify-between">
+                <span>Action: Re-align & Coach</span>
+                <span>1.9%</span>
+              </div>
+            </div>
+
+            <!-- 2. Growth Champions (Med Perf, High Pot) -->
+            <div onclick="filterByBox('Growth Champions')"
+              class="matrix-cell p-3 rounded-xl bg-purple-50/80 border border-purple-200/70 cursor-pointer hover:border-purple-400">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-purple-700">Growth Champion</span>
+                <span class="text-xs font-extrabold text-purple-900">98</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">Med Perf • High Pot</p>
+              <div class="mt-2 text-[10px] text-purple-800/80 font-medium flex items-center justify-between">
+                <span>Action: Stretch Targets</span>
+                <span>7.7%</span>
+              </div>
+            </div>
+
+            <!-- 3. Star Talent (High Perf, High Pot) -->
+            <div onclick="filterByBox('Star Talent')"
+              class="matrix-cell p-3 rounded-xl bg-emerald-50/90 border-2 border-emerald-300 cursor-pointer hover:border-emerald-500 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1">
+                  ⭐ Star Talent
+                </span>
+                <span class="text-xs font-extrabold text-emerald-900">86</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">High Perf • High Pot</p>
+              <div class="mt-2 text-[10px] text-emerald-800/80 font-medium flex items-center justify-between">
+                <span>Action: Succession & Retain</span>
+                <span class="font-bold">6.7%</span>
+              </div>
+            </div>
+
+            <!-- ROW 2: Medium Potential -->
+            <!-- 4. Dilemmas (Low Perf, Med Pot) -->
+            <div onclick="filterByBox('Dilemmas')"
+              class="matrix-cell p-3 rounded-xl bg-rose-50/70 border border-rose-200/70 cursor-pointer hover:border-rose-400">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-rose-700">Dilemma / Inconsistent</span>
+                <span class="text-xs font-extrabold text-rose-900">42</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">Low Perf • Med Pot</p>
+              <div class="mt-2 text-[10px] text-rose-800/80 font-medium flex items-center justify-between">
+                <span>Action: Skill Upgrading</span>
+                <span>3.3%</span>
+              </div>
+            </div>
+
+            <!-- 5. Core Performers (Med Perf, Med Pot) -->
+            <div onclick="filterByBox('Core Performers')"
+              class="matrix-cell p-3 rounded-xl bg-blue-50/80 border border-blue-200/70 cursor-pointer hover:border-blue-400">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700">Core Performer</span>
+                <span class="text-xs font-extrabold text-blue-900">485</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">Med Perf • Med Pot</p>
+              <div class="mt-2 text-[10px] text-blue-800/80 font-medium flex items-center justify-between">
+                <span>Action: Reward & Stability</span>
+                <span class="font-bold">37.9%</span>
+              </div>
+            </div>
+
+            <!-- 6. High Professionals (High Perf, Med Pot) -->
+            <div onclick="filterByBox('High Professionals')"
+              class="matrix-cell p-3 rounded-xl bg-indigo-50/80 border border-indigo-200/70 cursor-pointer hover:border-indigo-400">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700">High Professional</span>
+                <span class="text-xs font-extrabold text-indigo-900">210</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">High Perf • Med Pot</p>
+              <div class="mt-2 text-[10px] text-indigo-800/80 font-medium flex items-center justify-between">
+                <span>Action: Subject Expert Lead</span>
+                <span>16.4%</span>
+              </div>
+            </div>
+
+            <!-- ROW 3: Low Potential -->
+            <!-- 7. Risk / Underperformer (Low Perf, Low Pot) -->
+            <div onclick="filterByBox('Risk Underperformers')"
+              class="matrix-cell p-3 rounded-xl bg-red-100/70 border-2 border-red-300 cursor-pointer hover:border-red-500">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-red-800 flex items-center gap-1">
+                  ⚠️ Risk / PIP
+                </span>
+                <span class="text-xs font-extrabold text-red-900">18</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">Low Perf • Low Pot</p>
+              <div class="mt-2 text-[10px] text-red-800 font-bold flex items-center justify-between">
+                <span>Action: 60-Day PIP Plan</span>
+                <span>1.4%</span>
+              </div>
+            </div>
+
+            <!-- 8. Effective Contributors (Med Perf, Low Pot) -->
+            <div onclick="filterByBox('Effective Contributors')"
+              class="matrix-cell p-3 rounded-xl bg-slate-100/80 border border-slate-300 cursor-pointer hover:border-slate-400">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-700">Effective Contributor</span>
+                <span class="text-xs font-extrabold text-slate-900">123</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">Med Perf • Low Pot</p>
+              <div class="mt-2 text-[10px] text-slate-600 font-medium flex items-center justify-between">
+                <span>Action: Process Mastery</span>
+                <span>9.6%</span>
+              </div>
+            </div>
+
+            <!-- 9. Trusted Specialists (High Perf, Low Pot) -->
+            <div onclick="filterByBox('Trusted Specialists')"
+              class="matrix-cell p-3 rounded-xl bg-teal-50/80 border border-teal-200/70 cursor-pointer hover:border-teal-400">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-teal-700">Trusted Specialist</span>
+                <span class="text-xs font-extrabold text-teal-900">194</span>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 mt-1">High Perf • Low Pot</p>
+              <div class="mt-2 text-[10px] text-teal-800/80 font-medium flex items-center justify-between">
+                <span>Action: Specialist Mentor</span>
+                <span>15.1%</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- X-Axis Label (Performance) -->
+          <div class="text-center text-[10px] font-bold tracking-widest text-slate-400 uppercase mt-2">
+            ▲ Low Performance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Medium Performance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; High Performance ▲
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Bell-Curve Calibration Console & 360° Multi-Rater Pulse (5 Columns) -->
+      <div class="lg:col-span-5 executive-card rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <h2 class="text-sm font-bold text-slate-900 font-heading">Bell-Curve Calibration Quotas</h2>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+              Session #01 Active
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-500 font-medium mb-4">Target vs. Actual Grade Band Distribution (O, A, B, C, D Scale)</p>
+
+          <!-- Distribution Bars -->
+          <div class="space-y-3">
+            <!-- Band O -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-bold text-slate-800">O — Outstanding (4.5 – 5.0)</span>
+                <span class="text-slate-600 font-semibold">Actual: <strong class="text-purple-700">9.8%</strong> (Target: 10%)</span>
+              </div>
+              <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden relative">
+                <div class="h-full rounded-full bg-purple-600" style="width: 98%;"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>125 staff calibrated</span>
+                <span class="text-emerald-600 font-semibold">✓ Aligned (-0.2% variance)</span>
+              </div>
+            </div>
+
+            <!-- Band A -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-bold text-slate-800">A — Exceeds Expectations (3.8 – 4.4)</span>
+                <span class="text-slate-600 font-semibold">Actual: <strong class="text-indigo-700">26.2%</strong> (Target: 25%)</span>
+              </div>
+              <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden relative">
+                <div class="h-full rounded-full bg-indigo-600" style="width: 105%;"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>335 staff calibrated</span>
+                <span class="text-amber-600 font-semibold">▲ +1.2% over target</span>
+              </div>
+            </div>
+
+            <!-- Band B -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-bold text-slate-800">B — Meets Standards (3.0 – 3.7)</span>
+                <span class="text-slate-600 font-semibold">Actual: <strong class="text-blue-700">49.5%</strong> (Target: 50%)</span>
+              </div>
+              <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden relative">
+                <div class="h-full rounded-full bg-blue-600" style="width: 99%;"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>634 staff calibrated</span>
+                <span class="text-emerald-600 font-semibold">✓ Aligned (-0.5% variance)</span>
+              </div>
+            </div>
+
+            <!-- Band C -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-bold text-slate-800">C — Needs Improvement (2.0 – 2.9)</span>
+                <span class="text-slate-600 font-semibold">Actual: <strong class="text-amber-700">11.8%</strong> (Target: 12%)</span>
+              </div>
+              <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden relative">
+                <div class="h-full rounded-full bg-amber-500" style="width: 98%;"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>151 staff calibrated</span>
+                <span class="text-emerald-600 font-semibold">✓ Aligned (-0.2% variance)</span>
+              </div>
+            </div>
+
+            <!-- Band D -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-bold text-slate-800">D — Unsatisfactory / PIP (< 2.0)</span>
+                <span class="text-slate-600 font-semibold">Actual: <strong class="text-rose-700">2.7%</strong> (Target: 3%)</span>
+              </div>
+              <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden relative">
+                <div class="h-full rounded-full bg-rose-600" style="width: 90%;"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>35 staff in review (18 PIP confirmed)</span>
+                <span class="text-emerald-600 font-semibold">✓ Within quota limit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 360° Multi-Rater Pulse Bar -->
+        <div class="mt-4 pt-3.5 border-t border-slate-200/80 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-[11px]">
+              360°
+            </span>
+            <div>
+              <p class="font-bold text-slate-800 text-[11px]">Multi-Rater Feedback Status</p>
+              <p class="text-[10px] text-slate-500">3,840 Review Forms Collected</p>
+            </div>
+          </div>
+          <span class="text-[11px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+            96.8% Response Rate
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 2: STRATEGIC OKRS & UNIVERSAL KPIS / COMPETENCY FRAMEWORK
+         5 cols: OKRs & Strategic Alignment
+         7 cols: Universal KPIs & Competency Library with Evaluation Sliders
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+
+      <!-- LEFT: OKRs & Strategic Key Results (5 Columns) -->
+      <div class="lg:col-span-5 executive-card rounded-2xl p-5 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+            <h2 class="text-sm font-bold text-slate-900 font-heading">Corporate OKRs & Strategic Alignment</h2>
+          </div>
+          <span class="text-[11px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">FY26 Q2</span>
+        </div>
+        <p class="text-[11px] text-slate-500 font-medium mb-4">Cascading Group Objectives across 8 Modular Divisions</p>
+
+        <div class="space-y-3.5">
+          <!-- OKR 1 -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/80">
+            <div class="flex justify-between items-start mb-1">
+              <div>
+                <span class="text-[10px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">OBJ-01</span>
+                <p class="text-xs font-bold text-slate-800 mt-1">Scale Annualized ARR to ৳ 48.0 Cr</p>
+              </div>
+              <span class="text-xs font-extrabold text-purple-700">88.4%</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-100 mt-2 overflow-hidden">
+              <div class="h-full rounded-full bg-purple-600" style="width: 88.4%;"></div>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-1.5">KR: 38 Enterprise SBU accounts activated • On Track</p>
+          </div>
+
+          <!-- OKR 2 -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/80">
+            <div class="flex justify-between items-start mb-1">
+              <div>
+                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">OBJ-02</span>
+                <p class="text-xs font-bold text-slate-800 mt-1">High-Availability Cloud Uptime (99.98%)</p>
+              </div>
+              <span class="text-xs font-extrabold text-emerald-700">94.1%</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-100 mt-2 overflow-hidden">
+              <div class="h-full rounded-full bg-emerald-600" style="width: 94.1%;"></div>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-1.5">KR: Zero critical SLA downtime across SBU nodes</p>
+          </div>
+
+          <!-- OKR 3 -->
+          <div class="p-3 rounded-xl bg-white/70 border border-slate-200/80">
+            <div class="flex justify-between items-start mb-1">
+              <div>
+                <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">OBJ-03</span>
+                <p class="text-xs font-bold text-slate-800 mt-1">Talent Capability Index & Leadership Succession</p>
+              </div>
+              <span class="text-xs font-extrabold text-blue-700">86.2%</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-100 mt-2 overflow-hidden">
+              <div class="h-full rounded-full bg-blue-600" style="width: 86.2%;"></div>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-1.5">KR: 184 HiPo leaders mapped in 9-Box talent pipeline</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Universal KPIs & Competency Model Framework (7 Columns) -->
+      <div class="lg:col-span-7 executive-card rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+              <h2 class="text-sm font-bold text-slate-900 font-heading">Universal KPIs & Competency Framework Library</h2>
+            </div>
+            <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full">
+              Standard 70/30 Split
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-500 font-medium mb-4">Hard Role Deliverables (70% Weight) + Core Behavioral Competencies (30% Weight)</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <!-- Functional KPI 1 -->
+            <div class="p-3 rounded-xl bg-slate-50/90 border border-slate-200/80">
+              <div class="flex justify-between items-center text-xs mb-1">
+                <span class="font-bold text-slate-800">1. Strategic Delivery & Milestones</span>
+                <span class="font-extrabold text-purple-700">4.5 / 5.0</span>
+              </div>
+              <p class="text-[10px] text-slate-500">Weight: 40% • Measures on-time sprint & target delivery</p>
+              <input type="range" min="1" max="5" step="0.1" value="4.5"
+                class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600 mt-2" />
+            </div>
+
+            <!-- Functional KPI 2 -->
+            <div class="p-3 rounded-xl bg-slate-50/90 border border-slate-200/80">
+              <div class="flex justify-between items-center text-xs mb-1">
+                <span class="font-bold text-slate-800">2. Quality, Audit & Accuracy SLA</span>
+                <span class="font-extrabold text-purple-700">4.2 / 5.0</span>
+              </div>
+              <p class="text-[10px] text-slate-500">Weight: 30% • Defect density & regulatory compliance</p>
+              <input type="range" min="1" max="5" step="0.1" value="4.2"
+                class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600 mt-2" />
+            </div>
+
+            <!-- Competency 1 -->
+            <div class="p-3 rounded-xl bg-purple-50/60 border border-purple-200/70">
+              <div class="flex justify-between items-center text-xs mb-1">
+                <span class="font-bold text-slate-800">3. People Leadership & Mentorship</span>
+                <span class="font-extrabold text-indigo-700">4.0 / 5.0</span>
+              </div>
+              <p class="text-[10px] text-slate-500">Weight: 15% • Team empowerment & upward ratings</p>
+              <input type="range" min="1" max="5" step="0.1" value="4.0"
+                class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 mt-2" />
+            </div>
+
+            <!-- Competency 2 -->
+            <div class="p-3 rounded-xl bg-purple-50/60 border border-purple-200/70">
+              <div class="flex justify-between items-center text-xs mb-1">
+                <span class="font-bold text-slate-800">4. Integrity, Ethics & Corporate DNA</span>
+                <span class="font-extrabold text-indigo-700">5.0 / 5.0</span>
+              </div>
+              <p class="text-[10px] text-slate-500">Weight: 15% • Uncompromised governance standard</p>
+              <input type="range" min="1" max="5" step="0.1" value="5.0"
+                class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 mt-2" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+          <span class="text-[11px] text-slate-500">Active Framework: <strong class="text-slate-800">Inceptia Competency Standard v4.2</strong></span>
+          <button onclick="saveEvaluationScores()"
+            class="px-3 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-purple-700 font-semibold text-xs shadow-2xs hover:shadow-xs transition">
+            Recalculate Weighted Total
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         ROW 3: MASTER-DETAIL REACTIVE INSPECTION WORKSPACE
+         8 cols: Master Appraisals Roster & Review Cycles Table
+         4 cols: Reactive Executive Appraisal Dossier Docket
+         ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+
+      <!-- LEFT: Master Appraisals Roster Table (8 Columns) -->
+      <div class="lg:col-span-8 executive-card rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between">
+        <div>
+          <!-- Table Toolbar -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                <h2 class="text-sm font-bold text-slate-900 font-heading">Master Appraisals Roster (H1/H2 Cycle)</h2>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium mt-0.5">Click any staff row to inspect cryptographic appraisal dossier</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex items-center gap-2">
+              <select id="deptFilter" onchange="filterAppraisalsTable()"
+                class="px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                <option value="ALL">All Departments</option>
+                <option value="Engineering">Software & R&D</option>
+                <option value="Sales">Commercial Sales</option>
+                <option value="Finance">Finance & Accounts</option>
+                <option value="Operations">Operations & Supply</option>
+                <option value="HR">Human Resources</option>
+              </select>
+
+              <select id="ratingFilter" onchange="filterAppraisalsTable()"
+                class="px-2.5 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                <option value="ALL">All Ratings (O, A, B, C, D)</option>
+                <option value="O">Band O (4.5 - 5.0)</option>
+                <option value="A">Band A (3.8 - 4.4)</option>
+                <option value="B">Band B (3.0 - 3.7)</option>
+                <option value="C">Band C (2.0 - 2.9)</option>
+                <option value="D">Band D (< 2.0)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Table Container -->
+          <div class="overflow-x-auto rounded-xl border border-slate-200/80 bg-white/70">
+            <table class="w-full text-left text-xs" id="appraisalsTable">
+              <thead class="bg-slate-50/90 text-slate-600 text-[11px] font-bold uppercase tracking-wider border-b border-slate-200/80">
+                <tr>
+                  <th class="py-2.5 px-3">Employee Name & ID</th>
+                  <th class="py-2.5 px-3">Department</th>
+                  <th class="py-2.5 px-2 text-center">Self</th>
+                  <th class="py-2.5 px-2 text-center">Manager</th>
+                  <th class="py-2.5 px-2 text-center">Final Score</th>
+                  <th class="py-2.5 px-3">9-Box Cell</th>
+                  <th class="py-2.5 px-3 text-center">Cycle Status</th>
+                  <th class="py-2.5 px-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-medium" id="appraisalTableBody">
+
+                <!-- Row 1: Farhan Tanvir (Selected by default) -->
+                <tr class="appraisal-row appraisal-row-selected hover:bg-slate-50/80 transition cursor-pointer"
+                    data-id="EMP-2081" data-name="Farhan Tanvir" data-role="Lead Cloud Architect" data-dept="Engineering"
+                    data-self="4.6" data-mgr="4.7" data-final="4.72" data-band="O" data-box="Star Talent"
+                    data-status="Sealed" data-hash="SHA256:793CC78B3D186B30-PMS-SEALED"
+                    onclick="selectAppraisalRow(this)">
+                  <td class="py-2.5 px-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-purple-600 text-white font-bold text-xs flex items-center justify-center">
+                        FT
+                      </div>
+                      <div>
+                        <p class="font-bold text-slate-800">Farhan Tanvir</p>
+                        <p class="text-[10px] text-slate-400 font-mono">EMP-2081 • Lead Architect</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-2.5 px-3 text-slate-600">Software & R&D</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600">4.6</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600 font-semibold">4.7</td>
+                  <td class="py-2.5 px-2 text-center font-bold text-purple-700 bg-purple-50/50">
+                    4.72 <span class="text-[10px] px-1 bg-purple-200 text-purple-800 rounded font-bold">O</span>
+                  </td>
+                  <td class="py-2.5 px-3">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">
+                      ⭐ Star Talent
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      🔒 Sealed
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-right">
+                    <button class="text-purple-600 hover:text-purple-800 font-bold text-xs">Inspect</button>
+                  </td>
+                </tr>
+
+                <!-- Row 2: Nusrat Jahan -->
+                <tr class="appraisal-row hover:bg-slate-50/80 transition cursor-pointer"
+                    data-id="EMP-1944" data-name="Nusrat Jahan" data-role="Senior Financial Controller" data-dept="Finance"
+                    data-self="4.2" data-mgr="4.4" data-final="4.35" data-band="A" data-box="High Professionals"
+                    data-status="Sealed" data-hash="SHA256:4C88FA12E87920BA-PMS-SEALED"
+                    onclick="selectAppraisalRow(this)">
+                  <td class="py-2.5 px-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
+                        NJ
+                      </div>
+                      <div>
+                        <p class="font-bold text-slate-800">Nusrat Jahan</p>
+                        <p class="text-[10px] text-slate-400 font-mono">EMP-1944 • Sr. Controller</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-2.5 px-3 text-slate-600">Finance & Accounts</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600">4.2</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600 font-semibold">4.4</td>
+                  <td class="py-2.5 px-2 text-center font-bold text-indigo-700 bg-indigo-50/50">
+                    4.35 <span class="text-[10px] px-1 bg-indigo-200 text-indigo-800 rounded font-bold">A</span>
+                  </td>
+                  <td class="py-2.5 px-3">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-indigo-800 bg-indigo-100 px-2 py-0.5 rounded-full">
+                      High Professional
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      🔒 Sealed
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-right">
+                    <button class="text-purple-600 hover:text-purple-800 font-bold text-xs">Inspect</button>
+                  </td>
+                </tr>
+
+                <!-- Row 3: Tanvir Ahmed -->
+                <tr class="appraisal-row hover:bg-slate-50/80 transition cursor-pointer"
+                    data-id="EMP-2102" data-name="Tanvir Ahmed" data-role="Enterprise Sales Director" data-dept="Sales"
+                    data-self="4.5" data-mgr="4.6" data-final="4.58" data-band="O" data-box="Star Talent"
+                    data-status="In Calibration" data-hash="SHA256:D9102BF84013917C-PENDING"
+                    onclick="selectAppraisalRow(this)">
+                  <td class="py-2.5 px-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center">
+                        TA
+                      </div>
+                      <div>
+                        <p class="font-bold text-slate-800">Tanvir Ahmed</p>
+                        <p class="text-[10px] text-slate-400 font-mono">EMP-2102 • Sales Director</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-2.5 px-3 text-slate-600">Commercial Sales</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600">4.5</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600 font-semibold">4.6</td>
+                  <td class="py-2.5 px-2 text-center font-bold text-purple-700 bg-purple-50/50">
+                    4.58 <span class="text-[10px] px-1 bg-purple-200 text-purple-800 rounded font-bold">O</span>
+                  </td>
+                  <td class="py-2.5 px-3">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">
+                      ⭐ Star Talent
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200">
+                      In Calibration
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-right">
+                    <button class="text-purple-600 hover:text-purple-800 font-bold text-xs">Inspect</button>
+                  </td>
+                </tr>
+
+                <!-- Row 4: Mehedi Hasan -->
+                <tr class="appraisal-row hover:bg-slate-50/80 transition cursor-pointer"
+                    data-id="EMP-1823" data-name="Mehedi Hasan" data-role="Operations Specialist" data-dept="Operations"
+                    data-self="3.5" data-mgr="3.6" data-final="3.52" data-band="B" data-box="Core Performers"
+                    data-status="Sealed" data-hash="SHA256:58392AB110F88310-PMS-SEALED"
+                    onclick="selectAppraisalRow(this)">
+                  <td class="py-2.5 px-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-slate-600 text-white font-bold text-xs flex items-center justify-center">
+                        MH
+                      </div>
+                      <div>
+                        <p class="font-bold text-slate-800">Mehedi Hasan</p>
+                        <p class="text-[10px] text-slate-400 font-mono">EMP-1823 • Operations Lead</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-2.5 px-3 text-slate-600">Operations & Supply</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600">3.5</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600 font-semibold">3.6</td>
+                  <td class="py-2.5 px-2 text-center font-bold text-blue-700 bg-blue-50/50">
+                    3.52 <span class="text-[10px] px-1 bg-blue-200 text-blue-800 rounded font-bold">B</span>
+                  </td>
+                  <td class="py-2.5 px-3">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded-full">
+                      Core Performer
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      🔒 Sealed
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-right">
+                    <button class="text-purple-600 hover:text-purple-800 font-bold text-xs">Inspect</button>
+                  </td>
+                </tr>
+
+                <!-- Row 5: Shamima Akhter (PIP Risk) -->
+                <tr class="appraisal-row hover:bg-slate-50/80 transition cursor-pointer"
+                    data-id="EMP-2210" data-name="Shamima Akhter" data-role="Junior QA Analyst" data-dept="Engineering"
+                    data-self="2.8" data-mgr="1.9" data-final="1.85" data-band="D" data-box="Risk Underperformers"
+                    data-status="PIP Active" data-hash="SHA256:A83820FE1109B310-PIP-LOGGED"
+                    onclick="selectAppraisalRow(this)">
+                  <td class="py-2.5 px-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-rose-600 text-white font-bold text-xs flex items-center justify-center">
+                        SA
+                      </div>
+                      <div>
+                        <p class="font-bold text-slate-800">Shamima Akhter</p>
+                        <p class="text-[10px] text-slate-400 font-mono">EMP-2210 • QA Analyst</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-2.5 px-3 text-slate-600">Software & R&D</td>
+                  <td class="py-2.5 px-2 text-center text-slate-600">2.8</td>
+                  <td class="py-2.5 px-2 text-center text-rose-600 font-semibold">1.9</td>
+                  <td class="py-2.5 px-2 text-center font-bold text-rose-700 bg-rose-50/50">
+                    1.85 <span class="text-[10px] px-1 bg-rose-200 text-rose-800 rounded font-bold">D</span>
+                  </td>
+                  <td class="py-2.5 px-3">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-800 bg-red-100 px-2 py-0.5 rounded-full">
+                      ⚠️ Risk / PIP
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-center">
+                    <span class="inline-flex items-center gap-1 text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
+                      PIP Active
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-3 text-right">
+                    <button class="text-rose-600 hover:text-rose-800 font-bold text-xs">Inspect</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Pagination & Summary -->
+        <div class="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500">
+          <span>Showing <strong>5</strong> of <strong>1,280</strong> audited appraisals</span>
+          <div class="flex items-center gap-1">
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-semibold transition">Prev</button>
+            <span class="px-2 py-1 font-bold text-purple-700 bg-purple-50 rounded">1</span>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-semibold transition">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Reactive Executive Appraisal Dossier Docket (4 Columns) -->
+      <div class="lg:col-span-4 executive-card rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between" id="dossierDocket">
+        <div>
+          <!-- Cryptographic Tamper Seal Header (Functionality #12) -->
+          <div class="p-3 rounded-xl bg-purple-50/80 border border-purple-200 mb-4">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold uppercase tracking-widest text-purple-800 flex items-center gap-1">
+                🔒 Cryptographic Seal
+              </span>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                Verified
+              </span>
+            </div>
+            <p id="dossierHash" class="text-[10px] font-mono text-purple-900 mt-1 break-all font-semibold">
+              SHA256:793CC78B3D186B30-PMS-SEALED
+            </p>
+          </div>
+
+          <!-- Employee Bio -->
+          <div class="flex items-start justify-between pb-3.5 border-b border-slate-200/80 mb-3.5">
+            <div>
+              <h3 id="dossierName" class="text-base font-extrabold text-slate-900 font-heading">Farhan Tanvir</h3>
+              <p id="dossierRole" class="text-xs text-slate-500 font-medium">Lead Cloud Architect • EMP-2081</p>
+              <p id="dossierDept" class="text-[11px] text-purple-700 font-semibold mt-0.5">Software & R&D Division</p>
+            </div>
+            <div class="text-right">
+              <span id="dossierBand" class="text-lg font-black text-purple-700 bg-purple-100 px-2.5 py-1 rounded-xl">
+                4.72 (O)
+              </span>
+              <p id="dossierBox" class="text-[10px] font-bold text-emerald-700 mt-1">⭐ Star Talent</p>
+            </div>
+          </div>
+
+          <!-- KPI & Competency Score Card (Functionality #13) -->
+          <div class="space-y-3 mb-4">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Appraisal Score Breakdown</p>
+            
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-700 font-medium">Strategic Delivery (40%)</span>
+                <span class="font-bold text-slate-800">4.8 / 5.0</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full rounded-full bg-purple-600" style="width: 96%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-700 font-medium">Quality & Architecture SLA (30%)</span>
+                <span class="font-bold text-slate-800">4.6 / 5.0</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full rounded-full bg-purple-600" style="width: 92%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-700 font-medium">People Mentorship (15%)</span>
+                <span class="font-bold text-slate-800">4.7 / 5.0</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full rounded-full bg-indigo-600" style="width: 94%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-700 font-medium">Ethics & Compliance (15%)</span>
+                <span class="font-bold text-slate-800">5.0 / 5.0</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div class="h-full rounded-full bg-indigo-600" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 360° Multi-Rater Summary Table -->
+          <div class="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 mb-4">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">360° Multi-Rater Ratings</p>
+            <div class="grid grid-cols-4 gap-2 text-center text-xs">
+              <div class="p-1 rounded bg-white border border-slate-200">
+                <p class="text-[10px] text-slate-400 font-medium">Self</p>
+                <p class="font-bold text-slate-800 mt-0.5">4.6</p>
+              </div>
+              <div class="p-1 rounded bg-white border border-slate-200">
+                <p class="text-[10px] text-slate-400 font-medium">Manager</p>
+                <p class="font-bold text-slate-800 mt-0.5">4.7</p>
+              </div>
+              <div class="p-1 rounded bg-white border border-slate-200">
+                <p class="text-[10px] text-slate-400 font-medium">Peers (8)</p>
+                <p class="font-bold text-purple-700 mt-0.5">4.75</p>
+              </div>
+              <div class="p-1 rounded bg-white border border-slate-200">
+                <p class="text-[10px] text-slate-400 font-medium">Direct Rep (4)</p>
+                <p class="font-bold text-indigo-700 mt-0.5">4.8</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Docket Actions -->
+        <div class="space-y-2 pt-3 border-t border-slate-200/80">
+          <button onclick="openEvaluationModal()"
+            class="w-full py-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs transition shadow-sm hover:shadow flex items-center justify-center gap-1.5 cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+            <span>View Full Evaluation Form</span>
+          </button>
+          
+          <div class="flex items-center gap-2">
+            <button onclick="showToast('Appraisal certified & locked in executive archive.')"
+              class="flex-1 py-1.5 px-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs transition shadow-2xs">
+              Lock & Certify
+            </button>
+            <button onclick="showToast('Exporting encrypted appraisal dossier PDF...')"
+              class="flex-1 py-1.5 px-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs transition shadow-2xs">
+              Export Dossier
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       CALIBRATION CONSOLE MODAL (Interactive Functionality #8)
+       ========================================================================= -->
+  <div id="calibrationModal" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-7 max-w-xl w-full shadow-2xl border border-white/80 relative">
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-4">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold">
+            ⚙️
+          </div>
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900">Calibration Committee Console</h3>
+            <p class="text-xs text-slate-500 font-medium">Session #01 • Dhaka Executive HR Committee</p>
+          </div>
+        </div>
+        <button onclick="closeCalibrationModal()" class="text-slate-400 hover:text-slate-600 text-lg font-bold p-1">✕</button>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <p class="text-slate-600 leading-relaxed">
+          Adjust grade band distribution caps to enforce the company bell-curve before final cryptographic lock.
+        </p>
+
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-slate-800">Grade O Cap:</span>
+            <input type="number" value="10" class="w-16 px-2 py-1 border rounded text-right font-bold text-purple-700" /> %
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-slate-800">Grade A Cap:</span>
+            <input type="number" value="25" class="w-16 px-2 py-1 border rounded text-right font-bold text-indigo-700" /> %
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-slate-800">Grade B Cap:</span>
+            <input type="number" value="50" class="w-16 px-2 py-1 border rounded text-right font-bold text-blue-700" /> %
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end gap-2.5">
+        <button onclick="closeCalibrationModal()" class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50">Cancel</button>
+        <button onclick="showToast('Calibration adjustments applied successfully!'); closeCalibrationModal();" class="px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-bold hover:bg-purple-700">Apply Quotas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- =========================================================================
+       CLIENT INTERACTIVITY JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    // 1. Reactive Row Selection
+    function selectAppraisalRow(row) {
+      document.querySelectorAll('.appraisal-row').forEach(r => r.classList.remove('appraisal-row-selected'));
+      row.classList.add('appraisal-row-selected');
+
+      const name = row.getAttribute('data-name');
+      const role = row.getAttribute('data-role');
+      const dept = row.getAttribute('data-dept');
+      const id = row.getAttribute('data-id');
+      const finalScore = row.getAttribute('data-final');
+      const band = row.getAttribute('data-band');
+      const box = row.getAttribute('data-box');
+      const hash = row.getAttribute('data-hash');
+
+      document.getElementById('dossierName').innerText = name;
+      document.getElementById('dossierRole').innerText = `${role} • ${id}`;
+      document.getElementById('dossierDept').innerText = `${dept} Division`;
+      document.getElementById('dossierBand').innerText = `${finalScore} (${band})`;
+      document.getElementById('dossierBox').innerText = box.includes('Star') ? '⭐ ' + box : (box.includes('Risk') ? '⚠️ ' + box : box);
+      document.getElementById('dossierHash').innerText = hash;
+    }
+
+    // 2. 9-Box Matrix Click Filtering
+    function filterByBox(category) {
+      const badge = document.getElementById('activeFilterBadge');
+      badge.innerText = `Filtered: ${category}`;
+      badge.classList.remove('hidden');
+
+      const rows = document.querySelectorAll('.appraisal-row');
+      rows.forEach(r => {
+        const box = r.getAttribute('data-box');
+        if (box === category) {
+          r.style.display = '';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      showToast(`Filtering appraisals by: ${category}`);
+    }
+
+    function resetMatrixFilter() {
+      document.getElementById('activeFilterBadge').classList.add('hidden');
+      document.querySelectorAll('.appraisal-row').forEach(r => r.style.display = '');
+      document.getElementById('deptFilter').value = 'ALL';
+      document.getElementById('ratingFilter').value = 'ALL';
+      document.getElementById('pmsSearchInput').value = '';
+      showToast('All appraisal filters reset.');
+    }
+
+    // 3. Search and Select Filtering
+    function filterAppraisalsTable() {
+      const query = document.getElementById('pmsSearchInput').value.toLowerCase();
+      const dept = document.getElementById('deptFilter').value;
+      const rating = document.getElementById('ratingFilter').value;
+
+      const rows = document.querySelectorAll('.appraisal-row');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        const rDept = r.getAttribute('data-dept');
+        const rBand = r.getAttribute('data-band');
+
+        const matchesQuery = text.includes(query);
+        const matchesDept = (dept === 'ALL' || rDept.toLowerCase().includes(dept.toLowerCase()));
+        const matchesRating = (rating === 'ALL' || rBand === rating);
+
+        if (matchesQuery && matchesDept && matchesRating) {
+          r.style.display = '';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. Cycle Selector Menu
+    function toggleCycleMenu() {
+      const menu = document.getElementById('cycleMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function setCycle(cycleName) {
+      document.getElementById('cycleLabel').innerText = cycleName;
+      document.getElementById('cycleMenu').classList.add('hidden');
+      showToast(`Loaded Review Cycle: ${cycleName}`);
+    }
+
+    // 5. Calibration Modal Controls
+    function openCalibrationModal() {
+      document.getElementById('calibrationModal').classList.remove('hidden');
+    }
+
+    function closeCalibrationModal() {
+      document.getElementById('calibrationModal').classList.add('hidden');
+    }
+
+    function openEvaluationModal() {
+      showToast('Opening Evaluation Form View (/admin/performance_management/evaluate/1)...');
+    }
+
+    function saveEvaluationScores() {
+      showToast('Weighted scores recalculated and synchronized across all competency models.');
+    }
+
+    // 6. Toast Notification System
+    function showToast(msg) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-2.5 rounded-xl bg-slate-900/95 text-white text-xs font-semibold shadow-xl backdrop-blur-md flex items-center gap-2 transform transition-all duration-300 translate-y-3 opacity-0 pointer-events-auto border border-white/10';
+      toast.innerHTML = `
+        <svg class="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>${msg}</span>
+      `;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-3', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-3', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+  </script>
+
+</body>
+
+</html>
